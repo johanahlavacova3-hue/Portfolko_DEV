@@ -17,7 +17,7 @@ body {
 /* KONTEJNER */
 .stage {
   width: 100%;
-  max-width: 1920px;
+  max-width: 1850px;
   margin: 0 auto;
   padding: 10px 20px; /* horní 10px, boky 20px */
 }
@@ -32,7 +32,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0 0 16px 16px;
+  border-radius: 0 0 0 0;
 }
 
 .hiro-nav {
@@ -40,7 +40,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px; /* 20px z každé strany */
+  padding: 0 0; /* 20px z každé strany */
 }
 
 .nav-left img.logo-img {
@@ -57,14 +57,14 @@ body {
 .nav-btn {
   font-weight: 800;
   font-size: 16px;
-  color: #111;
+  color: #000000;
   text-decoration: none;
   padding: 8px 12px;
   border-radius: 8px;
 }
 
 .nav-btn:hover {
-  background: #f5f5f5;
+  background: #ffffff;
 }
 
 /* === SEKCE === */
@@ -117,7 +117,7 @@ body {
   font-weight: 800;
   text-align: center;
   line-height: 1.5;
-  margin-top: 20px;
+  margin-top: 50px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 4;
