@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KAREL Web</title>
+  <title>KAREL – Galerie</title>
 
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800;900&display=swap" rel="stylesheet">
@@ -29,37 +29,28 @@
 
   <main class="stage">
 
-    <!-- BLOK 1: VIDEO -->
-    <section class="block">
+    <!-- KATEGORIE KAREL -->
+    <section class="category">
       <div class="header-row">
         <div class="left-flag">
           LEVÝ PRAPOR<br>ŘÁDEK 2
         </div>
-        <h1 class="right-banner">KAREL 01 — VIDEO</h1>
+        <h1 class="right-banner">KAREL</h1>
       </div>
 
       <div class="media-wrap">
-        <video class="media" src="KAREL/KAREL_01.mp4" loop muted playsinline controls></video>
-      </div>
-    </section>
+        <!-- VIDEO -->
+        <video class="media" src="KAREL/KAREL_01.mp4" autoplay loop muted playsinline></video>
+        <p class="media-caption">Karel 01 – automatické video, které běží v nekonečné smyčce.</p>
 
-    <!-- BLOK 2: FOTO -->
-    <section class="block">
-      <div class="header-row">
-        <div class="left-flag">
-          LEVÝ PRAPOR<br>ŘÁDEK 2
-        </div>
-        <h2 class="right-banner">KAREL 02 — FOTO</h2>
-      </div>
-
-      <div class="media-wrap">
+        <!-- OBRÁZEK -->
         <img class="media" src="KAREL/KAREL_02.png" alt="Karel 02" />
+        <p class="media-caption">Karel 02 – statická fotografie. Popisek může mít maximálně čtyři řádky textu.</p>
       </div>
     </section>
 
   </main>
 
-  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>
