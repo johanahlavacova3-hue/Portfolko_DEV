@@ -3,15 +3,22 @@ body {
   margin: 0;
   background: #ffffff;
   font-family: "Inter", sans-serif;
-  overflow-x: hidden; /* zabrání horizontálnímu rolování */
-  text-transform: uppercase; /* všechno capslockem */
+  text-transform: uppercase;
+  overflow-x: hidden; /* žádné horizontální rolování */
+  box-sizing: border-box;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* KONTEJNER STRÁNKY */
 .stage {
-  width: 100%;
   max-width: 1920px;
   margin: 0 auto;
-  padding: 10px 20px;
+  padding: 10px 20px; /* horní/dolní 10px, levá/pravá 20px */
 }
 
 /* === HIRO LISTA === */
@@ -29,11 +36,10 @@ body {
 
 .hiro-nav {
   width: 100%;
-  max-width: 1920px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
+  padding: 0 20px; /* 20px z každé strany */
 }
 
 .nav-left img.logo-img {
@@ -95,18 +101,20 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 40px;
+  padding: 0 0; /* už máme padding přes stage */
 }
 
 .media {
   width: 100%;
-  max-width: 1855px;
+  max-width: 100%; /* zajistí, že nikdy nepřesáhne container */
   height: auto;
   border-radius: 16px;
   display: block;
 }
 
+/* === POPIS === */
 .media-caption {
-  max-width: 1855px;
+  width: 100%;
   font-size: 16px;
   font-weight: 800;
   text-align: center;
@@ -132,10 +140,6 @@ body {
   .right-banner {
     text-align: left;
     font-size: 48px;
-  }
-
-  .media {
-    max-width: 100%;
   }
 
   .media-caption {
