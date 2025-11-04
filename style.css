@@ -1,77 +1,51 @@
-:root {
-  --bg: #ffffff;
-  --safe-top: 10px;
-  --safe-left: 20px;
-  --content-width: 1855px;
-  --content-height: 720px;
-}
-
-body {
-  margin: 0;
-  background: var(--bg);
-  font-family: "Inter", sans-serif;
-  color: #111;
-}
-
-.stage {
-  max-width: 1920px;
-  margin: 0 auto;
-  padding: var(--safe-top) var(--safe-left);
-}
-
-.block {
-  margin-bottom: 60px;
-}
-
-.header-row {
+/* === HIRO LISTA (sticky top bar) === */
+.hiro-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* vždy nad ostatním obsahem */
+  background: #ffffff;
+  height: 85px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.left-flag {
-  font-size: 16px;
-  font-weight: 800;
-  line-height: 1.2;
-  text-align: left;
-}
-
-.right-banner {
-  font-size: clamp(32px, 7vw, 128px);
-  font-weight: 900;
-  text-align: right;
-  margin: 0;
-  flex: 1;
-}
-
-.media-wrap {
-  margin-top: 20px;
-  display: flex;
+  align-items: center;
   justify-content: center;
+  border-radius: 0 0 16px 16px; /* zakulacení spodních rohů */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.media {
-  width: min(var(--content-width), 100%);
-  aspect-ratio: 1855 / 720;
-  object-fit: cover;
+.hiro-nav {
+  width: 100%;
+  max-width: 1920px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 32px; /* mezery mezi tlačítky */
+}
+
+.nav-btn {
+  font-family: "Inter", sans-serif;
+  font-weight: 800; /* extrabold */
+  font-size: 16px;
+  color: #111;
+  text-decoration: none;
+  text-transform: none;
+  padding: 8px 12px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-/* Responsivita */
-@media (max-width: 900px) {
-  .right-banner {
-    text-align: left;
-  }
+.nav-btn:hover {
+  background: #f3f3f3;
+  color: #000;
 }
 
-@media (max-width: 600px) {
-  .left-flag {
-    font-size: 14px;
-  }
-  .right-banner {
-    font-size: clamp(24px, 9vw, 60px);
-  }
+/* Logo na pravé straně */
+.logo {
+  font-weight: 900;
+  letter-spacing: 0.5px;
 }
