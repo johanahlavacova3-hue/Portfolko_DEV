@@ -1,15 +1,28 @@
-/* === HIRO LISTA (sticky top bar) === */
+/* === ZÁKLAD === */
+body {
+  margin: 0;
+  background: #ffffff;
+  font-family: "Inter", sans-serif;
+}
+
+.stage {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+/* === HIRO LISTA === */
 .hiro-bar {
   position: sticky;
   top: 0;
-  z-index: 1000; /* vždy nad ostatním obsahem */
+  z-index: 1000;
   background: #ffffff;
   height: 85px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0 0 16px 16px; /* zakulacení spodních rohů */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 0 0 16px 16px;
 }
 
 .hiro-nav {
@@ -24,28 +37,105 @@
 .nav-left, .nav-right {
   display: flex;
   align-items: center;
-  gap: 32px; /* mezery mezi tlačítky */
+  gap: 32px;
 }
 
 .nav-btn {
-  font-family: "Inter", sans-serif;
-  font-weight: 800; /* extrabold */
+  font-weight: 800;
   font-size: 16px;
   color: #111;
   text-decoration: none;
-  text-transform: none;
   padding: 8px 12px;
   border-radius: 8px;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease;
 }
 
 .nav-btn:hover {
-  background: #f3f3f3;
-  color: #000;
+  background: #f5f5f5;
 }
 
-/* Logo na pravé straně */
 .logo {
   font-weight: 900;
   letter-spacing: 0.5px;
+}
+
+/* === HLAVIČKA KATEGORIE === */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 60px;
+  flex-wrap: wrap;
+}
+
+.left-flag {
+  font-size: 16px;
+  font-weight: 800;
+  text-align: left;
+  line-height: 1.3;
+}
+
+.right-banner {
+  font-size: clamp(48px, 8vw, 128px);
+  font-weight: 800;
+  text-align: right;
+  margin: 0;
+  flex: 1;
+}
+
+/* === OBRÁZKY & VIDEA === */
+.media-wrap {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.media {
+  width: 100%;
+  max-width: 1855px;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+}
+
+/* === POPIS === */
+.media-caption {
+  max-width: 1855px;
+  font-size: 16px;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 20px;
+  margin-bottom: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* max 4 řádky */
+  -webkit-box-orient: vertical;
+}
+
+/* === RESPONSIVNÍ === */
+@media (max-width: 768px) {
+  .hiro-nav {
+    padding: 0 16px;
+    gap: 16px;
+  }
+
+  .nav-left, .nav-right {
+    gap: 16px;
+  }
+
+  .right-banner {
+    text-align: left;
+    font-size: 48px;
+  }
+
+  .media {
+    max-width: 100%;
+  }
+
+  .media-caption {
+    padding: 0 10px;
+  }
 }
