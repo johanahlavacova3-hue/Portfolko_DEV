@@ -1,3 +1,4 @@
+/* RESET */
 *,
 *::before,
 *::after {
@@ -7,7 +8,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #fffff;
+  background: #ffffff;
   font-family: "Inter", sans-serif;
   text-transform: uppercase;
   overflow-x: hidden;
@@ -16,7 +17,7 @@ body {
   font-weight: 800;
 }
 
-/* Hlavní rozvržení */
+/* HLAVNÍ KONTEJNER */
 .stage {
   width: 100%;
   max-width: 1920px;
@@ -29,12 +30,13 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: #ffffff;
+  background: #ffffffcc;
   backdrop-filter: blur(6px);
   height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 0 0 16px 16px;
 }
 
 .hiro-nav {
@@ -59,8 +61,10 @@ body {
 .nav-btn {
   font-weight: 800;
   font-size: 12px;
-  color: #000;
+  color: #000000;
   text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
   transition: opacity 0.2s;
 }
 
@@ -68,13 +72,13 @@ body {
   opacity: 0.6;
 }
 
-/* Volný prostor nahoře */
+/* VOLNÝ PROSTOR NAHOŘE */
 .intro-space {
   height: 300px;
   width: 100%;
 }
 
-/* HERO */
+/* HERO SEKCE */
 .hero {
   width: 100%;
   text-align: left;
@@ -109,6 +113,12 @@ body {
 
 .hero-text .highlight {
   color: #ff7700;
+}
+
+/* SEKCE OBECNĚ */
+section {
+  width: 100%;
+  margin-top: 80px;
 }
 
 /* O MNĚ */
@@ -167,15 +177,63 @@ body {
   text-align: left;
 }
 
-/* PORTFOLIO POPISKY */
-.media-caption {
+/* PORTFOLIO SEKCE */
+.category {
+  margin-top: 80px;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.left-flag {
+  margin-top: 40px;
   font-size: 12px;
   font-weight: 800;
-  text-align: left;
-  margin: 8px 0 30px;
+  line-height: 1.3;
+}
+
+.right-banner {
+  font-size: clamp(42px, 8vw, 110px);
+  font-weight: 800;
+  text-align: right;
+  flex: 1;
+  margin: 0;
+}
+
+/* MEDIA BLOKY */
+.media-wrap {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.media {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+.media-caption {
+  width: 100%;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.5;
+  margin-top: -20px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
   color: #000;
-  text-transform: none;
-  line-height: 1.6;
 }
 
 /* KONTAKTY */
@@ -194,16 +252,21 @@ body {
 
 /* RESPONSIVNÍ */
 @media (max-width: 768px) {
+  .hiro-nav {
+    padding: 0 14px;
+  }
+
   .nav-right {
-    gap: 12px;
+    gap: 14px;
   }
 
-  .hero-text p {
-    font-size: 12px;
+  .right-banner {
+    text-align: left;
+    font-size: 48px;
   }
 
-  .experience-grid {
-    grid-template-columns: 1fr;
+  .media-caption {
+    padding: 0 10px;
   }
 
   .experience-item {
