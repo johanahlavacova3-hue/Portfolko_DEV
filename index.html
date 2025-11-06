@@ -3,55 +3,68 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DESIGN × TECH × SPAGETTI</title>
-
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="apple-touch-icon" href="favicon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800;900&display=swap" rel="stylesheet">
+  <title>JOHANA — DESIGN × TECH × HRY</title>
+  <link rel="icon" href="favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
 
-  <!-- HIRO LISTA -->
+  <!-- 1) HIRO -->
   <header class="hiro-bar">
     <nav class="hiro-nav">
-      <div class="nav-left">
-        <img src="LOGO.png" alt="Logo" class="logo-img">
-      </div>
-      <div class="nav-right">
-        <a href="#about" class="nav-btn orange">O MNĚ</a>
-        <a href="#portfolio" class="nav-btn orange">PORTFOLIO</a>
-        <a href="#contact" class="nav-btn orange">KONTAKTY</a>
-      </div>
+      <a href="#about" class="nav-btn">O MNĚ</a>
+      <a href="#portfolio" class="nav-btn">PORTFOLIO</a>
+      <a href="#contact" class="nav-btn">KONTAKT</a>
     </nav>
   </header>
 
   <main class="stage">
 
-    <!-- VOLNÝ PROSTOR -->
-    <section class="intro-space"></section>
+    <!-- 2) ÚVOD: JOHANA + LOGO -->
+    <section class="intro">
+      <div class="intro-left">
+        <h1 class="headline">JOHANA VRBOVÁ</h1>
+        <p>DESIGNÉRKA, VÝVOJÁŘKA, TVŮRCE HER A MILOVNICE ŠPAGET</p>
+      </div>
+      <div class="intro-right">
+        <img src="LOGO.png" alt="Logo Johana" class="logo-img">
+      </div>
+    </section>
 
-    <!-- ČERNÝ OBDELNÍK S NADPISEM -->
-    <section class="black-bar">
+    <!-- 3) O MNĚ + ZKUŠENOSTI -->
+    <section id="about" class="about-section">
+      <h2 class="section-title gray">O MNĚ</h2>
+      <p>
+        Spojuji estetiku a technologii. Zajímá mě, jak věci fungují —
+        jak se z nápadu stane interaktivní prožitek.
+      </p>
+
+      <h2 class="section-title gray">ZKUŠENOSTI</h2>
+      <div class="experience-grid">
+        <div class="experience-item">
+          <span class="date">2023–2025</span>
+          <span class="text">UI / UX DESIGN – FREELANCE</span>
+        </div>
+        <div class="experience-item">
+          <span class="date">2021–2023</span>
+          <span class="text">3D PROTOTYPING – INDEPENDENT PROJECTS</span>
+        </div>
+        <div class="experience-item">
+          <span class="date">2019–2021</span>
+          <span class="text">STUDIUM — FAV UWB</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4) PRÁCE × HRY (černý obdélník) -->
+    <section class="black-section">
       <div class="black-content">
-        <h2 class="black-title">DESIGN × TECHNOLOGIE × ŠPAGETY</h2>
-        <p class="black-subtext">KDE SE MÍSÍ KREATIVITA, KÓD A PŘÍBĚH</p>
+        <h2 class="black-headline">PRÁCE × HRY</h2>
+        <img src="WORKS.png" alt="Práce a hry" class="black-image">
       </div>
     </section>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <img src="SYSTEM/PROFILE.png" alt="Profilová fotka" class="hero-image">
-      <div class="hero-text">
-        <p>MILUJI DOBRÝ DESIGN</p>
-        <p>MILUJI TECHNOLOGIE</p>
-        <p class="highlight">MILUJI ŠPAGETY S KEČUPEM</p>
-      </div>
-    </section>
-
-   
     <!-- SEKCE 1: KAREL -->
     <section class="category">
       <div class="header-row">
@@ -273,6 +286,7 @@
         <p>IG / GITHUB / LINKEDIN</p>
       </div>
     </section>
+
   </main>
 </body>
 </html>
