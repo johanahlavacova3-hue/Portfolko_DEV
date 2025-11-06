@@ -100,7 +100,7 @@ body {
 }
 
 .hero-text p {
-  font-size: clamp(24px, 4vw, 42px);
+  font-size: clamp(10px, 11vw, 12px);
   font-weight: 800;
   margin: 10px 0;
   color: #000;
@@ -119,7 +119,7 @@ body {
 
 .about-section h2,
 .experience-section h2 {
-  font-size: clamp(32px, 5vw, 64px);
+  font-size: clamp(10px, 11vw, 12px);
   font-weight: 900;
   color: #d9d9d9;
   margin-bottom: 40px;
@@ -169,7 +169,7 @@ body {
 /* KONTAKTY */
 .contact-content {
   text-align: center;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 2;
 }
 
@@ -182,11 +182,11 @@ body {
 /* RESPONSIVNÍ */
 @media (max-width: 768px) {
   .nav-right {
-    gap: 14px;
+    gap: 12px;
   }
 
   .hero-text p {
-    font-size: 22px;
+    font-size: 12px;
   }
 
   .experience-grid {
