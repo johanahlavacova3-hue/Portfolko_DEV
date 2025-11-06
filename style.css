@@ -124,7 +124,7 @@ body {
 }
 
 .content-text {
-    font-size: 18px;
+    font-size: 12px;
     line-height: 1.6;
     max-width: 800px;
 }
@@ -134,7 +134,7 @@ body {
 }
 
 .content-text h3 {
-    font-size: 18px;
+    font-size: 12px;
     font-weight: 800;
     margin-top: 40px;
 }
@@ -145,7 +145,7 @@ body {
 }
 
 .content-text li {
-    font-size: 16px;
+    font-size: 12px;
     margin-bottom: 8px;
     font-weight: 800;
 }
@@ -234,7 +234,7 @@ body {
 } 
 
 .right-banner { 
-    font-size: clamp(42px, 8vw, 110px); 
+    font-size: clamp(42px, 8vw, 120px); 
     font-weight: 800; 
     text-align: right; 
     flex: 1; 
