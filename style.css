@@ -17,7 +17,7 @@ body {
   font-weight: 800;
 }
 
-/* HLAVNÍ KONTEJNER */
+/* KONTEJNER */
 .stage {
   width: 100%;
   max-width: 1920px;
@@ -36,7 +36,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0 0 16px 16px;
 }
 
 .hiro-nav {
@@ -63,8 +62,6 @@ body {
   font-size: 12px;
   color: #000000;
   text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 8px;
   transition: opacity 0.2s;
 }
 
@@ -72,205 +69,132 @@ body {
   opacity: 0.6;
 }
 
-/* VOLNÝ PROSTOR NAHOŘE */
-.intro-space {
-  height: 300px;
-  width: 100%;
-}
-
-/* HERO SEKCE */
-.hero {
-  width: 100%;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-
-.hero-image {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  display: block;
-}
-
-.hero-text {
-  max-width: 800px;
-  width: 100%;
-  margin: 200px auto;
-  text-align: left;
-  padding: 0 20px;
-}
-
-.hero-text p {
-  font-size: 12px;
-  font-weight: 800;
-  margin: 10px 0;
-  color: #000;
-}
-
-.hero-text .highlight {
-  color: #ff7700;
-}
-
-/* SEKCE OBECNĚ */
-section {
-  width: 100%;
-  margin-top: 80px;
-}
-
-/* O MNĚ */
-.about-section,
-.experience-section {
-  text-align: center;
-  margin-bottom: 80px;
-}
-
-.about-section h2,
-.experience-section h2 {
-  font-size: 12px;
-  font-weight: 900;
-  color: #d9d9d9;
-  margin-bottom: 40px;
-}
-
-.about-section p {
-  max-width: 800px;
-  margin: 0 auto;
-  font-size: 12px;
-  line-height: 1.7;
-  font-weight: 800;
-  color: #000;
-  text-transform: none;
-}
-
-/* ZKUŠENOSTI GRID */
-.experience-grid {
-  max-width: 900px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
-}
-
-.experience-item {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  text-transform: none;
-}
-
-.experience-item .date {
-  color: #d9d9d9;
-  font-weight: 800;
-  min-width: 160px;
-  text-align: right;
-}
-
-.experience-item .text {
-  color: #000;
-  font-weight: 800;
-  flex: 1;
-  text-align: left;
-}
-
-/* PORTFOLIO SEKCE */
-.category {
-  margin-top: 80px;
-}
-
-.header-row {
+/* TOP INFO */
+.top-info {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 10px;
+  margin-top: 125px;
+  padding: 0 20px;
 }
 
-.left-flag {
-  margin-top: 40px;
+.left-info h1 {
+  font-size: 42px;
+  font-weight: 900;
+  margin: 0;
+  color: #000;
+  line-height: 1.2;
+}
+
+.left-info h2 {
   font-size: 12px;
   font-weight: 800;
-  line-height: 1.3;
+  margin-top: 4px;
+  color: #ff7700;
+  letter-spacing: 1px;
 }
 
-.right-banner {
-  font-size: clamp(22px, 8vw, 110px);
-  font-weight: 800;
-  text-align: right;
-  flex: 1;
-  margin: 0;
+.right-logo img {
+  height: 175px;
+  opacity: 0.2;
 }
 
-/* MEDIA BLOKY */
-.media-wrap {
-  margin-top: 20px;
+/* INFO BLOKY (O MNĚ, ZKUŠENOSTI, SKILLS) */
+.info-blocks {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  text-align: left;
+  margin-top: 80px;
+  gap: 80px;
 }
 
-.media {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  border-radius: 12px;
-  display: block;
+.info-column {
+  max-width: 800px;
 }
 
-.media-caption {
-  width: 100%;
+.info-column h2 {
   font-size: 12px;
-  font-weight: 800;
-  text-align: center;
-  line-height: 1.5;
-  margin-top: -20px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  color: #000;
+  color: #d9d9d9;
+  margin-bottom: 20px;
 }
 
-/* KONTAKTY */
-.contact-content {
-  text-align: center;
+.info-column p {
   font-size: 12px;
+  color: #000;
+  line-height: 1.7;
   font-weight: 800;
-  line-height: 2;
+  text-transform: none;
 }
 
-.contact-content a {
-  color: #000;
+/* ČERNÝ OBDELNÍK */
+.black-banner {
+  background: #000;
+  height: 300px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 10px 20px;
+  margin-top: 175px;
+}
+
+.banner-btn.left {
+  color: #fff;
   text-decoration: none;
-  border-bottom: 1px solid #000;
+  font-size: 12px;
+  font-weight: 900;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
 }
 
-/* RESPONSIVNÍ */
+.banner-center {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  align-self: flex-start;
+}
+
+.banner-img.right img {
+  height: 175px;
+  align-self: flex-start;
+}
+
+/* PORTFOLIO NADPIS */
+.portfolio-heading {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.portfolio-heading h2 {
+  font-size: 12px;
+  color: #ff7700;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+/* RESPONSIVITA */
 @media (max-width: 768px) {
-  .hiro-nav {
-    padding: 0 14px;
-  }
-
-  .nav-right {
-    gap: 14px;
-  }
-
-  .right-banner {
-    text-align: left;
-    font-size: 42px;
-  }
-
-  .media-caption {
-    padding: 0 10px;
-  }
-
-  .experience-item {
+  .top-info {
     flex-direction: column;
     align-items: flex-start;
+    gap: 20px;
+  }
+
+  .left-info h1 {
+    font-size: 28px;
+  }
+
+  .right-logo img {
+    height: 100px;
+  }
+
+  .black-banner {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    gap: 20px;
   }
 }
