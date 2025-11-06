@@ -200,7 +200,7 @@ body {
 }
 
 .action-divider {
-    width: 2px;
+    width: 0px; /*zmenovka*/
     height: 100px; 
     background: #ffffff;
     opacity: 0.5;
