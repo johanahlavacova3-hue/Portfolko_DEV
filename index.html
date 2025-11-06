@@ -1,147 +1,112 @@
 <!doctype html>
 <html lang="cs">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Johana Hlaváčová | DESIGN × TECH × SPAGETTI</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JOHANA HLAVÁČOVÁ - DESIGN × TECH × SPAGETTI</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="apple-touch-icon" href="favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
 
-  <!-- HIRO LISTA -->
-  <header class="hiro-bar">
-    <nav class="hiro-nav">
-      <div class="nav-left">
-        <span class="jh-small">JH</span>
-      </div>
-      <div class="nav-right">
-        <a href="#home" class="nav-btn">DOMŮ</a>
-        <a href="#portfolio" class="nav-btn">PORTFOLIO</a>
-        <a href="#kontakty" class="nav-btn">KONTAKTY</a>
-      </div>
-    </nav>
-  </header>
+    <header class="hiro-bar">
+        <nav class="hiro-nav">
+            <div class="nav-left">
+                <a href="#o-mne" class="nav-btn">O MNĚ</a>
+            </div>
+            <div class="nav-right">
+                <a href="#portfolio" class="nav-btn">PRÁCE</a>
+                <a href="#kontakty" class="nav-btn">KONTAKTY</a>
+            </div>
+        </nav>
+    </header>
 
-  <main class="stage">
+    <main class="stage">
+        
+        <section class="hero-intro">
+            <div class="header-split">
+                <div class="header-left">
+                    <img src="LOGO.png" alt="Logo" class="logo-img-intro">
+                    <h1 class="johana-name">JOHANA<br>HLAVÁČOVÁ</h1>
+                </div>
+                <div class="header-right">
+                    <p class="blabla-text">BLABLA</p>
+                </div>
+            </div>
+            <img src="PROFILE.png" alt="Profilový banner" class="profile-banner">
+        </section>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="hero-img">
-        <img src="hero-eye.jpg" alt="Johana Hlaváčová" class="eye-img">
-      </div>
-      <div class="hero-content">
-        <div class="hero-text">
-          <p class="name">JOHANA HLAVÁČOVÁ</p>
-          <p class="title">DESIGN, UI & UX, TECH, CODE</p>
-        </div>
-        <div class="spaghetti">
-          <p>MILUJI DOBRÝ DESIGN<br>
-             MILUJI TECHNOLOGIE<br>
-             <span class="orange">MILUJI ŠPAGETY S KEČUPEM</span>
-          </p>
-          <div class="arrow">→</div>
-        </div>
-      </div>
-    </section>
+        <section class="category" id="o-mne">
+            <h2 class="section-title">O MNĚ</h2>
+            <div class="content-text">
+                <p>Jsem Johana, designérka s vášní pro propojování **fyzického a digitálního světa**. Můj přístup kombinuje **UI/UX design**, **3D modelování** a **kódování** (hardware i software) s cílem vytvářet komplexní a funkční řešení. Baví mě experimentovat s novými technologiemi a přetvářet složité problémy v intuitivní a estetické produkty. </p>
+                <h3>ZKUŠENOSTI & DOVEDNOSTI</h3>
+                <ul>
+                    <li>**DESIGN:** UI/UX, 3D Tisk, Modelování, Grafika, Prototypování</li>
+                    <li>**TECH:** HTML/CSS/JS, Arduino/HW, Unity (základy), AR/VR</li>
+                    <li>**NÁSTROJE:** Figma, Blender, Adobe CC (PS, AI, PR), Fusion 360</li>
+                </ul>
+            </div>
+        </section>
 
-    <!-- O MNĚ -->
-    <section class="section about" id="o-mne">
-      <div class="about-line">
-        <div class="about-text">
-          <p class="section-subtitle">O MNĚ</p>
-          <p>STUDUJI JIŽ 4. ROKEM GRAFIKU NA PRAŽSKÉ HELLICHOVCE. ÚSPĚŠNĚ. ZATÍM.<br>
-             VE VOLNÉM ČASE SE VĚNUJI ROBOTŮM 3D TISKU A PŘEVÁŽNĚ UI & UX DESIGNU.<br>
-             SOUČASNĚ PŮSOBÍM V DESIGNU PRO KORPORÁTY I PRO NEZISKOVKY.</p>
-        </div>
-        <div class="about-btn">
-          <img src="btn-omne.png" alt="O mně" class="btn-img">
-        </div>
-      </div>
+        <hr class="separator-line">
 
-      <div class="skills">
-        <div class="skills-left">
-          <p class="year">2022 – SOUČASNOST</p>
-          <p>STŘEDNÍ PRŮMYSLOVÁ ŠKOLA GRAFICKÁ, PRAHA 1 (DESIGN OBALŮ A OBJEKTŮ)</p>
-          <p class="year">2023 – 2024</p>
-          <p>ODBORNE PRAXE V GRAFICKÉM STUDIU CO JE T.A.</p>
-          <p class="year">2024 – SOUČASNOST</p>
-          <p>UI & UX DESIGNER PRO ČEPS A.S.</p>
-          <p class="year">2025 – SOUČASNOST</p>
-          <p>CZECH ROCKET SOCIETY (UI & UX DESIGNER)</p>
-          <p class="year">2025 – SOUČASNOST</p>
-          <p>MENTOR DĚNEB CODE & GRAPHIC DESIGN FOR PBI V ČEPS A.S.</p>
-        </div>
-        <div class="skills-right">
-          <p class="section-subtitle">ZKUŠENOSTI</p>
-          <p>DESIGN: FIGMA, ILLUSTRATOR, PHOTOSHOP, INDESIGN<br>
-             3D: BLENDER 3D MAX<br>
-             ANIMACE: AFTER EFFECTS, PREMIERE PRO, PROCREATE<br>
-             CODE: HTML + CSS, EXCEL<br>
-             DATA: POWER BI<br>
-             +3D PRINT</p>
-        </div>
-      </div>
-    </section>
+        <section class="portfolio-action-bar" id="portfolio-action">
+            <a href="#portfolio-projects" class="action-btn left">PRÁCE</a>
+            <div class="action-divider"></div>
+            <a href="#" class="action-btn center">HRY</a>
+            <div class="action-divider"></div>
+            <a href="#" class="action-btn right">
+                <img src="FISH.png" alt="Odkaz na hru Fish" class="fish-icon">
+            </a>
+        </section>
 
-    <!-- PORTFOLIO HLAVIČKA -->
-    <section class="portfolio-header" id="portfolio">
-      <div class="portfolio-title">
-        <h1>PRÁCE</h1>
-      </div>
-      <div class="portfolio-categories">
-        <h2>HRY</h2>
-        <div class="category-icons">
-          <div class="icon">🎮</div>
-          <div class="icon">🎲</div>
-          <div class="icon">🎯</div>
-        </div>
-      </div>
-    </section>
+        <hr class="separator-line">
 
-    <!-- PŘÍKLAD PROJEKTU: KAREL 25’ -->
-    <section class="project-detail">
-      <div class="project-header">
-        <p class="project-year">2025</p>
-        <p class="project-tags">UI & UX DESIGN & PRINT & CODE & MECHANIC</p>
-        <h1 class="project-title">KAREL 25’</h1>
-      </div>
-      <div class="project-preview">
-        <div class="preview-box"></div>
-      </div>
-      <div class="project-sketches">
-        <img src="karel-sketches.png" alt="Sketches" class="sketches-img">
-      </div>
-    </section>
+        <section class="portfolio-projects" id="portfolio-projects">
+            <h2 class="section-title">PORTFOLIO</h2>
+            <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN × UI & UX × CODE</div>
+                    <h1 class="right-banner">KAREL 25’</h1>
+                </div>
+                <div class="media-wrap">
+                    <p>Obsah projektu KAREL...</p>
+                    <img class="media" src="KAREL/KAREL_01.mp4" alt="KAREL 01" />
+                    </div>
+            </section>
 
-    <!-- DALŠÍ PROJEKTY (přidáš později) -->
-    <!-- ... -->
+            <hr class="separator-line">
 
-    <!-- KONTAKTY -->
-    <section class="section contact" id="kontakty">
-      <h2 class="section-title">KONTAKTY</h2>
-      <div class="contact-grid">
-        <div class="contact-form">
-          <input type="text" placeholder="Jméno">
-          <input type="email" placeholder="E-mail">
-          <textarea placeholder="Zpráva"></textarea>
-          <button>ODESLAT</button>
-        </div>
-        <div class="contact-info">
-          <a href="mailto:johana@jhlavacova.cz">johana@jhlavacova.cz</a>
-          <a href="tel:+420123456789">+420 123 456 789</a>
-          <a href="#">LinkedIn</a>
-        </div>
-      </div>
-    </section>
+            <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN</div>
+                    <h1 class="right-banner">MYŠÁK</h1>
+                </div>
+                <div class="media-wrap">
+                    <p>Obsah projektu MYŠÁK...</p>
+                    <img class="media" src="MYSAK/MYSAK_01.png" alt="MYSAK 01">
+                    </div>
+            </section>
+        </section>
 
-  </main>
+        <hr class="separator-line">
 
-  <footer>
-    © 2025 Johana Hlaváčová
-  </footer>
+        <section class="category contacts" id="kontakty">
+            <h2 class="section-title">KONTAKTY</h2>
+            <div class="content-text">
+                <p>Máte zájem o spolupráci, nebo byste se chtěli jen zeptat? Neváhejte mě kontaktovat!</p>
+                <p class="contact-info">
+                    EMAIL: **<a href="mailto:johana.hlavacova@email.cz">JOHANA.HLAVACOVA@EMAIL.CZ</a>**<br>
+                    LINKEDIN: **<a href="#">LINKEDIN.COM/JHLAVAC</a>**<br>
+                    INSTAGRAM: **<a href="#">@JOHANA.DESIGN</a>**
+                </p>
+            </div>
+        </section>
 
-  <script src="script.js" defer></script>
+    </main>
 </body>
 </html>
