@@ -11,12 +11,14 @@
       wrapper.style.position = "relative";
       wrapper.style.width = "100%";
       wrapper.style.paddingTop = (720 / 1855) * 100 + "%";
+
       el.style.position = "absolute";
       el.style.top = 0;
       el.style.left = 0;
       el.style.width = "100%";
       el.style.height = "100%";
       el.style.objectFit = "cover";
+
       el.parentNode.replaceChild(wrapper, el);
       wrapper.appendChild(el);
     });
@@ -28,8 +30,12 @@
     const maxWidth = 1855;
     const winW = window.innerWidth;
     const newW = Math.min(maxWidth, winW - safeLeft * 2);
+
     document.querySelectorAll(".media").forEach((el) => {
-      el.style.width = newW + "px";
+      // Pokud je v fallback wrapperu, nastavujeme wrapper
+      const target = el.closest(".media-fallback") || el;
+      target.style.width = newW + "px";
+      target.style.maxWidth = "100%";
     });
   }
 
@@ -38,9 +44,8 @@
 })();
 
 // -----------------------------------------------------------
-// Navigační scroll (přidáno)
+// Navigační smooth scroll (pouze interní # odkazy)
 // -----------------------------------------------------------
-
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".nav-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
@@ -50,6 +55,16 @@ document.addEventListener("DOMContentLoaded", function () {
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+          // Přidá offset pro sticky header
+          const headerOffset = 80;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
         }
       }
     });
