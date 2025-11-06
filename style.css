@@ -200,7 +200,7 @@ body {
 
 .action-divider {
     width: 2px;
-    height: 100px; /* Vertikální linka */
+    height: 0px; /* Vertikální linka */
     background: #ffffff;
     opacity: 0.5;
     margin: 0 40px;
