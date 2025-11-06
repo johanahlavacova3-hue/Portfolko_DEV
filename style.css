@@ -97,7 +97,7 @@ body {
 }
 
 .black-title {
-  font-size: 42px;
+  font-size: 120px;
   font-weight: 900;
   letter-spacing: 2px;
   margin: 0 0 10px;
@@ -222,7 +222,7 @@ body {
   }
 
   .black-subtext {
-    font-size: 10px;
+    font-size: 5px;
     letter-spacing: 1px;
   }
 }
