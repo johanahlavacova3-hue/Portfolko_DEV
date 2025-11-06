@@ -6,7 +6,7 @@ body {
     background: #ffffff; 
     font-family: "Inter", sans-serif; 
     text-transform: uppercase; 
-    overflow-x: hidden;
+    overflow-x: hidden; /* Zákaz horizontálního rolování */
 } 
 
 /* KONTEJNER */ 
@@ -14,12 +14,11 @@ body {
     width: 100%; 
     max-width: 1920px; 
     margin: 0 auto; 
-    padding: 10px 20px; 
+    padding: 10px 0; /* Upraveno, aby se portfolio vešlo s 5px rámečkem/marginem */
 } 
 
 /* HIRO BAR - ÚPRAVA PRO STARTPAGE */
 .hiro-bar {
-    /* Ponecháno sticky, ale s odkazy na sekce */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -29,7 +28,7 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 0 0 16px 16px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Pro lepší viditelnost na bílém pozadí */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .hiro-nav {
@@ -64,31 +63,32 @@ body {
 
 /* === NOVÉ STYLY PRO ÚVODNÍ SEKCI === */
 .hero-intro {
-    padding-top: 50px; /* Aby nezačínalo hned pod hiro barem */
+    padding-top: 50px;
     margin-bottom: 40px;
 }
 
 .header-split {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Zarovnání na stres */
+    align-items: flex-start;
     margin-bottom: 20px;
+    padding: 0 20px; /* Přidán horizontální padding, jelikož byl z .stage odstraněn */
 }
 
 .header-left {
     display: flex;
     align-items: flex-start;
-    gap: 15px; /* Mezera mezi logem a jménem */
+    gap: 15px;
 }
 
 .logo-img-intro {
     height: 50px; 
     width: auto;
-    margin-top: 10px; /* Pro zarovnání s textem, pokud je Johana jméno menší */
+    margin-top: 10px;
 }
 
 .johana-name {
-    font-size: 12px; 
+    font-size: 48px; 
     font-weight: 800;
     line-height: 1;
     margin: 0;
@@ -103,15 +103,16 @@ body {
     font-weight: 800;
     margin: 0;
     line-height: 1.2;
-    padding-top: 20px; /* Zarovnání textu "blabla" k horní části "Johana hlavacova" */
+    padding-top: 20px;
 }
 
 .profile-banner {
     width: 100%;
     height: 300px; /* Pevná výška 300px */
-    object-fit: cover; /* Ujistí se, že obrázek pokryje celou plochu */
+    object-fit: cover;
     border-radius: 12px;
     margin-top: 20px;
+    padding: 0 20px; /* Přidán horizontální padding, jelikož byl z .stage odstraněn */
 }
 
 /* === SEKCE O MNĚ A KONTAKTY === */
@@ -170,8 +171,8 @@ body {
 /* === SEKCE ČERNÝ OBÉLNÍK/TLAČÍTKO === */
 .portfolio-action-bar {
     background: #000000;
-    width: 100vw; /* Roztažení na celou šířku */
-    margin-left: calc(50% - 50vw); /* Triky pro roztažení od kraje do kraje */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
     padding: 40px 20px;
     display: flex;
     justify-content: space-between;
@@ -195,12 +196,12 @@ body {
 }
 
 .action-btn.center {
-    font-size: 120px; /* Menší velikost pro "HRY" */
+    font-size: 48px; /* Zpět na 48px, aby se vešlo "HRY" */
 }
 
 .action-divider {
     width: 2px;
-    height: 0px; /* Vertikální linka */
+    height: 100px; 
     background: #ffffff;
     opacity: 0.5;
     margin: 0 40px;
@@ -213,9 +214,22 @@ body {
     margin: 0 auto;
 }
 
-/* === PŮVODNÍ SEKCE PRO PORTFOLIO (Upravené) === */
+/* === PŮVODNÍ SEKCE PRO PORTFOLIO (S ÚPRAVOU) === */
+
+/* NOVÉ STYLY PRO CELÉ PORTFOLIO OHRANIČENÍ */
+.portfolio-projects {
+    /* Rámeček, zaoblení a odsazení od kraje */
+    margin: 0 5px; 
+    border: 5px solid #000000;
+    border-radius: 12px; 
+    padding: 20px 0; /* Vnitřní padding portfolia */
+    box-sizing: border-box; 
+}
+
+
 .category { 
     margin-top: 80px; 
+    padding: 0 15px; /* Vnitřní odsazení projektů od rámečku portfolia */
 } 
 
 .header-row { 
@@ -241,17 +255,40 @@ body {
     margin: 0; 
     line-height: 1;
 } 
-/* ... zbytek původních .media-wrap, .media, .media-caption, @media stylů ponechán ... */
 
-/* Zajištění správného stylování pro odkazy v hiro-nav */
-.hiro-nav .nav-btn {
-    font-weight: 800;
-}
+.media-wrap { 
+    margin-top: 20px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 40px; 
+} 
+
+.media { 
+    width: 100%; 
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 12px; 
+    display: block; 
+} 
+
+.media-caption { 
+    width: 100%; 
+    font-size: 12px; /* 12b */
+    font-weight: 800; 
+    text-align: center; 
+    line-height: 1.5; 
+    margin-top: -20px; 
+    overflow: hidden; 
+    display: -webkit-box; 
+    -webkit-line-clamp: 4; 
+    -webkit-box-orient: vertical; 
+} 
 
 /* RESPONSIVNÍ ÚPRAVY */
 @media (max-width: 900px) {
     .johana-name {
-        font-size: 12px; 
+        font-size: 32px; /* Zpět na srozumitelnou mobilní velikost */
     }
     .header-left {
         gap: 8px;
@@ -260,10 +297,10 @@ body {
         height: 35px;
     }
     .action-btn {
-        font-size: 12px;
+        font-size: 60px; /* Zpět na srozumitelnou velikost */
     }
     .action-btn.center {
-        font-size: 12px;
+        font-size: 30px;
     }
     .action-divider {
         height: 60px;
@@ -273,15 +310,19 @@ body {
         height: 60px;
     }
     .section-title {
-        font-size: 12px;
+        font-size: 60px;
+    }
+    .content-text {
+        font-size: 14px; /* Lehce zvětšený text pro čitelnost na mobilu */
     }
 }
-@media (max-width: 768px) { 
-    /* Původní styly z tvého CSS pro mobilní zařízení */
-    .hiro-nav { padding: 0 14px; } 
-    .nav-right { gap: 14px; } 
-    .right-banner { text-align: left; font-size: 48px; } 
-    .media-caption { padding: 0 10px; } 
+@media (max-width: 768px) {
+    .header-split { padding: 0 10px; }
+    .profile-banner { padding: 0 10px; }
+    .hiro-nav { padding: 0 14px; }  
+    .nav-right { gap: 14px; }  
+    .right-banner { text-align: left; font-size: 48px; }  
+    .media-caption { padding: 0 10px; }  
     .header-split { flex-direction: column; }
     .header-left { margin-bottom: 20px; }
     .header-right { align-self: flex-start; }
@@ -305,31 +346,7 @@ body {
     .fish-icon {
         height: 40px;
     }
-}.portfolio-header { background:#000; color:#fff; padding:80px 30px; text-align:center; }
-.portfolio-title h1 { font-size:clamp(60px,10vw,140px); font-weight:900; margin:0; letter-spacing:-2px; }
-.portfolio-categories { margin-top:40px; }
-.portfolio-categories h2 { font-size:48px; font-weight:900; margin:0 0 20px; }
-.category-icons { display:flex; justify-content:center; gap:20px; font-size:32px; }
-
-/* ==== PROJEKT ==== */
-.project-detail { padding:80px 30px; max-width:1400px; margin:0 auto; }
-.project-header { margin-bottom:40px; }
-.project-year { font-size:12px; font-weight:700; color:#888; }
-.project-tags { font-size:10px; font-weight:700; color:#ff4500; margin:8px 0; }
-.project-title { font-size:clamp(48px,8vw,110px); font-weight:900; margin:0; line-height:0.9; }
-.preview-box { width:100%; height:400px; background:#333; border-radius:16px; margin:40px 0; }
-.sketches-img { width:100%; border-radius:16px; }
-
-/* ==== KONTAKTY ==== */
-.contact { background:#f9f4f0; padding:100px 30px; text-align:center; }
-.contact h2 { font-size:48px; font-weight:900; margin-bottom:60px; }
-.contact-grid { max-width:1000px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; }
-.contact-form input, .contact-form textarea { width:100%; padding:14px; margin-bottom:16px; border:1px solid #ccc; border-radius:8px; font-family:inherit; }
-.contact-form button { background:#ff4500; color:#fff; border:none; padding:14px 32px; border-radius:8px; font-weight:700; cursor:pointer; }
-.contact-info a { display:block; margin:12px 0; font-size:14px; color:#ff4500; }
-@media(max-width:768px){.contact-grid{grid-template-columns:1fr;}}
-
-/* ==== FOOTER ==== */
-footer { text-align:center; padding:40px; font-size:12px; color:#888; }
-
-/* ==== JS FALLBACK ==== */
+    .category {
+        padding: 0 5px; /* Menší vnitřní odsazení pro mobily */
+    }
+}
