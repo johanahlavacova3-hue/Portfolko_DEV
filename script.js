@@ -36,3 +36,22 @@
   resizeMedia();
   window.addEventListener("resize", resizeMedia);
 })();
+
+// -----------------------------------------------------------
+// Navigační scroll (přidáno)
+// -----------------------------------------------------------
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".nav-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const href = btn.getAttribute("href");
+      if (href && href.startsWith("#")) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+    });
+  });
+});
