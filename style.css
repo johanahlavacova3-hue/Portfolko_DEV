@@ -1,40 +1,311 @@
-*, *::before, *::after { box-sizing: border-box; }
-body { margin:0; padding:0; background:#fff; font-family:"Inter",sans-serif; color:#000; line-height:1.5; overflow-x:hidden; }
-a { text-decoration:none; color:inherit; }
+*, *::before, *::after { box-sizing: border-box; } 
 
-/* ==== NAV ==== */
-.hiro-bar { position:sticky; top:0; z-index:1000; background:#fff; height:60px; display:flex; align-items:center; justify-content:center; border-bottom:1px solid #eee; }
-.hiro-nav { width:100%; max-width:1920px; display:flex; justify-content:space-between; align-items:center; padding:0 30px; }
-.jh-small { font-size:14px; font-weight:900; letter-spacing:1px; }
-.nav-btn { font-weight:700; font-size:12px; text-transform:uppercase; padding:8px 16px; border-radius:8px; transition:background .2s; }
-.nav-btn:hover { background:#f0f0f0; }
-@media(max-width:768px){.hiro-nav{padding:0 20px;} .nav-btn{font-size:11px; padding:6px 10px;}}
+body { 
+    margin: 0; 
+    padding: 0; 
+    background: #ffffff; 
+    font-family: "Inter", sans-serif; 
+    text-transform: uppercase; 
+    overflow-x: hidden;
+} 
 
-/* ==== HERO ==== */
-.hero { position:relative; height:100vh; min-height:600px; display:flex; flex-direction:column; justify-content:flex-end; padding-bottom:80px; }
-.hero-img { position:absolute; inset:0; overflow:hidden; }
-.eye-img { width:100%; height:100%; object-fit:cover; filter:grayscale(100%); }
-.hero-content { position:relative; z-index:1; max-width:1400px; margin:0 auto; width:100%; padding:0 30px; display:flex; justify-content:space-between; align-items:flex-end; }
-.hero-text .name { font-size:14px; font-weight:700; margin:0; letter-spacing:1px; }
-.hero-text .title { font-size:12px; font-weight:400; margin:4px 0 0; color:#ff4500; }
-.spaghetti { text-align:right; font-size:12px; font-weight:700; line-height:1.4; }
-.orange { color:#ff4500; }
-.arrow { font-size:24px; margin-top:8px; animation:spin 3s infinite linear; }
-@keyframes spin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+/* KONTEJNER */ 
+.stage { 
+    width: 100%; 
+    max-width: 1920px; 
+    margin: 0 auto; 
+    padding: 10px 20px; 
+} 
 
-/* ==== O MNĚ ==== */
-.about { padding:100px 30px; max-width:1400px; margin:0 auto; }
-.about-line { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:60px; gap:40px; }
-.about-text p { font-size:14px; margin:0; line-height:1.8; }
-.section-subtitle { font-size:12px; font-weight:700; color:#888; margin-bottom:8px; }
-.about-btn img { height:60px; }
-.skills { display:flex; justify-content:space-between; gap:60px; font-size:12px; }
-.year { font-weight:700; margin:16px 0 4px; color:#ff4500; }
-.skills-right p { margin:0; line-height:1.8; }
-@media(max-width:768px){.about-line{flex-direction:column;} .skills{flex-direction:column; gap:40px;}}
+/* HIRO BAR - ÚPRAVA PRO STARTPAGE */
+.hiro-bar {
+    /* Ponecháno sticky, ale s odkazy na sekce */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #ffffff;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Pro lepší viditelnost na bílém pozadí */
+}
 
-/* ==== PORTFOLIO HEADER ==== */
-.portfolio-header { background:#000; color:#fff; padding:80px 30px; text-align:center; }
+.hiro-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-left, .nav-right { 
+    display: flex; 
+    align-items: center; 
+    gap: 32px;
+}
+
+.nav-btn { 
+    font-weight: 800; 
+    font-size: 12px; /* 12b */
+    line-height: 1.5;
+    color: #000000; 
+    text-decoration: none; 
+    padding: 8px 12px; 
+    border-radius: 8px; 
+    transition: background-color 0.2s;
+} 
+
+.nav-btn:hover {
+    background-color: #f0f0f0;
+}
+
+
+/* === NOVÉ STYLY PRO ÚVODNÍ SEKCI === */
+.hero-intro {
+    padding-top: 50px; /* Aby nezačínalo hned pod hiro barem */
+    margin-bottom: 40px;
+}
+
+.header-split {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Zarovnání na stres */
+    margin-bottom: 20px;
+}
+
+.header-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px; /* Mezera mezi logem a jménem */
+}
+
+.logo-img-intro {
+    height: 50px; 
+    width: auto;
+    margin-top: 10px; /* Pro zarovnání s textem, pokud je Johana jméno menší */
+}
+
+.johana-name {
+    font-size: 48px; 
+    font-weight: 800;
+    line-height: 1;
+    margin: 0;
+}
+
+.header-right {
+    text-align: right;
+}
+
+.blabla-text {
+    font-size: 12px; /* 12b */
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.2;
+    padding-top: 20px; /* Zarovnání textu "blabla" k horní části "Johana hlavacova" */
+}
+
+.profile-banner {
+    width: 100%;
+    height: 300px; /* Pevná výška 300px */
+    object-fit: cover; /* Ujistí se, že obrázek pokryje celou plochu */
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+/* === SEKCE O MNĚ A KONTAKTY === */
+.section-title {
+    font-size: clamp(48px, 8vw, 120px); /* 120b */
+    font-weight: 800;
+    text-align: left;
+    margin-bottom: 20px;
+    line-height: 1;
+}
+
+.content-text {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+}
+
+.content-text p, .content-text ul, .content-text h3 {
+    margin-bottom: 20px;
+}
+
+.content-text h3 {
+    font-size: 18px;
+    font-weight: 800;
+    margin-top: 40px;
+}
+
+.content-text ul {
+    list-style: none;
+    padding: 0;
+}
+
+.content-text li {
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: 800;
+}
+
+.contact-info a {
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.contact-info a:hover {
+    color: #555555;
+}
+
+.separator-line {
+    border: none;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 80px 0;
+}
+
+/* === SEKCE ČERNÝ OBÉLNÍK/TLAČÍTKO === */
+.portfolio-action-bar {
+    background: #000000;
+    width: 100vw; /* Roztažení na celou šířku */
+    margin-left: calc(50% - 50vw); /* Triky pro roztažení od kraje do kraje */
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.action-btn {
+    flex-grow: 1;
+    text-align: center;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 120px; /* 120b pro velký text */
+    line-height: 1;
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    color: #cccccc;
+}
+
+.action-btn.center {
+    font-size: 48px; /* Menší velikost pro "HRY" */
+}
+
+.action-divider {
+    width: 2px;
+    height: 100px; /* Vertikální linka */
+    background: #ffffff;
+    opacity: 0.5;
+    margin: 0 40px;
+}
+
+.fish-icon {
+    height: 100px; 
+    width: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* === PŮVODNÍ SEKCE PRO PORTFOLIO (Upravené) === */
+.category { 
+    margin-top: 80px; 
+} 
+
+.header-row { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+} 
+
+.left-flag { 
+    margin-top: 40px; 
+    font-size: 12px; /* 12b */
+    font-weight: 800; 
+    line-height: 1.3; 
+} 
+
+.right-banner { 
+    font-size: clamp(42px, 8vw, 110px); 
+    font-weight: 800; 
+    text-align: right; 
+    flex: 1; 
+    margin: 0; 
+    line-height: 1;
+} 
+/* ... zbytek původních .media-wrap, .media, .media-caption, @media stylů ponechán ... */
+
+/* Zajištění správného stylování pro odkazy v hiro-nav */
+.hiro-nav .nav-btn {
+    font-weight: 800;
+}
+
+/* RESPONSIVNÍ ÚPRAVY */
+@media (max-width: 900px) {
+    .johana-name {
+        font-size: 32px; 
+    }
+    .header-left {
+        gap: 8px;
+    }
+    .logo-img-intro {
+        height: 35px;
+    }
+    .action-btn {
+        font-size: 60px;
+    }
+    .action-btn.center {
+        font-size: 30px;
+    }
+    .action-divider {
+        height: 60px;
+        margin: 0 20px;
+    }
+    .fish-icon {
+        height: 60px;
+    }
+    .section-title {
+        font-size: 60px;
+    }
+}
+@media (max-width: 768px) { 
+    /* Původní styly z tvého CSS pro mobilní zařízení */
+    .hiro-nav { padding: 0 14px; } 
+    .nav-right { gap: 14px; } 
+    .right-banner { text-align: left; font-size: 48px; } 
+    .media-caption { padding: 0 10px; } 
+    .header-split { flex-direction: column; }
+    .header-left { margin-bottom: 20px; }
+    .header-right { align-self: flex-start; }
+    .blabla-text { padding-top: 0; }
+    
+    .portfolio-action-bar {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .action-btn {
+        width: 100%;
+        font-size: 40px;
+        padding: 10px 0;
+    }
+    .action-btn.center {
+        font-size: 24px;
+    }
+    .action-divider {
+        display: none;
+    }
+    .fish-icon {
+        height: 40px;
+    }
+}.portfolio-header { background:#000; color:#fff; padding:80px 30px; text-align:center; }
 .portfolio-title h1 { font-size:clamp(60px,10vw,140px); font-weight:900; margin:0; letter-spacing:-2px; }
 .portfolio-categories { margin-top:40px; }
 .portfolio-categories h2 { font-size:48px; font-weight:900; margin:0 0 20px; }
