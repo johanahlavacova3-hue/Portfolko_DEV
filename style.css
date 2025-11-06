@@ -88,7 +88,7 @@ body {
 }
 
 .johana-name {
-    font-size: 48px; 
+    font-size: 12px; 
     font-weight: 800;
     line-height: 1;
     margin: 0;
@@ -195,7 +195,7 @@ body {
 }
 
 .action-btn.center {
-    font-size: 48px; /* Menší velikost pro "HRY" */
+    font-size: 120px; /* Menší velikost pro "HRY" */
 }
 
 .action-divider {
@@ -251,7 +251,7 @@ body {
 /* RESPONSIVNÍ ÚPRAVY */
 @media (max-width: 900px) {
     .johana-name {
-        font-size: 32px; 
+        font-size: 12px; 
     }
     .header-left {
         gap: 8px;
@@ -260,10 +260,10 @@ body {
         height: 35px;
     }
     .action-btn {
-        font-size: 60px;
+        font-size: 12px;
     }
     .action-btn.center {
-        font-size: 30px;
+        font-size: 12px;
     }
     .action-divider {
         height: 60px;
@@ -273,7 +273,7 @@ body {
         height: 60px;
     }
     .section-title {
-        font-size: 60px;
+        font-size: 12px;
     }
 }
 @media (max-width: 768px) { 
