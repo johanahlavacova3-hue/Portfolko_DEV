@@ -78,6 +78,39 @@ body {
   height: 300px;
 }
 
+/* ČERNÝ OBDELNÍK S NADPISEM */
+.black-bar {
+  width: 100%;
+  height: 300px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 0 12px 12px;
+}
+
+.black-content {
+  padding: 20px;
+}
+
+.black-title {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+
+.black-subtext {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
 /* HERO */
 .hero {
   display: flex;
@@ -178,5 +211,18 @@ body {
 
   .hero-image {
     width: 200px;
+  }
+
+  .black-bar {
+    height: 240px;
+  }
+
+  .black-title {
+    font-size: 26px;
+  }
+
+  .black-subtext {
+    font-size: 10px;
+    letter-spacing: 1px;
   }
 }
