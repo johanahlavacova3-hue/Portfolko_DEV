@@ -8,7 +8,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #ffffff;
+  background: #fff;
   font-family: "Inter", sans-serif;
   text-transform: uppercase;
   overflow-x: hidden;
@@ -17,7 +17,7 @@ body {
   font-weight: 800;
 }
 
-/* KONTEJNER */
+/* STAGE */
 .stage {
   width: 100%;
   max-width: 1920px;
@@ -60,141 +60,123 @@ body {
 .nav-btn {
   font-weight: 800;
   font-size: 12px;
-  color: #000000;
+  color: #000;
   text-decoration: none;
   transition: opacity 0.2s;
+}
+
+.nav-btn.orange {
+  color: #ff7700;
 }
 
 .nav-btn:hover {
   opacity: 0.6;
 }
 
-/* TOP INFO */
-.top-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-top: 125px;
-  padding: 0 20px;
+/* ÚVODNÍ PROSTOR */
+.intro-space {
+  height: 300px;
 }
 
-.left-info h1 {
-  font-size: 42px;
-  font-weight: 900;
-  margin: 0;
-  color: #000;
-  line-height: 1.2;
-}
-
-.left-info h2 {
-  font-size: 12px;
-  font-weight: 800;
-  margin-top: 4px;
-  color: #ff7700;
-  letter-spacing: 1px;
-}
-
-.right-logo img {
-  height: 175px;
-  opacity: 0.2;
-}
-
-/* INFO BLOKY (O MNĚ, ZKUŠENOSTI, SKILLS) */
-.info-blocks {
+/* HERO */
+.hero {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: left;
-  margin-top: 80px;
-  gap: 80px;
+  justify-content: center;
+  text-align: center;
 }
 
-.info-column {
-  max-width: 800px;
-}
-
-.info-column h2 {
-  font-size: 12px;
-  color: #d9d9d9;
+.hero-image {
+  width: 300px;
+  max-width: 80%;
+  height: auto;
   margin-bottom: 20px;
 }
 
-.info-column p {
-  font-size: 12px;
+.hero-text p {
+  margin: 4px 0;
   color: #000;
-  line-height: 1.7;
-  font-weight: 800;
+}
+
+.hero-text .highlight {
+  color: #ff7700;
+}
+
+/* SEKCÍ TITULKY */
+.section-title {
+  font-size: 14px;
+  font-weight: 900;
+  margin: 20px 0;
+}
+
+.section-title.orange {
+  color: #ff7700;
+}
+
+/* O MNĚ SEKCÍ */
+.about {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.experience-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.experience-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.date {
+  color: #ff7700;
+}
+
+.text {
+  color: #000;
   text-transform: none;
 }
 
-/* ČERNÝ OBDELNÍK */
-.black-banner {
-  background: #000;
-  height: 300px;
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: 10px 20px;
-  margin-top: 175px;
-}
-
-.banner-btn.left {
-  color: #fff;
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 900;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  align-self: flex-start;
-}
-
-.banner-center {
-  color: #fff;
-  font-size: 12px;
-  font-weight: 900;
-  align-self: flex-start;
-}
-
-.banner-img.right img {
-  height: 175px;
-  align-self: flex-start;
-}
-
-/* PORTFOLIO NADPIS */
+/* PORTFOLIO */
 .portfolio-heading {
   text-align: center;
-  margin-top: 80px;
+  margin-top: 100px;
 }
 
-.portfolio-heading h2 {
-  font-size: 12px;
-  color: #ff7700;
-  font-weight: 900;
-  letter-spacing: 1px;
+/* MEDIA */
+.media-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
-/* RESPONSIVITA */
+.media {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+.media-caption {
+  font-size: 10px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  .top-info {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
+  .about {
+    padding: 0 15px;
   }
 
-  .left-info h1 {
-    font-size: 28px;
-  }
-
-  .right-logo img {
-    height: 100px;
-  }
-
-  .black-banner {
-    flex-direction: column;
-    align-items: center;
-    height: auto;
-    gap: 20px;
+  .hero-image {
+    width: 200px;
   }
 }
