@@ -48,7 +48,7 @@ body {
 .nav-btn { 
     font-weight: 800; 
     font-size: 12px; /* 12b */
-    line-height: 1.5;
+    line-height: 0;
     color: #000000; 
     text-decoration: none; 
     padding: 8px 12px; 
@@ -88,7 +88,7 @@ body {
 }
 
 .johana-name {
-    font-size: 48px; 
+    font-size: 12px; 
     font-weight: 800;
     line-height: 1;
     margin: 0;
@@ -196,7 +196,7 @@ body {
 }
 
 .action-btn.center {
-    font-size: 48px; /* Zpět na 48px, aby se vešlo "HRY" */
+    font-size: 120px; /* Zpět na 48px, aby se vešlo "HRY" */
 }
 
 .action-divider {
@@ -220,7 +220,7 @@ body {
 .portfolio-projects {
     /* Rámeček, zaoblení a odsazení od kraje */
     margin: 0 5px; 
-    border: 5px solid #000000;
+    border: 0px solid #000000;
     border-radius: 12px; 
     padding: 20px 0; /* Vnitřní padding portfolia */
     box-sizing: border-box; 
