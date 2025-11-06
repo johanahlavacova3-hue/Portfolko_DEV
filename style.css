@@ -177,3 +177,110 @@ section {
     padding: 60px 0;
   }
 }
+
+/* HERO NOVÝ */
+.hero {
+  width: 100%;
+  height: auto;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.hero-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+}
+
+.hero-text {
+  max-width: 800px;
+  width: 100%;
+  margin: 60px auto;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.hero-text p {
+  font-size: clamp(24px, 4vw, 42px);
+  font-weight: 900;
+  margin: 10px 0;
+  color: #000;
+}
+
+.hero-text .highlight {
+  color: #ff7700;
+}
+
+/* O MNĚ + ZKUŠENOSTI */
+.about-section,
+.experience-section {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.about-section h2,
+.experience-section h2 {
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 900;
+  color: #d9d9d9;
+  margin-bottom: 40px;
+}
+
+.about-section p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 400;
+  color: #000;
+  text-transform: none;
+}
+
+/* ZKUŠENOSTI GRID */
+.experience-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.experience-item {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  text-transform: none;
+}
+
+.experience-item .date {
+  color: #d9d9d9;
+  font-weight: 700;
+  min-width: 160px;
+  text-align: right;
+}
+
+.experience-item .text {
+  color: #000;
+  font-weight: 500;
+  flex: 1;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .experience-grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 40px;
+  }
+
+  .experience-item {
+    justify-content: flex-start;
+  }
+}
+
