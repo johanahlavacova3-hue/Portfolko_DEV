@@ -3,290 +3,221 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>JOHANA — DESIGN × TECH × HRY</title>
-  <link rel="icon" href="favicon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;900&display=swap" rel="stylesheet">
+  <title>Johana Hlaváčová | DESIGN, UI, UX, TECH, CODE</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin:0; padding:0; background:#fff; font-family:"Inter",sans-serif; text-transform:uppercase; overflow-x:hidden; }
+    a { text-decoration:none; color:inherit; }
+
+    /* ==== NAV ==== */
+    .hiro-bar { position:sticky; top:0; z-index:1000; background:#fff; height:70px; display:flex; align-items:center; justify-content:center; }
+    .hiro-nav { width:100%; max-width:1920px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding:0 20px; }
+    .logo-img { height:55px; }
+    .nav-right { display:flex; gap:32px; }
+    .nav-btn { font-weight:800; font-size:12px; padding:8px 12px; border-radius:8px; }
+    @media(max-width:768px){.nav-right{gap:14px;}}
+
+    /* ==== STAGE ==== */
+    .stage { width:100%; max-width:1920px; margin:0 auto; padding:20px; }
+
+    /* ==== HERO ==== */
+    .hero { height:100vh; min-height:600px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; position:relative; background:url('hero-eye.jpg') center/cover no-repeat; color:#fff; }
+    .hero::before { content:""; position:absolute; inset:0; background:linear-gradient(to bottom,rgba(0,0,0,0.2),rgba(0,0,0,0.6)); }
+    .hero-content { position:relative; z-index:1; max-width:900px; padding-left:40px; }
+    .hero h1 { font-size:clamp(60px,12vw,140px); font-weight:900; margin:0 0 16px; line-height:0.9; }
+    .hero p { font-size:14px; font-weight:400; max-width:600px; margin:0 0 32px; }
+    .hero .cta { font-weight:800; font-size:12px; background:#ff4500; color:#fff; padding:12px 24px; border-radius:12px; }
+    .hero .scroll-hint { position:absolute; bottom:40px; left:50%; transform:translateX(-50%); font-size:12px; font-weight:800; animation:bounce 2s infinite; }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(-10px);} }
+
+    /* ==== SECTION COMMON ==== */
+    .section { padding:120px 0; }
+    .section-title { font-size:clamp(48px,8vw,110px); font-weight:800; margin:0; text-align:right; }
+    .section-subtitle { font-size:12px; font-weight:800; line-height:1.4; margin-bottom:40px; }
+
+    /* ==== O MNĚ ==== */
+    #o-mne { background:#f9f4f0; }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+    .about-text { font-size:14px; line-height:1.8; font-weight:400; }
+    .about-skills { font-size:12px; font-weight:800; line-height:1.6; }
+    .about-skills span { display:inline-block; background:#ff4500; color:#fff; padding:4px 8px; border-radius:6px; margin-right:8px; margin-bottom:8px; }
+    @media(max-width:768px){.about-grid{grid-template-columns:1fr;}}
+
+    /* ==== PORTFOLIO ==== */
+    #portfolio { background:#ffffff; }
+    .portfolio-intro { max-width:800px; margin:0 auto 80px; text-align:center; font-size:14px; line-height:1.8; }
+    .portfolio-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:40px; }
+    .project { cursor:pointer; }
+    .project-img { width:100%; border-radius:12px; margin-bottom:12px; }
+    .project-year { font-size:10px; font-weight:800; color:#888; }
+    .project-title { font-size:18px; font-weight:800; margin:4px 0; }
+    .project-tags { font-size:10px; font-weight:800; color:#ff4500; }
+
+    /* ==== KONTAKTY ==== */
+    #kontakty { background:#111; color:#fff; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; }
+    .contact-left h2 { font-size:36px; font-weight:800; margin:0 0 24px; }
+    .contact-left p { font-size:14px; line-height:1.8; margin:0 0 32px; }
+    .contact-form input, .contact-form textarea { width:100%; background:transparent; border:1px solid #555; border-radius:8px; padding:12px; margin-bottom:16px; color:#fff; font-family:inherit; font-size:14px; }
+    .contact-form textarea { min-height:120px; resize:vertical; }
+    .contact-form button { background:#ff4500; color:#fff; border:none; padding:12px 32px; border-radius:12px; font-weight:800; font-size:12px; cursor:pointer; }
+    .contact-right a { display:block; font-size:14px; margin-bottom:16px; color:#ff4500; }
+    @media(max-width:768px){.contact-grid{grid-template-columns:1fr;}}
+
+    /* ==== FOOTER ==== */
+    footer { background:#000; color:#888; text-align:center; padding:40px 20px; font-size:12px; }
+
+    /* ==== SMOOTH SCROLL ==== */
+    html { scroll-behavior:smooth; }
+  </style>
 </head>
 <body>
 
-  <!-- 1) HIRO -->
+  <!-- HIRO LISTA -->
   <header class="hiro-bar">
     <nav class="hiro-nav">
-      <a href="#about" class="nav-btn">O MNĚ</a>
-      <a href="#portfolio" class="nav-btn">PORTFOLIO</a>
-      <a href="#contact" class="nav-btn">KONTAKT</a>
+      <div class="nav-left">
+        <img src="JH.png" alt="JH logo" class="logo-img">
+      </div>
+      <div class="nav-right">
+        <a href="#o-mne" class="nav-btn">O MNĚ</a>
+        <a href="#portfolio" class="nav-btn">PORTFOLIO</a>
+        <a href="#kontakty" class="nav-btn">KONTAKTY</a>
+      </div>
     </nav>
   </header>
 
   <main class="stage">
 
-    <!-- 2) ÚVOD: JOHANA + LOGO -->
-    <section class="intro">
-      <div class="intro-left">
-        <h1 class="headline">JOHANA VRBOVÁ</h1>
-        <p>DESIGNÉRKA, VÝVOJÁŘKA, TVŮRCE HER A MILOVNICE ŠPAGET</p>
+    <!-- HERO / STARTPAGE -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>JOHANA<br>HLAVÁČOVÁ</h1>
+        <p>DESIGN, UI, UX, TECH, CODE</p>
+        <a href="#o-mne" class="cta">ZAČÍT PROHLÍŽET</a>
       </div>
-      <div class="intro-right">
-        <img src="LOGO.png" alt="Logo Johana" class="logo-img">
-      </div>
+      <div class="scroll-hint">SCROLL ↓</div>
     </section>
 
-    <!-- 3) O MNĚ + ZKUŠENOSTI -->
-    <section id="about" class="about-section">
-      <h2 class="section-title gray">O MNĚ</h2>
-      <p>
-        Spojuji estetiku a technologii. Zajímá mě, jak věci fungují —
-        jak se z nápadu stane interaktivní prožitek.
-      </p>
-
-      <h2 class="section-title gray">ZKUŠENOSTI</h2>
-      <div class="experience-grid">
-        <div class="experience-item">
-          <span class="date">2023–2025</span>
-          <span class="text">UI / UX DESIGN – FREELANCE</span>
+    <!-- O MNĚ -->
+    <section class="section" id="o-mne">
+      <div class="section-subtitle">O MNĚ</div>
+      <h2 class="section-title" style="color:#ff4500;">O MNĚ</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Studuji 4. rokem grafiku na pražské Hellichovce. Úspěšně zatím. Ve volném čase se věnuji robotům 3D tisku a převážně UI & UX designu. Současně působím v designu pro korporáty i neziskovky.</p>
+          <p>Miluji dobrý design, miluji technologie, miluji špagety s kečupem.</p>
         </div>
-        <div class="experience-item">
-          <span class="date">2021–2023</span>
-          <span class="text">3D PROTOTYPING – INDEPENDENT PROJECTS</span>
-        </div>
-        <div class="experience-item">
-          <span class="date">2019–2021</span>
-          <span class="text">STUDIUM — FAV UWB</span>
+        <div>
+          <div class="about-skills">
+            <span>Figma</span><span>Illustrator</span><span>Photoshop</span><span>InDesign</span><br>
+            <span>Blender 3D</span><span>After Effects</span><span>Premiere Pro</span><span>Procreate</span><br>
+            <span>HTML + CSS</span><span>JS</span><span>Excel</span><span>Power BI</span><span>Vega JSON</span><br>
+            <span>3D Print</span><span>UI & UX</span><span>Code</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 4) PRÁCE × HRY (černý obdélník) -->
-    <section class="black-section">
-      <div class="black-content">
-        <h2 class="black-headline">PRÁCE × HRY</h2>
-        <img src="WORKS.png" alt="Práce a hry" class="black-image">
+    <!-- PORTFOLIO -->
+    <section class="section" id="portfolio">
+      <div class="section-subtitle">PORTFOLIO</div>
+      <h2 class="section-title" style="color:#00aaff;">PORTFOLIO</h2>
+      <p class="portfolio-intro">Vybrané projekty z let 2022–2025. Každý odráží jinou kombinaci designu, technologie a kódu.</p>
+      <div class="portfolio-grid">
+        <!-- KAREL 25’ -->
+        <a href="portfolio/karel.html" class="project">
+          <img src="KAREL/KAREL_01.jpg" alt="KAREL" class="project-img">
+          <div class="project-year">2025</div>
+          <div class="project-title">KAREL 25’</div>
+          <div class="project-tags">HARDWARE × SOFTWARE × DESIGN × UI & UX × CODE</div>
+        </a>
+        <!-- KAREL THE ROBOT -->
+        <a href="portfolio/karel-game.html" class="project">
+          <img src="KAREL-GAME/KAREL-GAME_01.png" alt="KAREL GAME" class="project-img">
+          <div class="project-year">2025</div>
+          <div class="project-title">KAREL THE ROBOT</div>
+          <div class="project-tags">HARDWARE × SOFTWARE × DESIGN × UI & UX × CODE</div>
+        </a>
+        <!-- MYŠÁK -->
+        <a href="portfolio/mysak.html" class="project">
+          <img src="MYSAK/MYSAK_01.png" alt="MYŠÁK" class="project-img">
+          <div class="project-year">2025</div>
+          <div class="project-title">MYŠÁK</div>
+          <div class="project-tags">HARDWARE × SOFTWARE × DESIGN</div>
+        </a>
+        <!-- ZDENA -->
+        <a href="portfolio/zdena.html" class="project">
+          <img src="ZDENA/ZDENA_01.png" alt="ZDENA" class="project-img">
+          <div class="project-year">2025</div>
+          <div class="project-title">ZDENA</div>
+          <div class="project-tags">UI & UX</div>
+        </a>
+        <!-- OHÝNEK -->
+        <a href="portfolio/ohynek.html" class="project">
+          <img src="STRELA/STRELA_01.png" alt="OHÝNEK" class="project-img">
+          <div class="project-year">2025</div>
+          <div class="project-title">OHÝNEK</div>
+          <div class="project-tags">AR × CODE × DESIGN × UI & UX × 3D × PRINT</div>
+        </a>
+        <!-- KONEV -->
+        <a href="portfolio/konev.html" class="project">
+          <img src="KONEV/KONEV_01.png" alt="KONEV" class="project-img">
+          <div class="project-year">2025</div>
+          <div class="project-title">KONEV</div>
+          <div class="project-tags">DESIGN × PRINT × 3D</div>
+        </a>
+        <!-- NOS -->
+        <a href="portfolio/nos.html" class="project">
+          <img src="NOS/NOS_01.png" alt="NOS" class="project-img">
+          <div class="project-year">2024–SOUČASNOST</div>
+          <div class="project-title">NoS</div>
+          <div class="project-tags">UI & UX × CODE</div>
+        </a>
+        <!-- MADDONA -->
+        <a href="portfolio/maddona.html" class="project">
+          <img src="MADDONA/MADDONA_01.jpg" alt="MADDONA" class="project-img">
+          <div class="project-year">2025</div>
+          <div class="project-title">MADDONA</div>
+          <div class="project-tags">UI & UX × CODE</div>
+        </a>
       </div>
     </section>
-
-    <!-- SEKCE 1: KAREL -->
-    <section class="category">
-      <div class="header-row">
-        <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN × UI & UX × CODE</div>
-        <h1 class="right-banner">KAREL 25’</h1>
-      </div>
-      <div class="media-wrap">
-      
-        <video class="media" src="KAREL/KAREL_01.mp4" autoplay loop muted playsinline></video>
-        <p class="media-caption">uvod catch</p>
-        
-        <img class="media" src="KAREL/KAREL_02.png" alt="KAREL 02" />
-        <p class="media-caption">upresneni</p>
-
-        <img class="media" src="KAREL/KAREL_03.png" alt="KAREL 03" />
-        <p class="media-caption">skici</p>
-
-         <img class="media" src="KAREL/KAREL_03.png" alt="KAREL 03" />
-        <p class="media-caption">proces - doplnit o vikendu</p>
-
-         <img class="media" src="KAREL/KAREL_03.png" alt="KAREL 03" />
-        <p class="media-caption">final - doplnit o vikendu</p>
-
-        
-      </div>
-    </section>
-
-        <!-- SEKCE 2: KAREL GAME -->
-    <section class="category">
-      <div class="header-row">
-        <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN × UI & UX × CODE</div>
-        <h1 class="right-banner">KAREL THE ROBOT</h1>
-      </div>
-      <div class="media-wrap">
-      
-        <img class="media" src="KAREL-GAME/KAREL-GAME_01.png" alt="KAREL g 01" />
-        <p class="media-caption">uvod</p>
-        
-        <img class="media" src="KAREL-GAME/KAREL-GAME_02.png" alt="KAREL g 02" />
-        <p class="media-caption">upresneni</p>
-
-        <img class="media" src="KAREL-GAME/KAREL-GAME_03.png" alt="KAREL g 03" />
-        <p class="media-caption">skici</p>
-
-         <img class="media" src="KAREL-GAME/KAREL-GAME_03.png" alt="KAREL g 03" />
-        <p class="media-caption">proces</p>
-
-         <img class="media" src="KAREL-GAME/KAREL-GAME_03.png" alt="KAREL g 03" />
-        <p class="media-caption">final</p>
-
-        
-      </div>
-    </section>
-
-    <!-- SEKCE 2: MYŠÁK -->
-    <section class="category">
-      <div class="header-row">
-        <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN</div>
-        <h1 class="right-banner">MYŠÁK</h1>
-      </div>
-      <div class="media-wrap">
-        <img class="media" src="MYSAK/MYSAK_01.png" alt="MYSAK 01">
-        <p class="media-caption">uvod catch</p>
-
-        <img class="media" src="MYSAK/MYSAK_02.png" alt="MYSAK 02">
-        <p class="media-caption">UPRESNENI</p>
-
-        <img class="media" src="MYSAK/MYSAK_03.png" alt="MYSAK 03">
-        <p class="media-caption">SKICI</p>
-
-        <img class="media" src="MYSAK/MYSAK_04.png" alt="MYSAK 04">
-        <p class="media-caption">UKAZKA - video, spousti se tlacitkem na hlave, vypadne bonbon interaktivni</p>
-
-        <img class="media" src="MYSAK/MYSAK_05.png" alt="MYSAK 05">
-        <p class="media-caption">FINAL</p>
-        
-      </div>
-    </section>
-
-    <!-- SEKCE 3: ZDENA -->
-    <section class="category">
-      <div class="header-row">
-        <div class="left-flag">2025<br>UI & UX</div>
-        <h1 class="right-banner">ZDENA</h1>
-      </div>
-      <div class="media-wrap">
-        <img class="media" src="ZDENA/ZDENA_01.png" alt="ZDENA 01">
-        <p class="media-caption">uvod catch</p>
-
-        <video class="media" src="ZDENA/ZDENA_02.mp4" autoplay loop muted playsinline></video>
-        <p class="media-caption">UKAZKA</p>
-
-        <img class="media" src="ZDENA/ZDENA_02.png" alt="ZDENA 02" />
-        <p class="media-caption">skici</p>
-
-        <img class="media" src="ZDENA/ZDENA_02.png" alt="ZDENA 02" />
-        <p class="media-caption">ukazka</p>
-
-        <img class="media" src="ZDENA/ZDENA_02.png" alt="ZDENA 02" />
-        <p class="media-caption">hraj</p>
-      </div>
-    </section>
-
-    <!-- SEKCE 4: OHÝNEK -->
-    <section class="category">
-      <div class="header-row">
-        <div class="left-flag">2025<br>AR x CODE x DESIGN x UI & UX x 3D x PRINT</div>
-        <h1 class="right-banner">OHÝNEK</h1>
-      </div>
-      <div class="media-wrap">
-        <img class="media" src="STRELA/STRELA_01.png" alt="STRELA 01">
-        <p class="media-caption">uvod catch</p>
-
-         <img class="media" src="STRELA/STRELA_02.png" alt="STRELA 02">
-        <p class="media-caption">UPRESNENI</p>
-
-         <img class="media" src="STRELA/STRELA_03.png" alt="STRELA 03">
-        <p class="media-caption">SKICI</p>
-
-         <img class="media" src="STRELA/STRELA_04.png" alt="STRELA 04">
-        <p class="media-caption">3D model chaty/surface</p>
-
-         <img class="media" src="STRELA/STRELA_05.png" alt="STRELA 05">
-        <p class="media-caption">ZKUS TO</p>
-        
-      </div>
-    </section>
-
-    <!-- SEKCE 5: KONEV -->
-    <section class="category">
-      <div class="header-row">
-        <div class="left-flag">2025<br>DESIGN x PRINT x 3D</div>
-        <h1 class="right-banner">KONEV</h1>
-      </div>
-      <div class="media-wrap">
-        <img class="media" src="KONEV/KONEV_01.png" alt="KONEV 01">
-        <p class="media-caption">uvod catch</p>
-
-        <img class="media" src="KONEV/KONEV_02.png" alt="KONEV 02" />
-        <p class="media-caption">upresneni</p>
-
-         <img class="media" src="KONEV/KONEV_03.png" alt="KONEV 03" />
-        <p class="media-caption">skici</p>
-
-         <!-- 3D MODEL místo obrázku -->
-<model-viewer 
-  class="media" 
-  src="KONEV/KONEV_04.glb" 
-  alt="3D model konve" 
-  camera-controls 
-  auto-rotate 
-  rotation-per-second="15deg"
-  exposure="1"
-  shadow-intensity="1"
-  style="width: 100%; height: 600px; background-color: #f7f7f7; border-radius: 12px;">
-</model-viewer>
-
-        <p class="media-caption">3D model</p>
-
-        
-      </div>
-    </section>
-
-    <!-- SEKCE 6: NOS -->
-    <section class="category">
-      <div class="header-row">
-        <div class="left-flag">2024 – SOUČASNOST<br>UI & UX x CODE</div>
-        <h1 class="right-banner">NoS</h1>
-      </div>
-      <div class="media-wrap">
-     
-         <img class="media" src="NOS/NOS_01.png" alt="NOS 01" />
-        <p class="media-caption">uVOD</p>
-
-        <img class="media" src="NOS/NOS_02.png" alt="NOS 02" />
-        <p class="media-caption">upresneni</p>
-
-        <img class="media" src="NOS/NOS_03.png" alt="NOS 03" />
-        <p class="media-caption">detail</p>
-
-      </div>
-    </section>
-
-    <!-- SEKCE 7: MADDONA -->
-    <section class="category">
-      <div class="header-row">
-        <div class="left-flag">2025<br>UI & UX x CODE </div>
-        <h1 class="right-banner">MADDONA</h1>
-      </div>
-      <div class="media-wrap">
-        <img class="media" src="MADDONA/MADDONA_01.png" autoplay loop muted playsinline></video>
-        <p class="media-caption">uvod catch</p>
-
-        <img class="media" src="MADDONA/MADDONA_02.png" alt="MADDONA 02" />
-        <p class="media-caption">upresneni</p>
-
-        <img class="media" src="MADDONA/MADDONA_03.png" alt="MADDONA 03" />
-        <p class="media-caption">skici</p>
-
-        <img class="media" src="MADDONA/MADDONA_04.png" alt="MADDONA 04" />
-        <p class="media-caption">detail</p>
-
-        <img class="media" src="MADDONA/MADDONA_05.png" alt="MADDONA 05" />
-        <p class="media-caption">play</p>
-      </div>
-    </section>
-
-
 
     <!-- KONTAKTY -->
-    <section class="contact" id="contact">
-      <div class="header-row">
-        <div class="left-flag">KONTAKTY</div>
-        <h1 class="right-banner">SPOJME SE</h1>
-      </div>
-      <div class="contact-content">
-        <p><a href="mailto:hlavacova.johana22@hellichovka.cz">hlavacova.johana22@hellichovka.cz</a></p>
-        <p>PRAHA / PLZEŇ / ONLINE</p>
-        <p>IG / GITHUB / LINKEDIN</p>
+    <section class="section" id="kontakty">
+      <div class="section-subtitle">KONTAKTY</div>
+      <h2 class="section-title" style="color:#ff4500;">KONTAKTY</h2>
+      <div class="contact-grid">
+        <div class="contact-left">
+          <h2>Napiš mi</h2>
+          <p>Ráda se ozvu zpět do 24 hodin. Pokud potřebuješ rychleji, zavolej.</p>
+          <form class="contact-form">
+            <input type="text" placeholder="Jméno" required>
+            <input type="email" placeholder="E-mail" required>
+            <textarea placeholder="Zpráva" required></textarea>
+            <button type="submit">ODESLAT</button>
+          </form>
+        </div>
+        <div class="contact-right">
+          <a href="mailto:johana@jhlavacova.cz">johana@jhlavacova.cz</a>
+          <a href="tel:+420123456789">+420 123 456 789</a>
+          <a href="https://linkedin.com/in/johana-hlavacova" target="_blank">LinkedIn</a>
+          <a href="https://behance.net/johana" target="_blank">Behance</a>
+          <a href="https://github.com/johana" target="_blank">GitHub</a>
+        </div>
       </div>
     </section>
 
   </main>
+
+  <footer>
+    © 2025 Johana Hlaváčová • Všechna práva vyhrazena • <a href="#home" style="color:#ff4500;">NAHORU</a>
+  </footer>
+
 </body>
 </html>
