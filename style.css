@@ -1,6 +1,4 @@
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -12,190 +10,362 @@ body {
   text-transform: uppercase;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  font-size: 12px;
-  font-weight: 800;
 }
 
-.stage {
-  width: 100%;
-  max-width: 1920px;
-  margin: 0 auto;
-  padding: 0 20px;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-/* 1) HIRO BAR */
+/* ==== NAV ==== */
 .hiro-bar {
   position: sticky;
   top: 0;
-  background: #ffffffcc;
-  backdrop-filter: blur(6px);
-  height: 55px;
+  z-index: 1000;
+  background: #fff;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .hiro-nav {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo-img {
+  height: 55px;
+  width: auto;
+}
+
+.nav-right {
   display: flex;
   gap: 32px;
 }
 
 .nav-btn {
-  color: #000;
-  text-decoration: none;
-  transition: opacity 0.2s;
+  font-weight: 800;
+  font-size: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
 }
 
 .nav-btn:hover {
-  opacity: 0.6;
+  background: #f0f0f0;
 }
 
-/* 2) ÚVOD */
-.intro {
+@media (max-width: 768px) {
+  .nav-right {
+    gap: 14px;
+  }
+  .nav-btn {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+}
+
+/* ==== STAGE ==== */
+.stage {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ==== HERO ==== */
+.hero {
+  height: 100vh;
+  min-height: 600px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 300px;
-  padding: 40px 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  background: url('hero-eye.jpg') center/cover no-repeat;
+  color: #fff;
 }
 
-.intro-left {
-  flex: 1;
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
 }
 
-.intro-right {
-  flex: 0 0 auto;
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  padding-left: 40px;
 }
 
-.logo-img {
-  width: 120px;
-  height: auto;
-}
-
-.headline {
-  font-size: 56px;
+.hero h1 {
+  font-size: clamp(60px, 12vw, 140px);
   font-weight: 900;
-  line-height: 1;
-  margin: 0 0 20px;
-  text-transform: uppercase;
+  margin: 0 0 16px;
+  line-height: 0.9;
+  letter-spacing: -2px;
 }
 
-.intro-left p {
+.hero p {
+  font-size: 14px;
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 0 32px;
+  line-height: 1.6;
+}
+
+.hero .cta {
+  font-weight: 800;
+  font-size: 12px;
+  background: #ff4500;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 12px;
+  transition: transform 0.2s;
+}
+
+.hero .cta:hover {
+  transform: translateY(-2px);
+}
+
+.hero .scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 12px;
   font-weight: 800;
-  color: #000;
-  margin: 0;
+  animation: bounce 2s infinite;
 }
 
-/* 3) O MNĚ A ZKUŠENOSTI */
-.about-section {
-  margin-top: 100px;
-  text-align: left;
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* ==== SECTION COMMON ==== */
+.section {
+  padding: 120px 0;
+}
+
+.section-subtitle {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.4;
+  margin-bottom: 40px;
+  color: #888;
 }
 
 .section-title {
-  font-size: 12px;
-  font-weight: 900;
-  color: #d9d9d9;
-  margin-bottom: 30px;
-}
-
-.experience-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-}
-
-.experience-item {
-  display: flex;
-  gap: 16px;
-}
-
-.date {
-  color: #d9d9d9;
-  min-width: 120px;
+  font-size: clamp(48px, 8vw, 110px);
+  font-weight: 800;
+  margin: 0;
   text-align: right;
+  line-height: 0.9;
 }
 
-.text {
-  color: #000;
-  flex: 1;
+/* ==== O MNĚ ==== */
+#o-mne {
+  background: #f9f4f0;
 }
 
-/* 4) PRÁCE × HRY */
-.black-section {
-  background: #000;
-  color: #fff;
-  text-align: center;
-  padding: 100px 20px;
-  margin-top: 120px;
-}
-
-.black-headline {
-  font-size: 48px;
-  font-weight: 900;
-  letter-spacing: 2px;
-  margin-bottom: 40px;
-}
-
-.black-image {
-  width: 100%;
-  max-width: 900px;
-  height: auto;
-  border-radius: 12px;
-}
-
-/* 5) PORTFOLIO */
-.portfolio-section {
-  margin-top: 120px;
-  text-align: center;
-}
-
-.media-wrap {
-  display: flex;
-  flex-direction: column;
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
   align-items: center;
+}
+
+.about-text {
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+.about-skills span {
+  display: inline-block;
+  background: #ff4500;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==== PORTFOLIO ==== */
+#portfolio {
+  background: #ffffff;
+}
+
+.portfolio-intro {
+  max-width: 800px;
+  margin: 0 auto 80px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #444;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 40px;
 }
 
-.media {
+.project {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.project:hover {
+  transform: translateY(-8px);
+}
+
+.project-img {
   width: 100%;
-  max-width: 900px;
   border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.media-caption {
-  color: #000;
-  line-height: 1.6;
-  margin: 8px 0 30px;
-  text-transform: none;
+.project-year {
+  font-size: 10px;
+  font-weight: 800;
+  color: #888;
 }
 
-/* 6) KONTAKTY */
-.contact-section {
-  text-align: center;
-  margin: 100px 0 60px;
+.project-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 4px 0;
 }
 
-.contact-content a {
-  color: #000;
-  text-decoration: none;
-  border-bottom: 1px solid #000;
+.project-tags {
+  font-size: 10px;
+  font-weight: 800;
+  color: #ff4500;
 }
 
-/* RESPONSIVE */
+/* ==== KONTAKTY ==== */
+#kontakty {
+  background: #111;
+  color: #fff;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+
+.contact-left h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin: 0 0 24px;
+}
+
+.contact-left p {
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0 0 32px;
+  color: #ccc;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: transparent;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-form button {
+  background: #ff4500;
+  color: #fff;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contact-form button:hover {
+  background: #e03e00;
+}
+
+.contact-right a {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 16px;
+  color: #ff4500;
+  transition: opacity 0.2s;
+}
+
+.contact-right a:hover {
+  opacity: 0.8;
+}
+
 @media (max-width: 768px) {
-  .intro {
-    flex-direction: column;
-    text-align: center;
+  .contact-grid {
+    grid-template-columns: 1fr;
   }
+}
 
-  .headline {
-    font-size: 36px;
-  }
+/* ==== FOOTER ==== */
+footer {
+  background: #000;
+  color: #888;
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 12px;
+}
 
-  .black-headline {
-    font-size: 32px;
-  }
+footer a {
+  color: #ff4500;
+}
+
+/* ==== MEDIA FALLBACK (pro staré prohlížeče) ==== */
+.media-fallback {
+  position: relative;
+  width: 100%;
+  padding-top: 38.8%; /* 720 / 1855 */
+}
+
+.media-fallback .media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
 }
