@@ -7,13 +7,13 @@
 body {
   margin: 0;
   padding: 0;
-  background: #ffffff;
+  background: #fff;
   font-family: "Inter", sans-serif;
   text-transform: uppercase;
-  overflow-x: hidden; /* žádné horizontální rolování */
+  overflow-x: hidden;
+  scroll-behavior: smooth; /* Plynulý scroll */
 }
 
-/* KONTEJNER */
 .stage {
   width: 100%;
   max-width: 1920px;
@@ -26,7 +26,8 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: #ffffff;
+  background: #ffffffcc;
+  backdrop-filter: blur(6px);
   height: 55px;
   display: flex;
   align-items: center;
@@ -42,7 +43,7 @@ body {
   padding: 0 20px;
 }
 
-.nav-left img.logo-img {
+.logo-img {
   height: 50px;
   width: auto;
 }
@@ -56,15 +57,41 @@ body {
 .nav-btn {
   font-weight: 800;
   font-size: 12px;
-  color: #000000;
+  color: #000;
   text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 8px;
+  transition: opacity 0.2s;
+}
+
+.nav-btn:hover {
+  opacity: 0.6;
+}
+
+/* HERO */
+.hero {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: clamp(40px, 8vw, 120px);
+  font-weight: 900;
+  margin: 0;
+}
+
+.hero-sub {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 /* SEKCE */
-.category {
-  margin-top: 80px;
+section {
+  padding: 100px 0;
+  border-bottom: 1px solid #eee;
 }
 
 .header-row {
@@ -73,10 +100,10 @@ body {
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 10px;
+  margin-bottom: 40px;
 }
 
 .left-flag {
-  margin-top: 40px;
   font-size: 12px;
   font-weight: 800;
   line-height: 1.3;
@@ -86,13 +113,20 @@ body {
   font-size: clamp(42px, 8vw, 110px);
   font-weight: 800;
   text-align: right;
-  flex: 1;
   margin: 0;
+}
+
+/* ABOUT */
+.about-content p {
+  max-width: 600px;
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 500;
+  text-transform: none;
 }
 
 /* MEDIA */
 .media-wrap {
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,33 +135,37 @@ body {
 
 .media {
   width: 100%;
-  max-width: 100%;
-  height: auto;
   border-radius: 12px;
-  display: block;
 }
 
 .media-caption {
-  width: 100%;
   font-size: 12px;
   font-weight: 800;
   text-align: center;
-  line-height: 1.5;
-  margin-top: -20px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
+  max-width: 600px;
+}
+
+/* CONTACT */
+.contact-content {
+  text-align: center;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.contact-content a {
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px solid #000;
 }
 
 /* RESPONSIVNÍ */
 @media (max-width: 768px) {
-  .hiro-nav {
-    padding: 0 14px;
-  }
-
   .nav-right {
     gap: 14px;
+  }
+
+  .hero-title {
+    font-size: 52px;
   }
 
   .right-banner {
@@ -135,7 +173,7 @@ body {
     font-size: 48px;
   }
 
-  .media-caption {
-    padding: 0 10px;
+  section {
+    padding: 60px 0;
   }
 }
