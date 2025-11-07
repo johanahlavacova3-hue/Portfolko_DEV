@@ -14,7 +14,7 @@ body {
     width: 100%; 
     max-width: 1920px; 
     margin: 0 auto; 
-    padding: 10px 0; /* Upraveno, aby se portfolio vešlo s 5px rámečkem/marginem */
+    padding: 0px 0; /* Upraveno, aby se portfolio vešlo s 5px rámečkem/marginem */
 } 
 
 /* HIRO BAR - ÚPRAVA PRO STARTPAGE */
@@ -27,8 +27,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 0 0 16px 16px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-radius: 0 0 0 0;
 }
 
 .hiro-nav {
