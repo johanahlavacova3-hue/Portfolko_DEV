@@ -11,7 +11,6 @@
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
-
     <header class="hiro-bar">
         <nav class="hiro-nav">
             <div class="nav-left">
@@ -23,9 +22,8 @@
             </div>
         </nav>
     </header>
-
     <main class="stage">
-        
+       
         <section class="hero-intro">
             <div class="header-split">
                 <div class="header-left">
@@ -38,12 +36,11 @@
             </div>
             <img src="SYSTEM/PROFILE.png" alt="Profilový banner" class="profile-banner">
         </section>
-
         <section class="category" id="o-mne">
             <h2 class="section-title">O MNĚ</h2>
             <div class="content-text">
-                <p>Studuji již 4. rokem grafiku na pražské hellichovce, úspěšně, zatím. 
-ve volněm čase se věnuji robotům 3D tisku a převážne ui & ux designu. 
+                <p>Studuji již 4. rokem grafiku na pražské hellichovce, úspěšně, zatím.
+ve volněm čase se věnuji robotům 3D tisku a převážne ui & ux designu.
 současně působím v designu pro korporát i pro neziskovky</p>
                 <h3>ZKUŠENOSTI & DOVEDNOSTI</h3>
                 <ul>
@@ -53,24 +50,23 @@ současně působím v designu pro korporát i pro neziskovky</p>
                 </ul>
             </div>
         </section>
-
         <hr class="separator-line">
-
-        <section class="portfolio-action-bar" id="portfolio-action">
-            <a href="#portfolio-projects" class="action-btn left"></a>
-            <div class="action-divider"></div>
-            <a href="#" class="action-btn center">HRY</a>
-            <div class="action-divider"></div>
-            <a href="#" class="action-btn right">
+        
+        <!-- ČERNÝ PANEL JE NYNÍ TLAČÍTKO NA HRY -->
+        <a href="https://jhlavacova.cz/hry" class="portfolio-action-bar" id="games-button">
+            <div class="action-btn left"></div>
+            <div class="action-btn center">HRY</div>
+            <div class="action-btn right">
                 <img src="SYSTEM/FISH-GAME_BUTTON_MAIN.png" alt="Odkaz na hru Fish" class="fish-icon">
-            </a>
-        </section>
-
+            </div>
+            <!-- Průhledný obrázek přes celý panel -->
+            <img src="SYSTEM/FISH-GAME_BUTTON_MAIN.png" alt="" class="overlay-image">
+        </a>
         <hr class="separator-line">
-
+        
         <section class="portfolio-projects" id="portfolio-projects">
             <h2 class="section-title">PORTFOLIO</h2>
-            
+           
             <section class="category">
                 <div class="header-row">
                     <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN × UI & UX × CODE</div>
@@ -79,23 +75,18 @@ současně působím v designu pro korporát i pro neziskovky</p>
                 <div class="media-wrap">
                     <video class="media" src="KAREL/KAREL_01.mp4" autoplay loop muted playsinline></video>
                     <p class="media-caption">uvod catch</p>
-                    
+                   
                     <img class="media" src="KAREL/KAREL_02.png" alt="KAREL 02" />
                     <p class="media-caption">upresneni</p>
-
                     <img class="media" src="KAREL/KAREL_03.png" alt="KAREL 03" />
                     <p class="media-caption">skici</p>
-
                     <img class="media" src="KAREL/KAREL_03.png" alt="KAREL 03" />
                     <p class="media-caption">proces - doplnit o vikendu</p>
-
                     <img class="media" src="KAREL/KAREL_03.png" alt="KAREL 03" />
                     <p class="media-caption">final - doplnit o vikendu</p>
                 </div>
             </section>
-            
-            <hr class="separator-line">
-
+           
             <section class="category">
                 <div class="header-row">
                     <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN × UI & UX × CODE</div>
@@ -104,23 +95,18 @@ současně působím v designu pro korporát i pro neziskovky</p>
                 <div class="media-wrap">
                     <img class="media" src="KAREL-GAME/KAREL-GAME_01.png" alt="KAREL g 01" />
                     <p class="media-caption">uvod</p>
-                    
+                   
                     <img class="media" src="KAREL-GAME/KAREL-GAME_02.png" alt="KAREL g 02" />
                     <p class="media-caption">upresneni</p>
-
                     <img class="media" src="KAREL-GAME/KAREL-GAME_03.png" alt="KAREL g 03" />
                     <p class="media-caption">skici</p>
-
                     <img class="media" src="KAREL-GAME/KAREL-GAME_03.png" alt="KAREL g 03" />
                     <p class="media-caption">proces</p>
-
                     <img class="media" src="KAREL-GAME/KAREL-GAME_03.png" alt="KAREL g 03" />
                     <p class="media-caption">final</p>
                 </div>
             </section>
-            
-            <hr class="separator-line">
-
+           
             <section class="category">
                 <div class="header-row">
                     <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN</div>
@@ -129,23 +115,17 @@ současně působím v designu pro korporát i pro neziskovky</p>
                 <div class="media-wrap">
                     <img class="media" src="MYSAK/MYSAK_01.png" alt="MYSAK 01">
                     <p class="media-caption">uvod catch</p>
-
                     <img class="media" src="MYSAK/MYSAK_02.png" alt="MYSAK 02">
                     <p class="media-caption">UPRESNENI</p>
-
                     <img class="media" src="MYSAK/MYSAK_03.png" alt="MYSAK 03">
                     <p class="media-caption">SKICI</p>
-
                     <img class="media" src="MYSAK/MYSAK_04.png" alt="MYSAK 04">
                     <p class="media-caption">UKAZKA - video, spousti se tlacitkem na hlave, vypadne bonbon interaktivni</p>
-
                     <img class="media" src="MYSAK/MYSAK_05.png" alt="MYSAK 05">
                     <p class="media-caption">FINAL</p>
                 </div>
             </section>
-            
-            <hr class="separator-line">
-
+           
             <section class="category">
                 <div class="header-row">
                     <div class="left-flag">2025<br>UI & UX</div>
@@ -154,23 +134,17 @@ současně působím v designu pro korporát i pro neziskovky</p>
                 <div class="media-wrap">
                     <img class="media" src="ZDENA/ZDENA_01.png" alt="ZDENA 01">
                     <p class="media-caption">uvod catch</p>
-
                     <video class="media" src="ZDENA/ZDENA_02.mp4" autoplay loop muted playsinline></video>
                     <p class="media-caption">UKAZKA</p>
-
                     <img class="media" src="ZDENA/ZDENA_02.png" alt="ZDENA 02" />
                     <p class="media-caption">skici</p>
-
                     <img class="media" src="ZDENA/ZDENA_02.png" alt="ZDENA 02" />
                     <p class="media-caption">ukazka</p>
-
                     <img class="media" src="ZDENA/ZDENA_02.png" alt="ZDENA 02" />
                     <p class="media-caption">hraj</p>
                 </div>
             </section>
-            
-            <hr class="separator-line">
-
+           
             <section class="category">
                 <div class="header-row">
                     <div class="left-flag">2025<br>AR x CODE x DESIGN x UI & UX x 3D x PRINT</div>
@@ -179,23 +153,17 @@ současně působím v designu pro korporát i pro neziskovky</p>
                 <div class="media-wrap">
                     <img class="media" src="STRELA/STRELA_01.png" alt="STRELA 01">
                     <p class="media-caption">uvod catch</p>
-
                     <img class="media" src="STRELA/STRELA_02.png" alt="STRELA 02">
                     <p class="media-caption">UPRESNENI</p>
-
                     <img class="media" src="STRELA/STRELA_03.png" alt="STRELA 03">
                     <p class="media-caption">SKICI</p>
-
                     <img class="media" src="STRELA/STRELA_04.png" alt="STRELA 04">
                     <p class="media-caption">3D model chaty/surface</p>
-
                     <img class="media" src="STRELA/STRELA_05.png" alt="STRELA 05">
                     <p class="media-caption">ZKUS TO</p>
                 </div>
             </section>
-            
-            <hr class="separator-line">
-
+           
             <section class="category">
                 <div class="header-row">
                     <div class="left-flag">2025<br>DESIGN x PRINT x 3D</div>
@@ -204,13 +172,10 @@ současně působím v designu pro korporát i pro neziskovky</p>
                 <div class="media-wrap">
                     <img class="media" src="KONEV/KONEV_01.png" alt="KONEV 01">
                     <p class="media-caption">uvod catch</p>
-
                     <img class="media" src="KONEV/KONEV_02.png" alt="KONEV 02" />
                     <p class="media-caption">upresneni</p>
-
                     <img class="media" src="KONEV/KONEV_03.png" alt="KONEV 03" />
                     <p class="media-caption">skici</p>
-
                     <model-viewer
                         class="media"
                         src="KONEV/KONEV_04.glb"
@@ -222,13 +187,10 @@ současně působím v designu pro korporát i pro neziskovky</p>
                         shadow-intensity="1"
                         style="width: 100%; height: 600px; background-color: #f7f7f7; border-radius: 12px;">
                     </model-viewer>
-
                     <p class="media-caption">3D model</p>
                 </div>
             </section>
-            
-            <hr class="separator-line">
-
+           
             <section class="category">
                 <div class="header-row">
                     <div class="left-flag">2024 – SOUČASNOST<br>UI & UX x CODE</div>
@@ -237,17 +199,13 @@ současně působím v designu pro korporát i pro neziskovky</p>
                 <div class="media-wrap">
                     <img class="media" src="NOS/NOS_01.png" alt="NOS 01" />
                     <p class="media-caption">uVOD</p>
-
                     <img class="media" src="NOS/NOS_02.png" alt="NOS 02" />
                     <p class="media-caption">upresneni</p>
-
                     <img class="media" src="NOS/NOS_03.png" alt="NOS 03" />
                     <p class="media-caption">detail</p>
                 </div>
             </section>
-            
-            <hr class="separator-line">
-
+           
             <section class="category">
                 <div class="header-row">
                     <div class="left-flag">2025<br>UI & UX x CODE </div>
@@ -256,24 +214,18 @@ současně působím v designu pro korporát i pro neziskovky</p>
                 <div class="media-wrap">
                     <img class="media" src="MADDONA/MADDONA_01.png" alt="MADDONA 01">
                     <p class="media-caption">uvod catch</p>
-
                     <img class="media" src="MADDONA/MADDONA_02.png" alt="MADDONA 02" />
                     <p class="media-caption">upresneni</p>
-
                     <img class="media" src="MADDONA/MADDONA_03.png" alt="MADDONA 03" />
                     <p class="media-caption">skici</p>
-
                     <img class="media" src="MADDONA/MADDONA_04.png" alt="MADDONA 04" />
                     <p class="media-caption">detail</p>
-
                     <img class="media" src="MADDONA/MADDONA_05.png" alt="MADDONA 05" />
                     <p class="media-caption">play</p>
                 </div>
             </section>
         </section>
-
         <hr class="separator-line">
-
         <section class="category contacts" id="kontakty">
             <h2 class="section-title">KONTAKTY</h2>
             <div class="content-text">
@@ -285,7 +237,8 @@ současně působím v designu pro korporát i pro neziskovky</p>
                 </p>
             </div>
         </section>
-
     </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
