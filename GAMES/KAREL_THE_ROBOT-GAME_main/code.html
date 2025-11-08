@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>Karel The Robot 25' maze</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .home-btn {
+    position: absolute;
+    top: -60px; /* 40px výška + 20px mezera */
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 100;
+    transition: transform 0.2s ease-in-out;
+  }
+  .home-btn:hover { transform: scale(1.1); }
+  .home-btn img {
+    width: 100%;
+    height: auto;
+    display: block;
+    image-rendering: pixelated;
+  }
+  .sidebar {
+    position: relative; /* kvůli absolutnímu pozicování tlačítka */
+  }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <!-- >>> HOME BUTTON přidán sem <<< -->
+  <a href="index.html" class="home-btn">
+    <img src="Home.png" alt="Home">
+  </a>
+
+  <textarea id="editor" placeholder="Napiš svůj kód...
+například:
+move();
+turnLeft();
+putBeeper();
+move();"></textarea>
+  <button id="runBtn"></button>
+</div>
+
+<div id="grid"></div>
+
+<script>
+// --------------------------------------
+// Nastavení mřížky
+// --------------------------------------
+const grid = document.getElementById('grid');
+const GRID_COLS = 7;
+const GRID_ROWS = 4;
+
+function createGrid() {
+  grid.innerHTML = '';
+  grid.style.gridTemplateColumns = `repeat(${GRID_COLS}, 1fr)`;
+  grid.style.gridTemplateRows = `repeat(${GRID_ROWS}, 1fr)`;
+  for (let i = 0; i < GRID_COLS * GRID_ROWS; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.dataset.beepers = 0;
+    grid.appendChild(cell);
+  }
+}
+createGrid();
+
+// --------------------------------------
+// Robot
+// --------------------------------------
+const robot = document.createElement('div');
+robot.id = 'robot';
+grid.appendChild(robot);
+
+let posX = 0, posY = GRID_ROWS - 1, dir = 'right';
+grid.children[posY * GRID_COLS + posX].appendChild(robot);
+
+function updateRobotRotation() {
+  let angle = 0;
+  if (dir === 'up') angle = -90;
+  if (dir === 'down') angle = 90;
+  if (dir === 'left') angle = 180;
+  robot.style.transform = `rotate(${angle}deg)`;
+}
+updateRobotRotation();
+
+function resetWorld() {
+  posX = 0; posY = GRID_ROWS - 1; dir = 'right';
+  updateRobotRotation();
+  document.querySelectorAll('#grid .cell').forEach(cell => {
+    if (cell.contains(robot)) cell.removeChild(robot);
+  });
+  grid.children[posY * GRID_COLS + posX].appendChild(robot);
+  document.querySelectorAll('.beeper').forEach(b => b.remove());
+  document.querySelectorAll('#grid .cell').forEach(c => c.dataset.beepers = 0);
+}
+
+// --------------------------------------
+// Příkazy Karela
+// --------------------------------------
+function move() {
+  let dx = 0, dy = 0;
+  if (dir === 'right') dx = 1;
+  if (dir === 'left') dx = -1;
+  if (dir === 'up') dy = -1;
+  if (dir === 'down') dy = 1;
+  const newX = posX + dx, newY = posY + dy;
+  if (newX < 0 || newX >= GRID_COLS || newY < 0 || newY >= GRID_ROWS) return;
+  grid.children[posY * GRID_COLS + posX].removeChild(robot);
+  posX = newX; posY = newY;
+  grid.children[posY * GRID_COLS + posX].appendChild(robot);
+}
+
+function turnLeft() {
+  if (dir === 'up') dir = 'left';
+  else if (dir === 'left') dir = 'down';
+  else if (dir === 'down') dir = 'right';
+  else if (dir === 'right') dir = 'up';
+  updateRobotRotation();
+}
+
+function turnRight() {
+  if (dir === 'up') dir = 'right';
+  else if (dir === 'right') dir = 'down';
+  else if (dir === 'down') dir = 'left';
+  else if (dir === 'left') dir = 'up';
+  updateRobotRotation();
+}
+
+function putBeeper() {
+  const cell = grid.children[posY * GRID_COLS + posX];
+  const beeper = document.createElement('div');
+  beeper.className = 'beeper';
+  cell.appendChild(beeper);
+}
+
+function pickBeeper() {
+  const cell = grid.children[posY * GRID_COLS + posX];
+  const beeper = cell.querySelector('.beeper');
+  if (beeper) beeper.remove();
+}
+
+function paintCorner(color = 'blue') {
+  const cell = grid.children[posY * GRID_COLS + posX];
+  cell.style.backgroundColor = color;
+}
+
+// --------------------------------------
+// Podmínky
+// --------------------------------------
+function frontIsClear() {
+  if (dir === 'up' && posY > 0) return true;
+  if (dir === 'down' && posY < GRID_ROWS - 1) return true;
+  if (dir === 'left' && posX > 0) return true;
+  if (dir === 'right' && posX < GRID_COLS - 1) return true;
+  return false;
+}
+function frontIsBlocked() { return !frontIsClear(); }
+
+function facingNorth() { return dir === 'up'; }
+function facingSouth() { return dir === 'down'; }
+function facingEast() { return dir === 'right'; }
+function facingWest() { return dir === 'left'; }
+
+function notFacingNorth() { return !facingNorth(); }
+function notFacingSouth() { return !facingSouth(); }
+function notFacingEast() { return !facingEast(); }
+function notFacingWest() { return !facingWest(); }
+
+function random(p = 0.5) {
+  return Math.random() < p;
+}
+
+// --------------------------------------
+// Spouštění uživatelského kódu
+// --------------------------------------
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function runUserCode() {
+  resetWorld();
+  const code = document.getElementById('editor').value;
+  const lines = code.split('\n').filter(l => l.trim() !== '');
+  for (let line of lines) {
+    try {
+      await delay(300);
+      eval(line);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+}
+
+document.getElementById('runBtn').addEventListener('click', runUserCode);
+</script>
+
+</body>
+</html>
