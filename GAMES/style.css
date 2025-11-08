@@ -76,7 +76,7 @@ body {
     transition: color 0.3s, transform 0.2s;
 }
 .game-title:hover {
-    color: #201F1F;
+    color: #D9D9D9;
     transform: scale(1.05);
 }
 
