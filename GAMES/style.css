@@ -57,7 +57,7 @@ body {
 .games-stage {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     min-height: 80vh;
     padding: 100px 20px;
 }
@@ -65,7 +65,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 60px;
-    align-items: center;
+    align-items: left;
 }
 .game-title {
     font-size: clamp(60px, 10vw, 140px);
