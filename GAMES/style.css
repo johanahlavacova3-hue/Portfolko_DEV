@@ -80,9 +80,45 @@ body {
     transform: scale(1.05);
 }
 
-/* Responsivní */
-@media (max-width: 768px) {
-    .games-stage { padding: 60px 10px; }
-    .game-title { font-size: 48px; }
-    .nav-logo { height: 28px; }
+/* NEAKTIVNÍ HRA */
+.game-title.inactive {
+    color: #999999 !important;
+    cursor: default;
+    position: relative;
+    display: inline-block;
+    padding-right: 120px; /* prostor pro text */
 }
+
+.game-title.inactive:hover {
+    color: #999999 !important;
+    transform: none !important;
+}
+
+/* TEXT "PŘIPRAVUJE SE" */
+.coming-soon {
+    position: absolute;
+    top: 0;
+    right: -120px;
+    font-size: 16px;
+    font-weight: 900;
+    color: #00ff00;
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+/* Responsivní – na mobilu pod nápis */
+@media (max-width: 768px) {
+    .game-title.inactive {
+        padding-right: 0;
+        padding-bottom: 10px;
+    }
+    .coming-soon {
+        position: static;
+        display: block;
+        font-size: 14px;
+        margin-top: 8px;
+        right: auto;
+    }
+}
+
