@@ -1,4 +1,6 @@
-*, *::before, *::after { box-sizing: border-box; }
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 body {
     margin: 0;
     padding: 0;
@@ -103,7 +105,7 @@ body {
 .content-text {
     font-size: 12px;
     line-height: 1.4;
-    max-width: 800px;
+    max-width: 800px; /* Ponecháno pro text, ale bude omezeno .o-mne-video-wrap */
 }
 .content-text p, .content-text ul, .content-text h3 {
     margin-bottom: 20px;
@@ -220,6 +222,49 @@ body {
     -webkit-box-orient: vertical;
 }
 
+/* --- NOVÉ STYLY PRO SEKCI O MNĚ S VIDEEM A TEXTEM --- */
+
+/* Kontejner sekce "O MNĚ" pro ukotvení absolutního videa */
+#o-mne {
+    position: relative; 
+    overflow: hidden;
+    /* Odebrán padding-bottom, pokud chceme, aby video sahalo až do konce kontejneru */
+}
+
+/* Kontejner, který obaluje text a video pro vytvoření rozložení */
+.o-mne-video-wrap {
+    position: relative;
+    display: flex;
+    min-height: 400px; /* Zajišťuje minimální viditelnou plochu pro video, i když je text krátký */
+    margin-top: 20px; /* Mezera pod nadpisem "O MNĚ" */
+    /* Používáme padding z .category místo marginu */
+    padding: 0 15px; 
+}
+
+/* Textový obsah, omezený na levou polovinu a umístěný nad videem */
+#o-mne .content-text {
+    position: relative;
+    z-index: 2; /* Text je nad videem */
+    width: 50%; /* Omezí text na levou polovinu */
+    /* Zrušíme původní max-width na .content-text pro tuto sekci, pokud byl aktivní */
+    max-width: none; 
+    padding-right: 30px; /* Větší mezera mezi textem a okrajem videa */
+}
+
+/* Video, které je absolutně pozicováno na pravé polovině */
+.video-o-mne {
+    position: absolute;
+    top: 0;
+    left: 50%; /* Začátek v polovině šířky */
+    width: 50%; /* Šířka pravé poloviny */
+    height: 100%; /* Plná výška rodičovského kontejneru .o-mne-video-wrap */
+    object-fit: cover; /* Zajistí, že video pokryje oblast bez zkreslení */
+    z-index: 1; /* Video pod textem */
+    border-radius: 12px; /* Zaoblené rohy, pokud chcete */
+}
+
+/* --- MEDIA QUERIES A PŘIZPŮSOBENÍ PRO MOBILNÍ ZAŘÍZENÍ --- */
+
 @media (max-width: 900px) {
     .johana-name { font-size: 32px; }
     .header-left { gap: 8px; }
@@ -227,6 +272,27 @@ body {
     .overlay-image { height: 60px; }
     .section-title { font-size: 60px; }
     .content-text { font-size: 14px; }
+    
+    /* Na tabletech a menších obrazovkách: Text a video se přepnou pod sebe */
+    .o-mne-video-wrap {
+        flex-direction: column;
+        min-height: auto; /* Zrušíme fixní výšku */
+    }
+    
+    /* Resetování stylů pro text a video na menších obrazovkách */
+    #o-mne .content-text {
+        width: 100%; /* Text zabere plnou šířku */
+        padding-right: 0;
+        margin-bottom: 20px; /* Mezera pod textem */
+    }
+    
+    .video-o-mne {
+        position: relative; /* Video je normální prvek, ne absolutní */
+        left: 0;
+        width: 100%; /* Video zabere plnou šířku */
+        height: auto; /* Přirozená výška */
+        z-index: 1; 
+    }
 }
 @media (max-width: 768px) {
     .header-split { padding: 0 10px; }
@@ -239,7 +305,7 @@ body {
     .header-left { margin-bottom: 20px; }
     .header-right { align-self: flex-start; }
     .blabla-text { padding-top: 0; }
-   
+    
     .portfolio-action-bar {
         padding: 20px;
     }
