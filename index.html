@@ -1,67 +1,43 @@
 <!doctype html>
 <html lang="cs">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>JOHANA HLAVÁČOVÁ - DESIGN × TECH × SPAGETTI</title>
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <link rel="apple-touch-icon" href="favicon.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" />
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <style>
-        /* CSS pro umístění videa - nutné pro správné zobrazení */
-        .video-o-mne {
-            position: absolute; /* Umožní přesné umístění vzhledem k parent elementu (section.category) */
-            top: 0;
-            left: 50%; /* Začátek v polovině šířky parent elementu */
-            width: 50%; /* Zabere pravou polovinu */
-            height: 100%; /* Plná výška sekce */
-            object-fit: cover; /* Zajistí, že video pokryje celou oblast bez deformace */
-            z-index: 1; /* Ujistí se, že video je za obsahem (textem) - možná budete muset upravit dle style.css */
-        }
-        
-        /* Pro správné umístění absolutního elementu musí mít rodičovský element (section.category) definován position: relative */
-        #o-mne {
-            position: relative;
-            /* Zde by měly být další styly, které máte v style.css */
-        }
-        
-        /* Pokud je text v content-text před videem, je potřeba zvýšit jeho z-index */
-        #o-mne .content-text {
-            position: relative;
-            z-index: 2; /* Ujistí se, že text je nad videem */
-        }
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JOHANA HLAVÁČOVÁ - DESIGN × TECH × SPAGETTI</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="apple-touch-icon" href="favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
-    <header class="hiro-bar">
-        <nav class="hiro-nav">
-            <div class="nav-left">
-                <img src="LOGO.png" alt="Logo" class="nav-logo">
-            </div>
-            <div class="nav-right">
-                <a href="#o-mne" class="nav-btn">O MNĚ</a>
-                <a href="https://www.jhlavacova.cz/GAMES/" class="nav-btn">HRY</a>
-                <a href="#portfolio-projects" class="nav-btn">PORTFOLIO</a>
-                <a href="#kontakty" class="nav-btn">KONTAKTY</a>
-            </div>
-        </nav>
-    </header>
-    <main class="stage">
-       
-        <section class="hero-intro">
-            <div class="header-split">
-                <div class="header-left">
-                    <h1 class="johana-name">JOHANA<br>HLAVÁČOVÁ</h1>
-                </div>
-                <div class="header-right">
-                    <p class="blabla-text">DESIGN + TECH</p>
-                </div>
-            </div>
-            <img src="SYSTEM/PROFILE.png" alt="Profilový banner" class="profile-banner">
-        </section>
-        <section class="category" id="o-mne">
+    <header class="hiro-bar">
+        <nav class="hiro-nav">
+            <div class="nav-left">
+                <img src="LOGO.png" alt="Logo" class="nav-logo">
+            </div>
+            <div class="nav-right">
+                <a href="#o-mne" class="nav-btn">O MNĚ</a>
+                <a href="https://www.jhlavacova.cz/GAMES/" class="nav-btn">HRY</a>
+                <a href="#portfolio-projects" class="nav-btn">PORTFOLIO</a>
+                <a href="#kontakty" class="nav-btn">KONTAKTY</a>
+            </div>
+        </nav>
+    </header>
+    <main class="stage">
+       
+        <section class="hero-intro">
+            <div class="header-split">
+                <div class="header-left">
+                    <h1 class="johana-name">JOHANA<br>HLAVÁČOVÁ</h1>
+                </div>
+                <div class="header-right">
+                    <p class="blabla-text">DESIGN + TECH</p>
+                </div>
+            </div>
+            <img src="SYSTEM/PROFILE.png" alt="Profilový banner" class="profile-banner">
+        </section>
+        <section class="category" id="o-mne">
             <video class="video-o-mne" src="KAREL-intro.mp4" autoplay loop muted playsinline></video>
                         <h2 class="section-title">O MNĚ</h2>
             <div class="content-text">
@@ -69,182 +45,268 @@
 ve volněm čase se věnuji robotům, 3D tisku, grafice převážne ui & ux designu.
 současně působím v designu pro korporát i pro neziskovky</p>
                 <h3>ZKUŠENOSTI & DOVEDNOSTI</h3>
-                <ul>
-                    <li>**DESIGN:** UI/UX, 3D + 3D Tisk, Grafika, Prototypování</li>
-                    <li>**TECH:** HTML/CSS/JS, Arduino/HW, C++, AR, DENEB JSON</li>
-                    <li>**NÁSTROJE:** Figma, Blender, Adobe CC (PS, AI, PR, ID, AE, LR), AUTOCAD, 3D MAX </li>
-                </ul>
-            </div>
-        </section>
-        <hr class="separator-line">
-        
-                <a href="https://www.jhlavacova.cz/GAMES/" class="portfolio-action-bar" id="games-button">
-            <video src="SYSTEM/GAMES_BANNER.mp4" autoplay loop muted playsinline></video>
-        </a>
-        <hr class="separator-line">
-        
-        <section class="portfolio-projects" id="portfolio-projects">
-            <h2 class="section-title">PORTFOLIO</h2>
-           
-            <section class="category">
-                <div class="header-row">
-                    <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN × UI & UX × CODE</div>
-                    <h1 class="right-banner">KAREL 25’</h1>
-                </div>
-                <div class="media-wrap">
-                    <video class="media" src="KAREL/KAREL_01.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Karel je prototyp robotické ruky. Učím se na ní programovat, vytvářet vlastní hardwere a základy robotiky. Celý projekt je snaha o vytvoření funkčního produktu, který bude dělat radost nejen mě.  </p>
-                    <img class="media" src="KAREL/KAREL_02.png" alt="KAREL 02" />
-                    <p class="media-caption">Karel má úzkou návaznost na následující projekt a nese jméno po legendární hře z 80. let Karel The Robot. </p>
-                    <img class="media" src="KAREL/KAREL_03.png" alt="KAREL 03" />
-                    <p class="media-caption">Původní návrhy se změnili, nejen kvůli mechanice, ale i kvůli vývoji využití Karla. </p>
-                    <img class="media" src="KAREL/KAREL_04.png" alt="KAREL 03" />
-                    <p class="media-caption">Celý hardwere je custom od začátku vytvořen v jazyce c++. Jako základová deska je esp32, která ovládá vešleré ledky i serva i tlačítka.</p>
-                    <video class="media" src="KAREL/KAREL_05.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Takhle by nějak měl karel fungovat až bude hotový. </p>
-                </div>
-            </section>
-           
-            <section class="category">
-                <div class="header-row">
-                    <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN × UI & UX × CODE</div>
-                    <h1 class="right-banner">KAREL THE ROBOT</h1>
-                </div>
-                <div class="media-wrap">
-                    <video class="media" src="KAREL-GAME/KAREL-GAME_01.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">upoutavka</p>
-                    <video class="media" src="KAREL-GAME/KAREL-GAME_02.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">GAMEPLAY</p>
-                    <img class="media" src="KAREL-GAME/KAREL-GAME_03.png" alt="KAREL g 03" />
-                    <p class="media-caption">skici</p>
-                    <img class="media" src="KAREL-GAME/KAREL-GAME_04.png" alt="KAREL g 03" />
-                    <p class="media-caption">proces</p>
-                    
-                                       <a href="/GAMES/KAREL_THE_ROBOT-GAME_main/" target="_blank" class="media-link">
-                        <video class="media" src="KAREL-GAME/KAREL-GAME_05.mp4"  autoplay loop muted playsinline></video>
-                    </a>
-                    <p class="media-caption">HRÁT HRU</p>
-                </div>
-            </section>
+                <ul>
+                    <li>**DESIGN:** UI/UX, 3D + 3D Tisk, Grafika, Prototypování</li>
+                    <li>**TECH:** HTML/CSS/JS, Arduino/HW, C++, AR, DENEB JSON</li>
+                    <li>**NÁSTROJE:** Figma, Blender, Adobe CC (PS, AI, PR, ID, AE, LR), AUTOCAD, 3D MAX </li>
+                </ul>
+            </div>
+        </section>
+        <hr class="separator-line">
+        
+        <!-- ČERNÝ PANEL = TLAČÍTKO NA HRY -->
+        <a href="https://www.jhlavacova.cz/GAMES/" class="portfolio-action-bar" id="games-button">
+            <video src="SYSTEM/GAMES_BANNER.mp4" autoplay loop muted playsinline></video>
+        </a>
+        <hr class="separator-line">
+        
+        <section class="portfolio-projects" id="portfolio-projects">
+            <h2 class="section-title">PORTFOLIO</h2>
+           
+            <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN × UI & UX × CODE</div>
+                    <h1 class="right-banner">KAREL 25’</h1>
+                </div>
+                <div class="media-wrap">
+                    <video class="media" src="KAREL/KAREL_01.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">Karel je prototyp robotické ruky. Učím se na ní programovat, vytvářet vlastní hardwere a základy robotiky. Celý projekt je snaha o vytvoření funkčního produktu, který bude dělat radost nejen mě.  </p>
+                    <img class="media" src="KAREL/KAREL_02.png" alt="KAREL 02" />
+                    <p class="media-caption">Karel má úzkou návaznost na následující projekt a nese jméno po legendární hře z 80. let Karel The Robot. </p>
+                    <img class="media" src="KAREL/KAREL_03.png" alt="KAREL 03" />
+                    <p class="media-caption">Původní návrhy se změnili, nejen kvůli mechanice, ale i kvůli vývoji využití Karla. </p>
+                    <img class="media" src="KAREL/KAREL_04.png" alt="KAREL 03" />
+                    <p class="media-caption">Celý hardwere je custom od začátku vytvořen v jazyce c++. Jako základová deska je esp32, která ovládá vešleré ledky i serva i tlačítka.</p>
+                    <video class="media" src="KAREL/KAREL_05.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">Takhle by nějak měl karel fungovat až bude hotový. </p>
+                </div>
+            </section>
+           
+            <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN × UI & UX × CODE</div>
+                    <h1 class="right-banner">KAREL THE ROBOT</h1>
+                </div>
+                <div class="media-wrap">
+                    <video class="media" src="KAREL-GAME/KAREL-GAME_01.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">upoutavka</p>
+                    <video class="media" src="KAREL-GAME/KAREL-GAME_02.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">GAMEPLAY</p>
+                    <img class="media" src="KAREL-GAME/KAREL-GAME_03.png" alt="KAREL g 03" />
+                    <p class="media-caption">skici</p>
+                    <img class="media" src="KAREL-GAME/KAREL-GAME_04.png" alt="KAREL g 03" />
+                    <p class="media-caption">proces</p>
+                    
+                   <!-- KLIKNUTÍM NA OBRÁZEK OTEVŘE HRU NA /GAMES/KAREL_THE_ROBOT-GAME_main/ -->
+                    <a href="/GAMES/KAREL_THE_ROBOT-GAME_main/" target="_blank" class="media-link">
+                        <video class="media" src="KAREL-GAME/KAREL-GAME_05.mp4"  autoplay loop muted playsinline></video>
+                    </a>
+                    <p class="media-caption">HRÁT HRU</p>
+                </div>
+            </section>
 
 
-             <section class="category">
-                <div class="header-row">
-                    <div class="left-flag">2025<br>DESIGN x PRINT x 3D x HARDWERE x SOFTWERE</div>
-                    <h1 class="right-banner">MYŠÁK</h1>
-                </div>
-                <div class="media-wrap">
-                                      <img class="media" src="MYSAK/MYSAK_01.png" alt="KONEV 02" />
-                    <p class="media-caption">upresneni</p>
-                    <video class="media" src="MYSAK/MYSAK_02.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">PLAY</p> 
-                    <img class="media" src="MYSAK/MYSAK_03.png" alt="KONEV 03" />
-                    <p class="media-caption">skici</p>
-                    <img class="media" src="MYSAK/MYSAK_04.png" alt="KONEV 03" />
-                    <p class="media-caption">skici</p>
-                    <model-viewer
-                        class="media"
-                        src="MYSAK/MYSAK_05.glb"
-                        alt="3D model konve"
-                        camera-controls
-                        auto-rotate
-                        rotation-per-second="15deg"
-                        exposure="1"
-                        shadow-intensity="1"
-                        style="width: 100%; height: 600px; background-color: #FFFFFF; border-radius: 12px;">
-                    </model-viewer>
-                    <p class="media-caption">3D model</p>
-                </div>
-            </section>
+             <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>DESIGN x PRINT x 3D x HARDWERE x SOFTWERE</div>
+                    <h1 class="right-banner">MYŠÁK</h1>
+                </div>
+                <div class="media-wrap">
+                  <!--  <video class="media" src="MYSAK/MYSAK_01.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">PLAY</p> -->
+                    <img class="media" src="MYSAK/MYSAK_01.png" alt="KONEV 02" />
+                    <p class="media-caption">upresneni</p>
+                    <video class="media" src="MYSAK/MYSAK_02.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">PLAY</p> 
+                    <img class="media" src="MYSAK/MYSAK_03.png" alt="KONEV 03" />
+                    <p class="media-caption">skici</p>
+                    <img class="media" src="MYSAK/MYSAK_04.png" alt="KONEV 03" />
+                    <p class="media-caption">skici</p>
+                    <model-viewer
+                        class="media"
+                        src="MYSAK/MYSAK_05.glb"
+                        alt="3D model konve"
+                        camera-controls
+                        auto-rotate
+                        rotation-per-second="15deg"
+                        exposure="1"
+                        shadow-intensity="1"
+                        style="width: 100%; height: 600px; background-color: #FFFFFF; border-radius: 12px;">
+                    </model-viewer>
+                    <p class="media-caption">3D model</p>
+                </div>
+            </section>
 
-                      
-                   
-                      
-                      
-           
-            <section class="category">
-                <div class="header-row">
-                    <div class="left-flag">2025<br>DESIGN x PRINT x 3D</div>
-                    <h1 class="right-banner">KONEV</h1>
-                </div>
-                <div class="media-wrap">
-                    <video class="media" src="KONEV/KONEV_01.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">PLAY</p>
-                    <img class="media" src="KONEV/KONEV_02.png" alt="KONEV 02" />
-                    <p class="media-caption">upresneni</p>
-                    <img class="media" src="KONEV/KONEV_03.png" alt="KONEV 03" />
-                    <p class="media-caption">skici</p>
-                    <model-viewer
-                        class="media"
-                        src="KONEV/KONEV_04.glb"
-                        alt="3D model konve"
-                        camera-controls
-                        auto-rotate
-                        rotation-per-second="15deg"
-                        exposure="1"
-                        shadow-intensity="1"
-                        style="width: 100%; height: 600px; background-color: #f7f7f7; border-radius: 12px;">
-                    </model-viewer>
-                    <p class="media-caption">3D model</p>
-                </div>
-            </section>
+           <!--    <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN</div>
+                    <h1 class="right-banner">MYŠÁK</h1>
+                </div>
+                <div class="media-wrap">
+                    <img class="media" src="MYSAK/MYSAK_01.png" alt="MYSAK 01">
+                    <p class="media-caption">uvod catch</p>
+                       <img class="media" src="MYSAK/MYSAK_02.png" alt="MYSAK 02">
+                    <p class="media-caption">UPRESNENI</p>
+                    <img class="media" src="MYSAK/MYSAK_03.png" alt="MYSAK 03">
+                    <p class="media-caption">SKICI</p>
+                    <img class="media" src="MYSAK/MYSAK_04.png" alt="MYSAK 04">
+                    <p class="media-caption">UKAZKA - video, spousti se tlacitkem na hlave, vypadne bonbon interaktivni</p>
+                    <img class="media" src="MYSAK/MYSAK_05.png" alt="MYSAK 05">
+                    <p class="media-caption">FINAL</p> 
+                </div>
+            </section> -->
+           
+        <!--    <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>UI & UX</div>
+                    <h1 class="right-banner">ZDENA</h1>
+                </div>
+                <div class="media-wrap">
+                    <img class="media" src="ZDENA/ZDENA_01.png" alt="ZDENA 01">
+                    <p class="media-caption">uvod catch</p>
+                    <video class="media" src="ZDENA/ZDENA_02.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">UKAZKA</p>
+                    <img class="media" src="ZDENA/ZDENA_02.png" alt="ZDENA 02" />
+                    <p class="media-caption">skici</p>
+                    <img class="media" src="ZDENA/ZDENA_02.png" alt="ZDENA 02" />
+                    <p class="media-caption">ukazka</p>
+                    <img class="media" src="ZDENA/ZDENA_02.png" alt="ZDENA 02" />
+                    <p class="media-caption">hraj</p>
+                </div>
+            </section> -->
+           
+           <!-- <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>AR x CODE x DESIGN x UI & UX x 3D x PRINT</div>
+                    <h1 class="right-banner">OHÝNEK</h1>
+                </div>
+                <div class="media-wrap">
+                    <img class="media" src="STRELA/STRELA_01.png" alt="STRELA 01">
+                    <p class="media-caption">uvod catch</p>
+                    <img class="media" src="STRELA/STRELA_02.png" alt="STRELA 02">
+                    <p class="media-caption">UPRESNENI</p>
+                    <img class="media" src="STRELA/STRELA_03.png" alt="STRELA 03">
+                    <p class="media-caption">SKICI</p>
+                    <img class="media" src="STRELA/STRELA_04.png" alt="STRELA 04">
+                    <p class="media-caption">3D model chaty/surface</p>
+                    <img class="media" src="STRELA/STRELA_05.png" alt="STRELA 05">
+                    <p class="media-caption">ZKUS TO</p>
+                </div>
+            </section> -->
+           
+           <!-- <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2024 – SOUČASNOST<br>UI & UX x CODE</div>
+                    <h1 class="right-banner">NoS</h1>
+                </div>
+                <div class="media-wrap">
+                    <img class="media" src="NOS/NOS_01.png" alt="NOS 01" />
+                    <p class="media-caption">uVOD</p>
+                    <img class="media" src="NOS/NOS_02.png" alt="NOS 02" />
+                    <p class="media-caption">upresneni</p>
+                    <img class="media" src="NOS/NOS_03.png" alt="NOS 03" />
+                    <p class="media-caption">detail</p>
+                </div>
+            </section> -->
+           
+           
+            <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>DESIGN x PRINT x 3D</div>
+                    <h1 class="right-banner">KONEV</h1>
+                </div>
+                <div class="media-wrap">
+                    <video class="media" src="KONEV/KONEV_01.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">PLAY</p>
+                    <img class="media" src="KONEV/KONEV_02.png" alt="KONEV 02" />
+                    <p class="media-caption">upresneni</p>
+                    <img class="media" src="KONEV/KONEV_03.png" alt="KONEV 03" />
+                    <p class="media-caption">skici</p>
+                    <model-viewer
+                        class="media"
+                        src="KONEV/KONEV_04.glb"
+                        alt="3D model konve"
+                        camera-controls
+                        auto-rotate
+                        rotation-per-second="15deg"
+                        exposure="1"
+                        shadow-intensity="1"
+                        style="width: 100%; height: 600px; background-color: #f7f7f7; border-radius: 12px;">
+                    </model-viewer>
+                    <p class="media-caption">3D model</p>
+                </div>
+            </section>
 
 
-                    <section class="category">
-                <div class="header-row">
-                    <div class="left-flag">2025<br>UI & UX x CODE </div>
-                    <h1 class="right-banner">MADDONA</h1>
-                </div>
-                <div class="media-wrap">
-                    <video class="media" src="MADDONA/MADDONA_01.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">PLAY</p>
-                   <video class="media" src="MADDONA/MADDONA_02.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">PLAY</p>
-                    <img class="media" src="MADDONA/MADDONA_03.png" alt="MADDONA 03" />
-                    <p class="media-caption">skici</p>
-                                      
-                                        <a href="https://johanahlavacova3-hue.github.io/Maddonna_DEV/" target="_blank" class="media-link">
-                        <img class="media" src="MADDONA/MADDONA_01.png" alt="Spustit aplikaci MADONA" />
-                    </a>
-                    <p class="media-caption">Spustit aplikaci MADONA</p>
-                    
-                </div>
-            </section> 
+                    <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>UI & UX x CODE </div>
+                    <h1 class="right-banner">MADDONA</h1>
+                </div>
+                <div class="media-wrap">
+                    <video class="media" src="MADDONA/MADDONA_01.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">PLAY</p>
+                   <video class="media" src="MADDONA/MADDONA_02.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">PLAY</p>
+                    <img class="media" src="MADDONA/MADDONA_03.png" alt="MADDONA 03" />
+                    <p class="media-caption">skici</p>
+                   <!-- <img class="media" src="MADDONA/MADDONA_04.png" alt="MADDONA 04" />
+                    <p class="media-caption">detail</p> -->
+                   
+                    <!-- KLIKNUTÍM NA OBRÁZEK SE OTEVŘE HRA -->
+                    <a href="https://johanahlavacova3-hue.github.io/Maddonna_DEV/" target="_blank" class="media-link">
+                        <img class="media" src="MADDONA/MADDONA_01.png" alt="Spustit aplikaci MADONA" />
+                    </a>
+                    <p class="media-caption">Spustit aplikaci MADONA</p>
+                    
+                </div>
+            </section> 
 
-                  <section class="category">
-                <div class="header-row">
-                    <div class="left-flag">2025<br>UI & UX x CODE </div>
-                    <h1 class="right-banner">GPS</h1>
-                </div>
-                <div class="media-wrap">
-                                        <img class="media" src="GPS/GPS_01.png" alt="GPS 03" />
-                    <p class="media-caption">DEV APLIKACE PRO VYTVÁŘENÍ OBRÁZKŮ POMOCÍ GPS SPOUŘADNICE</p>
-                                      
-                                                          
-                </div>
-            </section> 
+                  <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>UI & UX x CODE </div>
+                    <h1 class="right-banner">GPS</h1>
+                </div>
+                <div class="media-wrap">
+                    <!--<video class="media" src="MADDONA/MADDONA_01.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">PLAY</p>
+                   <video class="media" src="MADDONA/MADDONA_02.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">PLAY</p> -->
+                    <img class="media" src="GPS/GPS_01.png" alt="GPS 03" />
+                    <p class="media-caption">DEV APLIKACE PRO VYTVÁŘENÍ OBRÁZKŮ POMOCÍ GPS SPOUŘADNICE</p>
+                   <!-- <img class="media" src="MADDONA/MADDONA_04.png" alt="MADDONA 04" />
+                    <p class="media-caption">detail</p> -->
+                   
+                    <!-- KLIKNUTÍM NA OBRÁZEK SE OTEVŘE HRA -->
+                  <!--  <a href="https://johanahlavacova3-hue.github.io/Maddonna_DEV/" target="_blank" class="media-link">
+                        <img class="media" src="MADDONA/MADDONA_01.png" alt="Spustit aplikaci MADONA" />
+                    </a>
+                    <p class="media-caption">Spustit aplikaci MADONA</p> -->
+                    
+                </div>
+            </section> 
 
 
 
 
 
 
-            
-        </section>
-        <hr class="separator-line">
-        <section class="category contacts" id="kontakty">
-            <h2 class="section-title">KONTAKTY</h2>
-            <div class="content-text">
-                <p>Máte zájem o spolupráci, nebo byste se chtěli jen zeptat? Neváhejte mě kontaktovat!</p>
-                <p class="contact-info">
-                    EMAIL: **<a href="mailto:hlavacova.johana22@hellichovka.cz">JHLAVACOVA.JOHANA22@HELLICHOVKA.CZ</a>**<br>
-                    LINKEDIN: **<a href="#">LINKEDIN.COM/JHLAVAC</a>**<br>
-                    INSTAGRAM: **<a href="#">@JOHANA.DESIGN</a>**
-                </p>
-            </div>
-        </section>
-    </main>
+            
+        </section>
+        <hr class="separator-line">
+        <section class="category contacts" id="kontakty">
+            <h2 class="section-title">KONTAKTY</h2>
+            <div class="content-text">
+                <p>Máte zájem o spolupráci, nebo byste se chtěli jen zeptat? Neváhejte mě kontaktovat!</p>
+                <p class="contact-info">
+                    EMAIL: **<a href="mailto:hlavacova.johana22@hellichovka.cz">JHLAVACOVA.JOHANA22@HELLICHOVKA.CZ</a>**<br>
+                    LINKEDIN: **<a href="#">LINKEDIN.COM/JHLAVAC</a>**<br>
+                    INSTAGRAM: **<a href="#">@JOHANA.DESIGN</a>**
+                </p>
+            </div>
+        </section>
+    </main>
 
-    <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
