@@ -85,12 +85,13 @@ model-viewer {
 .footer-support-bar {
     background-color: #ff6600; 
     color: #ffffff;
-    padding: 10px; /* Minimalizované odsazení pro "úplně celý kraj" */
+    padding: 0px; /* Minimalizované odsazení pro "úplně celý kraj" */
     font-size: 0.9rem;
     font-weight: normal;
     text-align: center; 
     width: 100%; 
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 /* Styl pro číslo účtu, aby signalizovalo, že je klikatelné */
@@ -123,7 +124,7 @@ model-viewer {
     }
     
     .header .logo {
-        max-width: 250px; 
+        max-width: 300px; 
     }
 
     .footer {
