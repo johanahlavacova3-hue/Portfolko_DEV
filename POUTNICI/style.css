@@ -6,7 +6,9 @@ html, body {
     padding: 0;
     height: 100%; 
     overflow: hidden; /* Zabrání rolování */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    
+    /* NOVINKA: Aplikace fontu Poppins */
+    font-family: 'Poppins', sans-serif;
 }
 
 /* 2. Page Container (CSS Grid pro hlavní rozvržení) */
@@ -14,7 +16,6 @@ html, body {
     height: 100vh; 
     width: 100vw; 
     display: grid;
-    /* auto (Header) / 1fr (Model) / auto (Footer) */
     grid-template-rows: auto 1fr auto; 
     grid-template-columns: 100%;
     background-color: #333333; /* Tmavě šedé pozadí */
@@ -31,12 +32,10 @@ html, body {
     text-align: center;
 }
 
-/* Styl pro logo Poutníci (obrázek) */
 .header .logo {
-    max-width: 50%; /* Výchozí velikost pro mobil */
+    max-width: 50%; 
     height: auto;
 }
-
 
 /* STŘEDOVÁ SEKCE (3D Model) */
 .model-area {
@@ -51,7 +50,6 @@ model-viewer {
     border: none;
     background-color: transparent;
 }
-
 
 /* SPODNÍ SEKCE (Patička) */
 .footer {
@@ -71,7 +69,7 @@ model-viewer {
 
 /* Styl pro Facebook ikonu */
 .footer-contacts .social-icon {
-    max-width: 100px; /* Velikost ikony/loga */
+    max-width: 100px; 
     height: auto;
     margin-bottom: 5px;
 }
@@ -90,8 +88,8 @@ model-viewer {
     padding: 10px 15px;
     font-size: 0.9rem;
     font-weight: normal;
-    text-align: center; /* Centrování textu na mobilu */
-    width: 100%; /* Zajišťuje plnou šířku */
+    text-align: center; 
+    width: 100%; 
     box-sizing: border-box;
 }
 
@@ -109,28 +107,23 @@ model-viewer {
     }
     
     .header .logo {
-        max-width: 250px; /* Větší logo na desktopu */
+        max-width: 250px; 
     }
 
     .footer {
-        /* Zarovnání kontaktů vlevo */
         align-items: flex-start; 
-        padding-left: 50px; /* Zarovnání s logem */
+        padding-left: 50px; 
     }
 
     .footer-contacts {
-        /* Zarovnání ikon a textu vlevo */
         align-items: flex-start;
         padding: 0 50px 15px 0;
     }
 
     .footer-support-bar {
-        /* Oranžový pruh je stále 100% šířky (to už řeší default) */
-        text-align: right; /* Text číslo účtu vpravo */
-        padding-right: 50px; /* Odsazení od kraje pro text */
-        
-        /* Pokud je potřeba, aby pruh začínal hned pod kontakty */
+        text-align: right; 
+        padding-right: 50px; 
         width: 100%; 
-        align-self: flex-end; /* Přes celou šířku kontejneru */
+        align-self: flex-end; 
     }
 }
