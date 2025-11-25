@@ -1,55 +1,29 @@
-/* Základní reset a nastavení stránky */
-body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Světle šedé pozadí */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+/* style.css */
 
-/* Hlavní kontejner používá flexbox pro centrování obsahu na sloupec */
-.main-container {
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px; /* Mezera mezi prvky */
+    align-items: center;  /* Zarovná vše na střed horizontálně */
+    justify-content: center; /* Zarovná vše na střed vertikálně */
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    text-align: center;
 }
 
-/* Horní obrázek "Děkujeme" */
-.header-image {
-    max-width: 300px; /* Nastavte si maximální šířku podle potřeby */
-    height: auto;
+h1 {
+    color: #333;
 }
 
-/* Kontejner pro 3D scénu */
-#scene-container {
-    width: 600px;  /* Šířka 3D okna */
-    height: 400px; /* Výška 3D okna */
-    background-color: #ffffff; /* Bílé pozadí pro scénu */
+/* Styl pro samotný 3D prohlížeč.
+  Můžete si upravit šířku (width) a výšku (height).
+*/
+model-viewer {
+    width: 80%;
+    max-width: 900px;
+    height: 60vh;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-/* Kontejner pro tlačítka */
-.button-container {
-    display: flex; /* Seřadí tlačítka vedle sebe */
-    gap: 30px; /* Mezera mezi tlačítky */
-}
-
-/* Styl odkazu (tlačítka) */
-.link-button img {
-    width: 150px; /* Šířka obrázku tlačítka */
-    height: auto;
-    transition: transform 0.2s ease; /* Efekt při najetí myší */
-}
-
-/* Efekt při najetí myší na tlačítko */
-.link-button:hover img {
-    transform: scale(1.05); /* Lehce zvětší tlačítko */
-    opacity: 0.9;
+    border-radius: 12px;
 }
