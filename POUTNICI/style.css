@@ -1,60 +1,136 @@
 /* style.css */
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+/* 1. Reset a základ pro nerozlohovací design */
+html, body {
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f0f0;
-    text-align: center;
-    
-    /* Menší odsazení pro mobilní obrazovky */
-    padding: 10px; 
-    box-sizing: border-box; /* Zajišťuje, že padding neovlivní celkovou šířku */
+    padding: 0;
+    height: 100%; /* Důležité: Výška 100% */
+    overflow: hidden; /* KLÍČOVÉ: Zabrání rolování */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-h1 {
-    color: #333;
-    font-size: 1.8rem; /* Základní velikost nadpisu */
+/* 2. Page Container (CSS Grid pro hlavní rozvržení) */
+.page-container {
+    height: 100vh; /* Celá výška obrazovky */
+    width: 100vw;  /* Celá šířka obrazovky */
+    display: grid;
+    /* Definuje 3 řádky: 
+       1. Header: pevná výška (např. 100px)
+       2. Model Area: zabere všechen zbylý prostor (1fr)
+       3. Footer: pevná výška (např. 150px)
+    */
+    grid-template-rows: auto 1fr auto; 
+    grid-template-columns: 100%;
+    background-color: #333333; /* Tmavě šedé pozadí z obrázku */
+}
+
+/* ========================================================== */
+/* === SPOLEČNÉ STYLY PRO MOBIL I DESKTOP (VZHLED Z OBRÁZKU) */
+/* ========================================================== */
+
+/* HORNÍ SEKCE (Záhlaví) */
+.header {
+    background-color: transparent;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.header h1 {
+    /* Simulace písma "Poutníci" (museli byste použít skutečný font) */
+    font-family: cursive, sans-serif; 
+    font-size: 2.5rem; 
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* STŘEDOVÁ SEKCE (3D Model) */
+.model-area {
+    /* Flexbox nebo Grid pro vycentrování modelu v této oblasti */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+model-viewer {
+    /* Model musí mít 100% šířku i výšku svého rodičovského kontejneru 
+       (.model-area), aby vyplnil dostupný prostor! */
+    width: 100%;
+    height: 100%;
+    /* Odstraníme border a background, protože pozadí řeší .page-container */
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+
+/* SPODNÍ SEKCE (Patička) */
+.footer {
+    display: flex;
+    flex-direction: column; /* Kontakty a oranžový pruh pod sebou */
+    justify-content: flex-end; /* Vše dole */
+    color: #ffffff;
+}
+
+.footer-contacts {
+    padding: 15px; /* Vnitřní odsazení pro kontakty (Facebook) */
+}
+
+.footer-contacts p {
+    margin: 0;
+    padding: 2px 0;
+    font-size: 1rem;
+}
+
+.footer-support-bar {
+    background-color: #ff6600; /* Oranžová barva z obrázku */
+    color: #ffffff;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    font-weight: normal;
 }
 
 /* * =====================================
  * === VERZE 1: MOBIL (Výchozí styl) ===
  * =====================================
- * Toto platí pro všechny zařízení jako základ.
-*/
-model-viewer {
-    width: 95%;      /* Na mobilu chceme model téměř přes celou šířku */
-    height: 70vh;    /* Na výšku dáme víc prostoru (mobily jsou vysoké) */
-    
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    background-color: #f9f9f9;
-}
+ */
 
+/* V mobilní verzi je text čitelný, zarovnání ponecháme na straně */
+
+.footer-support-bar {
+    text-align: center; /* Na mobilu vycentrujeme text v oranžovém pruhu */
+}
 
 /* * ================================================
  * === VERZE 2: WEB / DESKTOP (Větší obrazovky) ===
  * ================================================
- * Tyto styly se použijí, POUZE POKUD je šířka okna 
- * prohlížeče 768 pixelů NEBO VĚTŠÍ.
-*/
+ */
 @media (min-width: 768px) {
 
-    body {
-        /* Vrátíme větší odsazení pro pohodlí na desktopu */
-        padding: 20px; 
+    .footer {
+        flex-direction: row; /* Na desktopu dáme kontakty a pruh vedle sebe */
+        justify-content: space-between; /* Rozprostření kontaktů a pruhu */
+        align-items: flex-end; /* Zarovnání pruhu dolů */
     }
 
-    h1 {
-        font-size: 2.5rem; /* Větší nadpis na desktopu */
+    .footer-contacts {
+        /* Kontakty jsou vlevo */
+        flex-grow: 1; /* Kontakty zaberou volný prostor vlevo */
+        text-align: left;
     }
-
-    model-viewer {
-        width: 80%;           /* Na desktopu stačí 80% šířky */
-        max-width: 900px;     /* Ale ne víc než 900px, aby nebyl obří */
-        height: 60vh;         /* Výška 60% okna na desktopu stačí */
+    
+    .footer-support-bar {
+        /* Pruh je vpravo, s pevnou výškou */
+        height: 35px; /* Zajistíme, že pruh má stejnou výšku jako kontakty */
+        display: flex;
+        align-items: center;
+        text-align: right;
+        font-size: 1rem;
+    }
+    
+    /* Vzhledem k širšímu zobrazení na desktopu posuneme název Poutníci více doleva */
+    .header {
+        text-align: left;
+        padding-left: 50px;
     }
 }
