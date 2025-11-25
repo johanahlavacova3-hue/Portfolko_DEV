@@ -36,11 +36,18 @@
 
         <footer class="footer">
             <div class="footer-contacts">
-                <img src="facebook_icon.png" alt="Facebook" class="social-icon">
-                <p class="contact-link">Web</p> 
+                <a href="https://www.facebook.com/VaseStranka" target="_blank" class="contact-link-facebook">
+                    <img src="facebook_icon.png" alt="Facebook" class="social-icon">
+                </a>
+                <a href="https://www.vasweb.cz" target="_blank" class="contact-link-web">
+                    <p class="contact-link">Web</p> 
+                </a>
             </div>
+            
             <div class="footer-support-bar">
-                Číslo účtu pro podporu: <strong>2402938869 / 2010</strong>
+                Číslo účtu pro podporu: 
+                <strong id="accountNumber" onclick="copyAccount()">2402938869 / 2010</strong>
+                <span id="copyMessage" class="copy-message"></span>
             </div>
         </footer>
 
