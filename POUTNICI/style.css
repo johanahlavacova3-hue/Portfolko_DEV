@@ -1,0 +1,55 @@
+/* Základní reset a nastavení stránky */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Světle šedé pozadí */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hlavní kontejner používá flexbox pro centrování obsahu na sloupec */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Mezera mezi prvky */
+}
+
+/* Horní obrázek "Děkujeme" */
+.header-image {
+    max-width: 300px; /* Nastavte si maximální šířku podle potřeby */
+    height: auto;
+}
+
+/* Kontejner pro 3D scénu */
+#scene-container {
+    width: 600px;  /* Šířka 3D okna */
+    height: 400px; /* Výška 3D okna */
+    background-color: #ffffff; /* Bílé pozadí pro scénu */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Kontejner pro tlačítka */
+.button-container {
+    display: flex; /* Seřadí tlačítka vedle sebe */
+    gap: 30px; /* Mezera mezi tlačítky */
+}
+
+/* Styl odkazu (tlačítka) */
+.link-button img {
+    width: 150px; /* Šířka obrázku tlačítka */
+    height: auto;
+    transition: transform 0.2s ease; /* Efekt při najetí myší */
+}
+
+/* Efekt při najetí myší na tlačítko */
+.link-button:hover img {
+    transform: scale(1.05); /* Lehce zvětší tlačítko */
+    opacity: 0.9;
+}
