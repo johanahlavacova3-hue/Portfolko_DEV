@@ -20,7 +20,7 @@ const camera = new THREE.PerspectiveCamera(
     0.1, // Blízká rovina
     1000 // Vzdálená rovina
 );
-camera.position.z = 5; // Posuneme kameru dozadu, aby byl model vidět
+camera.position.z = 25; // Posuneme kameru dozadu, aby byl model vidět
 
 // Renderer (vykreslovač)
 const renderer = new THREE.WebGLRenderer({ 
