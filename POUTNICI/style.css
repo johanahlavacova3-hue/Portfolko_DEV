@@ -21,7 +21,7 @@ html, body {
 /* HORNÍ SEKCE (Záhlaví) */
 .header {
     background-color: transparent;
-    padding: 30px 0;
+    padding: 30px 30px;
     text-align: center;
 }
 .header a {
@@ -76,7 +76,7 @@ model-viewer {
 
 .footer-contacts .contact-link {
     margin: 0;
-    padding: 2px 0;
+    padding: 30px 30px;
     font-size: 1rem;
     color: #ffffff;
 }
@@ -86,10 +86,10 @@ model-viewer {
     background-color: #ff6600; 
     color: #ffffff;
     padding: 0px; /* Minimalizované odsazení pro "úplně celý kraj" */
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: normal;
     text-align: center; 
-    width: 100%; 
+    width: 110%; 
     box-sizing: border-box;
     cursor: pointer;
 }
@@ -120,7 +120,7 @@ model-viewer {
 
     .header {
         text-align: left;
-        padding-left: 10px; /* Snížené odsazení, aby logo nebylo moc daleko */
+        padding-left: 30px; /* Snížené odsazení, aby logo nebylo moc daleko */
     }
     
     .header .logo {
@@ -129,12 +129,12 @@ model-viewer {
 
     .footer {
         align-items: flex-start; 
-        padding-left: 10px; /* Snížené odsazení kontaktů pro bližší okraj */
+        padding-left: 30px; /* Snížené odsazení kontaktů pro bližší okraj */
     }
 
     .footer-contacts {
         align-items: flex-start;
-        padding: 0 10px 15px 0;
+        padding: 0 30px 25px 0;
     }
     
     .footer-contacts a {
@@ -144,8 +144,8 @@ model-viewer {
     .footer-support-bar {
         text-align: right; 
         padding-right: 10px; /* Odsazení vpravo blízko kraje */
-        padding-left: 10px;
-        width: 100%; 
+        padding-left: 30px;
+        width: 120%; 
         align-self: flex-end; 
     }
 }
