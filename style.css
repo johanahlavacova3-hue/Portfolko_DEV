@@ -288,7 +288,7 @@ body {
         position: absolute;
         top: 40%;
         transform: translateY(-50%);
-        font-size: 32px;
+        font-size: 9px;
         font-weight: 900;
         z-index: 50;
         cursor: pointer;
