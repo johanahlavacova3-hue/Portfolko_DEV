@@ -1,321 +1,416 @@
 *, *::before, *::after {
-    box-sizing: border-box;
+    box-sizing: border-box;
 }
 body {
-    margin: 0;
-    padding: 0;
-    background: #ffffff;
-    font-family: "Inter", sans-serif;
-    text-transform: uppercase;
-    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    font-family: "Inter", sans-serif;
+    text-transform: uppercase;
+    overflow-x: hidden;
 }
 .stage {
-    width: 100%;
-    max-width: 1920px;
-    margin: 0 auto;
-    padding: 0px 0;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0px 0;
 }
 .hiro-bar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: #ffffff;
-    height: 55px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0 0 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #ffffff;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 0 0;
 }
 .hiro-nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
 }
 .nav-left, .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
 }
 .nav-logo {
-    height: 35px;
-    width: auto;
+    height: 35px;
+    width: auto;
 }
 .nav-btn {
-    font-weight: 800;
-    font-size: 12px;
-    
-    color: #000000;
-    text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: background-color 0.2s;
+    font-weight: 800;
+    font-size: 12px;
+    
+    color: #000000;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
 }
 .nav-btn:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0;
 }
 .hero-intro {
-    padding-top: 50px;
-    margin-bottom: 40px;
+    padding-top: 50px;
+    margin-bottom: 40px;
 }
 .header-split {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 20px;
-    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 0 20px;
 }
 .header-left {
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
 }
 .johana-name {
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 1.4;
-    margin: 0;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin: 0;
 }
 .header-right {
-    text-align: right;
+    text-align: right;
 }
 .blabla-text {
-    font-size: 12px;
-    font-weight: 800;
-    margin: 0;
-    line-height: 1.4;
-    padding-top: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.4;
+    padding-top: 20px;
 }
 .profile-banner {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-top: 20px;
-    padding: 0 20px;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 20px;
+    padding: 0 20px;
 }
 .section-title {
-    font-size: clamp(48px, 8vw, 120px);
-    font-weight: 800;
-    text-align: left;
-    margin-bottom: 20px;
-    line-height: 1.4;
+    font-size: clamp(48px, 8vw, 120px);
+    font-weight: 800;
+    text-align: left;
+    margin-bottom: 20px;
+    line-height: 1.4;
 }
 .content-text {
-    font-size: 12px;
-    line-height: 1.4;
-    max-width: 800px; /* Ponecháno pro text, ale bude omezeno .o-mne-video-wrap */
+    font-size: 12px;
+    line-height: 1.4;
+    max-width: 800px; /* Ponecháno pro text, ale bude omezeno .o-mne-video-wrap */
 }
 .content-text p, .content-text ul, .content-text h3 {
-    margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 .content-text h3 {
-    font-size: 12px;
-    font-weight: 800;
-    margin-top: 40px;
+    font-size: 12px;
+    font-weight: 800;
+    margin-top: 40px;
 }
 .content-text ul {
-    list-style: none;
-    padding: 0;
+    list-style: none;
+    padding: 0;
 }
 .content-text li {
-    font-size: 12px;
-    margin-bottom: 8px;
-    font-weight: 800;
+    font-size: 12px;
+    margin-bottom: 8px;
+    font-weight: 800;
 }
 .contact-info a {
-    color: #000000;
-    text-decoration: none;
-    transition: color 0.2s;
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.2s;
 }
 .contact-info a:hover {
-    color: #555555;
+    color: #555555;
 }
 .separator-line {
-    border: none;
-    height: 1px;
-    background-color: #e0e0e0;
-    margin: 80px 0;
+    border: none;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 80px 0;
 }
 
 /* ČERNÝ PANEL = TLAČÍTKO NA HRY, JEN PNG */
 .portfolio-action-bar {
-    position: relative;
-    background: #000000;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    padding: 40px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-    overflow: hidden;
+    position: relative;
+    background: #000000;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
 }
 .portfolio-action-bar:hover {
-    opacity: 0.9;
+    opacity: 0.9;
 }
 .overlay-image {
-    height: 100px;
-    width: auto;
-    opacity: 0.3;
-    pointer-events: none;
+    height: 100px;
+    width: auto;
+    opacity: 0.3;
+    pointer-events: none;
+}
+/* Upravený selektor pro video uvnitř portfolio-action-bar */
+.portfolio-action-bar video {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
 }
 
 .portfolio-projects {
-    margin: 0 5px;
-    border: 0px solid #000000;
-    border-radius: 12px;
-    padding: 20px 0;
-    box-sizing: border-box;
+    margin: 0 5px;
+    border: 0px solid #000000;
+    border-radius: 12px;
+    padding: 20px 0;
+    box-sizing: border-box;
 }
 .category {
-    margin-top: 80px;
-    padding: 0 15px;
+    margin-top: 80px;
+    padding: 0 15px;
 }
 .header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 .left-flag {
-    margin-top: 40px;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 1.4;
+    margin-top: 40px;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.4;
 }
 .right-banner {
-    font-size: clamp(42px, 8vw, 120px);
-    font-weight: 800;
-    text-align: right;
-    flex: 1;
-    margin: 0;
-    line-height: 1.4;
+    font-size: clamp(42px, 8vw, 120px);
+    font-weight: 800;
+    text-align: right;
+    flex: 1;
+    margin: 0;
+    line-height: 1.4;
 }
 .media-wrap {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
 }
 .media {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
 }
 .media-caption {
-    width: 100%;
-    font-size: 12px;
-    font-weight: 800;
-    text-align: center;
-    line-height: 1.4;
-    margin-top: -20px;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
+    width: 100%;
+    font-size: 12px;
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.4;
+    margin-top: -20px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 
 /* --- NOVÉ STYLY PRO SEKCI O MNĚ S VIDEEM A TEXTEM --- */
 
 /* Kontejner sekce "O MNĚ" pro ukotvení absolutního videa */
 #o-mne {
-    position: relative; 
-    overflow: hidden;
-    /* Odebrán padding-bottom, pokud chceme, aby video sahalo až do konce kontejneru */
+    position: relative; 
+    overflow: hidden;
+    /* Odebrán padding-bottom, pokud chceme, aby video sahalo až do konce kontejneru */
 }
 
 /* Kontejner, který obaluje text a video pro vytvoření rozložení */
 .o-mne-video-wrap {
-    position: relative;
-    display: flex;
-    min-height: 400px; /* Zajišťuje minimální viditelnou plochu pro video, i když je text krátký */
-    margin-top: 20px; /* Mezera pod nadpisem "O MNĚ" */
-    /* Používáme padding z .category místo marginu */
-    padding: 0 15px; 
+    position: relative;
+    display: flex;
+    min-height: 400px; /* Zajišťuje minimální viditelnou plochu pro video, i když je text krátký */
+    margin-top: 20px; /* Mezera pod nadpisem "O MNĚ" */
+    /* Používáme padding z .category místo marginu */
+    padding: 0 15px; 
 }
 
 /* Textový obsah, omezený na levou polovinu a umístěný nad videem */
 #o-mne .content-text {
-    position: relative;
-    z-index: 2; /* Text je nad videem */
-    width: 50%; /* Omezí text na levou polovinu */
-    /* Zrušíme původní max-width na .content-text pro tuto sekci, pokud byl aktivní */
-    max-width: none; 
-    padding-right: 30px; /* Větší mezera mezi textem a okrajem videa */
+    position: relative;
+    z-index: 2; /* Text je nad videem */
+    width: 50%; /* Omezí text na levou polovinu */
+    /* Zrušíme původní max-width na .content-text pro tuto sekci, pokud byl aktivní */
+    max-width: none; 
+    padding-right: 30px; /* Větší mezera mezi textem a okrajem videa */
 }
 
 /* Video, které je absolutně pozicováno na pravé polovině */
 .video-o-mne {
-    position: absolute;
-    top: 0;
-    left: 50%; /* Začátek v polovině šířky */
-    width: 50%; /* Šířka pravé poloviny */
-    height: 100%; /* Plná výška rodičovského kontejneru .o-mne-video-wrap */
-    object-fit: cover; /* Zajistí, že video pokryje oblast bez zkreslení */
-    z-index: 1; /* Video pod textem */
-    border-radius: 12px; /* Zaoblené rohy, pokud chcete */
+    position: absolute;
+    top: 0;
+    left: 50%; /* Začátek v polovině šířky */
+    width: 50%; /* Šířka pravé poloviny */
+    height: 100%; /* Plná výška rodičovského kontejneru .o-mne-video-wrap */
+    object-fit: cover; /* Zajistí, že video pokryje oblast bez zkreslení */
+    z-index: 1; /* Video pod textem */
+    border-radius: 12px; /* Zaoblené rohy, pokud chcete */
+}
+
+/* Úprava pro model-viewer - zajištění responzivního chování */
+model-viewer {
+    width: 100%;
+    height: 600px; /* Ponecháno pro desktopy, bude upraveno pro mobily */
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    display: block;
 }
 
 /* --- MEDIA QUERIES A PŘIZPŮSOBENÍ PRO MOBILNÍ ZAŘÍZENÍ --- */
 
-@media (max-width: 900px) {
-    .johana-name { font-size: 32px; }
-    .header-left { gap: 8px; }
-    .nav-logo { height: 30px; }
-    .overlay-image { height: 60px; }
-    .section-title { font-size: 60px; }
-    .content-text { font-size: 14px; }
-    
-    /* Na tabletech a menších obrazovkách: Text a video se přepnou pod sebe */
-    .o-mne-video-wrap {
-        flex-direction: column;
-        min-height: auto; /* Zrušíme fixní výšku */
-    }
-    
-    /* Resetování stylů pro text a video na menších obrazovkách */
-    #o-mne .content-text {
-        width: 100%; /* Text zabere plnou šířku */
-        padding-right: 0;
-        margin-bottom: 20px; /* Mezera pod textem */
-    }
-    
-    .video-o-mne {
-        position: relative; /* Video je normální prvek, ne absolutní */
-        left: 0;
-        width: 100%; /* Video zabere plnou šířku */
-        height: auto; /* Přirozená výška */
-        z-index: 1; 
-    }
+/* Breakpoint pro tablety a menší desktopy */
+@media (max-width: 1024px) {
+    .nav-btn {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+    .nav-left, .nav-right {
+        gap: 20px;
+    }
+    .johana-name {
+        font-size: 16px;
+    }
 }
+
+/* Breakpoint pro tablety na šířku a menší */
+@media (max-width: 900px) {
+    .johana-name { 
+        font-size: 24px; /* Zvětšení jména pro lepší čitelnost na tabletech */
+        line-height: 1.2;
+    }
+    .header-left { gap: 10px; }
+    .nav-logo { height: 30px; }
+    .overlay-image { height: 60px; }
+    .section-title { font-size: 80px; } /* Mírné zmenšení pro tablety */
+    .content-text { font-size: 14px; }
+    
+    /* Na tabletech a menších obrazovkách: Text a video se přepnou pod sebe */
+    #o-mne {
+        padding: 0; /* Zrušíme padding, který může dělat problémy s výpočtem šířky */
+    }
+    .o-mne-video-wrap {
+        flex-direction: column;
+        min-height: auto; /* Zrušíme fixní výšku */
+        padding: 0 20px; /* Přidáme zpět padding pro obsah uvnitř */
+    }
+    
+    /* Resetování stylů pro text a video na menších obrazovkách */
+    #o-mne .content-text {
+        width: 100%; /* Text zabere plnou šířku */
+        padding-right: 0;
+        margin-bottom: 20px; /* Mezera pod textem */
+        font-size: 12px; /* Zpět na původní menší velikost pro text */
+    }
+    
+    .video-o-mne {
+        position: relative; /* Video je normální prvek, ne absolutní */
+        left: 0;
+        width: 100%; /* Video zabere plnou šířku */
+        height: 400px; /* Nastavíme rozumnou výšku videa */
+        z-index: 1; 
+    }
+}
+
+/* Breakpoint pro mobilní telefony */
 @media (max-width: 768px) {
-    .header-split { padding: 0 10px; }
-    .profile-banner { padding: 0 10px; }
-    .hiro-nav { padding: 0 14px; }
-    .nav-right { gap: 14px; }
-    .right-banner { text-align: left; font-size: 48px; }
-    .media-caption { padding: 0 10px; }
-    .header-split { flex-direction: column; }
-    .header-left { margin-bottom: 20px; }
-    .header-right { align-self: flex-start; }
-    .blabla-text { padding-top: 0; }
-    
-    .portfolio-action-bar {
-        padding: 20px;
-    }
-    .overlay-image {
-        height: 40px;
-    }
-    .category {
-        padding: 0 5px;
-    }
-    .nav-logo {
-        height: 25px;
-    }
+    /* Pevné rozložení Navigace - skrýt tlačítka, ponechat logo a prázdný prostor (JH box) */
+    .nav-right {
+        display: none; /* Skryjeme navigační tlačítka pro mobilní menu/hamburger */
+    }
+    .hiro-nav {
+        padding: 0 10px;
+    }
+    .nav-left {
+        gap: 10px;
+    }
+
+    /* Úvodní sekce */
+    .header-split { 
+        flex-direction: column; /* Jméno a "DESIGN + TECH" pod sebou */
+        padding: 0 10px; 
+    }
+    .hero-intro { 
+        padding-top: 20px; 
+        margin-bottom: 20px;
+    }
+    .header-left { 
+        margin-bottom: 10px; /* Mezera pod jménem */
+        align-items: flex-start;
+    }
+    .header-right { 
+        align-self: flex-start; /* Zarovnat doprava zarovnaný text doleva */
+        text-align: left;
+    }
+    .blabla-text { 
+        padding-top: 0; 
+    }
+    .johana-name { 
+        font-size: 32px; /* Velikost odpovídající náhledu */
+    }
+
+    .profile-banner { 
+        padding: 0 10px; 
+        height: 200px; /* Mírné zmenšení banneru */
+    }
+    .section-title { 
+        font-size: 60px; /* Další zmenšení nadpisů */
+    }
+    .content-text {
+        font-size: 12px;
+    }
+
+    /* Sekce O MNĚ */
+    .o-mne-video-wrap {
+        padding: 0 10px;
+    }
+    .category {
+        padding: 0 10px;
+    }
+
+    /* Portfolio */
+    .portfolio-projects {
+        margin: 0;
+        padding: 20px 0;
+    }
+    .right-banner { 
+        text-align: left; 
+        font-size: 48px; 
+    }
+    .media-caption { 
+        padding: 0 10px; 
+    }
+    .separator-line {
+        margin: 40px 0;
+    }
+    .portfolio-action-bar {
+        padding: 10px 0; /* Zmenšení paddingu */
+    }
+
+    /* 3D Model */
+    model-viewer {
+        height: 400px; /* Zmenšení výšky 3D modelů pro mobily */
+    }
 }
