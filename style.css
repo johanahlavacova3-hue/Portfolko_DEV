@@ -344,4 +344,111 @@ body {
         width: 100%;
         height: auto;
     }
+
+    /* === DOPLNĚNÉ MOBILNÍ PRAVIDLA (jen přidáno, nic nepřepisuje) === */
+
+@media (max-width: 799px) {
+
+    /* Hlavička – aby se nerozsypala */
+    .hiro-nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-right {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .nav-btn {
+        font-size: 14px;
+    }
+
+    /* Hero sekce – víc jako náhled */
+    .header-split {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        gap: 0;
+    }
+
+    .johana-name {
+        font-size: 38px;
+        line-height: 1;
+        margin-bottom: 5px;
+    }
+
+    .blabla-text {
+        font-size: 20px;
+        margin-top: -5px;
+    }
+
+    .profile-banner {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* Sekce O MNĚ – lepší čtení, žádné ujeté okraje */
+    .content-text {
+        padding: 0 15px;
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    .video-o-mne {
+        width: 100%;
+        border-radius: 12px;
+    }
+
+    /* Hlavičky projektů – aby se držely u sebe */
+    .header-row {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        margin-bottom: 15px;
+    }
+
+    .right-banner {
+        font-size: 28px;
+        margin-top: 0;
+    }
+
+    .left-flag {
+        font-size: 14px;
+        line-height: 1.2;
+        opacity: 0.8;
+    }
+
+    /* Media wrap – rovný spacing */
+    .media-wrap {
+        gap: 10px;
+    }
+
+    .media {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .media-caption {
+        padding: 0 10px;
+        font-size: 15px;
+        line-height: 1.35;
+        margin-bottom: 15px;
+    }
+
+    /* Oddělovací čáry menší */
+    .separator-line {
+        margin: 40px 0;
+    }
+
+    /* Kontakty – kompaktní */
+    .contacts .content-text {
+        padding: 0 15px;
+        font-size: 16px;
+    }
+}
+
 }
