@@ -294,118 +294,47 @@ body {
 /* -------------------------- */
 
 @media (max-width: 799px) {
-    /* hlavička */
-    .hiro-nav {
-        flex-direction: column;
-        gap: 5px;
-    }
-    .nav-right {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-    }
-    .nav-btn {
-        font-size: 9px;
-    }
-
-    /* Hero sekce */
-    .header-split {
-        flex-direction: column;
-        text-align: left;
-        gap: 0;
-    }
-    .header-left { margin-bottom: 20px; }
-    .header-right { align-self: flex-start; }
-    .johana-name { font-size: 28px; line-height: 1; margin-bottom: 5px; }
-    .blabla-text { font-size: 20px; margin-top: -5px; }
-    .profile-banner { width: 100%; margin-top: 10px; padding-left: 5px; padding-right: 0; }
-
-    /* O MNĚ */
-    .content-text { padding: 0 15px; font-size: 9px; line-height: 1.4; }
-    .o-mne-video-wrap { flex-direction: column; min-height: auto; padding-left: 5px; padding-right: 0; }
-    #o-mne .content-text { width: 100%; padding-right: 0; margin-bottom: 20px; }
-    .video-o-mne { position: relative; left: 0; width: 100%; height: auto; border-radius: 8px; }
-
-    /* Hlavičky projektů */
-    .header-row { flex-direction: column; align-items: flex-start; gap: 5px; margin-bottom: 15px; }
-    .right-banner { font-size: 28px; margin-top: 0; }
-    .left-flag { font-size: 9px; line-height: 1.2; opacity: 0.8; }
-
     /* Media wrap */
     .media-wrap {
+        display: flex;
         flex-direction: row;
         overflow-x: auto; /* swipe zachován */
-        scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory; /* absolutní snap na každý obrázek */
         gap: 10px;
         padding-left: 5px; /* menší levý padding */
         padding-right: 10px;
     }
     .media-wrap::-webkit-scrollbar { display: none; }
+
+    .media-container {
+        flex: 0 0 auto; /* fixní box pro snap */
+        scroll-snap-align: start; /* snap na začátek každého obrázku */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: auto; /* actual size obrázku */
+    }
+
     .media {
-        flex: 0 0 auto; /* fixní velikost */
         width: auto; /* actual size */
         height: auto; /* actual size */
         max-width: 100%;
-        max-height: 100%;
         object-fit: cover;
         object-position: center;
         border-radius: 8px;
+        display: block;
     }
-    .media-caption { font-size: 9px; line-height: 1.35; margin-bottom: 15px; }
 
-    /* Portfolio action bar */
-    .portfolio-action-bar { padding: 20px; }
-    .overlay-image { height: 80px; }
-
-    /* Oddělovací čáry menší */
-    .separator-line { margin: 40px 0; }
-
-    /* Kontakty kompaktní */
-    .contacts .content-text { padding: 0 15px; font-size: 9px; }
-
-    /* Šipky slideru */
-    .slider-arrow {
-        position: absolute;
-        top: 40%;
-        transform: translateY(-50%);
+    .media-caption {
         font-size: 9px;
-        font-weight: 900;
-        z-index: 50;
-        cursor: pointer;
-        user-select: none;
-        padding: 10px;
-    }
-    .arrow-left { left: -5px; }
-    .arrow-right { right: -5px; }
-
-    /* Úvodní banner */
-    .profile-banner {
-        width: 100%;
-        height: auto; /* actual size */
-        object-fit: cover;
-        border-radius: 0;
-        margin: 0;
-        padding-left: 5px;
-        padding-right: 0;
-    }
-
-    /* Video O MNĚ */
-    .o-mne-video-wrap {
+        line-height: 1.35;
+        margin-top: 5px; /* pod obrázkem */
+        text-align: center;
         width: 100%;
         display: block;
-        position: relative;
-        margin-top: 20px;
-        padding-left: 5px;
-        padding-right: 0;
-    }
-    .video-o-mne {
-        width: 100%;
-        height: auto; /* actual size */
-        max-height: none;
-        object-fit: cover;
-        border-radius: 8px;
     }
 }
+
+
 
 
