@@ -292,48 +292,165 @@ body {
 /* -------------------------- */
 /* MOBILNÍ STYLY              */
 /* -------------------------- */
-
+/* -------------------------- */
+/* MOBILNÍ STYLY */
+/* -------------------------- */
 @media (max-width: 799px) {
-    /* Media wrap */
+    /* Obecné úpravy pro mobilní vzhled */
+    .stage {
+        padding: 0 10px; /* menší horizontální padding pro celé tělo */
+    }
+
+    /* Úprava navigace pro mobilní vzhled */
+    .hiro-nav {
+        padding: 0 10px;
+        justify-content: center; /* centrování loga */
+    }
+    .nav-left, .nav-right {
+        /* Skryje navigační tlačítka v mobilu (ponechá jen logo, jak naznačuje snímek obrazovky) */
+        display: none;
+    }
+    .nav-logo {
+        height: 30px;
+    }
+
+    /* Úprava HERO sekce */
+    .hero-intro {
+        padding-top: 30px; /* menší padding nahoře */
+        margin-bottom: 20px;
+    }
+    .header-split {
+        flex-direction: column; /* přesuneme do jednoho sloupce */
+        align-items: flex-start;
+        padding: 0 10px;
+    }
+    .header-left {
+        gap: 10px;
+        margin-bottom: 15px; /* mezera pod JH a jménem */
+    }
+    .johana-name {
+        font-size: 10px;
+    }
+    .header-right {
+        text-align: left;
+    }
+    .blabla-text {
+        font-size: 10px;
+        padding-top: 0;
+    }
+    .profile-banner {
+        /* Banner zůstává široký, ale omezíme výšku, pokud by byla moc velká */
+        height: 200px; /* menší výška banneru */
+        border-radius: 8px;
+    }
+
+    /* Úprava sekce "O MNĚ" */
+    #o-mne {
+        padding: 0 10px; /* padding pro text, ať není nalepen na kraji */
+    }
+    .section-title {
+        font-size: 48px; /* menší velikost nadpisu */
+        margin-bottom: 10px;
+        padding: 0;
+    }
+    .content-text {
+        font-size: 10px;
+        padding: 0;
+    }
+    .content-text h3 {
+        margin-top: 20px;
+    }
+    .o-mne-video-wrap {
+        flex-direction: column; /* text nad videem */
+        min-height: auto;
+        margin-top: 15px;
+        padding: 0;
+    }
+    #o-mne .content-text {
+        width: 100%; /* text přes celou šířku */
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+    .video-o-mne {
+        position: relative; /* video pod textem */
+        left: 0;
+        width: 100%;
+        height: 200px; /* fixní výška pro mobilní video */
+    }
+    /* Separátor */
+    .separator-line {
+        margin: 40px 0;
+    }
+
+    /* Portfolio Action Bar */
+    .portfolio-action-bar {
+        padding: 25px 10px;
+    }
+
+    /* Sekce projektů */
+    .category {
+        margin-top: 40px;
+        padding: 0 10px;
+    }
+    .header-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .left-flag {
+        margin-top: 0;
+        font-size: 10px;
+    }
+    .right-banner {
+        font-size: 40px;
+        text-align: left;
+    }
+    
+    /* Media wrap pro horizontální posuv (KAREL 22' a piktogramy) */
     .media-wrap {
         display: flex;
         flex-direction: row;
-        overflow-x: auto; /* swipe zachován */
-        scroll-snap-type: x mandatory; /* absolutní snap na každý obrázek */
-        gap: 10px;
-        padding-left: 5px; /* menší levý padding */
+        overflow-x: auto; /* klíčové pro horizontální swipe */
+        scroll-snap-type: x mandatory;
+        gap: 15px; /* mezera mezi kartami */
+        padding-left: 10px;
         padding-right: 10px;
+        margin-top: 15px;
+        -ms-overflow-style: none; /* Skrytí scrollbaru IE and Edge */
+        scrollbar-width: none; /* Skrytí scrollbaru Firefox */
     }
-    .media-wrap::-webkit-scrollbar { display: none; }
-
+    .media-wrap::-webkit-scrollbar {
+        display: none; /* Skrytí scrollbaru Chrome, Safari, Opera */
+    }
     .media-container {
-        flex: 0 0 auto; /* fixní box pro snap */
-        scroll-snap-align: start; /* snap na začátek každého obrázku */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: auto; /* actual size obrázku */
+        flex: 0 0 80%; /* Velikost karty - cca 80% šířky obrazovky */
+        scroll-snap-align: start;
+        width: 100%;
     }
-
-    .media {
-        width: auto; /* actual size */
-        height: auto; /* actual size */
-        max-width: 100%;
+    /* Konkrétní úprava pro KAREL 22' (snímky) */
+    .media-container img.media {
+        /* Obrázek projektu zabírá celou šířku kontejneru */
+        width: 100%;
+        height: auto;
         object-fit: cover;
-        object-position: center;
         border-radius: 8px;
-        display: block;
     }
-
     .media-caption {
         font-size: 9px;
-        line-height: 1.35;
-        margin-top: 5px; /* pod obrázkem */
+        margin-top: 5px;
         text-align: center;
         width: 100%;
-        display: block;
+    }
+
+    /* Piktogramy (dovednosti) - aby byly menší a ve swipe kartách */
+    .media-wrap:nth-child(2) .media-container {
+        flex: 0 0 150px; /* fixní šířka pro piktogram, ať je jich vidět víc */
+    }
+    .media-wrap:nth-child(2) .media-container img.media {
+        height: 80px; /* fixní výška piktogramu */
+        width: auto;
     }
 }
+
 
 
 
