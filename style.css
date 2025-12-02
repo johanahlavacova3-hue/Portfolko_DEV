@@ -319,7 +319,7 @@ body {
         padding: 20px;
     }
     .overlay-image {
-        height: 80px;
+        height: 340px;
     }
     .category {
         padding: 0 5px;
@@ -352,7 +352,7 @@ body {
     /* Hlavička – aby se nerozsypala */
     .hiro-nav {
         flex-direction: column;
-        gap: 10px;
+        gap: 5px;
     }
 
     .nav-right {
@@ -363,7 +363,7 @@ body {
     }
 
     .nav-btn {
-        font-size: 14px;
+        font-size: 9px;
     }
 
     /* Hero sekce – víc jako náhled */
@@ -375,7 +375,7 @@ body {
     }
 
     .johana-name {
-        font-size: 38px;
+        font-size: 28px;
         line-height: 1;
         margin-bottom: 5px;
     }
@@ -393,13 +393,13 @@ body {
     /* Sekce O MNĚ – lepší čtení, žádné ujeté okraje */
     .content-text {
         padding: 0 15px;
-        font-size: 16px;
+        font-size: 9px;
         line-height: 1.4;
     }
 
     .video-o-mne {
         width: 100%;
-        border-radius: 12px;
+        border-radius: 8px;
     }
 
     /* Hlavičky projektů – aby se držely u sebe */
@@ -417,7 +417,7 @@ body {
     }
 
     .left-flag {
-        font-size: 14px;
+        font-size: 9px;
         line-height: 1.2;
         opacity: 0.8;
     }
@@ -434,7 +434,7 @@ body {
 
     .media-caption {
         padding: 0 10px;
-        font-size: 15px;
+        font-size: 9px;
         line-height: 1.35;
         margin-bottom: 15px;
     }
@@ -447,7 +447,7 @@ body {
     /* Kontakty – kompaktní */
     .contacts .content-text {
         padding: 0 15px;
-        font-size: 16px;
+        font-size: 9px;
     }
 }
 
