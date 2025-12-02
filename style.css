@@ -406,4 +406,59 @@ body {
     margin-bottom: 15px; 
 }
 
+    /* Úvodní banner */
+.profile-banner { 
+    width: 100%; 
+    height: 40px; 
+    object-fit: cover; 
+    border-radius: 0; 
+    margin: 0; 
+    padding-left: 5px; /* menší levý padding */ 
+    padding-right: 0; 
+}
+
+/* Video O MNĚ */
+.o-mne-video-wrap { 
+    width: 100%; 
+    display: block; 
+    position: relative; 
+    margin-top: 20px; 
+    padding-left: 5px; /* menší levý padding */ 
+    padding-right: 0; 
+}
+.video-o-mne { 
+    width: 100%; 
+    height: auto; 
+    max-height: 500px; 
+    object-fit: cover; 
+    border-radius: 8px; 
+}
+
+/* Portfolio fotky */
+.media-wrap { 
+    flex-direction: row; 
+    overflow-x: auto; /* swipe zachován */ 
+    scroll-snap-type: x mandatory; 
+    gap: 10px; 
+    padding-left: 5px; /* menší levý padding */ 
+    padding-right: 10px; 
+}
+.media-wrap::-webkit-scrollbar { 
+    display: none; 
+}
+.media { 
+    flex: 0 0 auto; /* fixní velikost, nezvětšovat */ 
+    width: 100%; 
+    height: 160px; 
+    object-fit: cover; 
+    object-position: center; 
+    border-radius: 8px; 
+}
+.media-caption { 
+    font-size: 9px; 
+    line-height: 1.35; 
+    margin-bottom: 15px; 
+}
+
+
 }
