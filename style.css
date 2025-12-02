@@ -340,7 +340,7 @@ body {
 
     /* Portfolio action bar */
     .portfolio-action-bar { padding: 20px; }
-    .overlay-image { height: 140px; }
+    .overlay-image { height: 80px; }
 
     /* Oddělovací čáry menší */
     .separator-line { margin: 40px 0; }
