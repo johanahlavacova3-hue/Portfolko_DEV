@@ -319,11 +319,11 @@ body {
     .header-right { align-self: flex-start; }
     .johana-name { font-size: 28px; line-height: 1; margin-bottom: 5px; }
     .blabla-text { font-size: 20px; margin-top: -5px; }
-    .profile-banner { width: 100%; margin-top: 10px; }
+    .profile-banner { width: 100%; margin-top: 10px; padding-left: 5px; padding-right: 0; }
 
     /* O MNĚ */
     .content-text { padding: 0 15px; font-size: 9px; line-height: 1.4; }
-    .o-mne-video-wrap { flex-direction: column; min-height: auto; }
+    .o-mne-video-wrap { flex-direction: column; min-height: auto; padding-left: 5px; padding-right: 0; }
     #o-mne .content-text { width: 100%; padding-right: 0; margin-bottom: 20px; }
     .video-o-mne { position: relative; left: 0; width: 100%; height: auto; border-radius: 8px; }
 
@@ -333,10 +333,26 @@ body {
     .left-flag { font-size: 9px; line-height: 1.2; opacity: 0.8; }
 
     /* Media wrap */
-    .media-wrap { flex-direction: row; overflow-x: scroll; scroll-snap-type: x mandatory; gap: 10px; padding-bottom: 20px; -webkit-overflow-scrolling: touch; }
+    .media-wrap {
+        flex-direction: row;
+        overflow-x: auto; /* swipe zachován */
+        scroll-snap-type: x mandatory;
+        gap: 10px;
+        padding-left: 5px; /* menší levý padding */
+        padding-right: 10px;
+    }
     .media-wrap::-webkit-scrollbar { display: none; }
-    .media { flex: 0 0 80%; scroll-snap-align: center; border-radius: 10px; width: 100%; }
-    .media-caption { padding: 0 10px; font-size: 9px; line-height: 1.35; margin-bottom: 15px; }
+    .media {
+        flex: 0 0 auto; /* fixní velikost */
+        width: auto; /* actual size */
+        height: auto; /* actual size */
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 8px;
+    }
+    .media-caption { font-size: 9px; line-height: 1.35; margin-bottom: 15px; }
 
     /* Portfolio action bar */
     .portfolio-action-bar { padding: 20px; }
@@ -364,101 +380,32 @@ body {
     .arrow-right { right: -5px; }
 
     /* Úvodní banner */
-.profile-banner { 
-    height: 40px; 
-    object-fit: cover; 
-    border-radius: 0; 
-    margin: 0; 
-    padding: 0; 
-}
+    .profile-banner {
+        width: 100%;
+        height: auto; /* actual size */
+        object-fit: cover;
+        border-radius: 0;
+        margin: 0;
+        padding-left: 5px;
+        padding-right: 0;
+    }
 
-/* Video O MNĚ */
-.o-mne-video-wrap { 
-    width: 100%; 
-    display: block; 
-    position: relative; 
-    margin-top: 20px; 
-}
-.video-o-mne { 
-    width: 100%; 
-    height: auto; 
-    max-height: 500px; 
-    object-fit: cover; 
-    border-radius: 8px; 
-}
-
-/* Portfolio fotky */
-.media-wrap { 
-    gap: 10px; 
-    padding: 0 10px; 
-}
-.media { 
-    width: 100%; 
-    height: 160px; 
-    object-fit: cover; 
-    object-position: center; 
-    transform: scale(1.5); 
-    border-radius: 8px; 
-}
-.media-caption { 
-    font-size: 9px; 
-    line-height: 1.35; 
-    margin-bottom: 15px; 
-}
-
-    /* Úvodní banner */
-.profile-banner { 
-    width: 100%; 
-    height: 40px; 
-    object-fit: cover; 
-    border-radius: 0; 
-    margin: 0; 
-    padding-left: 5px; /* menší levý padding */ 
-    padding-right: 0; 
-}
-
-/* Video O MNĚ */
-.o-mne-video-wrap { 
-    width: 100%; 
-    display: block; 
-    position: relative; 
-    margin-top: 20px; 
-    padding-left: 5px; /* menší levý padding */ 
-    padding-right: 0; 
-}
-.video-o-mne { 
-    width: 100%; 
-    height: auto; 
-    max-height: 500px; 
-    object-fit: cover; 
-    border-radius: 8px; 
-}
-
-/* Portfolio fotky */
-.media-wrap { 
-    flex-direction: row; 
-    overflow-x: auto; /* swipe zachován */ 
-    scroll-snap-type: x mandatory; 
-    gap: 10px; 
-    padding-left: 5px; /* menší levý padding */ 
-    padding-right: 10px; 
-}
-.media-wrap::-webkit-scrollbar { 
-    display: none; 
-}
-.media { 
-    flex: 0 0 auto; /* fixní velikost, nezvětšovat */ 
-    width: 100%; 
-    height: 160px; 
-    object-fit: cover; 
-    object-position: center; 
-    border-radius: 8px; 
-}
-.media-caption { 
-    font-size: 9px; 
-    line-height: 1.35; 
-    margin-bottom: 15px; 
+    /* Video O MNĚ */
+    .o-mne-video-wrap {
+        width: 100%;
+        display: block;
+        position: relative;
+        margin-top: 20px;
+        padding-left: 5px;
+        padding-right: 0;
+    }
+    .video-o-mne {
+        width: 100%;
+        height: auto; /* actual size */
+        max-height: none;
+        object-fit: cover;
+        border-radius: 8px;
+    }
 }
 
 
-}
