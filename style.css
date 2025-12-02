@@ -276,7 +276,7 @@ body {
     .media {
         flex: 0 0 80%;
         scroll-snap-align: center;
-        border-radius: 12px;
+        border-radius: 8px;
     }
 
     /* šipky – umístění */
@@ -306,7 +306,7 @@ body {
     /* ostatní mobilní styly */
     .header-split { padding: 0 10px; }
     .profile-banner { padding: 0 10px; }
-    .hiro-nav { padding: 0 14px; }
+    .hiro-nav { padding: 0 9px; }
     .nav-right { gap: 14px; }
     .right-banner { text-align: left; font-size: 48px; }
     .media-caption { padding: 0 10px; }
@@ -319,7 +319,7 @@ body {
         padding: 20px;
     }
     .overlay-image {
-        height: 40px;
+        height: 80px;
     }
     .category {
         padding: 0 5px;
