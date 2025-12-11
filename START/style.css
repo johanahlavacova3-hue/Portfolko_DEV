@@ -1,0 +1,232 @@
+:root {
+    --light-bg: #FFFFFF;
+    --dark-bg: #181818;
+    --dark-text: #181818;
+    --light-text: #FFFFFF;
+    --secondary-text-light: #CBCBCB;
+    --secondary-text-dark: #7A7A7A;
+    --accent-color: #84FF00;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.4s, color 0.4s;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+}
+
+.light-mode {
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+}
+
+/* Header */
+.header-info {
+    position: absolute;
+    top: 5vh;
+    left: 5vw;
+    right: 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#name {
+    font-size: 5vw;
+    font-weight: 900;
+    line-height: 1;
+    position: relative;
+    transition: transform 0.05s ease-out, color 0.4s;
+}
+
+#description {
+    font-size: 1.5vw;
+    font-weight: 900;
+    margin-top: 10px;
+    position: relative;
+    transition: transform 0.05s ease-out, color 0.4s;
+}
+
+.light-mode #name,
+.light-mode #description {
+    color: var(--dark-text);
+}
+
+.light-mode #description {
+    color: var(--secondary-text-light);
+}
+
+.dark-mode #description {
+    color: var(--light-text);
+}
+
+/* Přepínač režimu */
+#mode-switcher {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#mode-label {
+    font-size: 1vw;
+    margin-right: 10px;
+    font-weight: 900;
+}
+
+#mode-slider {
+    width: 80px;
+    height: 16px;
+    background-color: #84FF00;
+    border-radius: 10px;
+    position: relative;
+}
+
+#mode-slider::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 40px;
+    height: 8px;
+    background-color: var(--dark-bg);
+    border-radius: 33px;
+    transition: transform 0.3s;
+}
+
+.light-mode #mode-slider {
+    background-color: var(--dark-bg);
+}
+
+.light-mode #mode-slider::after {
+    transform: translateX(20px);
+    background-color: var(--light-bg);
+}
+
+.dark-mode #mode-slider::after {
+    transform: translateX(0);
+}
+
+/* Grid - PC */
+.content-grid {
+    position: absolute;
+    top: 30%;
+    left: 5vw;
+    right: 5vw;
+    bottom: 5vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0;
+}
+
+.main-title {
+    font-size: 7vw;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 10px;
+    user-select: none;
+    position: relative;
+    transition: transform 0.05s ease-out, color 0.4s;
+}
+
+.main-title .asterisk {
+    color: var(--secondary-text-dark);
+    opacity: 0.8;
+}
+
+.light-mode .main-title .asterisk {
+    color: var(--secondary-text-light);
+}
+
+.light-mode .main-title a {
+    color: var(--dark-text);
+}
+
+.sub-text {
+    font-size: 1.2vw;
+    font-weight: 900;
+    position: relative;
+    transition: transform 0.05s ease-out, color 0.4s;
+}
+
+.light-mode .sub-text {
+    color: var(--secondary-text-light);
+}
+
+.dark-mode .sub-text {
+    color: var(--secondary-text-dark);
+}
+
+/* Ryba */
+.game-icon {
+    width: 6vw;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    object-fit: contain;
+    transition: none;
+    opacity: 0.9;
+    transform-origin: center;
+}
+
+/* Interaktivní prvky */
+.interactable {
+    text-decoration: none;
+    color: inherit;
+}
+
+.dark-mode .main-title a {
+    cursor: default;
+    pointer-events: none;
+}
+
+/* --- ZAČÁTEK ÚPRAVY PRO MOBILNÍ REŽIM --- */
+@media (max-width: 768px) {
+    .dark-mode .main-title a {
+        pointer-events: auto; /* Zde povolujeme klikání pro mobil */
+        cursor: pointer;
+    }
+}
+/* --- KONEC ÚPRAVY --- */
+
+.light-mode .main-title a {
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+/* MOBILNÍ REŽIM */
+@media (max-width: 768px) {
+    #name { font-size: 11vw; }
+    #description { font-size: 4vw; }
+    .main-title { font-size: 10vw; }
+    .sub-text { font-size: 3vw; }
+    #mode-label { font-size: 3.5vw; }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, auto);
+        top: 28vh;
+        gap: 10vh;
+        justify-items: center;
+    }
+
+    .area {
+        text-align: center;
+    }
+
+    .game-icon {
+        display: none; /* Ryba skrytá na mobilu */
+    }
+}
