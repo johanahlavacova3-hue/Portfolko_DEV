@@ -245,6 +245,7 @@ body {
 
 .media-caption {
     width: 50%;
+    align-self: flex-start;
     font-size: 12px;
     font-weight: 800;
     text-align: left;
