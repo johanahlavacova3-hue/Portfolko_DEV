@@ -1,1 +1,392 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JOHANA HLAVÁČOVÁ - DESIGN × TECH </title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="apple-touch-icon" href="favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  </head>
+  <body>
+    <header class="hiro-bar">
+      <nav class="hiro-nav">
+        <div class="nav-left">
+          <img src="LOGO.png" alt="Logo" class="nav-logo" />
+        </div>
+        <div class="nav-right">
+          <a href="#o-mne" class="nav-btn">O MNĚ</a>
+          <a href="https://www.jhlavacova.cz/GAMES/" class="nav-btn">HRY</a>
+          <a href="#portfolio-projects" class="nav-btn">PORTFOLIO</a>
+          <a href="#kontakty" class="nav-btn">KONTAKTY</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="stage">
+      <section class="hero-intro">
+        <div class="header-split">
+          <div class="header-left">
+            <h1 class="johana-name">JOHANA<br />HLAVÁČOVÁ</h1>
+          </div>
+          <div class="header-right">
+            <p class="blabla-text">DESIGN + TECH</p>
+          </div>
+        </div>
+        <img src="SYSTEM/PROFILE.png" alt="Profilový banner" class="profile-banner" />
+      </section>
+
+      <section class="category" id="o-mne">
+        <video class="video-o-mne" src="KAREL-intro.mp4" autoplay loop muted playsinline></video>
+        <h2 class="section-title">O MNĚ</h2>
+        <div class="content-text">
+          <p>
+            Studuji již 4. rokem grafiku na pražské hellichovce, úspěšně, zatím. ve volněm čase se věnuji
+            robotům, motion designu, 3D tisku, grafice převážne ui & ux designu. současně působím v designu pro
+            korporát i pro neziskovky
+          </p>
+          <h3>ZKUŠENOSTI & DOVEDNOSTI</h3>
+          <ul>
+            <li><strong>DESIGN:</strong> UI/UX, 3D + 3D Tisk, Grafika, Prototypování</li>
+            <li><strong>TECH:</strong> HTML/CSS/JS, Arduino/HW, C++, AR, DENEB JSON</li>
+            <li>
+              <strong>NÁSTROJE:</strong> Figma, Blender, Adobe CC (PS, AI, PR, ID, AE, LR), AUTOCAD, 3D MAX
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <hr class="separator-line" />
+
+      <a href="https://www.jhlavacova.cz/GAMES/" class="portfolio-action-bar" id="games-button">
+        <video src="SYSTEM/GAMES_BANNER.mp4" autoplay loop muted playsinline></video>
+      </a>
+
+      <hr class="separator-line" />
+
+      <section class="portfolio-projects" id="portfolio-projects">
+        <h2 class="section-title">PORTFOLIO</h2>
+
+       <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN × UI & UX × CODE</div>
+                      <div class="left-flag"><br>(MECHANIKA = ING. TOMÁŠ ČERNÝ)</div>
+                    <h1 class="right-banner">KAREL 25’</h1>
+                </div>
+                <div class="media-wrap">
+                    <video class="media" src="KAREL/KAREL_01.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">Karel je prototyp robotické ruky. 
+Slouží mi jako osobní laboratoř, na které se učím programování, stavbu vlastního hardwaru a základy robotiky. Jde o dlouhodobý pokus vytvořit funkční objekt, který nebude jen technickým cvičením, ale i věcí, která má svébytnou osobnost a radost z používání.</p>
+                    <img class="media" src="KAREL/KAREL_02.png" alt="KAREL 02" />
+                    <p class="media-caption">Projekt navazuje na kultovní vzdělávací hru Karel the Robot z osmdesátých let. Stejně jako původní Karel mě vede k tomu přemýšlet o tom, jak strojům předáváme úkoly a jak s námi mohou sdílet prostor i způsob uvažování. </p>
+                    <img class="media" src="KAREL/KAREL_03.png" alt="KAREL 03" />
+                    <p class="media-caption">Během vývoje se původní návrhy několikrát proměnily. Nešlo jen o nutné mechanické úpravy, ale i o změny vyplývající z toho, jak se postupně vyvíjela samotná představa o tom, k čemu má Karel sloužit a jak s ním budu interagovat.</p>
+                    <img class="media" src="KAREL/KAREL_04.png" alt="KAREL 03" />
+                    <p class="media-caption">Hardware je kompletně navržený na míru a celý řídicí systém píšu v C++. Základem je deska ESP32, která ovládá serva, tlačítka i veškeré LED osvětlení. Celý projekt postupně roste do podoby autonomnějšího, responzivního objektu.</p>
+                    <video class="media" src="KAREL/KAREL_05.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">Takhle by měl Karel fungovat ve chvíli, kdy bude dokončený – jako jednoduchý, ale promyšlený robot, ve kterém se spojuje technika, hra a proces učení.</p>
+                    <video class="media" src="KAREL/KAREL_06.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">Nejnovější prototyp!! Ovládaný mobilní webovou aplikací. Pouze klepeto. </p>
+                  
+                </div>
+            </section>
+           
+            <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN × UI & UX × CODE</div>
+                    <h1 class="right-banner">KAREL THE ROBOT</h1>
+                </div>
+                <div class="media-wrap">
+                    <video class="media" src="KAREL-GAME/KAREL-GAME_01.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">Remake legendární hry Karel the Robot vznikl jako webová aplikace, která posouvá původní princip do současnosti. Zatímco osmdesátkový Karel učil základům algoritmizace pomocí jednoduchých příkazů, tahle verze reaguje na dnešní vizuální i interakční standardy.</p>
+                    <video class="media" src="KAREL-GAME/KAREL-GAME_02.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">První prototyp byl složitější a simuloval pohyb celé robotické postavy, podobně jako ve fyzickém projektu Karel. Postupem času jsem ale zvolila jednodušší a čistší variantu – hráč ovládá pouze jeden pohyblivý článek. Umožnilo mi to soustředit se na jádro hry: jasné zadání, čitelný pohyb a přímou vazbu mezi kódem a výsledkem.</p>
+                    <img class="media" src="KAREL-GAME/KAREL-GAME_03.png" alt="KAREL g 03" />
+                    <p class="media-caption">Nalevo je původní Karel z osmdesátých let, napravo první návrhy jeho rekonstrukce. Cílem bylo starý abstrahovaný model převést do vizuálně současné podoby, která respektuje ducha originálu, ale zároveň má charakter, který ladí s dnešní estetiku i technickými možnostmi. </p>
+                    <img class="media" src="KAREL-GAME/KAREL-GAME_04.png" alt="KAREL g 03" />
+                    <p class="media-caption"></p>
+                    
+                   <!-- KLIKNUTÍM NA OBRÁZEK OTEVŘE HRU NA /GAMES/KAREL_THE_ROBOT-GAME_main/ -->
+                    <a href="/GAMES/KAREL_THE_ROBOT-GAME_main/" target="_blank" class="media-link">
+                        <video class="media" src="KAREL-GAME/KAREL-GAME_05.mp4"  autoplay loop muted playsinline></video>
+                    </a>
+                    <p class="media-caption"></p>
+                </div>
+            </section>
+
+
+             <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>DESIGN x PRINT x 3D x HARDWERE x SOFTWERE</div>
+                    <h1 class="right-banner">MYŠÁK</h1>
+                </div>
+                <div class="media-wrap">
+                  <!--  <video class="media" src="MYSAK/MYSAK_01.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">Myšák je malý robot, který dávkuje bonbóny a funguje jako osobní zvířátko na zlepšení nálady.</p> -->
+                    <img class="media" src="MYSAK/MYSAK_01.png" alt="KONEV 02" />
+                    <p class="media-caption">Myšák je malý robot, který dávkuje bonbóny a funguje jako osobní zvířátko na zlepšení nálady.</p>
+                    <video class="media" src="MYSAK/MYSAK_02.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">Vznikl ve chvíli, kdy jsem chtěla něco hravého a trochu absurdního – objekt, který existuje jen proto, aby potěšil. Od začátku jsem mířila k podobě drobné, nenápadné myšičky, která se tiše objeví na stole, udělá svou práci a nijak nenarušuje okolí. Takové „cibetkové bonbóny“ převedené do robotické podoby. </p> 
+                    <img class="media" src="MYSAK/MYSAK_03.png" alt="KONEV 03" />
+                    <p class="media-caption">Technicky je Myšák velmi jednoduchý: jedno servo, ESP32 naprogramované v C++ a bezdotykové tlačítko, které dává impuls k otevření mechanismu. O to víc práce ale zabral hardware. Mechanika byla největší překážkou – celé dávkování potřebovalo přesný pohyb i spolehlivou konstrukci. Nakonec z toho vyšla vrstvená 3D tištěná schránka, která drží tvar a umožňuje stabilní chod.</p>
+                    <video class="media" src="MYSAK/MYSAK_04.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">První verze ukazuje základní design a prototyp mechaniky – ještě bez detailů, spíš hledání tvaru a pohybu. </p> 
+                    <img class="media" src="MYSAK/MYSAK_04.png" alt="KONEV 03" />
+                    <p class="media-caption">Druhá verze je už výrazně dál a v paralelním provozu slouží jako zkušební model.</p>
+                    <model-viewer
+                        class="media"
+                        src="MYSAK/MYSAK_05.glb"
+                        alt="3D model konve"
+                        camera-controls
+                        auto-rotate
+                        rotation-per-second="15deg"
+                        exposure="1"
+                        shadow-intensity="1"
+                        style="width: 100%; height: 600px; background-color: #FFFFFF; border-radius: 12px;">
+                    </model-viewer>
+                    <p class="media-caption">Prohlédněte si také 3D model. Brzy bude ke stažení a připravený k dalším experimentům.</p>
+                </div>
+            </section>
+
+           <!--    <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN</div>
+                    <h1 class="right-banner">MYŠÁK</h1>
+                </div>
+                <div class="media-wrap">
+                    <img class="media" src="MYSAK/MYSAK_01.png" alt="MYSAK 01">
+                    <p class="media-caption">uvod catch</p>
+                       <img class="media" src="MYSAK/MYSAK_02.png" alt="MYSAK 02">
+                    <p class="media-caption">UPRESNENI</p>
+                    <img class="media" src="MYSAK/MYSAK_03.png" alt="MYSAK 03">
+                    <p class="media-caption">SKICI</p>
+                    <img class="media" src="MYSAK/MYSAK_04.png" alt="MYSAK 04">
+                    <p class="media-caption">UKAZKA - video, spousti se tlacitkem na hlave, vypadne bonbon interaktivni</p>
+                    <img class="media" src="MYSAK/MYSAK_05.png" alt="MYSAK 05">
+                    <p class="media-caption">FINAL</p> 
+                </div>
+            </section> -->
+           
+     <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>UI & UX</div>
+                    <h1 class="right-banner">ZDENA</h1>
+                </div>
+                <div class="media-wrap">
+                    <img class="media" src="ZDENA/ZDENA_01.png" alt="ZDENA 01">
+                    <p class="media-caption">--</p>
+                    <video class="media" src="ZDENA/ZDENA_02.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">--</p>
+                    <img class="media" src="ZDENA/ZDENA_03.png" alt="ZDENA 02" />
+                    <p class="media-caption">--</p>
+                    <img class="media" src="ZDENA/ZDENA_04.png" alt="ZDENA 02" />
+                    <p class="media-caption">--</p>
+                    
+                </div>
+            </section> 
+           
+           <!-- <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>AR x CODE x DESIGN x UI & UX x 3D x PRINT</div>
+                    <h1 class="right-banner">OHÝNEK</h1>
+                </div>
+                <div class="media-wrap">
+                    <img class="media" src="STRELA/STRELA_01.png" alt="STRELA 01">
+                    <p class="media-caption">uvod catch</p>
+                    <img class="media" src="STRELA/STRELA_02.png" alt="STRELA 02">
+                    <p class="media-caption">UPRESNENI</p>
+                    <img class="media" src="STRELA/STRELA_03.png" alt="STRELA 03">
+                    <p class="media-caption">SKICI</p>
+                    <img class="media" src="STRELA/STRELA_04.png" alt="STRELA 04">
+                    <p class="media-caption">3D model chaty/surface</p>
+                    <img class="media" src="STRELA/STRELA_05.png" alt="STRELA 05">
+                    <p class="media-caption">ZKUS TO</p>
+                </div>
+            </section> -->
+           
+          <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2024 – SOUČASNOST<br>UI & UX x CODE</div>
+                    <h1 class="right-banner">NoS</h1>
+                </div>
+                <div class="media-wrap">
+                    <img class="media" src="NOS/NOS_01.png" alt="NOS 01" />
+                    <p class="media-caption">Nová Spěška je interní software pro ČEPS určený pro vizualizaci dat. Aplikace musí zobrazovat data efektivně a přehledně, a to jak na velkých obrazovkách, tak na monitorech, tabletech a mobilních zařízeních. </p>
+                    <img class="media" src="NOS/NOS_02.png" alt="NOS 02" />
+                    <p class="media-caption">Moje role je grafický design (UI & UX) a kódování některých vizualizací pomocí Deneb/Vega JSON. Momentálně prezentuji ukázku bez reálných dat. </p>
+                    <img class="media" src="NOS/NOS_03.png" alt="NOS 03" />
+                    <p class="media-caption">Projekt zajišťuje přehlednou a funkční vizualizaci dat pro interní potřeby ČEPS, podporuje rychlé rozhodování a efektivní monitoring. </p>
+                </div>
+            </section> 
+
+
+            <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>DESIGN x PRINT x 3D x HARDWERE x SOFTWERE</div>
+                    <h1 class="right-banner">STŘELA</h1>
+                </div>
+                <div class="media-wrap">
+                  <!--  <video class="media" src="STRELA/STRELA_01.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">Myšák je malý robot, který dávkuje bonbóny a funguje jako osobní zvířátko na zlepšení nálady.</p> -->
+                    <img class="media" src="STRELA/STRELA_01.png" alt="KONEV 02" />
+                    <p class="media-caption">--</p>
+                    <img class="media" src="STRELA/STRELA_02.png" alt="KONEV 02" />
+                    <p class="media-caption">--</p>
+                    <img class="media" src="STRELA/STRELA_03.png" alt="KONEV 03" />
+                    <p class="media-caption">--</p>
+                    <model-viewer
+                        class="media"
+                        src="STRELA/STRELA_05.glb"
+                        alt="3D model konve"
+                        camera-controls
+                        auto-rotate
+                        rotation-per-second="15deg"
+                        exposure="1"
+                        shadow-intensity="1"
+                        style="width: 100%; height: 600px; background-color: #FFFFFF; border-radius: 12px;">
+                    </model-viewer>
+                    <p class="media-caption">Brzy appka s AR!!! </p>
+                </div>
+            </section>
+        
+
+            
+            <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>DESIGN x PRINT x 3D</div>
+                    <h1 class="right-banner">KONEV</h1>
+                </div>
+                <div class="media-wrap">
+                    <video class="media" src="KONEV/KONEV_01.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">Vstup a výstup je stejný, je to konev, ale musí být konstrukce stejná? </p>
+                    <img class="media" src="KONEV/KONEV_02.png" alt="KONEV 02" />
+                    <p class="media-caption"></p>
+                    <img class="media" src="KONEV/KONEV_03.png" alt="KONEV 03" />
+                    <p class="media-caption">Inspirovali mě zamotané špagety je to vlastně výchozí tvar celé konve. </p>
+                    <model-viewer
+                        class="media"
+                        src="KONEV/KONEV_04.glb"
+                        alt="3D model konve"
+                        camera-controls
+                        auto-rotate
+                        rotation-per-second="15deg"
+                        exposure="1"
+                        shadow-intensity="1"
+                        style="width: 100%; height: 600px; background-color: #FFFFFF; border-radius: 12px;">
+                    </model-viewer>
+                    <p class="media-caption">Prohlédněte si 3D model. Brzy ke stažení! </p>
+                </div>
+            </section>
+
+        <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025 <br>ŠKOLNÍ PRÁCE</div>
+                  <div class="left-flag"><br>(FOTO = TAMIR MAXMILIÁN YAFFE)</div>
+                    <h1 class="right-banner">SPOKO KUŘE</h1>
+                </div>
+                <div class="media-wrap">
+                    <img class="media" src="SPOKO/SPOKO_01.png" alt="SPOKO 01" />
+                    <p class="media-caption">--</p>
+                    <img class="media" src="SPOKO/SPOKO_02.png" alt="SPOKO 01" />
+                    <p class="media-caption">--</p>
+                    <img class="media" src="SPOKO/SPOKO_03.png" alt="SPOKO 01" />
+                    <p class="media-caption">--</p>
+                </div>
+            </section> 
+
+        <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025 <br>ŠKOLNÍ PRÁCE</div>
+                  <div class="left-flag"><br>(FOTO = TAMIR MAXMILIÁN YAFFE)</div>
+                    <h1 class="right-banner">CORN</h1>
+                </div>
+                <div class="media-wrap">
+                    <img class="media" src="CORN/CORN_01.png" alt="CORN 01" />
+                    <p class="media-caption">--</p>
+                    <img class="media" src="CORN/CORN_02.png" alt="CORN 01" />
+                    <p class="media-caption">--</p>
+                    <img class="media" src="CORN/CORN_03.png" alt="CORN 01" />
+                    <p class="media-caption">--</p>
+                </div>
+            </section> 
+
+
+                    <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>UI & UX x CODE </div>
+                    <h1 class="right-banner">MADDONA</h1>
+                </div>
+                <div class="media-wrap">
+                    <video class="media" src="MADDONA/MADDONA_01.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">Madona je webová aplikace vytvořená pro kavárnu Černá Madona.</p>
+                   <video class="media" src="MADDONA/MADDONA_02.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">Programovala jsem ji v JavaScriptu jako doprovod k 3D objektu navrženému pro prostor kavárny. Jednoduchá geometrie se tu mění v živý ornament a ukazuje, jak může digitální generativní forma rozšiřovat atmosféru místa a jeho vizuální identitu.</p>
+                    <img class="media" src="MADDONA/MADDONA_03.png" alt="MADDONA 03" />
+                    <p class="media-caption">Pokračování se nabízí v podobě interaktivních projekcí nebo propojení přímo s objektem v prostoru.</p>
+                   <!-- <img class="media" src="MADDONA/MADDONA_04.png" alt="MADDONA 04" />
+                    <p class="media-caption">detail</p> -->
+                   
+                    <!-- KLIKNUTÍM NA OBRÁZEK SE OTEVŘE HRA -->
+                    <a href="https://johanahlavacova3-hue.github.io/Maddonna_DEV/" target="_blank" class="media-link">
+                        <img class="media" src="MADDONA/MADDONA_01.png" alt="Spustit aplikaci MADONA" />
+                    </a>
+                    <p class="media-caption">Spustit aplikaci MADONA</p>
+                    
+                </div>
+            </section> 
+
+                  <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>DESIGN × UI & UX × CODE</div>
+                    <h1 class="right-banner">GPS</h1>
+                </div>
+                <div class="media-wrap">
+                    <video class="media" src="GPS/GPS_01.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">--</p>
+                    <video class="media" src="GPS/GPS_02.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">--</p>
+                    <img class="media" src="GPS/GPS_03.png" alt=" 03" />
+                    <p class="media-caption">--</p>
+                    
+                    
+                   <!-- KLIKNUTÍM NA OBRÁZEK OTEVŘE HRU NA /GAMES/KAREL_THE_ROBOT-GAME_main/ -->
+                    <a href="https://johanahlavacova3-hue.github.io/GPS-dev/" target="_blank" class="media-link">
+                        <video class="media" src="GPS/GPS_04.mp4"  autoplay loop muted playsinline></video>
+                    </a>
+                    <p class="media-caption">ZAČÍT OBJEVOVAT</p>
+                </div>
+            </section>
+
+
+
+
+
+      </section>
+
+      <hr class="separator-line" />
+
+      <section class="category contacts" id="kontakty">
+        <h2 class="section-title">KONTAKTY</h2>
+        <div class="content-text">
+          <p>Máte zájem o spolupráci, nebo byste se chtěli jen zeptat? Neváhejte mě kontaktovat!</p>
+          <p class="contact-info">
+            EMAIL:
+            <a href="mailto:hlavacova.johana22@hellichovka.cz">HLAVACOVA.JOHANA22@HELLICHOVKA.CZ</a><br />
+            LINKEDIN:
+            <a href="https://www.linkedin.com/in/johana-hlaváčová-83a393317" target="_blank">Johana Hlaváčová</a
+            ><br />
+            PRINTABLES:
+            <a href="https://www.printables.com/@JohanaHlavac_3043154" target="_blank">Johana Hlaváčová</a><br />
+            INSTAGRAM:
+            <a href="https://www.instagram.com/jozohlavec/" target="_blank">@jozohlavec</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
 
