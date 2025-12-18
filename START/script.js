@@ -6,11 +6,11 @@ const interactiveElements = document.querySelectorAll(
     '#name, #description, .main-title, .sub-text, .game-icon'
 );
 
-const MAX_SHIFT = 600;
-const REACTION_DISTANCE = 800;
-const MIN_DISTANCE_RYBA = 50;
-const BOUND_LIMIT = 150;
-const JITTER_MAX = 2;
+const MAX_SHIFT = 300; //600
+const REACTION_DISTANCE = 800; 
+const MIN_DISTANCE_RYBA = 5; //50
+const BOUND_LIMIT = 200; //150
+const JITTER_MAX = 10; //2
 let jitterInterval;
 
 const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
