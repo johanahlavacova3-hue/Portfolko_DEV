@@ -10,7 +10,7 @@ const MAX_SHIFT = 100; //600
 const REACTION_DISTANCE = 800; 
 const MIN_DISTANCE_RYBA = 1; //50
 const BOUND_LIMIT = 200; //150
-const JITTER_MAX = 100; //2
+const JITTER_MAX = 5; //2
 let jitterInterval;
 
 const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
