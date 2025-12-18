@@ -6,8 +6,8 @@ const interactiveElements = document.querySelectorAll(
     '#name, #description, .main-title, .sub-text, .game-icon'
 );
 
-const MAX_SHIFT = 800; //600
-const REACTION_DISTANCE = 800; 
+const MAX_SHIFT = 2; //600
+const REACTION_DISTANCE = 1; 
 const MIN_DISTANCE_RYBA = 1; //50
 const BOUND_LIMIT = 200; //150
 const JITTER_MAX = 5; //2
