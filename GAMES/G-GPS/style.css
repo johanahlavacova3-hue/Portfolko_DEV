@@ -1,0 +1,211 @@
+body {
+    margin: 0;
+    overflow: hidden; 
+    background-color: #000000;
+    color: #fff;
+    font-family: 'Geist Mono', monospace;
+    height: 100vh; 
+    display: flex; 
+}
+/* ------------------------------------------- */
+/* 1. Rozvržení pro Desktop / Větší tablety (> 1000px) */
+/* ------------------------------------------- */
+#left-area {
+    width: 75%; 
+    height: 100vh; 
+    position: relative;
+    padding: 0; 
+    box-sizing: border-box;
+}
+#right-ui-block {
+    width: 25%; 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 60px 20px 20px 20px;
+    box-sizing: border-box;
+    text-align: right; 
+    position: relative; 
+    gap: 15px; 
+}
+canvas#c {
+    position: absolute;
+    top: 0; 
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    border: none; 
+    box-sizing: border-box; 
+}
+#explore-label {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 2.5vw; 
+    letter-spacing: 0.5vw;
+    font-weight: 500;
+    z-index: 10; 
+    padding: 10px 20px;
+    /* Odebrán background: rgba(0, 0, 0, 0.5); - je viditelný jen nápis */
+}
+#gpw-label {
+    font-size: 5vw; 
+    line-height: 0.9;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+#coords-label {
+    font-size: 1.5vw;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+#gps-input {
+    width: 100%;
+    padding: 10px;
+    background: #000000; /* Změněno na čistě černou */
+    border: 10px solid #3B3B3B;
+    color: #fff;
+    font-family: 'Geist Mono', monospace;
+    font-size: 1.5vw;
+    box-sizing: border-box;
+    text-align: right;
+}
+#gps-hint {
+    font-size: 1vw;
+    color: #555;
+    margin-top: -10px; 
+}
+/* --- STYLY KRUHOVÉHO JOYSTICKU --- */
+/* Aktuální souřadnice (ZELENÝ NÁPIS NAD JOYSTICKEM) */
+#current-coords {
+    font-size: 1.5vw; 
+    text-align: right;
+    color: #57F87D; 
+    word-break: break-all;
+    min-height: 2em;
+    margin-top: 15px;
+    margin-bottom: 10px; 
+}
+#joystick-container {
+    margin-top: 20px;
+    padding-top: 10px;
+    width: 100%;
+}
+#joystick-container h3 {
+    font-size: 1.5vw;
+    font-weight: 500;
+    text-align: right;
+    margin: 0 0 10px 0;
+}
+#joystick-outer {
+    width: 150px; /* Vráceno na 150px x 150px kruh */
+    height: 150px;
+    border: 2px solid #262525; /* Rámeček vnějšího kruhu */
+    border-radius: 50%;
+    margin: 10px 0 10px auto; 
+    position: relative;
+    overflow: hidden; 
+    cursor: default; /* Přesunuto na handle */
+    touch-action: none;
+    
+    background-color: #262525; /* ZMĚNA: Nastaveno na ČERNÉ pozadí */
+    background-image: linear-gradient(to right, #111 1px, transparent 1px), 
+                      linear-gradient(to bottom, #111 1px, transparent 1px);
+    background-size: 15px 15px; 
+    
+    box-shadow: 0 0 0 rgba(0, 255, 0, 0); 
+    transition: box-shadow 0.1s;
+}
+/* Pseudo-element pro ZELENÝ OPAR s šumem */
+#joystick-outer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH5QQCDh0j6zH+8AAAAAJKVRYdFjo');
+    background-size: 2px 2px;
+    opacity: 0.15; 
+    pointer-events: none; 
+}
+#joystick-handle {
+    /* Handle je kulička, která se tahá */
+    width: 10px; 
+    height: 10px; 
+    background: #57F87D; 
+    border: none;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: grab; /* ZMĚNA: PŘESUNUTO SEM */
+    z-index: 10;
+    
+    /* KULIČKA JAKO BLUR */
+    box-shadow: 0 0 20px #ffffff; 
+    filter: blur(15px); 
+}
+/* Styly pro tlačítka stažení */
+#download-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+#download-options button {
+    padding: 10px;
+    background: #000000;
+    border: 2px solid #3B3B3B;
+    color: #fff;
+    font-family: 'Geist Mono', monospace;
+    font-size: 1vw;
+    cursor: pointer;
+    text-align: right;
+}
+#download-options button:hover {
+    background: #262525;
+}
+/* ------------------------------------------- */
+/* 2. Media Query pro Mobil na šířku (< 800px) */
+/* ------------------------------------------- */
+@media (max-width: 800px) {
+    
+    body {
+        flex-direction: column;
+    }
+    #left-area { width: 100%; height: 65vh; padding: 0; }
+    #right-ui-block { width: 100%; height: 35vh; padding: 10px; text-align: left; }
+    canvas#c { top: 0; right: 0; bottom: 0; left: 0; }
+    #explore-label { font-size: 4vh; letter-spacing: 0.5vh; top: 10px; left: 10px; }
+    #gpw-label { font-size: 10vh; line-height: 1; }
+    #coords-label { font-size: 2vh; margin-bottom: 10px; }
+    #gps-input { font-size: 3vh; padding: 5px; }
+    #gps-hint { font-size: 1.5vh; margin-top: 5px; }
+    
+    /* Joystick pro mobil */
+    #joystick-container h3 { font-size: 2.5vh; text-align: left; }
+    #joystick-outer {
+        width: 120px; 
+        height: 120px;
+        margin: 10px 0; 
+    }
+    #joystick-handle {
+        width: 8px; 
+        height: 8px;
+    }
+    #current-coords {
+        font-size: 2.2vh;
+        text-align: left;
+    }
+    #download-options button {
+        font-size: 2vh;
+        text-align: left;
+    }
+}
