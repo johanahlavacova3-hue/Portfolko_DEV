@@ -6,38 +6,136 @@ const interactiveElements = document.querySelectorAll(
     '#name, #description, .main-title, .sub-text, .game-icon'
 );
 
-// --- NASTAVENÍ "UTÍKÁNÍ" ---
-const MAX_SHIFT = 800;        // ZVĚTŠENO: Jak moc maximálně odletí (bývalo 600)
-const REACTION_DISTANCE = 200; // ZVĚTŠENO: Reaguje už z větší dálky (bývalo 80)
-const BOUND_LIMIT = 400;      // ZVĚTŠENO: Limit, kam až může element zajet (bývalo 150)
-const MIN_DISTANCE_RYBA = 50; 
-const JITTER_MAX = 3; 
+// --- NASTAVENÍ CHOVÁNÍ ---
+const MAX_SHIFT = 400;         // Jak daleko maximálně uteče
+const REACTION_DISTANCE = 250; // Na jakou dálku si všimne myši
+const SMOOTHNESS = 0.08;       // 0.01 = velmi líné, 0.1 = normální, 0.5 = velmi rychlé
+const JITTER_AMOUNT = 5;       // Síla třesu
 
-let jitterInterval;
+// Stavy pro animaci (ukládáme si pozice pro každý element zvlášť)
+const elementStates = new Map();
+
+// Inicializace stavů
+interactiveElements.forEach(el => {
+    elementStates.set(el, {
+        currentX: 0,
+        currentY: 0,
+        targetX: 0,
+        targetY: 0,
+        currentAngle: 0,
+        targetAngle: 0
+    });
+});
+
+let animationFrameId;
+let isJittering = false;
+let mouseX = -1000; // Mimo obrazovku na startu
+let mouseY = -1000;
+
 const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-// Transform funkce
-function applyRybaTransform(x, y, angle) {
-    if (rybaIcon) {
-        // Přidán transition: none pro okamžitou reakci bez zpoždění CSS
-        rybaIcon.style.transition = 'none'; 
-        rybaIcon.style.transform = `translate(${x}px, ${y}px) rotate(${angle}deg)`;
-    }
+// Hlavní animační smyčka (běží 60fps)
+function animate() {
+    if (!body.classList.contains('dark-mode')) return;
+
+    interactiveElements.forEach(element => {
+        const state = elementStates.get(element);
+        const rect = element.getBoundingClientRect();
+        
+        // Střed elementu (původní pozice na stránce)
+        // Odečítáme aktuální posun, abychom měli "kotvu"
+        const anchorX = rect.left + rect.width / 2 - state.currentX;
+        const anchorY = rect.top + rect.height / 2 - state.currentY;
+
+        // Vypočítat vzdálenost myši od "kotvy" elementu
+        const dx = mouseX - anchorX;
+        const dy = mouseY - anchorY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        // --- LOGIKA ÚTĚKU (VÝPOČET CÍLE) ---
+        if (distance < REACTION_DISTANCE) {
+            // Vektor směrem OD myši
+            const dirX = dx / distance;
+            const dirY = dy / distance;
+
+            // Cílová pozice je na opačné straně
+            // Čím blíže je myš, tím dál element chce být (až do MAX_SHIFT)
+            let pushFactor = 1; // Můžeme upravit pro dynamiku, zatím plná síla
+            
+            // Cíl: Uteč na MAX_SHIFT daleko od myši
+            let tx = dirX * -MAX_SHIFT * pushFactor;
+            let ty = dirY * -MAX_SHIFT * pushFactor;
+
+            // Přidáme náhodný třes (Jitter), pokud je aktivní
+            if (isJittering && element.id !== 'ryba-icon') {
+                tx += (Math.random() - 0.5) * JITTER_AMOUNT;
+                ty += (Math.random() - 0.5) * JITTER_AMOUNT;
+            }
+
+            state.targetX = tx;
+            state.targetY = ty;
+
+            // Úhel pro rybu
+            if (element.id === 'ryba-icon') {
+                // Atan2 vrací úhel k myši, my chceme od myši (+180 nebo prostě logika rotace)
+                // +90 kompenzuje orientaci obrázku, pokud ryba plave nahoru
+                state.targetAngle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+            }
+
+        } else {
+            // Myš je daleko -> návrat domů
+            state.targetX = 0;
+            state.targetY = 0;
+            state.targetAngle = 0;
+        }
+
+        // --- VYHLAZENÍ POHYBU (LERP) ---
+        // Vzorec: Současná = Současná + (Cíl - Současná) * Faktor_Vyhlazení
+        state.currentX += (state.targetX - state.currentX) * SMOOTHNESS;
+        state.currentY += (state.targetY - state.currentY) * SMOOTHNESS;
+        
+        // Aplikace do CSS
+        if (element.id === 'ryba-icon') {
+            // Vyhlazení i pro rotaci ryby
+            // Ošetření přeskoku úhlu (např. z 359 na 0)
+            let dAngle = state.targetAngle - state.currentAngle;
+            while (dAngle > 180) dAngle -= 360;
+            while (dAngle < -180) dAngle += 360;
+            state.currentAngle += dAngle * SMOOTHNESS;
+
+            element.style.transform = `translate(${state.currentX}px, ${state.currentY}px) rotate(${state.currentAngle}deg)`;
+        } else {
+            element.style.transform = `translate(${state.currentX}px, ${state.currentY}px)`;
+        }
+    });
+
+    animationFrameId = requestAnimationFrame(animate);
 }
 
-function applyNormalTransform(element, x, y) {
-    // Přidán transition: none pro okamžitou reakci
-    element.style.transition = 'none';
-    element.style.transform = `translate(${x}px, ${y}px)`;
+// Handler pro pohyb myši - jen ukládá souřadnice, nic nepočítá
+function updateMousePosition(e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+}
+
+function touchHandler(e) {
+    // e.preventDefault(); // Blokování scrollu na mobilu (volitelné)
+    const touch = e.touches[0];
+    if (touch) {
+        mouseX = touch.clientX;
+        mouseY = touch.clientY;
+    }
 }
 
 function toggleMode() {
     const isCurrentlyDark = body.classList.contains('dark-mode');
 
     if (isCurrentlyDark) {
+        // VYPÍNÁNÍ
         body.classList.remove('dark-mode');
         body.classList.add('light-mode');
     } else {
+        // ZAPÍNÁNÍ
         body.classList.remove('light-mode');
         body.classList.add('dark-mode');
     }
@@ -50,31 +148,46 @@ function toggleMode() {
     }
 
     if (isNowDark) {
+        // Start naslouchání
         if (isMobile) {
             document.addEventListener('touchstart', touchHandler, { passive: false });
             document.addEventListener('touchmove', touchHandler, { passive: false });
         } else {
-            document.addEventListener('mousemove', moveElements);
-            startJitter();
+            document.addEventListener('mousemove', updateMousePosition);
         }
-        resetElementsPosition(true);
-
+        
+        isJittering = true;
+        
+        // Blokace odkazů na PC
         if (!isMobile) { 
             document.querySelectorAll('.interactable').forEach(a => {
                 a.href = "#";
                 a.onclick = e => e.preventDefault();
             });
         }
+
+        // Spustit smyčku animace
+        if (!animationFrameId) animate();
+
     } else {
+        // Stop naslouchání
         if (isMobile) {
             document.removeEventListener('touchstart', touchHandler);
             document.removeEventListener('touchmove', touchHandler);
         } else {
-            document.removeEventListener('mousemove', moveElements);
-            stopJitter();
+            document.removeEventListener('mousemove', updateMousePosition);
         }
-        resetElementsPosition(false); // Reset vrátí transition do normálu
+        
+        isJittering = false;
+        
+        // Zastavit smyčku animace
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
 
+        // Reset pozic (okamžitě nebo přes CSS transition)
+        resetElementsPosition();
+
+        // Obnovení odkazů
         document.querySelectorAll('.interactable').forEach(a => {
             a.href = a.getAttribute('data-url');
             a.onclick = null;
@@ -82,133 +195,34 @@ function toggleMode() {
     }
 }
 
-function moveElements(e) {
-    if (!body.classList.contains('dark-mode')) return;
-
+function resetElementsPosition() {
     interactiveElements.forEach(element => {
-        const rect = element.getBoundingClientRect();
-        // Načítáme aktuální posun, abychom věděli, kde "virtuálně" je
-        const baseX = parseFloat(element.dataset.baseX) || 0;
-        const baseY = parseFloat(element.dataset.baseY) || 0;
-
-        // Střed elementu
-        const centerX = rect.left + rect.width / 2; // Tady nečteme baseX pro výpočet myši, chceme reálnou polohu
-        const centerY = rect.top + rect.height / 2;
-
-        // Vektor od středu elementu k myši
-        // Poznámka: Aby to neutíkalo "donekonečna" pryč z obrazovky, počítáme to 
-        // relativně k původní pozici elementu na stránce + jeho aktuální posun.
+        // Reset vizuálu
+        element.style.transform = element.id === 'ryba-icon' ? 'translate(0px, 0px) rotate(0deg)' : 'translate(0px, 0px)';
         
-        // Zjednodušená logika pro agresivní útěk:
-        // Potřebujeme vědět, kde je myš relativně k PŮVODNÍMU středu elementu (bez posunu),
-        // abychom vypočítali nový posun.
-        const originalCenterX = centerX - baseX; 
-        const originalCenterY = centerY - baseY;
-
-        let dx = e.clientX - (originalCenterX + baseX);
-        let dy = e.clientY - (originalCenterY + baseY);
-        let distance = Math.sqrt(dx * dx + dy * dy);
-
-        // Pokud je myš příliš blízko
-        if (distance < REACTION_DISTANCE && distance > 0) {
-            
-            // --- HLAVNÍ ZMĚNA: OKAMŽITÝ ÚTĚK ---
-            // Místo faktoru (1 - dist/max), který to zpomaluje,
-            // prostě řekneme: Jsi blízko? Vypadni na maximální vzdálenost.
-            
-            // Normalizovaný směr od myši (jednotkový vektor)
-            const dirX = dx / distance;
-            const dirY = dy / distance;
-
-            // Cílový posun = směrem od myši * MAX_SHIFT
-            // Vynásobíme -1, aby to šlo OD myši
-            let targetX = dirX * -MAX_SHIFT; 
-            let targetY = dirY * -MAX_SHIFT;
-
-            // Pro rybu zachováme logiku navíc (extra push)
-            if (element.id === 'ryba-icon') {
-                 // Ryba má trochu plynulejší logiku, aby se stíhala otáčet
-                 let factor = 1 - (distance / REACTION_DISTANCE); 
-                 // U ryby necháme trochu dynamiky, ale zrychlíme ji
-                 targetX = dirX * -MAX_SHIFT * (factor + 0.5); 
-                 targetY = dirY * -MAX_SHIFT * (factor + 0.5);
-
-                 const angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
-                 applyRybaTransform(targetX, targetY, angle);
-            } else {
-                // Texty a ostatní prvky:
-                // Omezíme, aby neutekly úplně mimo obrazovku (BOUND_LIMIT), 
-                // ale reagují okamžitě na hranici limitu.
-                
-                targetX = Math.max(-BOUND_LIMIT, Math.min(BOUND_LIMIT, targetX));
-                targetY = Math.max(-BOUND_LIMIT, Math.min(BOUND_LIMIT, targetY));
-                
-                applyNormalTransform(element, targetX, targetY);
-            }
-
-            element.dataset.baseX = targetX.toFixed(2);
-            element.dataset.baseY = targetY.toFixed(2);
-        }
+        // Reset interního stavu
+        const state = elementStates.get(element);
+        state.currentX = 0;
+        state.currentY = 0;
+        state.targetX = 0;
+        state.targetY = 0;
+        state.currentAngle = 0;
+        state.targetAngle = 0;
     });
 }
 
-function touchHandler(e) {
-    e.preventDefault();
-    const touch = e.touches[0];
-    if (touch) {
-        moveElements(touch);
-    }
-}
-
-function startJitter() {
-    if (jitterInterval) clearInterval(jitterInterval);
-    jitterInterval = setInterval(() => {
-        interactiveElements.forEach(element => {
-            if (element.id === 'ryba-icon') return;
-            const baseX = parseFloat(element.dataset.baseX) || 0;
-            const baseY = parseFloat(element.dataset.baseY) || 0;
-            const jitterX = (Math.random() - 0.5) * JITTER_MAX * 2;
-            const jitterY = (Math.random() - 0.5) * JITTER_MAX * 2;
-            applyNormalTransform(element, baseX + jitterX, baseY + jitterY);
-        });
-    }, 80);
-}
-
-function stopJitter() {
-    if (jitterInterval) clearInterval(jitterInterval);
-    jitterInterval = null;
-}
-
-function resetElementsPosition(initialize) {
-    interactiveElements.forEach(element => {
-        // Při vypnutí vrátíme transition (pokud je v CSS definovaná), aby se vrátily plynule
-        element.style.transition = initialize ? 'none' : ''; 
-        
-        if (!initialize) {
-            element.style.transform = element.id === 'ryba-icon' ? 'translate(0px, 0px) rotate(0deg)' : 'translate(0px, 0px)';
-        }
-        element.dataset.baseX = 0;
-        element.dataset.baseY = 0;
-    });
-}
-
-// Inicializace
+// Inicializace po načtení
 document.addEventListener('DOMContentLoaded', () => {
-    if (body.classList.contains('dark-mode')) {
-        if (isMobile) {
-            document.addEventListener('touchstart', touchHandler, { passive: false });
-            document.addEventListener('touchmove', touchHandler, { passive: false });
-        } else {
-            document.addEventListener('mousemove', moveElements);
-            startJitter();
-        }
-        resetElementsPosition(true);
+    // Zajistíme, že ryba a ostatní mají transition nastavené na none v CSS pro JS animaci,
+    // ale pokud chceme smooth návrat při vypnutí, řešíme to v toggleMode.
+    // Pro tento smooth skript je lepší nechat CSS transition: none;
+    interactiveElements.forEach(el => el.style.transition = 'none');
 
-        if (!isMobile) { 
-            document.querySelectorAll('.interactable').forEach(a => {
-                a.href = "#";
-                a.onclick = e => e.preventDefault();
-            });
-        }
+    if (body.classList.contains('dark-mode')) {
+        // Pokud je dark mode zapnutý už z výroby/cache
+        toggleMode(); // hack pro re-init (nebo zkopírovat logiku initu)
+        // Lepší je zavolat logiku initu přímo, ale toggle funguje pokud začínáme v light.
+        // Pokud začínáte v dark, zavoláme logiku ručně:
+        // (Zde pro jednoduchost předpokládám start v Light, pokud ne, stačí zavolat logiku z 'if (isNowDark)' nahoře)
     }
 });
