@@ -30,7 +30,7 @@ html, body {
     display: inline-block;
 }
 .header .logo {
-    max-width: 50%; 
+    max-width: 10%; 
     height: auto;
 }
 
