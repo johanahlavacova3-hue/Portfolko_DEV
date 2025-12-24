@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aby se vám po nás nestýskalo</title>
+    <link rel="stylesheet" href="/RODINA/style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+
+    <div class="page-container">
+        
+        <header class="header">
+            <a href="" target="_blank">
+                <img src="/RODINA/srdce.png" alt="<3" class="logo">
+            </a>
+        </header>
+
+        <main class="model-area">
+            <model-viewer 
+                src="/RODINA/DJM.glb" 
+                alt="3D model "
+                auto-rotate
+                camera-controls
+                
+                camera-orbit="180deg 90deg 2.5m"
+                
+                ar 
+                ar-modes="webxr scene-viewer quick-look"
+                ar-scale="fixed" 
+                touch-action="pan-y" 
+                shadow-intensity="1"
+                exposure="2.5">
+            </model-viewer>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-contacts">
+                <a href="" target="_blank" class="contact-link-facebook">
+                    <p class="contact-link"></p>
+                </a>
+                <a href="" target="_blank" class="contact-link-web">
+                    <p class="contact-link"></p> 
+                </a>
+            </div>
+            
+            <div class="footer-support-bar">
+                
+                <strong id="accountNumber" onclick="copyAccount()"></strong>
+                <span id="copyMessage" class="copy-message"></span>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="/RODINA/script.js"></script>
+</body>
+</html>
