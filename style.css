@@ -28,12 +28,11 @@ body {
     width: 100%;        /* Musí být 100%, protože fixed ji vytrhne z kontextu */
     z-index: 1000;      /* Aby byla vždy nad videem a 3D modely */
     background: #ffffff;
-    height: 55px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Doporučuji přidat tento řádek, aby lišta nesplývala s bílým pozadím při scrollu: */
-    border-bottom: 1px solid #e0e0e0; 
+
 }
 
 .hiro-nav {
