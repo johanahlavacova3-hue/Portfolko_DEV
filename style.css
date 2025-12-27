@@ -22,14 +22,16 @@ body {
 }
 
 .hiro-bar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    position: sticky; /* Toto drží lištu na místě */
+    top: 0;           /* Přilepí ji k úplnému hornímu okraji */
+    z-index: 1000;    /* Zajistí, že bude nad ostatním obsahem */
     background: #ffffff;
     height: 55px;
+    width: 100%;      /* Aby se nerozpadla při scrollování */
     display: flex;
     align-items: center;
     justify-content: center;
+    border-bottom: 1px solid #f0f0f0; /* Volitelné: jemná linka pro oddělení při scrollu */
 }
 
 .hiro-nav {
