@@ -22,16 +22,18 @@ body {
 }
 
 .hiro-bar {
-    position: sticky; /* Toto drží lištu na místě */
-    top: 0;           /* Přilepí ji k úplnému hornímu okraji */
-    z-index: 1000;    /* Zajistí, že bude nad ostatním obsahem */
+    position: fixed;    /* Změna ze sticky na fixed pro absolutní fixaci */
+    top: 0;
+    left: 0;
+    width: 100%;        /* Musí být 100%, protože fixed ji vytrhne z kontextu */
+    z-index: 1000;      /* Aby byla vždy nad videem a 3D modely */
     background: #ffffff;
     height: 55px;
-    width: 100%;      /* Aby se nerozpadla při scrollování */
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid #f0f0f0; /* Volitelné: jemná linka pro oddělení při scrollu */
+    /* Doporučuji přidat tento řádek, aby lišta nesplývala s bílým pozadím při scrollu: */
+    border-bottom: 1px solid #e0e0e0; 
 }
 
 .hiro-nav {
