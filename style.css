@@ -216,7 +216,7 @@ body {
 
 .left-flag {
     margin-top: 40px;
-    font-size: 12px;
+    font-size: 2px; //tsady
     font-weight: 800;
     line-height: 1.4;
 }
