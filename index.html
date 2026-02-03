@@ -20,7 +20,7 @@
 <h2 class="main-title" data-base-x="0" data-base-y="0">
 <span class="asterisk">**</span>
 <a href="#" class="interactable" data-url="https://www.jhlavacova.cz/JH">DESIGN</a>
-<span class="asterisk">xx</span>
+<span class="asterisk">**</span>
 </h2>
 <p class="sub-text" data-base-x="0" data-base-y="0"></p>
 </div>
@@ -47,3 +47,19 @@
 <script src="/START/script.js"></script>
 </body>
 </html> 
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".interactable").forEach(el => {
+    el.addEventListener("click", e => {
+      e.preventDefault();       // zruší #
+      e.stopPropagation();      // zruší vliv režimů / animací
+      const url = el.dataset.url;
+      if (url) {
+        window.location.href = url;
+      }
+    });
+  });
+});
+</script>
+
