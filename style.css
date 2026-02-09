@@ -1,3 +1,6 @@
+/* 1. Import fontu přímo do CSS (nebo nechej <link> v HTML) */
+@import url("https://use.typekit.net/dhu3lev.css");
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -5,34 +8,47 @@
 html, body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* prevence horizontálního scrollu */
+    overflow-x: hidden;
 }
 
 body {
     background: #ffffff;
+    /* Základní text zůstává Inter, pokud chceš všude Gridlite, přepiš to i zde */
     font-family: "Inter", sans-serif;
     text-transform: uppercase;
+}
+
+/* --- SPOLEČNÉ NASTAVENÍ PRO NOVÝ FONT (HEADLINES) --- */
+.section-title, 
+.right-banner, 
+.johana-name, 
+.blabla-text, 
+.nav-btn,
+.content-text h3,
+.left-flag {
+    font-family: "gridlite-pe-variable", sans-serif;
+    /* Nastavení variabilních vlastností z tvého screenshotu */
+    font-variation-settings: "ELSH" 3, "RECT" 1, "BACK" 1, "wght" 900;
 }
 
 .stage {
     width: 100%;
     max-width: 1920px;
     margin: 0 auto;
-    padding: 0 10px; /* bezpečný padding */
+    padding: 0 10px;
 }
 
 .hiro-bar {
-    position: fixed;    /* Změna ze sticky na fixed pro absolutní fixaci */
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;        /* Musí být 100%, protože fixed ji vytrhne z kontextu */
-    z-index: 1000;      /* Aby byla vždy nad videem a 3D modely */
+    width: 100%;
+    z-index: 1000;
     background: #ffffff;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .hiro-nav {
@@ -55,7 +71,6 @@ body {
 }
 
 .nav-btn {
-    font-weight: 800;
     font-size: 12px;
     color: #000000;
     text-decoration: none;
@@ -89,7 +104,6 @@ body {
 
 .johana-name {
     font-size: 12px;
-    font-weight: 800;
     line-height: 1.4;
     margin: 0;
 }
@@ -100,7 +114,6 @@ body {
 
 .blabla-text {
     font-size: 12px;
-    font-weight: 800;
     margin: 0;
     line-height: 1.4;
     padding-top: 20px;
@@ -108,20 +121,18 @@ body {
 
 .profile-banner {
     width: 100%;
-    max-width: 100%;
     height: 300px;
     object-fit: cover;
     border-radius: 12px;
     margin-top: 20px;
-    padding: 0;
 }
 
+/* VELKÉ NADPISY */
 .section-title {
     font-size: clamp(48px, 8vw, 120px);
-    font-weight: 800;
     text-align: left;
     margin-bottom: 20px;
-    line-height: 1.4;
+    line-height: 1.1; /* Trochu jsem snížil line-height, u tučných fontů to vypadá lépe */
 }
 
 .content-text {
@@ -130,35 +141,17 @@ body {
     max-width: 800px;
 }
 
-.content-text p, .content-text ul, .content-text h3 {
-    margin-bottom: 20px;
-}
-
 .content-text h3 {
-    font-size: 12px;
-    font-weight: 800;
+    font-size: 14px; /* O něco větší pro čitelnost */
     margin-top: 40px;
-}
-
-.content-text ul {
-    list-style: none;
-    padding: 0;
+    margin-bottom: 15px;
 }
 
 .content-text li {
+    font-family: "gridlite-pe-variable", sans-serif; /* Seznamy taky v novém fontu */
+    font-variation-settings: "wght" 700; /* U seznamů jsem ubral na váze pro lepší čitelnost */
     font-size: 12px;
     margin-bottom: 8px;
-    font-weight: 800;
-}
-
-.contact-info a {
-    color: #000000;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.contact-info a:hover {
-    color: #555555;
 }
 
 .separator-line {
@@ -168,37 +161,16 @@ body {
     margin: 80px 0;
 }
 
-/* ČERNÝ PANEL = TLAČÍTKO NA HRY */
 .portfolio-action-bar {
-    position: relative;
     background: #000000;
-    width: 100%; /* oprava místo 100vw */
-    margin-left: 0;
+    width: 100%;
     padding: 40px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: inherit;
+    color: #ffffff;
     overflow: hidden;
-}
-
-.portfolio-action-bar:hover {
-    opacity: 0.9;
-}
-
-.overlay-image {
-    height: 100px;
-    width: auto;
-    opacity: 0.3;
-    pointer-events: none;
-}
-
-.portfolio-projects {
-    margin: 0 5px;
-    border: 0;
-    border-radius: 12px;
-    padding: 20px 0;
 }
 
 .category {
@@ -216,246 +188,31 @@ body {
 
 .left-flag {
     margin-top: 40px;
-    font-size: 12px; //tsady
-    font-weight: 800;
+    font-size: 12px;
     line-height: 1.4;
 }
 
 .right-banner {
     font-size: clamp(42px, 8vw, 120px);
-    font-weight: 800;
     text-align: right;
     flex: 1;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.1;
 }
 
-.media-wrap {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-}
-
-.media {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    display: block;
-}
-
-.media-caption {
-    width: 50%;
-    align-self: flex-start;
-    font-size: 12px;
-    font-weight: 800;
-    text-align: left;
-    line-height: 1.4;
-    margin-top: -20px;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-}
-
-/* --- O MNĚ video --- */
-#o-mne {
-    position: relative;
-    overflow: hidden;
-}
-
-.o-mne-video-wrap {
-    position: relative;
-    display: flex;
-    min-height: 400px;
-    margin-top: 20px;
-    padding: 0 15px;
-}
-
-#o-mne .content-text {
-    position: relative;
-    z-index: 2;
-    width: 50%;
-    max-width: none;
-    padding-right: 30px;
-}
-
-.video-o-mne {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 50%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-    border-radius: 12px;
-}
-
-/* -------------------------- */
-/* MOBILNÍ STYLY              */
-/* -------------------------- */
-/* -------------------------- */
-/* MOBILNÍ STYLY */
-/* -------------------------- */
+/* --- RESPONZIVNÍ ÚPRAVY --- */
 @media (max-width: 799px) {
-    /* Obecné úpravy pro mobilní vzhled */
-    .stage {
-        padding: 0 10px; /* menší horizontální padding pro celé tělo */
-    }
-
-    /* Úprava navigace pro mobilní vzhled */
-    .hiro-nav {
-        padding: 0 10px;
-        justify-content: center; /* centrování loga */
-    }
-    .nav-left, .nav-right {
-        /* Skryje navigační tlačítka v mobilu (ponechá jen logo, jak naznačuje snímek obrazovky) */
-        display: none;
-    }
-    .nav-logo {
-        height: 30px;
-    }
-
-    /* Úprava HERO sekce */
-    .hero-intro {
-        padding-top: 30px; /* menší padding nahoře */
-        margin-bottom: 20px;
-    }
-    .header-split {
-        flex-direction: column; /* přesuneme do jednoho sloupce */
-        align-items: flex-start;
-        padding: 0 10px;
-    }
-    .header-left {
-        gap: 10px;
-        margin-bottom: 15px; /* mezera pod JH a jménem */
-    }
-    .johana-name {
-        font-size: 10px;
-    }
-    .header-right {
-        text-align: left;
-    }
-    .blabla-text {
-        font-size: 10px;
-        padding-top: 0;
-    }
-    .profile-banner {
-        /* Banner zůstává široký, ale omezíme výšku, pokud by byla moc velká */
-        height: 200px; /* menší výška banneru */
-        border-radius: 8px;
-    }
-
-    /* Úprava sekce "O MNĚ" */
-    #o-mne {
-        padding: 0 10px; /* padding pro text, ať není nalepen na kraji */
-    }
     .section-title {
-        font-size: 48px; /* menší velikost nadpisu */
-        margin-bottom: 10px;
-        padding: 0;
-    }
-    .content-text {
-        font-size: 10px;
-        padding: 0;
-    }
-    .content-text h3 {
-        margin-top: 20px;
-    }
-    .o-mne-video-wrap {
-        flex-direction: column; /* text nad videem */
-        min-height: auto;
-        margin-top: 15px;
-        padding: 0;
-    }
-    #o-mne .content-text {
-        width: 100%; /* text přes celou šířku */
-        padding-right: 0;
-        margin-bottom: 20px;
-    }
-    .video-o-mne {
-        position: relative; /* video pod textem */
-        left: 0;
-        width: 100%;
-        height: 200px; /* fixní výška pro mobilní video */
-    }
-    /* Separátor */
-    .separator-line {
-        margin: 40px 0;
-    }
-
-    /* Portfolio Action Bar */
-    .portfolio-action-bar {
-        padding: 25px 10px;
-    }
-
-    /* Sekce projektů */
-    .category {
-        margin-top: 40px;
-        padding: 0 10px;
-    }
-    .header-row {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .left-flag {
-        margin-top: 0;
-        font-size: 10px;
+        font-size: 48px;
     }
     .right-banner {
         font-size: 40px;
         text-align: left;
     }
-    
-    /* Media wrap pro horizontální posuv (KAREL 22' a piktogramy) */
-    .media-wrap {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto; /* klíčové pro horizontální swipe */
-        scroll-snap-type: x mandatory;
-        gap: 15px; /* mezera mezi kartami */
-        padding-left: 10px;
-        padding-right: 10px;
-        margin-top: 15px;
-        -ms-overflow-style: none; /* Skrytí scrollbaru IE and Edge */
-        scrollbar-width: none; /* Skrytí scrollbaru Firefox */
-    }
-    .media-wrap::-webkit-scrollbar {
-        display: none; /* Skrytí scrollbaru Chrome, Safari, Opera */
-    }
-    .media-container {
-        flex: 0 0 80%; /* Velikost karty - cca 80% šířky obrazovky */
-        scroll-snap-align: start;
+    .video-o-mne {
+        position: relative;
+        left: 0;
         width: 100%;
-    }
-    /* Konkrétní úprava pro KAREL 22' (snímky) */
-    .media-container img.media {
-        /* Obrázek projektu zabírá celou šířku kontejneru */
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 8px;
-    }
-    .media-caption {
-        font-size: 9px;
-        margin-top: 5px;
-        text-align: center;
-        width: 100%;
-    }
-
-    /* Piktogramy (dovednosti) - aby byly menší a ve swipe kartách */
-    .media-wrap:nth-child(2) .media-container {
-        flex: 0 0 150px; /* fixní šířka pro piktogram, ať je jich vidět víc */
-    }
-    .media-wrap:nth-child(2) .media-container img.media {
-        height: 80px; /* fixní výška piktogramu */
-        width: auto;
+        height: 200px;
     }
 }
-
-
-
-
-
