@@ -419,6 +419,7 @@ body {
         padding-left: 10px;
         padding-right: 10px;
         margin-top: 15px;
+        margin-bottom: 20px;
         -ms-overflow-style: none; /* Skrytí scrollbaru IE and Edge */
         scrollbar-width: none; /* Skrytí scrollbaru Firefox */
     }
@@ -441,6 +442,7 @@ body {
     .media-caption {
         font-size: 9px;
         margin-top: 5px;
+        line-height: 1.9; /*tady */
         text-align: center;
         width: 100%;
     }
@@ -450,7 +452,7 @@ body {
         flex: 0 0 150px; /* fixní šířka pro piktogram, ať je jich vidět víc */
     }
     .media-wrap:nth-child(2) .media-container img.media {
-        height: 80px; /* fixní výška piktogramu */
+        height: 90px; /* fixní výška piktogramu */
         width: auto;
     }
 }
