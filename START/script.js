@@ -123,7 +123,7 @@ function toggleMode() {
         body.classList.add('dark-mode');
         modeLabel.textContent = 'ZÁBAVNÝ REŽIM';
 
-        if (rybaIcon) rybaIcon.src = 'RYBA-BL.png';
+        if (rybaIcon) rybaIcon.src = 'START/RYBA-BL.png';
 
         if (isMobile) {
             document.addEventListener('touchstart', touchHandler, { passive: false });
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
     body.classList.add('dark-mode');
     modeLabel.textContent = 'ZÁBAVNÝ REŽIM';
 
-    if (rybaIcon) rybaIcon.src = 'RYBA-BL.png';
+    if (rybaIcon) rybaIcon.src = 'START/RYBA-BL.png';
 
     if (isMobile) {
         document.addEventListener('touchstart', touchHandler, { passive: false });
