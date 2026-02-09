@@ -454,3 +454,46 @@ body {
         width: auto;
     }
 }
+
+    /* Návrat k původnímu fontu */
+body {
+    background: #ffffff;
+    font-family: "Inter", sans-serif;
+    text-transform: uppercase;
+}
+
+/* Kontejner pro médium, aby na něm mohl štítek "sedět" */
+.media-container {
+    position: relative;
+    width: 100%;
+    line-height: 0; /* Odstraní mezeru pod obrázkem/videem */
+}
+
+/* Styl pro červený video štítek */
+.video-tag {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 70px;
+    height: 20px;
+    background-color: #ff1515;
+    border-radius: 20px;
+    
+    /* Text uvnitř štítku */
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    pointer-events: none; /* Aby štítek nebránil klikání na video */
+}
+
+/* Úprava původní třídy media, aby vyplnila kontejner */
+.media {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
