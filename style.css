@@ -230,12 +230,12 @@ body {
     line-height: 1.4;
 }
 
-.media-wrap {
-    margin-top: 20px;
+.media-wrap { /*tady*/
+    margin-top: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 80px;
 }
 
 .media {
@@ -253,7 +253,7 @@ body {
     font-weight: 800;
     text-align: left;
     line-height: 1.4;
-    margin-top: -20px;
+    margin-top: 20px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 4;
