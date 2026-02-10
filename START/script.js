@@ -106,7 +106,7 @@ function toggleMode() {
         body.classList.add('light-mode');
         modeLabel.textContent = 'NORMÁLNÍ REŽIM';
 
-        if (rybaIcon) rybaIcon.src = 'RYBA-WH.png';
+        if (rybaIcon) rybaIcon.src = 'START/RYBA-WH.png';
 
         document.removeEventListener('mousemove', updateMousePosition);
         document.removeEventListener('touchstart', touchHandler);
