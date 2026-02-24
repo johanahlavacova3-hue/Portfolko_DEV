@@ -43,8 +43,17 @@
       </section>
 
       <section class="category" id="o-mne">
-        <video class="video-o-mne" src="KAREL-intro.mp4" autoplay loop muted playsinline></video>
-        <h2 class="section-title">O MNĚ</h2>
+  <video
+    class="video-o-mne"
+    src="KAREL-intro.mp4"
+    autoplay
+    loop
+    muted
+    playsinline
+    preload="auto"
+  ></video>
+  <h2 class="section-title">O MNĚ</h2>
+</section>
         <div class="content-text">
           <p>
             Studuji již 4. rokem grafiku na pražské hellichovce, úspěšně, zatím. ve volněm čase se věnuji
@@ -80,8 +89,10 @@
                       <div class="left-flag"><br>(MECHANIKA = ING. TOMÁŠ ČERNÝ)</div>
                     <h1 class="right-banner">KAREL 25’</h1>
                 </div>
-                <div class="media-wrap">
-                    <video class="media" src="KAREL/KAREL_01.mp4" autoplay loop muted playsinline></video>
+                <div class="media-container">
+        <video class="media" src="KAREL/KAREL_01.mp4" autoplay loop muted playsinline></video>
+        <span class="video-tag">video</span>
+    </div>
                     <p class="media-caption">Karel je prototyp robotické ruky. 
 Slouží mi jako osobní laboratoř, na které se učím programování, stavbu vlastního hardwaru a základy robotiky. Jde o dlouhodobý pokus vytvořit funkční objekt, který nebude jen technickým cvičením, ale i věcí, která má svébytnou osobnost a radost z používání.</p>
                     <img class="media" src="KAREL/KAREL_02.png" alt="KAREL 02" />
@@ -91,13 +102,17 @@ Slouží mi jako osobní laboratoř, na které se učím programování, stavbu 
                     <img class="media" src="KAREL/KAREL_04.png" alt="KAREL 03" />
                     <p class="media-caption">Hardware je kompletně navržený na míru a celý řídicí systém píšu v C++. Základem je deska ESP32, která ovládá serva, tlačítka i veškeré LED osvětlení. Celý projekt postupně roste do podoby autonomnějšího, responzivního objektu.</p>
                     <video class="media" src="KAREL/KAREL_05.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Takhle by měl Karel fungovat ve chvíli, kdy bude dokončený – jako jednoduchý, ale promyšlený robot, ve kterém se spojuje technika, hra a proces učení.</p>
+                     
+         <p class="media-caption">Takhle by měl Karel fungovat ve chvíli, kdy bude dokončený – jako jednoduchý, ale promyšlený robot, ve kterém se spojuje technika, hra a proces učení.</p>
                     <video class="media" src="KAREL/KAREL_06.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Ovládaný vlastní mobilní webovou aplikací. Pouze klepeto. DEV</p>
+                    
+         <p class="media-caption">Ovládaný vlastní mobilní webovou aplikací. Pouze klepeto. DEV</p>
                     <video class="media" src="KAREL/KAREL_07.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Nejnovější prototyp!! Vylepšená apka. Zatím pouze chňapka. </p>
+                     
+         <p class="media-caption">Nejnovější prototyp!! Vylepšená apka. Zatím pouze chňapka. </p>
                   <video class="media" src="KAREL/KAREL_08.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Disko zábavný režim. </p>
+                    
+         <p class="media-caption">Disko zábavný režim. </p>
                   
                 </div>
             </section>
@@ -109,9 +124,11 @@ Slouží mi jako osobní laboratoř, na které se učím programování, stavbu 
                 </div>
                 <div class="media-wrap">
                     <video class="media" src="KAREL-GAME/KAREL-GAME_01.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Remake legendární hry Karel the Robot vznikl jako webová aplikace, která posouvá původní princip do současnosti. Zatímco osmdesátkový Karel učil základům algoritmizace pomocí jednoduchých příkazů, tahle verze reaguje na dnešní vizuální i interakční standardy.</p>
+                     
+                  <p class="media-caption">Remake legendární hry Karel the Robot vznikl jako webová aplikace, která posouvá původní princip do současnosti. Zatímco osmdesátkový Karel učil základům algoritmizace pomocí jednoduchých příkazů, tahle verze reaguje na dnešní vizuální i interakční standardy.</p>
                     <video class="media" src="KAREL-GAME/KAREL-GAME_02.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">První prototyp byl složitější a simuloval pohyb celé robotické postavy, podobně jako ve fyzickém projektu Karel. Postupem času jsem ale zvolila jednodušší a čistší variantu – hráč ovládá pouze jeden pohyblivý článek. Umožnilo mi to soustředit se na jádro hry: jasné zadání, čitelný pohyb a přímou vazbu mezi kódem a výsledkem.</p>
+                     
+                  <p class="media-caption">První prototyp byl složitější a simuloval pohyb celé robotické postavy, podobně jako ve fyzickém projektu Karel. Postupem času jsem ale zvolila jednodušší a čistší variantu – hráč ovládá pouze jeden pohyblivý článek. Umožnilo mi to soustředit se na jádro hry: jasné zadání, čitelný pohyb a přímou vazbu mezi kódem a výsledkem.</p>
                     <img class="media" src="KAREL-GAME/KAREL-GAME_03.png" alt="KAREL g 03" />
                     <p class="media-caption">Nalevo je původní Karel z osmdesátých let, napravo první návrhy jeho rekonstrukce. Cílem bylo starý abstrahovaný model převést do vizuálně současné podoby, která respektuje ducha originálu, ale zároveň má charakter, který ladí s dnešní estetiku i technickými možnostmi. </p>
                     <img class="media" src="KAREL-GAME/KAREL-GAME_04.png" alt="KAREL g 03" />
@@ -126,77 +143,9 @@ Slouží mi jako osobní laboratoř, na které se učím programování, stavbu 
             </section>
 
 
-             <section class="category">
-                <div class="header-row">
-                    <div class="left-flag">2025<br>DESIGN × PRINT × 3D × HARDWERE × SOFTWERE</div>
-                    <h1 class="right-banner">MYŠÁK</h1>
-                </div>
-                <div class="media-wrap">
-                  <!--  <video class="media" src="MYSAK/MYSAK_01.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Myšák je malý robot, který dávkuje bonbóny a funguje jako osobní zvířátko na zlepšení nálady.</p> -->
-                    <img class="media" src="MYSAK/MYSAK_01.png" alt="KONEV 02" />
-                    <p class="media-caption">Myšák je malý robot, který dávkuje bonbóny a funguje jako osobní zvířátko na zlepšení nálady.</p>
-                    <video class="media" src="MYSAK/MYSAK_02.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Vznikl ve chvíli, kdy jsem chtěla něco hravého a trochu absurdního – objekt, který existuje jen proto, aby potěšil. Od začátku jsem mířila k podobě drobné, nenápadné myšičky, která se tiše objeví na stole, udělá svou práci a nijak nenarušuje okolí. Takové „cibetkové bonbóny“ převedené do robotické podoby. </p> 
-                    <img class="media" src="MYSAK/MYSAK_03.png" alt="KONEV 03" />
-                    <p class="media-caption">Technicky je Myšák velmi jednoduchý: jedno servo, ESP32 naprogramované v C++ a bezdotykové tlačítko, které dává impuls k otevření mechanismu. O to víc práce ale zabral hardware. Mechanika byla největší překážkou – celé dávkování potřebovalo přesný pohyb i spolehlivou konstrukci. Nakonec z toho vyšla vrstvená 3D tištěná schránka, která drží tvar a umožňuje stabilní chod.</p>
-                    <video class="media" src="MYSAK/MYSAK_04.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">První verze ukazuje základní design a prototyp mechaniky – ještě bez detailů, spíš hledání tvaru a pohybu. </p> 
-                    <img class="media" src="MYSAK/MYSAK_04.png" alt="KONEV 03" />
-                    <p class="media-caption">Druhá verze je už výrazně dál a v paralelním provozu slouží jako zkušební model.</p>
-                    <model-viewer
-                        class="media"
-                        src="MYSAK/MYSAK_05.glb"
-                        alt="3D model konve"
-                        camera-controls
-                        auto-rotate
-                        rotation-per-second="15deg"
-                        exposure="1"
-                        shadow-intensity="1"
-                        style="width: 100%; height: 600px; background-color: #FFFFFF; border-radius: 12px;">
-                    </model-viewer>
-                    <p class="media-caption">Prohlédněte si také 3D model. Brzy bude ke stažení a připravený k dalším experimentům.</p>
-                </div>
-            </section>
-
-           <!--    <section class="category">
-                <div class="header-row">
-                    <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN</div>
-                    <h1 class="right-banner">MYŠÁK</h1>
-                </div>
-                <div class="media-wrap">
-                    <img class="media" src="MYSAK/MYSAK_01.png" alt="MYSAK 01">
-                    <p class="media-caption">uvod catch</p>
-                       <img class="media" src="MYSAK/MYSAK_02.png" alt="MYSAK 02">
-                    <p class="media-caption">UPRESNENI</p>
-                    <img class="media" src="MYSAK/MYSAK_03.png" alt="MYSAK 03">
-                    <p class="media-caption">SKICI</p>
-                    <img class="media" src="MYSAK/MYSAK_04.png" alt="MYSAK 04">
-                    <p class="media-caption">UKAZKA - video, spousti se tlacitkem na hlave, vypadne bonbon interaktivni</p>
-                    <img class="media" src="MYSAK/MYSAK_05.png" alt="MYSAK 05">
-                    <p class="media-caption">FINAL</p> 
-                </div>
-            </section> -->
            
-     <section class="category">
-                <div class="header-row">
-                    <div class="left-flag">2025<br>UI & UX</div>
-                    <h1 class="right-banner">ZDENA</h1>
-                </div>
-                <div class="media-wrap">
-                    <img class="media" src="ZDENA/ZDENA_01.png" alt="ZDENA 01">
-                    <p class="media-caption">11 hodin hrůzy a beznaděje – videohra
-Projekt je inspirován televizní reportáží 11 hodin hrůzy a bez naděje, kde hlavní roli hrála Zdena: báby pod kořenem. </p>
-                    <video class="media" src="ZDENA/ZDENA_02.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Cílem je převést bizarní televizní zážitek do interaktivní hry a zachytit jeho absurdní atmosféru. </p>
-                    <img class="media" src="ZDENA/ZDENA_03.png" alt="ZDENA 02" />
-                    <p class="media-caption">Hra je navržena jako klasická klikací aplikace s možností „výhry“ při specificky hlasitém chování postavy.</p>
-                    <img class="media" src="ZDENA/ZDENA_04.png" alt="ZDENA 02" />
-                    <p class="media-caption">--</p>
-                    
-                </div>
-            </section> 
            
+    
            <!-- <section class="category">
                 <div class="header-row">
                     <div class="left-flag">2025<br>AR x CODE x DESIGN x UI & UX x 3D x PRINT</div>
@@ -216,50 +165,9 @@ Projekt je inspirován televizní reportáží 11 hodin hrůzy a bez naděje, kd
                 </div>
             </section> -->
            
-          <section class="category">
-                <div class="header-row">
-                    <div class="left-flag">2024 – SOUČASNOST<br>UI & UX × CODE</div>
-                    <h1 class="right-banner">NoS</h1>
-                </div>
-                <div class="media-wrap">
-                    <img class="media" src="NOS/NOS_01.png" alt="NOS 01" />
-                    <p class="media-caption">Nová Spěška je interní software pro ČEPS určený pro vizualizaci dat. Aplikace musí zobrazovat data efektivně a přehledně, a to jak na velkých obrazovkách, tak na monitorech, tabletech a mobilních zařízeních. </p>
-                    <img class="media" src="NOS/NOS_02.png" alt="NOS 02" />
-                    <p class="media-caption">Moje role je grafický design (UI & UX) a kódování některých vizualizací pomocí Deneb/Vega JSON. Momentálně prezentuji ukázku bez reálných dat. </p>
-                    <img class="media" src="NOS/NOS_03.png" alt="NOS 03" />
-                    <p class="media-caption">Projekt zajišťuje přehlednou a funkční vizualizaci dat pro interní potřeby ČEPS, podporuje rychlé rozhodování a efektivní monitoring. </p>
-                </div>
-            </section> 
+         
 
-
-            <section class="category">
-                <div class="header-row">
-                    <div class="left-flag">2025<br>DESIGN × PRINT × 3D × HARDWERE × SOFTWERE</div>
-                    <h1 class="right-banner">STŘELA</h1>
-                </div>
-                <div class="media-wrap">
-                   <video class="media" src="STRELA/STRELA_01.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Střela Žebrák je nezisková organizace zaměřená na volnočasové aktivity pro děti a mládež. Pro jejich projekt Chata jsem vytvořila vizuální identitu a sadu propagačních materiálů – plakáty, letáky, vizitky, předměty i další grafické podklady.</p> 
-                   <!--  <img class="media" src="STRELA/STRELA_01.png" alt="KONEV 02" />
-                    <p class="media-caption">--</p> -->
-                    <img class="media" src="STRELA/STRELA_02.png" alt="KONEV 02" />
-                    <p class="media-caption">První prototyp ar aplikace</p>
-                    <img class="media" src="STRELA/STRELA_03.png" alt="KONEV 03" />
-                    <p class="media-caption">Cílem bylo dát projektu soudržnou podobu, která dětem i veřejnosti srozumitelně představí jeho smysl; proto je součástí také webová aplikace s 3D modelem prostoru, kde chata vzniká. </p>
-                    <model-viewer
-                        class="media"
-                        src="STRELA/STRELA_05.glb"
-                        alt="3D model konve"
-                        camera-controls
-                        auto-rotate
-                        rotation-per-second="15deg"
-                        exposure="1"
-                        shadow-intensity="1"
-                        style="width: 100%; height: 600px; background-color: #FFFFFF; border-radius: 12px;">
-                    </model-viewer>
-                    <p class="media-caption">Brzy appka s AR!!! </p>
-                </div>
-            </section>
+           
         
 
             
@@ -270,7 +178,8 @@ Projekt je inspirován televizní reportáží 11 hodin hrůzy a bez naděje, kd
                 </div>
                 <div class="media-wrap">
                     <video class="media" src="KONEV/KONEV_01.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Vstup a výstup je stejný, je to konev, ale musí být konstrukce stejná? </p>
+                    
+                  <p class="media-caption">Vstup a výstup je stejný, je to konev, ale musí být konstrukce stejná? </p>
                     <img class="media" src="KONEV/KONEV_02.png" alt="KONEV 02" />
                     <p class="media-caption"></p>
                     <img class="media" src="KONEV/KONEV_03.png" alt="KONEV 03" />
@@ -306,46 +215,10 @@ Projekt je inspirován televizní reportáží 11 hodin hrůzy a bez naděje, kd
                 </div>
             </section> 
 
-        <section class="category">
-                <div class="header-row">
-                    <div class="left-flag">2025 <br>ŠKOLNÍ PRÁCE</div>
-                  <div class="left-flag"><br>(FOTO = TAMIR MAXMILIÁN YAFFE)</div>
-                    <h1 class="right-banner">CORN</h1>
-                </div>
-                <div class="media-wrap">
-                    <img class="media" src="CORN/CORN_01.png" alt="CORN 01" />
-                    <p class="media-caption">Luxusní šperk Antonína Koláře, ukrytý v obalu ve tvaru klece. K prstenu se je potřeba doslova propracovat – otevření je součástí zážitku. </p>
-                    <img class="media" src="CORN/CORN_02.png" alt="CORN 01" />
-                    <p class="media-caption">Projekt získal 1. místo v soutěži La Papier 2025.</p>
-                   <!-- <img class="media" src="CORN/CORN_03.png" alt="CORN 01" />
-                    <p class="media-caption">--</p> -->
-                </div>
-            </section> 
+      
 
 
-                    <section class="category">
-                <div class="header-row">
-                    <div class="left-flag">2025<br>UI & UX × CODE </div>
-                    <h1 class="right-banner">MADDONA</h1>
-                </div>
-                <div class="media-wrap">
-                    <video class="media" src="MADDONA/MADDONA_01.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Madona je webová aplikace vytvořená pro kavárnu Černá Madona.</p>
-                   <video class="media" src="MADDONA/MADDONA_02.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Scriptovala jsem ji v JavaScriptu jako doprovod k 3D objektu navrženému pro prostor kavárny. Jednoduchá geometrie se tu mění v živý ornament a ukazuje, jak může digitální generativní forma rozšiřovat atmosféru místa a jeho vizuální identitu.</p>
-                    <img class="media" src="MADDONA/MADDONA_03.png" alt="MADDONA 03" />
-                    <p class="media-caption">Pokračování se nabízí v podobě interaktivních projekcí nebo propojení přímo s objektem v prostoru.</p>
-                   <!-- <img class="media" src="MADDONA/MADDONA_04.png" alt="MADDONA 04" />
-                    <p class="media-caption">detail</p> -->
-                   
-                    <!-- KLIKNUTÍM NA OBRÁZEK SE OTEVŘE HRA -->
-                    <a href="https://johanahlavacova3-hue.github.io/Maddonna_DEV/" target="_blank" class="media-link">
-                        <img class="media" src="MADDONA/MADDONA_01.png" alt="Spustit aplikaci MADONA" />
-                    </a>
-                    <p class="media-caption">Spustit aplikaci MADONA</p>
-                    
-                </div>
-            </section> 
+                
 
                   <section class="category">
                 <div class="header-row">
@@ -354,9 +227,11 @@ Projekt je inspirován televizní reportáží 11 hodin hrůzy a bez naděje, kd
                 </div>
                 <div class="media-wrap">
                     <video class="media" src="GPS/GPS_01.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">GPS-04 je webová aplikace v JavaScriptu, která z GPS souřadnic generuje jedinečný 3D abstraktní tvar pro každé konkrétní místo na Zemi. </p>
+                   
+                  <p class="media-caption">GPS-04 je webová aplikace v JavaScriptu, která z GPS souřadnic generuje jedinečný 3D abstraktní tvar pro každé konkrétní místo na Zemi. </p>
                     <video class="media" src="GPS/GPS_02.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Vznikl z potřeby uchovávat si osobní vzpomínky na lokality jinak než fotografií – jako malý matematický otisk prostoru, který se promění v vizuální objekt. </p>
+                    
+                  <p class="media-caption">Vznikl z potřeby uchovávat si osobní vzpomínky na lokality jinak než fotografií – jako malý matematický otisk prostoru, který se promění v vizuální objekt. </p>
                     <img class="media" src="GPS/GPS_03.png" alt=" 03" />
                     <p class="media-caption">Výsledek je možné stáhnout jako průhledné PNG nebo jako 3D model připravený k tisku.</p>
                     
@@ -399,6 +274,170 @@ Projekt je inspirován televizní reportáží 11 hodin hrůzy a bez naděje, kd
             </section>
 
 
+          <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>DESIGN × PRINT × 3D × HARDWERE × SOFTWERE</div>
+                    <h1 class="right-banner">MYŠÁK</h1>
+                </div>
+                <div class="media-wrap">
+                  <!--  <video class="media" src="MYSAK/MYSAK_01.mp4" autoplay loop muted playsinline></video>
+                    <p class="media-caption">Myšák je malý robot, který dávkuje bonbóny a funguje jako osobní zvířátko na zlepšení nálady.</p> -->
+                    <img class="media" src="MYSAK/MYSAK_01.png" alt="KONEV 02" />
+                    <p class="media-caption">Myšák je malý robot, který dávkuje bonbóny a funguje jako osobní zvířátko na zlepšení nálady.</p>
+                    <video class="media" src="MYSAK/MYSAK_02.mp4" autoplay loop muted playsinline></video>
+                    
+                  <p class="media-caption">Vznikl ve chvíli, kdy jsem chtěla něco hravého a trochu absurdního – objekt, který existuje jen proto, aby potěšil. Od začátku jsem mířila k podobě drobné, nenápadné myšičky, která se tiše objeví na stole, udělá svou práci a nijak nenarušuje okolí. Takové „cibetkové bonbóny“ převedené do robotické podoby. </p> 
+                    <img class="media" src="MYSAK/MYSAK_03.png" alt="KONEV 03" />
+                    <p class="media-caption">Technicky je Myšák velmi jednoduchý: jedno servo, ESP32 naprogramované v C++ a bezdotykové tlačítko, které dává impuls k otevření mechanismu. O to víc práce ale zabral hardware. Mechanika byla největší překážkou – celé dávkování potřebovalo přesný pohyb i spolehlivou konstrukci. Nakonec z toho vyšla vrstvená 3D tištěná schránka, která drží tvar a umožňuje stabilní chod.</p>
+                    <video class="media" src="MYSAK/MYSAK_04.mp4" autoplay loop muted playsinline></video>
+                    
+                  <p class="media-caption">První verze ukazuje základní design a prototyp mechaniky – ještě bez detailů, spíš hledání tvaru a pohybu. </p> 
+                    <img class="media" src="MYSAK/MYSAK_04.png" alt="KONEV 03" />
+                    <p class="media-caption">Druhá verze je už výrazně dál a v paralelním provozu slouží jako zkušební model.</p>
+                    <model-viewer
+                        class="media"
+                        src="MYSAK/MYSAK_05.glb"
+                        alt="3D model konve"
+                        camera-controls
+                        auto-rotate
+                        rotation-per-second="15deg"
+                        exposure="1"
+                        shadow-intensity="1"
+                        style="width: 100%; height: 600px; background-color: #FFFFFF; border-radius: 12px;">
+                    </model-viewer>
+                    <p class="media-caption">Prohlédněte si také 3D model. Brzy bude ke stažení a připravený k dalším experimentům.</p>
+                </div>
+            </section>
+
+           <!--    <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>HARDWERE × SOFTWERE × DESIGN</div>
+                    <h1 class="right-banner">MYŠÁK</h1>
+                </div>
+                <div class="media-wrap">
+                    <img class="media" src="MYSAK/MYSAK_01.png" alt="MYSAK 01">
+                    <p class="media-caption">uvod catch</p>
+                       <img class="media" src="MYSAK/MYSAK_02.png" alt="MYSAK 02">
+                    <p class="media-caption">UPRESNENI</p>
+                    <img class="media" src="MYSAK/MYSAK_03.png" alt="MYSAK 03">
+                    <p class="media-caption">SKICI</p>
+                    <img class="media" src="MYSAK/MYSAK_04.png" alt="MYSAK 04">
+                    <p class="media-caption">UKAZKA - video, spousti se tlacitkem na hlave, vypadne bonbon interaktivni</p>
+                    <img class="media" src="MYSAK/MYSAK_05.png" alt="MYSAK 05">
+                    <p class="media-caption">FINAL</p> 
+                </div>
+            </section> -->
+
+         <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>DESIGN × PRINT × 3D × HARDWERE × SOFTWERE</div>
+                    <h1 class="right-banner">STŘELA</h1>
+                </div>
+                <div class="media-wrap">
+                   <video class="media" src="STRELA/STRELA_01.mp4" autoplay loop muted playsinline></video>
+                  
+                  <p class="media-caption">Střela Žebrák je nezisková organizace zaměřená na volnočasové aktivity pro děti a mládež. Pro jejich projekt Chata jsem vytvořila vizuální identitu a sadu propagačních materiálů – plakáty, letáky, vizitky, předměty i další grafické podklady.</p> 
+                   <!--  <img class="media" src="STRELA/STRELA_01.png" alt="KONEV 02" />
+                    <p class="media-caption">--</p> -->
+                    <img class="media" src="STRELA/STRELA_02.png" alt="KONEV 02" />
+                    <p class="media-caption">První prototyp ar aplikace</p>
+                    <img class="media" src="STRELA/STRELA_03.png" alt="KONEV 03" />
+                    <p class="media-caption">Cílem bylo dát projektu soudržnou podobu, která dětem i veřejnosti srozumitelně představí jeho smysl; proto je součástí také webová aplikace s 3D modelem prostoru, kde chata vzniká. </p>
+                    <model-viewer
+                        class="media"
+                        src="STRELA/STRELA_05.glb"
+                        alt="3D model konve"
+                        camera-controls
+                        auto-rotate
+                        rotation-per-second="15deg"
+                        exposure="1"
+                        shadow-intensity="1"
+                        style="width: 100%; height: 600px; background-color: #FFFFFF; border-radius: 12px;">
+                    </model-viewer>
+                    <p class="media-caption">Brzy appka s AR!!! </p>
+                </div>
+            </section>
+
+         <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2024 – SOUČASNOST<br>UI & UX × CODE</div>
+                    <h1 class="right-banner">NoS</h1>
+                </div>
+                <div class="media-wrap">
+                    <img class="media" src="NOS/NOS_01.png" alt="NOS 01" />
+                    <p class="media-caption">Nová Spěška je interní software pro ČEPS určený pro vizualizaci dat. Aplikace musí zobrazovat data efektivně a přehledně, a to jak na velkých obrazovkách, tak na monitorech, tabletech a mobilních zařízeních. </p>
+                    <img class="media" src="NOS/NOS_02.png" alt="NOS 02" />
+                    <p class="media-caption">Moje role je grafický design (UI & UX) a kódování některých vizualizací pomocí Deneb/Vega JSON. Momentálně prezentuji ukázku bez reálných dat. </p>
+                    <img class="media" src="NOS/NOS_03.png" alt="NOS 03" />
+                    <p class="media-caption">Projekt zajišťuje přehlednou a funkční vizualizaci dat pro interní potřeby ČEPS, podporuje rychlé rozhodování a efektivní monitoring. </p>
+                </div>
+            </section> 
+
+
+         <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>UI & UX</div>
+                    <h1 class="right-banner">ZDENA</h1>
+                </div>
+                <div class="media-wrap">
+                    <img class="media" src="ZDENA/ZDENA_01.png" alt="ZDENA 01">
+                    <p class="media-caption">11 hodin hrůzy a beznaděje – videohra
+Projekt je inspirován televizní reportáží 11 hodin hrůzy a bez naděje, kde hlavní roli hrála Zdena: báby pod kořenem. </p>
+                    <video class="media" src="ZDENA/ZDENA_02.mp4" autoplay loop muted playsinline></video>
+                  
+                  <p class="media-caption">Cílem je převést bizarní televizní zážitek do interaktivní hry a zachytit jeho absurdní atmosféru. </p>
+                    <img class="media" src="ZDENA/ZDENA_03.png" alt="ZDENA 02" />
+                    <p class="media-caption">Hra je navržena jako klasická klikací aplikace s možností „výhry“ při specificky hlasitém chování postavy.</p>
+                    <img class="media" src="ZDENA/ZDENA_04.png" alt="ZDENA 02" />
+                    <p class="media-caption">--</p>
+                    
+                </div>
+            </section> 
+
+          <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025 <br>ŠKOLNÍ PRÁCE</div>
+                  <div class="left-flag"><br>(FOTO = TAMIR MAXMILIÁN YAFFE)</div>
+                    <h1 class="right-banner">CORN</h1>
+                </div>
+                <div class="media-wrap">
+                    <img class="media" src="CORN/CORN_01.png" alt="CORN 01" />
+                    <p class="media-caption">Luxusní šperk Antonína Koláře, ukrytý v obalu ve tvaru klece. K prstenu se je potřeba doslova propracovat – otevření je součástí zážitku. </p>
+                    <img class="media" src="CORN/CORN_02.png" alt="CORN 01" />
+                    <p class="media-caption">Projekt získal 1. místo v soutěži La Papier 2025.</p>
+                   <!-- <img class="media" src="CORN/CORN_03.png" alt="CORN 01" />
+                    <p class="media-caption">--</p> -->
+                </div>
+            </section> 
+
+            <section class="category">
+                <div class="header-row">
+                    <div class="left-flag">2025<br>UI & UX × CODE </div>
+                    <h1 class="right-banner">MADDONA</h1>
+                </div>
+                <div class="media-wrap">
+                    <video class="media" src="MADDONA/MADDONA_01.mp4" autoplay loop muted playsinline></video>
+                   
+                  <p class="media-caption">Madona je webová aplikace vytvořená pro kavárnu Černá Madona.</p>
+                   <video class="media" src="MADDONA/MADDONA_02.mp4" autoplay loop muted playsinline></video>
+                    
+                  <p class="media-caption">Scriptovala jsem ji v JavaScriptu jako doprovod k 3D objektu navrženému pro prostor kavárny. Jednoduchá geometrie se tu mění v živý ornament a ukazuje, jak může digitální generativní forma rozšiřovat atmosféru místa a jeho vizuální identitu.</p>
+                    <img class="media" src="MADDONA/MADDONA_03.png" alt="MADDONA 03" />
+                    <p class="media-caption">Pokračování se nabízí v podobě interaktivních projekcí nebo propojení přímo s objektem v prostoru.</p>
+                   <!-- <img class="media" src="MADDONA/MADDONA_04.png" alt="MADDONA 04" />
+                    <p class="media-caption">detail</p> -->
+                   
+                    <!-- KLIKNUTÍM NA OBRÁZEK SE OTEVŘE HRA -->
+                    <a href="https://johanahlavacova3-hue.github.io/Maddonna_DEV/" target="_blank" class="media-link">
+                        <img class="media" src="MADDONA/MADDONA_01.png" alt="Spustit aplikaci MADONA" />
+                    </a>
+                    <p class="media-caption">Spustit aplikaci MADONA</p>
+                    
+                </div>
+            </section> 
+           
+        
+
         <main class="stage">
       <section class="category" id="UMPRUM">
         <div class="header-row">
@@ -407,20 +446,24 @@ Projekt je inspirován televizní reportáží 11 hodin hrůzy a bez naděje, kd
                 </div>
                 <div class="media-wrap">
                     <video class="media" src="UMPRUM/UMPRUM_01.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Projekt vychází z představy jedné vteřiny před koncem světa jako stavu, ve kterém se čas téměř zastaví. Nejde o katastrofu ani o chaos, ale o moment, kdy zbývá minimum prostoru pro jednání. Zajímá mě, jaké chování je v tak krátkém čase ještě možné a jak málo stačí k vytvoření významu.</p>
+                   <span class="video-tag">video</span>
+                  <p class="media-caption">Projekt vychází z představy jedné vteřiny před koncem světa jako stavu, ve kterém se čas téměř zastaví. Nejde o katastrofu ani o chaos, ale o moment, kdy zbývá minimum prostoru pro jednání. Zajímá mě, jaké chování je v tak krátkém čase ještě možné a jak málo stačí k vytvoření významu.</p>
                      <img class="media" src="UMPRUM/UMPRUM_02.png" alt=" 03" />
                     <p class="media-caption">Interakce jsou záměrně omezené na jednoduchá gesta, která lze provést během jediné vteřiny. Základním motivem je přiblížení a objetí jako silné, ale nenápadné gesto propojení. Divák neobdrží žádné instrukce – sleduje, co se v prostoru děje, když se pohne, zastaví nebo naváže kontakt s někým dalším.</p>
                     <img class="media" src="UMPRUM/UMPRUM_03.png" alt=" 03" />
                     <p class="media-caption">Chování systému je řízeno jednoduchým generativním kódem, který simuluje pohyb, paměť a vzájemné vztahy jednotlivých prvků. Ukázaný skript zachycuje moment setkání a reakce na blízkost. Výsledná animace byla nahrána a použita v simulaci LED dómu pražského planetária vytvořené v Blenderu. Projekce je navržena jako plynulý proces bez začátku a konce v délce přibližně 10–15 minut.</p>
                     <video class="media" src="UMPRUM/UMPRUM_04.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Divák se stává součástí systému pomocí svého mobilního telefonu, který slouží jako jednoduchý kontroler pohybu a signálů. Každý vstup je individuální, ale jeho důsledky jsou kolektivní. Projekt zkoumá, jak se celek chová bez centrálního řízení a co se stane, když se nikdo nepohne, když se přiblíží dva, nebo když se systém na chvíli uklidní.</p>
+                    <span class="video-tag">video</span>
+                  <p class="media-caption">Divák se stává součástí systému pomocí svého mobilního telefonu, který slouží jako jednoduchý kontroler pohybu a signálů. Každý vstup je individuální, ale jeho důsledky jsou kolektivní. Projekt zkoumá, jak se celek chová bez centrálního řízení a co se stane, když se nikdo nepohne, když se přiblíží dva, nebo když se systém na chvíli uklidní.</p>
                     <video class="media" src="UMPRUM/UMPRUM_05.mp4" autoplay loop muted playsinline></video>
-                    <p class="media-caption">Prostor LED dómu zaplňují abstraktní pohybující se tvary, které nemají jasnou identitu ani charakter. Jejich tvar, velikost a stopa v čase reagují na pohyb a blízkost ostatních. Při „objetí“ dochází k rozostření hranic a proměně vizuální struktury, čímž vzniká dojem kolektivního těla spíše než jednotlivých entit.</p>
+                   <span class="video-tag">video</span>
+                  <p class="media-caption">Prostor LED dómu zaplňují abstraktní pohybující se tvary, které nemají jasnou identitu ani charakter. Jejich tvar, velikost a stopa v čase reagují na pohyb a blízkost ostatních. Při „objetí“ dochází k rozostření hranic a proměně vizuální struktury, čímž vzniká dojem kolektivního těla spíše než jednotlivých entit.</p>
                     
                     
                    <!-- KLIKNUTÍM NA OBRÁZEK OTEVŘE HRU NA /GAMES/KAREL_THE_ROBOT-GAME_main/ -->
                     <a href="https://johanahlavacova3-hue.github.io/1s_pred_koncem_DEV/" target="_blank" class="media-link">
                         <video class="media" src="UMPRUM/UMPRUM_06.mp4"  autoplay loop muted playsinline></video>
+                   <span class="video-tag">video</span>
                     </a>
                     <p class="media-caption">Kliknutím na video spusťte ukázkový webový koncept. </p>
                 </div>
