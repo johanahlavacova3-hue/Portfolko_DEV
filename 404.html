@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rozbila jsem to — Johana Hlaváčová</title>
+  <meta name="description" content="Johana Hlaváčová – full stuck designerka. UI & UX, 3D, vizualizace dat, robotika.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap">
+  <script>document.documentElement.classList.add('rv-pending');setTimeout(function(){document.documentElement.classList.remove('rv-pending')},2500);
+  if (location.protocol === 'file:') {
+    document.documentElement.classList.remove('rv-pending');
+    addEventListener('DOMContentLoaded', function () {
+      var d = document.createElement('div'); d.className = 'file-warning';
+      d.innerHTML = 'Web je otevřený přímo ze souboru, a v tom případě prohlížeč zablokuje skripty (3D logo, portfolio, animace). ' +
+        'Spusť ho přes server: ve složce webu <code>npx serve .</code> nebo <code>python3 -m http.server</code>, případně VS Code → Live Server. Podrobnosti v README.';
+      document.body.appendChild(d);
+    });
+  }</script>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body class="page-404">
+  <main class="screen">
+    <div class="stage" data-jh3d="broken" data-model="assets/models/404.glb" aria-hidden="true"></div>
+    <div class="msg small">
+      <p>Rozbila jsem to. Pardon ...</p>
+      <a href="index.html">Zpátky na úvodní stránku –</a>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,306 @@
+/* =========================================================
+   JH — styly
+   Rozměry jsou ve vw podle návrhu (šířka 1458 px),
+   takže web drží proporce na všech šířkách desktopu.
+   ========================================================= */
+
+:root {
+  --bg: #111111;
+  --fg: #f1f0ed;
+  --muted: #5a5a5a;     /* „FULL STUCK DESIGNERKA“ */
+  --label: #767676;     /* „VZDĚLÁNÍ:“, „SKILLS:“ … */
+  --img-bg: #1b1b1b;
+
+  --pad: 2.2vw;                       /* okraj stránky */
+  --col: 26.25vw;                     /* šířka sloupce */
+  --col1: calc(29.2vw - var(--pad));  /* první sloupec (logo) */
+
+  --fs-nav: clamp(11px, 0.82vw, 16px);
+  --fs-h: clamp(20px, 1.78vw, 36px);
+  --fs-s: clamp(11px, 0.8vw, 15px);
+
+  --font: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--bg); -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--fg); color: var(--bg); }
+
+/* ---------- Mřížka 4 sloupců ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: var(--col1) var(--col) var(--col) 1fr;
+  padding: 0 var(--pad);
+}
+
+/* ---------- Hlavička ---------- */
+.site-header {
+  position: relative;
+  z-index: 3;
+  padding-top: 1.05vw;
+  align-items: start;
+}
+.logo { display: inline-block; width: max(1.95vw, 26px); }
+.logo img { width: 100%; height: auto; }
+.site-header nav { display: contents; }
+.site-header nav a {
+  font-size: var(--fs-nav);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding-top: 0.55vw;
+  justify-self: start;
+  transition: opacity .2s;
+}
+.site-header nav a:hover,
+.site-header nav a[aria-current="page"] { opacity: .55; }
+
+/* ---------- Typografie ---------- */
+.title {
+  font-size: var(--fs-h);
+  font-weight: 700;
+  line-height: 1.26;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.title .sub { display: block; color: var(--muted); }
+
+.small {
+  font-size: var(--fs-s);
+  line-height: 1.36;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.small p + p { margin-top: 1.36em; }
+.small a:hover { opacity: .55; }
+.label { color: var(--label); display: block; }
+.stack span { display: block; }
+.stack + .label { margin-top: 1.36em; }
+
+/* ---------- Úvod + About (jedna obrazovka) ---------- */
+.screen {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.screen-title { padding-top: 2.45vw; position: relative; z-index: 2; }
+
+.screen-bottom {
+  margin-top: auto;
+  padding-top: 4vw;
+  padding-bottom: 3.1vw;
+  align-items: start;
+  position: relative;
+  z-index: 2;
+}
+.screen-bottom > * { padding-right: 2vw; }
+.contact { grid-column: 4; }
+
+.big-links { grid-column: 1 / span 2; }
+.big-links a {
+  display: table;
+  font-size: var(--fs-h);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-bottom: 1.4vw;
+  transition: transform .25s ease, opacity .2s;
+}
+.big-links a:last-child { margin-bottom: 0; }
+.big-links a:hover { transform: translateX(.6vw); opacity: .7; }
+
+.about-bio { max-width: 22vw; }
+
+/* ---------- 3D plátno ---------- */
+.stage {
+  position: absolute;
+  z-index: 1;
+  top: 3.6vw;
+  left: 56.6vw;
+  width: 40vw;
+  height: min(33vw, 62vh);
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+.stage.is-ready { opacity: 1; }
+.stage canvas { display: block; width: 100% !important; height: 100% !important; }
+.stage.no-webgl {
+  opacity: 1;
+  background: url('../assets/logo.svg') center / contain no-repeat;
+}
+
+/* ---------- Maskované animace ---------- */
+.rv-pending body { opacity: 0; }
+.rv { overflow: hidden; }
+span.rv { display: block; }
+.rv-i { display: block; will-change: transform; }
+
+/* široký nápis .jH·026 na úvodu: přes celou šířku mezi nadpisem a odkazy */
+.stage.stage-wide {
+  left: 0.8vw;
+  width: 98.4vw;
+  top: 9.5vw;
+  height: min(30vw, calc(100vh - 24vw));
+}
+
+/* ---------- Portfolio (jedna obrazovka) ---------- */
+.page-portfolio { overflow: hidden; height: 100vh; height: 100svh; }
+.pf { padding-top: 1.1vw; }
+
+.pf-frame {
+  position: relative;
+  margin: 0 0.8vw;
+  height: min(39vw, calc(100vh - 17vw));
+  overflow: hidden;
+  background: var(--img-bg);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .pf-frame.is-ready { cursor: none; }
+}
+.pf-msg {
+  position: absolute;
+  inset: auto var(--pad) var(--pad);
+  font-size: var(--fs-s);
+  letter-spacing: .04em;
+  line-height: 1.5;
+  color: var(--fg);
+}
+.file-warning {
+  position: fixed;
+  left: 16px; right: 16px; bottom: 16px;
+  z-index: 100;
+  padding: 16px 18px;
+  background: var(--fg);
+  color: var(--bg);
+  font: 13px/1.5 var(--font);
+}
+.file-warning code { font-weight: 700; }
+.pf-slide {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  will-change: clip-path;
+}
+.pf-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* texty na černé ploše – pořád na stejném místě */
+.pf-info { margin-top: 2.25vw; align-items: start; position: relative; }
+.pf-head { padding-left: 0.75vw; }
+.pf-text {
+  padding-right: 5.3vw;
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
+.pf-measure {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+  left: 0; top: 0;
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
+.pf-measure span { display: inline; }
+.ln .rv-i { white-space: nowrap; }
+
+/* vlastní kurzor nad obrázkem */
+.cursor {
+  position: fixed;
+  left: 0; top: 0;
+  z-index: 10;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  color: #fff;
+}
+.cursor-label {
+  display: block;
+  transform: translate(-50%, -50%) scale(.6);
+  opacity: 0;
+  font-size: var(--fs-nav);
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: opacity .3s, transform .5s cubic-bezier(.19,1,.22,1);
+}
+.cursor.is-on .cursor-label { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+@media (hover: none) { .cursor { display: none; } }
+
+/* ---------- 404 ---------- */
+.page-404 .stage { left: 30vw; }
+.msg {
+  position: absolute;
+  top: 44.7vw;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+.msg a { display: inline-block; margin-top: 4.3vw; }
+.msg a:hover { opacity: .55; }
+@media (max-aspect-ratio: 16/10) and (min-width: 761px) {
+  .msg { top: auto; bottom: 7vh; }
+}
+
+/* ---------- Mobil ---------- */
+@media (max-width: 760px) {
+  :root { --pad: 18px; }
+  .grid { grid-template-columns: 1fr 1fr 1fr; column-gap: 12px; }
+  .site-header { padding-top: 16px; row-gap: 22px; }
+  .logo { grid-column: 1 / -1; width: 30px; }
+  .site-header nav a { padding-top: 0; }
+
+  .screen-title { padding-top: 32px; }
+  .stage,
+  .stage.stage-wide,
+  .page-404 .stage {
+    position: relative;
+    top: auto; left: auto;
+    width: 100%;
+    height: 88vw;
+    margin: 10px 0;
+  }
+  .screen-bottom { padding-top: 12px; padding-bottom: 28px; row-gap: 32px; }
+  .screen-bottom > * { grid-column: 1 / -1; padding-right: 0; }
+  .contact { grid-column: 1 / -1; }
+  .big-links a { margin-bottom: 14px; }
+  .about-bio { max-width: none; }
+
+  .page-portfolio { overflow: auto; height: auto; }
+  .pf { padding-top: 22px; }
+  .pf-frame { margin: 0 8px; height: auto; aspect-ratio: 4 / 3; touch-action: pan-y; }
+  .pf-info { margin-top: 18px; row-gap: 0; padding-bottom: 40px; }
+  .pf-info > * { grid-column: 1 / -1; }
+  .pf-head { padding-left: 0; margin-bottom: 16px; }
+  .pf-text { padding-right: 0; }
+  .pf-tags { margin-top: 16px; }
+
+  .msg { position: static; transform: none; padding: 24px var(--pad) 40px; text-align: left; }
+  .msg a { margin-top: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
