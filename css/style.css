@@ -320,3 +320,6 @@ span.rv { display: block; }
 /* vypnuté stránky (js/pages.js): v menu zůstane místo, jinde odkaz zmizí */
 .site-header nav a.is-off { visibility: hidden; }
 a.is-off:not(.site-header nav a) { display: none; }
+
+/* písmena při animaci (js/motion.js → letters) */
+.ch { display: inline-block; white-space: pre; will-change: transform, opacity; }

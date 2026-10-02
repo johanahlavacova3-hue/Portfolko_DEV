@@ -22,8 +22,8 @@ Statický web (HTML + CSS + JS, bez buildu). 3D logo JH běží na [Three.js](ht
 │   ├── jh3d.js         3D logo reagující na myš
 │   └── data.js         načítání JSON / CSV / Google Sheets
 ├── data/
-│   ├── projects.json   ✏️  práce do portfolia
-│   ├── projects.csv    ✏️  totéž jako tabulka (alternativa)
+│   ├── projects.xlsx   ✏️  práce do portfolia (Excel, list „Práce“)
+│   ├── projects.json   záloha / alternativa k Excelu
 │   └── site.json       ✏️  kontakty, IČO, texty About me
 └── assets/
     ├── logo.svg, favicon.svg
@@ -81,39 +81,29 @@ Obrázek nahoře se přepíná, texty na černé ploše pod ním zůstávají na
 
 Za posledním obrázkem práce plynule navazuje další práce. Kurzor nad obrázkem ukazuje pořadí a směr (`02/03 ->`).
 Odkaz na konkrétní obrázek: `galerie.html#nazev-prace/2`.
-Rychlost a křivky animací se ladí v `js/motion.js` a na začátku `js/portfolio.js` (`DUR`).
+Přechody jsou jemné: prolnutí s malým posunem a zoomem. Mezi obrázky jedné práce nejmenší, při přechodu na jinou práci o kousek výraznější. Sílu nastavíš v `js/config.js` → `gallery`.
+Texty (v galerii i nadpisy a menu na stránkách) naskakují po písmenech a **pokaždé jinou animací** – zespodu, shora, rozostřeně, psacím strojem, v náhodném pořadí, z náklonu nebo „dopočítáním“ náhodných znaků. Varianty jsou v `js/motion.js` (`LETTER_FX`), dvě stejné nikdy nejdou po sobě.
 
 ## Přidání nové práce
 
-### Varianta A: JSON (výchozí)
-1. Nahraj obrázky do `assets/projects/nazev-prace/` (např. `01.jpg`, `02.jpg`).
-2. Do `data/projects.json` přidej záznam. Pořadí v souboru = pořadí na webu.
+1. Nahraj obrázky do `assets/projects/<ID>/` (např. `01.jpg`, `02.jpg`).
+2. Otevři `data/projects.xlsx` v Excelu a na listu **Práce** přidej řádek. Pořadí řádků = pořadí na webu.
+3. Ulož a nahraj na web / do gitu. Nic dalšího není potřeba.
 
-```json
-{
-  "id": "nazev-prace",
-  "title": "Název projektu",
-  "date": "12.05.2026",
-  "text": "Popis projektu…",
-  "tags": ["UI & UX design", "Robotika"],
-  "images": ["assets/projects/nazev-prace/01.jpg", "assets/projects/nazev-prace/02.jpg"]
-}
-```
+| sloupec | co tam patří |
+|---|---|
+| ID | krátký název bez mezer a diakritiky (nepovinné, jinak se vytvoří z názvu) |
+| Název | název práce |
+| Datum | `DD.MM.RRRR`; rok z data plní výběr „Podle roku“ |
+| Popis | text pod obrázkem, sám se rozdělí do dvou sloupců; nový řádek Alt+Enter |
+| Typ (štítky) | každý štítek na nový řádek (Alt+Enter) nebo oddělený `;`; plní výběr „Podle typu“ |
+| Obrázky | cesty k obrázkům, každý na nový řádek; ideální poměr stran cca 2,5 : 1 |
+| Skrýt | `ano` = práce se nezobrazí |
 
-- `images`: libovolný počet. Ideálně stejný poměr stran (cca 2,5 : 1), jinak se ořízne na výšku rámu.
-- `text`: sám se rozdělí po řádcích do dvou sloupců. Nový řádek zapíšeš jako `\n`.
+Nadpisy sloupců mají v Excelu nápovědu (komentář) a list **Návod** shrnuje totéž.
+Nepřejmenovávej list ani nadpisy – web podle nich tabulku čte.
 
-### Varianta B: tabulka (Excel / CSV)
-V `js/config.js` nastav `projectsSource: 'data/projects.csv'` a upravuj `data/projects.csv` v Excelu.
-Sloupce: `id, title, date, text, tags, images, hidden`.
-Více štítků nebo obrázků odděl středníkem `;`. Když do `hidden` napíšeš `x`, práce se skryje.
-
-### Varianta C: Google Sheets (bez sahání do gitu)
-1. Vytvoř tabulku se stejnými sloupci jako v CSV.
-2. *Soubor → Sdílet → Publikovat na webu* → list → formát **CSV** → zkopíruj odkaz.
-3. V `js/config.js` nastav `projectsSource: '<ten odkaz>'`.
-
-Pak stačí upravit tabulku a web se změní sám. Obrázky můžou být v gitu (`assets/...`) nebo jako plné URL.
+Jiné zdroje (nastavíš `projectsSource` v `js/config.js`): `data/projects.json`, nebo Google Sheets publikovaný jako CSV (*Soubor → Sdílet → Publikovat na webu → CSV*), se stejnými nadpisy sloupců.
 
 ## 3D model
 
