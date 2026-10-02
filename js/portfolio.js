@@ -12,6 +12,7 @@
 import { loadProjects, slugify } from './data.js';
 import { EASE_IN_OUT, EASE_OUT, reduced, conceal, letters, nextVariant } from './motion.js';
 import { CONFIG } from './config.js';
+import { createMedia, prefetch } from './media.js';
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) =>
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -69,18 +70,8 @@ export async function initPortfolio(root, source) {
   projects.forEach((p, pi) => p.images.forEach((src, ii) => slides.push({ p, pi, ii, src })));
   const firstOf = (pi) => slides.findIndex((s) => s.pi === pi);
 
-  // přednačtení
-  const cache = new Map();
-  const preload = (i) => {
-    const s = slides[(i + slides.length) % slides.length];
-    if (!cache.has(s.src)) {
-      const img = new Image();
-      img.decoding = 'async';
-      img.src = s.src;
-      cache.set(s.src, img.decode().catch(() => {}));
-    }
-    return cache.get(s.src);
-  };
+  // přednačtení dalšího obrázku / modelu na pozadí (videa se nenačítají dopředu)
+  const preload = (i) => prefetch(slides[(i + slides.length) % slides.length].src);
 
   /* ---------- počáteční pozice z URL (#id nebo #id/2) ---------- */
   let index = 0;
@@ -136,10 +127,13 @@ export async function initPortfolio(root, source) {
   }
 
   /* ---------- slidy ---------- */
+  // obrázek, video nebo 3D model – podle přípony (js/media.js)
   function makeSlide(s) {
     const el = document.createElement('div');
-    el.className = 'pf-slide';
-    el.innerHTML = `<img src="${esc(s.src)}" alt="${esc(s.p.title)} – ${s.ii + 1}" draggable="false">`;
+    const media = createMedia(s.src, `${s.p.title} – ${s.ii + 1}`);
+    el.className = `pf-slide is-${media.kind}`;
+    el.appendChild(media.el);
+    el.media = media;
     return el;
   }
 
@@ -169,9 +163,12 @@ export async function initPortfolio(root, source) {
     updateHash();
     updateCursor();
 
-    await preload(to);
     const incoming = makeSlide(next);
+    incoming.style.opacity = '0';
     frame.appendChild(incoming);
+    await incoming.media.ready;
+    incoming.style.opacity = '';
+    incoming.media.show();
     const outgoing = current;
     current = incoming;
 
@@ -201,6 +198,7 @@ export async function initPortfolio(root, source) {
         ];
 
     await Promise.all(anims.map((a) => a.finished.catch(() => {})));
+    outgoing.media.dispose();
     outgoing.remove();
     anims.forEach((a) => { try { a.cancel(); } catch {} });
     busy = false;
@@ -320,7 +318,8 @@ export async function initPortfolio(root, source) {
   frame.classList.add('is-ready'); // až teď se schová systémový kurzor
 
   /* ---------- úvodní animace ---------- */
-  await preload(index);
+  await current.media.ready;
+  current.media.show();
   preload(index + 1);
   updateCursor();
   if (!reduced) {

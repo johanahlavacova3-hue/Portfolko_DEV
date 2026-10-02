@@ -12,7 +12,7 @@
  * Zrušíš ho přes ?nahled=0.
  */
 window.JH_PAGES = {
-  off: ['portfolio'],
+  off: [],
   all: false,
   hideLinks: true, // odkazy na vypnuté stránky zmizí z menu
 };

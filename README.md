@@ -17,6 +17,7 @@ Statický web (HTML + CSS + JS, bez buildu). 3D logo JH běží na [Three.js](ht
 │   ├── pages.js        ⚙️  vypínání stránek (→ 404)
 │   ├── main.js         kontakty, About me, úvodní animace
 │   ├── portfolio.js    galerie: přechody, swipe, kurzor, klávesy, filtr
+│   ├── media.js        obrázky, videa a 3D modely v galerii
 │   ├── selection.js    výběr prací podle roku a typu
 │   ├── motion.js       sdílené animace (maskované texty, easing)
 │   ├── jh3d.js         3D logo reagující na myš
@@ -28,7 +29,7 @@ Statický web (HTML + CSS + JS, bez buildu). 3D logo JH běží na [Three.js](ht
 └── assets/
     ├── logo.svg, favicon.svg
     ├── models/         sem patří 3D model JH (.glb)
-    └── projects/<id>/  obrázky k jednotlivým pracím
+    └── projects/<id>/  obrázky, videa a 3D modely k jednotlivým pracím
 ```
 
 ## Spuštění lokálně
@@ -86,7 +87,7 @@ Texty (v galerii i nadpisy a menu na stránkách) naskakují po písmenech a **p
 
 ## Přidání nové práce
 
-1. Nahraj obrázky do `assets/projects/<ID>/` (např. `01.jpg`, `02.jpg`).
+1. Nahraj soubory do `assets/projects/<ID>/` (např. `01.jpg`, `02.mp4`, `03.obj`).
 2. Otevři `data/projects.xlsx` v Excelu a na listu **Práce** přidej řádek. Pořadí řádků = pořadí na webu.
 3. Ulož a nahraj na web / do gitu. Nic dalšího není potřeba.
 
@@ -97,8 +98,20 @@ Texty (v galerii i nadpisy a menu na stránkách) naskakují po písmenech a **p
 | Datum | `DD.MM.RRRR`; rok z data plní výběr „Podle roku“ |
 | Popis | text pod obrázkem, sám se rozdělí do dvou sloupců; nový řádek Alt+Enter |
 | Typ (štítky) | každý štítek na nový řádek (Alt+Enter) nebo oddělený `;`; plní výběr „Podle typu“ |
-| Obrázky | cesty k obrázkům, každý na nový řádek; ideální poměr stran cca 2,5 : 1 |
+| Obrázky / videa / 3D | cesty k souborům, každý na nový řádek; ideální poměr stran cca 2,5 : 1 |
 | Skrýt | `ano` = práce se nezobrazí |
+
+### Typy souborů v galerii
+Galerie pozná typ podle přípony:
+
+| typ | přípony | jak se chová |
+|---|---|---|
+| obrázek | `.jpg .png .webp .gif .avif` | jako dřív |
+| video | `.mp4 .webm .mov` | běží samo, bez zvuku, ve smyčce; ideálně H.264 MP4 s „faststart“ |
+| 3D model | `.obj .glb .gltf .stl` | pomalu se otáčí a natáčí za myší, sám se vycentruje |
+
+U `.obj` se automaticky načte stejnojmenný `.mtl` (např. `03.obj` + `03.mtl`) i textury, na které odkazuje – stačí je dát do stejné složky. Bez `.mtl` dostane model hliněný materiál jako 3D logo.
+Velké modely zmenšíš převodem na `.glb` (Blender → Export → glTF Binary), načítá se rychleji než `.obj`.
 
 Nadpisy sloupců mají v Excelu nápovědu (komentář) a list **Návod** shrnuje totéž.
 Nepřejmenovávej list ani nadpisy – web podle nich tabulku čte.

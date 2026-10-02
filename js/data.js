@@ -51,6 +51,7 @@ const HEADERS = {
   popis: 'text', text: 'text',
   'typ (štítky)': 'tags', typ: 'tags', 'štítky': 'tags', tags: 'tags',
   'obrázky': 'images', obrazky: 'images', images: 'images',
+  'obrázky / videa / 3d': 'images', 'média': 'images', media: 'images', soubory: 'images',
   'skrýt': 'hidden', skryt: 'hidden', hidden: 'hidden',
 };
 const remap = (row) => Object.fromEntries(Object.entries(row).map(([k, v]) =>

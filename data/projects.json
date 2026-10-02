@@ -1,5 +1,20 @@
 [
   {
+    "id": "ukazka-media",
+    "title": "Obrázek, video a 3D",
+    "date": "02.10.2026",
+    "text": "Ukázka, že galerie umí kromě obrázků i video (.mp4) a 3D model (.obj). Video běží samo a ve smyčce, 3D model se pomalu otáčí a natáčí za myší. Typ se pozná podle přípony souboru.",
+    "tags": [
+      "3D",
+      "Video"
+    ],
+    "images": [
+      "assets/projects/ukazka-media/01.png",
+      "assets/projects/ukazka-media/02.mp4",
+      "assets/projects/ukazka-media/03.obj"
+    ]
+  },
+  {
     "id": "ukazkovy-projekt",
     "title": "Název projektu",
     "date": "12.03.2026",

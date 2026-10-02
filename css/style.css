@@ -211,7 +211,8 @@ span.rv { display: block; }
   overflow: hidden;
   will-change: clip-path;
 }
-.pf-slide img {
+.pf-slide img,
+.pf-slide video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -323,3 +324,11 @@ a.is-off:not(.site-header nav a) { display: none; }
 
 /* písmena při animaci (js/motion.js → letters) */
 .ch { display: inline-block; white-space: pre; will-change: transform, opacity; }
+
+/* galerie: video a 3D model */
+.pf-slide video { display: block; }
+.pf-model {
+  width: 100%; height: 100%;
+  background: radial-gradient(ellipse at 50% 45%, #3a3a3a 0%, #232323 70%);
+}
+.pf-model canvas { display: block; width: 100% !important; height: 100% !important; }
