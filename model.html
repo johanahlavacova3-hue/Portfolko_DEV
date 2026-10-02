@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Náhled 3D modelu — JH</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { height: 100vh; overflow: hidden; }
+    .stage { position: fixed; inset: 0; width: 100vw; height: 100vh; left: 0; top: 0; }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module">
+    import { mountAll } from './js/jh3d.js';
+    // model.html#portfolio, model.html#404 … ; bez kotvy = .jH·026
+    const name = location.hash.slice(1) || 'jh026';
+    document.querySelector('.stage').dataset.model = `assets/models/${name}.glb`;
+    mountAll();
+  </script>
+</head>
+<body>
+  <!-- Samostatný náhled 3D modelu z js/config.js (celá obrazovka, bez textů). -->
+  <div class="stage" data-jh3d data-model="assets/models/jh026.glb"></div>
+</body>
+</html>

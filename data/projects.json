@@ -1,0 +1,25 @@
+[
+  {
+    "id": "ukazkovy-projekt",
+    "title": "Název projektu",
+    "date": "XX.XX.XXXX",
+    "text": "Lorem ipsum (zkráceně lipsum) je označení pro standardní pseudolatinský text užívaný v grafickém designu a navrhování jako demonstrativní výplňový text při ... text užívaný v grafickém designu a navrhování jako demonstrativní výplňový text při ...",
+    "tags": ["UI & UX design", "Robotika", "3D tisk"],
+    "images": [
+      "assets/projects/ukazkovy-projekt/01.jpg",
+      "assets/projects/ukazkovy-projekt/02.jpg",
+      "assets/projects/ukazkovy-projekt/03.jpg"
+    ]
+  },
+  {
+    "id": "druhy-projekt",
+    "title": "Druhý projekt",
+    "date": "XX.XX.XXXX",
+    "text": "Ukázka druhé práce, aby bylo vidět přepnutí mezi projekty. Texty i obrázky nahraď vlastními — stačí upravit tento soubor a nahrát fotky do složky assets/projects/.",
+    "tags": ["3D", "Vizualizace"],
+    "images": [
+      "assets/projects/druhy-projekt/01.jpg",
+      "assets/projects/druhy-projekt/02.jpg"
+    ]
+  }
+]

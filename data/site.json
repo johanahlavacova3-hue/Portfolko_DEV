@@ -1,0 +1,26 @@
+{
+  "name": "Johana Hlaváčová",
+  "role": "Full stuck designerka",
+  "email": "studio@jhlavacova.cz",
+  "phone": "+420 774 431 012",
+  "ico": "XXXXXX",
+  "about": {
+    "bio": "Mám ráda funkční a chytrý design. Bavím se robotikou, energetikou a turistikou. Miluji techniku a ráda řežu motorovou pilou.",
+    "education": ["ČVUT", "Hellichovka"],
+    "skills": [
+      "UI & UX design (Figma, HTML, JS, CSS, C++)",
+      "Interaktivní vizualizace dat (Power BI + Deneb)",
+      "Design (PS, ID, AI)",
+      "3D (Blender, Rhino, 3D Max, 3D tisk)",
+      "Tech (AutoCAD, Arduino)"
+    ],
+    "collaborations": [
+      "ČEPS a.s.",
+      "Pivovar Hostomice",
+      "Střela Žebrák z.s.",
+      "TAC-TAC s.r.o",
+      "Černá Madonna",
+      "ČVUT"
+    ]
+  }
+}
