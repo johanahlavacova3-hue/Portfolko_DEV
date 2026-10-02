@@ -150,6 +150,18 @@ img { display: block; max-width: 100%; }
 span.rv { display: block; }
 .rv-i { display: block; will-change: transform; }
 
+/* velké odkazy: vyšší řádek, aby maska neuřízla háčky a čárky (Š, Č, Á) */
+.big-links a { line-height: 1.18; margin-bottom: 1.05vw; }
+.big-links.single { grid-column: 1; }
+.stack span span { display: inline; }
+
+/* Call me: velké telefonní číslo a e-mail */
+
+/* Výběr portfolia: roky a typy */
+.select-list a { display: table; transition: opacity .2s, transform .25s ease; }
+.select-list a:hover { opacity: .55; transform: translateX(.4vw); }
+.select-list .count { color: var(--label); display: inline; }
+
 /* široký nápis .jH·026 na úvodu: přes celou šířku mezi nadpisem a odkazy */
 .stage.stage-wide {
   left: 0.8vw;
@@ -304,3 +316,7 @@ span.rv { display: block; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+/* vypnuté stránky (js/pages.js): v menu zůstane místo, jinde odkaz zmizí */
+.site-header nav a.is-off { visibility: hidden; }
+a.is-off:not(.site-header nav a) { display: none; }

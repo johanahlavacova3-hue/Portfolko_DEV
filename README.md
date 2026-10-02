@@ -6,13 +6,18 @@ Statický web (HTML + CSS + JS, bez buildu). 3D logo JH běží na [Three.js](ht
 .
 ├── index.html          úvod
 ├── about.html          About me
-├── portfolio.html      galerie prací (jedna obrazovka, swipe)
+├── portfolio.html      výběr prací: 3D „portfolio“ + podle roku / podle typu
+├── galerie.html        galerie prací (jedna obrazovka, swipe), umí filtr ?rok= / ?typ=
+├── contact.html        Call me: telefon, e-mail, fakturační údaje
+├── model.html          náhled 3D modelů přes celou obrazovku
 ├── 404.html            „Rozbila jsem to. Pardon …“
 ├── css/style.css       všechny styly
 ├── js/
 │   ├── config.js       ⚙️  nastavení: 3D model, zdroj projektů
+│   ├── pages.js        ⚙️  vypínání stránek (→ 404)
 │   ├── main.js         kontakty, About me, úvodní animace
-│   ├── portfolio.js    galerie: přechody, swipe, kurzor, klávesy
+│   ├── portfolio.js    galerie: přechody, swipe, kurzor, klávesy, filtr
+│   ├── selection.js    výběr prací podle roku a typu
 │   ├── motion.js       sdílené animace (maskované texty, easing)
 │   ├── jh3d.js         3D logo reagující na myš
 │   └── data.js         načítání JSON / CSV / Google Sheets
@@ -37,7 +42,33 @@ python3 -m http.server
 
 Případně ve VS Code rozšíření **Live Server** → „Go Live“.
 
-## Portfolio – ovládání
+## Vypnutí stránky (404)
+
+V `js/pages.js` vypiš stránky, které mají být vypnuté:
+
+```js
+off: ['about', 'contact'],   // názvy: index, about, portfolio, galerie, contact
+all: false,                  // true = celý web ukazuje jen 404
+```
+
+Vypnutá stránka hned přesměruje na `404.html` a odkazy na ni zmizí (v horním menu zůstane prázdné místo, aby se nerozhodilo rozložení).
+**Tajný náhled:** přidej k adrese `?nahled` (např. `about.html?nahled`) a vypnuté stránky uvidíš normálně, dokud nezavřeš prohlížeč. Zrušíš přes `?nahled=0`.
+
+## Portfolio – výběr
+
+`portfolio.html` ukazuje složený 3D nápis „portfolio“ a pod ním výběr **podle roku** i **podle typu**. Obojí se počítá automaticky z `data/projects.json`:
+- **rok** = pole `year`, nebo poslední čtyřčíslí z `date` (12.05.2026 → 2026),
+- **typ** = štítky v `tags`.
+
+Odkaz vede do galerie jen s vybranými pracemi (`galerie.html?rok=2026`, `galerie.html?typ=robotika`). „Všechno ->“ ukáže všechny.
+Až se rozhodneš pro jeden způsob, stačí v `portfolio.html` smazat druhý sloupec (`data-select="year"` nebo `data-select="tag"`).
+
+## Call me
+
+`contact.html` má velké telefonní číslo a e-mail a fakturační údaje. Všechno se bere z `data/site.json` (`phone`, `email`, `ico`, volitelně `address`, který se zobrazí jen když je vyplněný).
+Na počítači klik na číslo zkopíruje ho do schránky, na mobilu rovnou vytáčí.
+
+## Galerie – ovládání
 
 Obrázek nahoře se přepíná, texty na černé ploše pod ním zůstávají na místě. Žádná tlačítka:
 
@@ -49,7 +80,7 @@ Obrázek nahoře se přepíná, texty na černé ploše pod ním zůstávají na
 | klávesnice | ← → | ↑ ↓ |
 
 Za posledním obrázkem práce plynule navazuje další práce. Kurzor nad obrázkem ukazuje pořadí a směr (`02/03 ->`).
-Odkaz na konkrétní obrázek: `portfolio.html#nazev-prace/2`.
+Odkaz na konkrétní obrázek: `galerie.html#nazev-prace/2`.
 Rychlost a křivky animací se ladí v `js/motion.js` a na začátku `js/portfolio.js` (`DUR`).
 
 ## Přidání nové práce

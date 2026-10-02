@@ -6,7 +6,10 @@
   "ico": "XXXXXX",
   "about": {
     "bio": "Mám ráda funkční a chytrý design. Bavím se robotikou, energetikou a turistikou. Miluji techniku a ráda řežu motorovou pilou.",
-    "education": ["ČVUT", "Hellichovka"],
+    "education": [
+      "ČVUT",
+      "Hellichovka"
+    ],
     "skills": [
       "UI & UX design (Figma, HTML, JS, CSS, C++)",
       "Interaktivní vizualizace dat (Power BI + Deneb)",
@@ -22,5 +25,6 @@
       "Černá Madonna",
       "ČVUT"
     ]
-  }
+  },
+  "address": ""
 }

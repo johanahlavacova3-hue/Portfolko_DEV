@@ -9,13 +9,31 @@
  *  - vodorovné gesto na touchpadu → obrázky
  * Kurzor nad obrázkem ukazuje směr a pořadí („02/03 ->“).
  */
-import { loadProjects } from './data.js';
+import { loadProjects, slugify } from './data.js';
 import { EASE_IN_OUT, EASE_OUT, reduced, conceal, reveal } from './motion.js';
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) =>
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const nn = (n) => String(n).padStart(2, '0');
 const DUR = 1250;
+
+/** ?rok=2026 / ?typ=robotika (z výběru na portfolio.html) */
+function applyFilter(projects) {
+  const q = new URLSearchParams(location.search);
+  let [key, val] = q.has('rok') ? ['rok', q.get('rok')] : q.has('typ') ? ['typ', q.get('typ')] : [null, null];
+  if (!key) {
+    try {
+      const saved = sessionStorage.getItem('jh-filter') || '';
+      if (saved) [key, val] = saved.split(':');
+      sessionStorage.removeItem('jh-filter');
+    } catch {}
+  }
+  if (!key) return projects;
+  const out = projects.filter((p) => key === 'rok'
+    ? p.year === val
+    : p.tags.some((t) => slugify(t) === val));
+  return out.length ? out : projects;
+}
 
 export async function initPortfolio(root, source) {
   const frame = root.querySelector('.pf-frame');
@@ -29,6 +47,7 @@ export async function initPortfolio(root, source) {
   let projects;
   try {
     projects = (await loadProjects(source)).filter((p) => p.images.length);
+    projects = applyFilter(projects);
   } catch (e) {
     console.error(e);
     frame.innerHTML = `<p class="pf-msg">Projekty se nepodařilo načíst (${esc(source)}).<br>

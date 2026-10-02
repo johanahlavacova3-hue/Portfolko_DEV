@@ -50,6 +50,8 @@ function normalizeProject(p) {
     id: p.id || slugify(p.title || ''),
     title: p.title || '',
     date: p.date || '',
+    // rok: sloupec „year“, jinak poslední čtyřčíslí z data (12.05.2026 → 2026)
+    year: String(p.year || (String(p.date || '').match(/(\d{4})\s*$/) || [])[1] || ''),
     text: p.text || '',
     tags: list(p.tags),
     images: list(p.images),

@@ -2,9 +2,9 @@
 <html lang="cs">
 <head>
   <meta charset="utf-8">
-  <script src="js/pages.js" data-page="portfolio"></script>
+  <script src="js/pages.js" data-page="galerie"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portfolio — Johana Hlaváčová</title>
+  <title>Galerie — Johana Hlaváčová</title>
   <meta name="description" content="Johana Hlaváčová – full stuck designerka. UI & UX, 3D, vizualizace dat, robotika.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,8 +31,7 @@
   </script>
   <script type="module" src="js/main.js"></script>
 </head>
-<body class="page-select">
-  <main class="screen">
+<body class="page-portfolio">
   <header class="site-header grid">
     <a class="logo" href="index.html" aria-label="Úvod"><img src="assets/logo.svg" alt="JH"></a>
     <nav>
@@ -42,31 +41,15 @@
     </nav>
   </header>
 
-    <h1 class="title screen-title grid"><span data-reveal>Portfolio</span></h1>
-
-    <div class="stage stage-wide" data-jh3d data-model="assets/models/portfolio.glb" aria-hidden="true"></div>
-
-    <div class="screen-bottom grid small" data-selection>
-      <nav class="big-links single">
-        <a href="galerie.html">Všechno -&gt;</a>
-      </nav>
-
-      <div class="about-col">
-        <span class="label">Podle roku:</span>
-        <div class="stack select-list" data-select="year"></div>
-      </div>
-
-      <div class="about-col">
-        <span class="label">Podle typu:</span>
-        <div class="stack select-list" data-select="tag"></div>
-      </div>
-
-      <div class="contact small" data-contact>
-        <p>Johana Hlaváčová<br>Full stuck designerka</p>
-        <p><a href="mailto:studio@jhlavacova.cz">studio@jhlavacova.cz</a><br><a href="tel:+420774431012">+420 774 431 012</a></p>
-        <p>IČO.: XXXXXX</p>
-      </div>
+  <main class="pf" data-portfolio>
+    <div class="pf-frame" aria-roledescription="galerie" aria-label="Portfolio – šipkami přepínáš obrázky (← →) a práce (↑ ↓)"></div>
+    <div class="pf-info grid small" aria-live="polite">
+      <div class="pf-head"></div>
+      <div class="pf-text pf-col2"></div>
+      <div class="pf-text pf-col3"></div>
+      <div class="pf-tags"></div>
     </div>
   </main>
+  <div class="cursor" aria-hidden="true"><span class="cursor-label"></span></div>
 </body>
 </html>
