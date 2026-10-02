@@ -16,17 +16,27 @@ export const CONFIG = {
     scale: 1,            // násobek automatického přizpůsobení velikosti
   },
 
+  /**
+   * Přechody v galerii. duration = ms, shift = posun v % šířky, zoom = počáteční přiblížení.
+   * image   = další obrázek téže práce
+   * project = přechod na jinou práci
+   */
+  gallery: {
+    image:   { duration: 650, shift: 1.5, zoom: 1.02 },
+    project: { duration: 850, shift: 3,   zoom: 1.04 },
+  },
+
   /** Jak moc se JH natáčí za myší (radiány). */
   tilt: { x: 0.28, y: 0.45 },
 
   /**
    * Odkud se berou projekty v portfoliu:
-   *  - 'data/projects.json'  (výchozí)
-   *  - 'data/projects.csv'   (export z Excelu / tabulky)
-   *  - odkaz na Google Sheets publikovaný jako CSV:
+   *  - 'data/projects.xlsx'  Excel (výchozí) – edituješ list „Práce“
+   *  - 'data/projects.json'  JSON
+   *  - Google Sheets publikovaný jako CSV:
    *    'https://docs.google.com/spreadsheets/d/e/XXXX/pub?output=csv'
    */
-  projectsSource: 'data/projects.json',
+  projectsSource: 'data/projects.xlsx',
 
   /** Kontakty a texty „About me“. */
   siteSource: 'data/site.json',

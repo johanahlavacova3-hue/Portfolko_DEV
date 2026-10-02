@@ -10,12 +10,17 @@
  * Kurzor nad obrázkem ukazuje směr a pořadí („02/03 ->“).
  */
 import { loadProjects, slugify } from './data.js';
-import { EASE_IN_OUT, EASE_OUT, reduced, conceal, reveal } from './motion.js';
+import { EASE_IN_OUT, EASE_OUT, reduced, conceal, letters, nextVariant } from './motion.js';
+import { CONFIG } from './config.js';
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) =>
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const nn = (n) => String(n).padStart(2, '0');
-const DUR = 1250;
+// Síla přechodů – ladí se v js/config.js (gallery)
+const G = Object.assign({
+  image:   { duration: 650, shift: 1.5, zoom: 1.02 },   // obrázek v rámci jedné práce
+  project: { duration: 850, shift: 3,   zoom: 1.04 },   // přechod na jinou práci
+}, CONFIG.gallery || {});
 
 /** ?rok=2026 / ?typ=robotika (z výběru na portfolio.html) */
 function applyFilter(projects) {
@@ -122,11 +127,12 @@ export async function initPortfolio(root, source) {
     .flatMap((el) => [...el.querySelectorAll('.rv-i')]);
 
   function textIn(delay = 0) {
-    // sloupce postupně zleva, řádky ve sloupci s krátkým odstupem
+    // pokaždé jiná animace písmen; sloupce zleva, řádky s krátkým odstupem
+    const v = nextVariant();
+    root.dataset.fx = v;
     const cols = [f.head, f.col2, f.col3, f.tags];
-    cols.forEach((col, c) => reveal(col.querySelectorAll('.ln'), {
-      delay: delay + c * 90, stagger: 45, duration: 1200,
-    }));
+    cols.forEach((col, c) => col.querySelectorAll('.rv-i').forEach((inner, l) =>
+      letters(inner, v, { delay: delay + c * 90 + l * 60 })));
   }
 
   /* ---------- slidy ---------- */
@@ -169,36 +175,29 @@ export async function initPortfolio(root, source) {
     const outgoing = current;
     current = incoming;
 
-    const clip = {
-      next: 'inset(0 0 0 100%)', prev: 'inset(0 100% 0 0)',
-      down: 'inset(100% 0 0 0)', up: 'inset(0 0 100% 0)',
-    }[dir];
-    const shift = {
-      next: ['18%', '0'], prev: ['-18%', '0'], down: ['0', '18%'], up: ['0', '-18%'],
-    }[dir];
-    const away = {
-      next: ['-14%', '0'], prev: ['14%', '0'], down: ['0', '-14%'], up: ['0', '14%'],
-    }[dir];
+    // jemný přechod: prolnutí + malý posun a zoom (větší při změně práce)
+    const fx = projectChange ? G.project : G.image;
+    const sx = { next: 1, prev: -1, down: 0, up: 0 }[dir] * fx.shift;
+    const sy = { next: 0, prev: 0, down: 1, up: -1 }[dir] * fx.shift;
 
-    // text (jen při změně práce): staré řádky odjedou, nové vyjedou
+    // text (jen při změně práce): staré řádky odjedou, nové naskočí
     if (projectChange) {
-      conceal(textInners()).then(() => { renderText(next.p); textIn(120); });
+      conceal(textInners(), { duration: 350, stagger: 15 }).then(() => { renderText(next.p); textIn(60); });
     }
 
-    const opts = { duration: reduced ? 400 : DUR, easing: EASE_IN_OUT, fill: 'both' };
+    const opts = { duration: reduced ? 300 : fx.duration, easing: EASE_OUT, fill: 'both' };
     const anims = reduced
       ? [incoming.animate([{ opacity: 0 }, { opacity: 1 }], opts)]
       : [
-          incoming.animate([{ clipPath: clip }, { clipPath: 'inset(0 0 0 0)' }], opts),
+          incoming.animate([{ opacity: 0 }, { opacity: 1 }], opts),
           incoming.firstElementChild.animate([
-            { transform: `translate3d(${shift[0]},${shift[1]},0) scale(1.18)` },
-            { transform: 'translate3d(0,0,0) scale(1)' },
+            { transform: `translate3d(${sx}%,${sy}%,0) scale(${fx.zoom})` },
+            { transform: 'none' },
           ], opts),
           outgoing.firstElementChild.animate([
-            { transform: 'translate3d(0,0,0) scale(1)' },
-            { transform: `translate3d(${away[0]},${away[1]},0) scale(1.05)` },
+            { transform: 'none' },
+            { transform: `translate3d(${-sx / 2}%,${-sy / 2}%,0)` },
           ], opts),
-          outgoing.animate([{ opacity: 1 }, { opacity: 0.25 }], opts),
         ];
 
     await Promise.all(anims.map((a) => a.finished.catch(() => {})));
@@ -325,11 +324,11 @@ export async function initPortfolio(root, source) {
   preload(index + 1);
   updateCursor();
   if (!reduced) {
-    current.animate([{ clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0 0 0 0)' }],
-      { duration: 1500, easing: EASE_IN_OUT, fill: 'backwards', delay: 150 });
+    current.animate([{ opacity: 0 }, { opacity: 1 }],
+      { duration: 900, easing: EASE_OUT, fill: 'backwards', delay: 150 });
     current.firstElementChild.animate(
-      [{ transform: 'translate3d(0,12%,0) scale(1.3)' }, { transform: 'none' }],
-      { duration: 1900, easing: EASE_OUT, fill: 'backwards', delay: 150 });
+      [{ transform: `scale(${G.project.zoom})` }, { transform: 'none' }],
+      { duration: 1400, easing: EASE_OUT, fill: 'backwards', delay: 150 });
   }
-  textIn(reduced ? 0 : 700);
+  textIn(reduced ? 0 : 450);
 }

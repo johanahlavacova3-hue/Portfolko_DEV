@@ -1,7 +1,7 @@
 import { CONFIG } from './config.js';
 import { loadJSON } from './data.js';
 import { mountAll } from './jh3d.js';
-import { reveal, showPage } from './motion.js';
+import { reveal, showPage, mask, letters, nextVariant } from './motion.js';
 import { initPortfolio } from './portfolio.js';
 import { renderSelection } from './selection.js';
 
@@ -63,13 +63,15 @@ async function start() {
   bindCopy();
   showPage();
 
-  // hlavička
-  reveal(document.querySelectorAll('.site-header .logo, .site-header nav a'), { stagger: 80 });
+  // logo a bloky textu vyjedou zpod masky
+  reveal(document.querySelectorAll('.site-header .logo'));
+  reveal(document.querySelectorAll('[data-contact] p, .about-col'), { delay: 250, stagger: 90 });
 
-  // obsah (úvod, about, 404)
-  reveal(document.querySelectorAll(
-    '[data-reveal], .big-links a, [data-contact] p, .about-col, .msg > *',
-  ), { delay: 250, stagger: 90 });
+  // nadpisy, menu a velké odkazy: písmena – pokaždé jiná animace
+  const v = nextVariant();
+  document.documentElement.dataset.fx = v;
+  [...document.querySelectorAll('.site-header nav a, [data-reveal], .big-links a, .msg > *')]
+    .forEach((el, i) => letters(mask(el), v, { delay: 120 + i * 70 }));
 
   // portfolio
   const pf = document.querySelector('[data-portfolio]');
