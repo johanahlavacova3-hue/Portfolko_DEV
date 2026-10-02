@@ -2,9 +2,9 @@
 <html lang="cs">
 <head>
   <meta charset="utf-8">
-  <script src="js/pages.js" data-page="about"></script>
+  <script src="js/pages.js" data-page="contact"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About me — Johana Hlaváčová</title>
+  <title>Call me — Johana Hlaváčová</title>
   <meta name="description" content="Johana Hlaváčová – full stuck designerka. UI & UX, 3D, vizualizace dat, robotika.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,42 +31,33 @@
   </script>
   <script type="module" src="js/main.js"></script>
 </head>
-<body class="page-about">
+<body class="page-contact">
   <main class="screen">
   <header class="site-header grid">
     <a class="logo" href="index.html" aria-label="Úvod"><img src="assets/logo.svg" alt="JH"></a>
     <nav>
-      <a href="about.html" aria-current="page">About me</a>
+      <a href="about.html">About me</a>
       <a href="portfolio.html">Portfolio</a>
-      <a href="contact.html">Call me!</a>
+      <a href="contact.html" aria-current="page">Call me!</a>
     </nav>
   </header>
 
-    <h1 class="title screen-title grid"><span data-reveal>About me</span></h1>
+    <h1 class="title screen-title grid"><span data-reveal>Call me</span></h1>
 
     <div class="stage" data-jh3d aria-hidden="true"></div>
 
     <div class="screen-bottom grid small">
-      <p class="about-bio about-col" data-bind="about.bio">Mám ráda funkční a chytrý design. Bavím se robotikou, energetikou a turistikou. Miluji techniku a ráda řežu motorovou pilou.</p>
+      <nav class="big-links big-links-contact" aria-label="Kontakt">
+        <a href="tel:+420774431012" data-href="tel" data-bind="phone" data-copy>+420 774 431 012</a>
+        <a href="mailto:studio@jhlavacova.cz" data-href="mailto" data-bind="email">studio@jhlavacova.cz</a>
+      </nav>
 
       <div class="about-col">
-        <span class="label">Vzdělání:</span>
-        <div class="stack" data-list="about.education"><span>ČVUT</span><span>Hellichovka</span></div>
-        <span class="label">Skills:</span>
-        <div class="stack" data-list="about.skills">
-          <span>UI &amp; UX design (Figma, HTML, JS, CSS, C++)</span>
-          <span>Interaktivní vizualizace dat (Power BI + Deneb)</span>
-          <span>Design (PS, ID, AI)</span>
-          <span>3D (Blender, Rhino, 3D Max, 3D tisk)</span>
-          <span>Tech (AutoCAD, Arduino)</span>
-        </div>
-      </div>
-
-      <div class="about-col">
-        <span class="label">Spolupráce</span>
-        <div class="stack" data-list="about.collaborations">
-          <span>ČEPS a.s.</span><span>Pivovar Hostomice</span><span>Střela Žebrák z.s.</span>
-          <span>TAC-TAC s.r.o</span><span>Černá Madonna</span><span>ČVUT</span>
+        <span class="label">Fakturační údaje:</span>
+        <div class="stack">
+          <span data-bind="name">Johana Hlaváčová</span>
+          <span>IČO: <span data-bind="ico">XXXXXX</span></span>
+          <span data-bind="address" data-optional></span>
         </div>
       </div>
 
