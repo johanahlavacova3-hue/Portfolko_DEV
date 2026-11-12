@@ -32,7 +32,7 @@ export function reveal(els, { delay = 0, stagger = 70, duration = 1300 } = {}) {
 
 /** Odjetí řádků nahoru (u výměny textu). */
 export function conceal(inners, { stagger = 25, duration = 550 } = {}) {
-  if (reduced) return Promise.resolve();
+  if (reduced || LETTER_MODE === 'scramble') return Promise.resolve();
   return Promise.all([...inners].map((el, i) => el.animate(
     [{ transform: 'translate3d(0,0,0)' }, { transform: 'translate3d(0,-110%,0)' }],
     { duration, delay: i * stagger, easing: EASE_IN, fill: 'forwards' },
@@ -65,8 +65,17 @@ const LETTER_FX = {
 };
 export const LETTER_VARIANTS = Object.keys(LETTER_FX);
 
-/** Náhodná varianta, nikdy dvakrát stejná za sebou (ani mezi stránkami). */
+/**
+ * Jak se animují písmena:
+ *   'scramble' = písmena se přepisují náhodnými znaky (djfnfmvjJ…), než se ustálí
+ *   'random'   = pokaždé jiný efekt (zespodu, shora, rozostření, psací stroj…)
+ *   nebo název jednoho efektu: 'rise', 'drop', 'blur', 'type', 'shuffle', 'tilt'
+ */
+export const LETTER_MODE = 'scramble';
+
+/** Varianta animace; v režimu 'random' nikdy dvakrát stejná za sebou. */
 export function nextVariant() {
+  if (LETTER_MODE !== 'random') return LETTER_MODE;
   let last = '';
   try { last = sessionStorage.getItem('jh-fx') || ''; } catch {}
   const pool = LETTER_VARIANTS.filter((v) => v !== last);
@@ -75,15 +84,16 @@ export function nextVariant() {
   return v;
 }
 
-const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#*+-/<>◆';
+const GLYPHS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-function scramble(el, text, delay) {
+// el = prvek nebo textový uzel; set = jak do něj zapsat text
+function scramble(el, text, delay, set = (v) => { el.textContent = v; }) {
   return new Promise((resolve) => {
     const start = performance.now() + delay;
     const per = 16, settle = 280;
     const chars = [...text];
     const blank = chars.map((c) => (c.trim() ? ' ' : c)).join('');
-    el.textContent = blank;
+    set(blank);
     const frame = (now) => {
       let out = '', done = true;
       chars.forEach((c, i) => {
@@ -93,8 +103,8 @@ function scramble(el, text, delay) {
         else if (now < t + settle) { out += GLYPHS[(Math.random() * GLYPHS.length) | 0]; done = false; }
         else out += c;
       });
-      el.textContent = out;
-      if (done) { el.textContent = text; resolve(); } else requestAnimationFrame(frame);
+      set(out);
+      if (done) { set(text); resolve(); } else requestAnimationFrame(frame);
     };
     requestAnimationFrame(frame);
   });
@@ -122,4 +132,16 @@ export function letters(el, variant, { delay = 0 } = {}) {
   return Promise.all(spans.map((s, i) => s.animate(fx.kf, {
     duration: fx.dur, delay: delay + order[i] * fx.st, easing: fx.ease, fill: 'backwards',
   }).finished.catch(() => {}))).then(() => { if (el.isConnected) el.textContent = text; });
+}
+
+/** Přepíše všechny texty uvnitř prvku (i s odkazy a zalomeními) náhodnými znaky. */
+export function scrambleTree(root, { delay = 0 } = {}) {
+  if (reduced) return Promise.resolve();
+  const nodes = [];
+  const walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  while (walk.nextNode()) if (walk.currentNode.data.trim()) nodes.push(walk.currentNode);
+  return Promise.all(nodes.map((n, i) => {
+    const text = n.data;
+    return scramble(n, text, delay + i * 40, (v) => { n.data = v; });
+  }));
 }

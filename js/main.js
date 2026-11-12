@@ -1,7 +1,7 @@
 import { CONFIG } from './config.js';
 import { loadJSON } from './data.js';
 import { mountAll } from './jh3d.js';
-import { reveal, showPage, mask, letters, nextVariant } from './motion.js';
+import { reveal, showPage, mask, letters, nextVariant, scrambleTree, LETTER_MODE } from './motion.js';
 import { initPortfolio } from './portfolio.js';
 import { renderSelection } from './selection.js';
 
@@ -65,7 +65,9 @@ async function start() {
 
   // logo a bloky textu vyjedou zpod masky
   reveal(document.querySelectorAll('.site-header .logo'));
-  reveal(document.querySelectorAll('[data-contact] p, .about-col'), { delay: 250, stagger: 90 });
+  const blocks = document.querySelectorAll('[data-contact] p, .about-col');
+  if (LETTER_MODE === 'scramble') blocks.forEach((el, i) => scrambleTree(el, { delay: 250 + i * 90 }));
+  else reveal(blocks, { delay: 250, stagger: 90 });
 
   // nadpisy, menu a velké odkazy: písmena – pokaždé jiná animace
   const v = nextVariant();

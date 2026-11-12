@@ -332,3 +332,7 @@ a.is-off:not(.site-header nav a) { display: none; }
   background: radial-gradient(ellipse at 50% 45%, #3a3a3a 0%, #232323 70%);
 }
 .pf-model canvas { display: block; width: 100% !important; height: 100% !important; }
+
+/* odkaz pod popiskem (např. „Zahrát si hru ->“) */
+.pf-link { display: block; margin-top: 1.36em; cursor: pointer; }
+.pf-link:hover { opacity: .55; }
