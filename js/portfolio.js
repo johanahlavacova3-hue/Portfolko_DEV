@@ -67,7 +67,7 @@ export async function initPortfolio(root, source) {
 
   /* ---------- plochý seznam všech obrázků ---------- */
   const slides = [];
-  projects.forEach((p, pi) => p.images.forEach((src, ii) => slides.push({ p, pi, ii, src })));
+  projects.forEach((p, pi) => p.images.forEach((m, ii) => slides.push({ p, pi, ii, m, src: m.src })));
   const firstOf = (pi) => slides.findIndex((s) => s.pi === pi);
 
   // přednačtení dalšího obrázku / modelu na pozadí (videa se nenačítají dopředu)
@@ -105,23 +105,32 @@ export async function initPortfolio(root, source) {
 
   const line = (t) => `<span class="ln rv"><span class="rv-i">${esc(t) || '&nbsp;'}</span></span>`;
 
-  function renderText(p) {
-    f.head.innerHTML = line(p.title) + line(p.date);
-    const lines = splitLines(p.text);
+  // text pod obrázkem: popisek konkrétního obrázku, jinak popis celé práce
+  const bodyText = (s) => s.m.caption || s.p.text;
+  const bodyKey = (s) => `${s.pi}|${bodyText(s)}|${s.m.link}`;
+  const linkLine = (m) => {
+    if (!m.link) return '';
+    const ext = /^https?:/i.test(m.link) ? ' target="_blank" rel="noopener"' : '';
+    return `<a class="ln rv pf-link" href="${esc(m.link)}"${ext}><span class="rv-i">${esc(m.linkText || 'Otevřít')} -&gt;</span></a>`;
+  };
+
+  function renderText(s, { bodyOnly = false } = {}) {
+    const p = s.p;
+    if (!bodyOnly) f.head.innerHTML = line(p.title) + line(p.date);
+    const lines = splitLines(bodyText(s));
     const mobile = matchMedia('(max-width: 760px)').matches;
     const cut = mobile || lines.length <= 3 ? lines.length : Math.ceil(lines.length / 2);
     f.col2.innerHTML = lines.slice(0, cut).map(line).join('');
     f.col3.innerHTML = lines.slice(cut).map(line).join('');
-    f.tags.innerHTML = p.tags.map(line).join('');
+    f.tags.innerHTML = p.tags.map(line).join('') + linkLine(s.m);
   }
-  const textInners = () => [f.head, f.col2, f.col3, f.tags]
+  const textInners = (cols = [f.head, f.col2, f.col3, f.tags]) => cols
     .flatMap((el) => [...el.querySelectorAll('.rv-i')]);
 
-  function textIn(delay = 0) {
+  function textIn(delay = 0, cols = [f.head, f.col2, f.col3, f.tags]) {
     // pokaždé jiná animace písmen; sloupce zleva, řádky s krátkým odstupem
     const v = nextVariant();
     root.dataset.fx = v;
-    const cols = [f.head, f.col2, f.col3, f.tags];
     cols.forEach((col, c) => col.querySelectorAll('.rv-i').forEach((inner, l) =>
       letters(inner, v, { delay: delay + c * 90 + l * 60 })));
   }
@@ -139,7 +148,7 @@ export async function initPortfolio(root, source) {
 
   let current = makeSlide(slides[index]);
   frame.appendChild(current);
-  renderText(slides[index].p);
+  renderText(slides[index]);
 
   let busy = false;
   let queued = null;
@@ -177,9 +186,13 @@ export async function initPortfolio(root, source) {
     const sx = { next: 1, prev: -1, down: 0, up: 0 }[dir] * fx.shift;
     const sy = { next: 0, prev: 0, down: 1, up: -1 }[dir] * fx.shift;
 
-    // text (jen při změně práce): staré řádky odjedou, nové naskočí
+    // text: při změně práce se vymění celý, jinak jen popisek (když má obrázek jiný)
     if (projectChange) {
-      conceal(textInners(), { duration: 350, stagger: 15 }).then(() => { renderText(next.p); textIn(60); });
+      conceal(textInners(), { duration: 350, stagger: 15 }).then(() => { renderText(next); textIn(60); });
+    } else if (bodyKey(from) !== bodyKey(next)) {
+      const body = [f.col2, f.col3, f.tags];
+      conceal(textInners(body), { duration: 300, stagger: 10 })
+        .then(() => { renderText(next, { bodyOnly: true }); textIn(40, body); });
     }
 
     const opts = { duration: reduced ? 300 : fx.duration, easing: EASE_OUT, fill: 'both' };
@@ -312,7 +325,7 @@ export async function initPortfolio(root, source) {
   new ResizeObserver(() => {
     if (window.innerWidth === rw) return;
     rw = window.innerWidth;
-    renderText(slides[index].p);
+    renderText(slides[index]);
   }).observe(document.body);
 
   frame.classList.add('is-ready'); // až teď se schová systémový kurzor

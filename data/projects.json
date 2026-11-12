@@ -1,47 +1,285 @@
 [
   {
-    "id": "ukazka-media",
-    "title": "Obrázek, video a 3D",
-    "date": "02.10.2026",
-    "text": "Ukázka, že galerie umí kromě obrázků i video (.mp4) a 3D model (.obj). Video běží samo a ve smyčce, 3D model se pomalu otáčí a natáčí za myší. Typ se pozná podle přípony souboru.",
+    "id": "karel",
+    "title": "Karel 25’",
+    "date": "2025",
+    "text": "Karel je robotická super ruka.",
     "tags": [
-      "3D",
-      "Video"
+      "Hardware",
+      "Software",
+      "Design",
+      "UI & UX",
+      "Code"
     ],
     "images": [
-      "assets/projects/ukazka-media/01.png",
-      "assets/projects/ukazka-media/02.mp4",
-      "assets/projects/ukazka-media/03.obj"
+      {
+        "src": "assets/projects/karel/KAREL_01.mp4",
+        "caption": "Karel je prototyp robotické ruky. Slouží mi jako osobní laboratoř, na které se učím programování, stavbu vlastního hardwaru a základy robotiky. Jde o dlouhodobý pokus vytvořit funkční objekt, který nebude jen technickým cvičením, ale i věcí, která má svébytnou osobnost a radost z používání."
+      },
+      {
+        "src": "assets/projects/karel/KAREL_02.png",
+        "caption": "Projekt navazuje na kultovní vzdělávací hru Karel the Robot z osmdesátých let. Stejně jako původní Karel mě vede k tomu přemýšlet o tom, jak strojům předáváme úkoly a jak s námi mohou sdílet prostor i způsob uvažování."
+      },
+      {
+        "src": "assets/projects/karel/KAREL_03.png",
+        "caption": "Během vývoje se původní návrhy několikrát proměnily. Nešlo jen o nutné mechanické úpravy, ale i o změny vyplývající z toho, jak se postupně vyvíjela samotná představa o tom, k čemu má Karel sloužit a jak s ním budu interagovat."
+      },
+      {
+        "src": "assets/projects/karel/KAREL_04.png",
+        "caption": "Hardware je kompletně navržený na míru a celý řídicí systém píšu v C++. Základem je deska ESP32, která ovládá serva, tlačítka i veškeré LED osvětlení. Celý projekt postupně roste do podoby autonomnějšího, responzivního objektu."
+      },
+      {
+        "src": "assets/projects/karel/KAREL_05.mp4",
+        "caption": "Takhle by měl Karel fungovat ve chvíli, kdy bude dokončený – jako jednoduchý, ale promyšlený robot, ve kterém se spojuje technika, hra a proces učení."
+      }
     ]
   },
   {
-    "id": "ukazkovy-projekt",
-    "title": "Název projektu",
-    "date": "12.03.2026",
-    "text": "Lorem ipsum (zkráceně lipsum) je označení pro standardní pseudolatinský text užívaný v grafickém designu a navrhování jako demonstrativní výplňový text při ... text užívaný v grafickém designu a navrhování jako demonstrativní výplňový text při ...",
+    "id": "karel-the-robot",
+    "title": "Karel the Robot",
+    "date": "2025",
+    "text": "Remake legendární hry Karel The Robot z 80. let v mém podání. Přeprogramováno do aktuálního trendu webové aplikace a vylepšeného ui a ux a reálným cílem hry.",
     "tags": [
-      "UI & UX design",
-      "Robotika",
-      "3D tisk"
+      "Hardware",
+      "Software",
+      "Design",
+      "UI & UX",
+      "Code"
     ],
     "images": [
-      "assets/projects/ukazkovy-projekt/01.jpg",
-      "assets/projects/ukazkovy-projekt/02.jpg",
-      "assets/projects/ukazkovy-projekt/03.jpg"
+      {
+        "src": "assets/projects/karel-the-robot/KAREL-GAME_01.mp4",
+        "caption": "Remake legendární hry Karel the Robot vznikl jako webová aplikace, která posouvá původní princip do současnosti. Zatímco osmdesátkový Karel učil základům algoritmizace pomocí jednoduchých příkazů, tahle verze reaguje na dnešní vizuální i interakční standardy."
+      },
+      {
+        "src": "assets/projects/karel-the-robot/KAREL-GAME_02.mp4",
+        "caption": "První prototyp byl složitější a simuloval pohyb celé robotické postavy, podobně jako ve fyzickém projektu Karel. Postupem času jsem ale zvolila jednodušší a čistší variantu – hráč ovládá pouze jeden pohyblivý článek. Umožnilo mi to soustředit se na jádro hry: jasné zadání, čitelný pohyb a přímou vazbu mezi kódem a výsledkem."
+      },
+      {
+        "src": "assets/projects/karel-the-robot/KAREL-GAME_03.png",
+        "caption": "Nalevo je původní Karel z osmdesátých let, napravo první návrhy jeho rekonstrukce. Cílem bylo starý abstrahovaný model převést do vizuálně současné podoby, která respektuje ducha originálu, ale zároveň má charakter, který ladí s dnešní estetiku i technickými možnostmi."
+      },
+      {
+        "src": "assets/projects/karel-the-robot/KAREL-GAME_04.png",
+        "caption": ""
+      },
+      {
+        "src": "assets/projects/karel-the-robot/KAREL-GAME_05.mp4",
+        "caption": "",
+        "link": "GAMES/KAREL_THE_ROBOT-GAME_main/",
+        "linkText": "Zahrát si hru"
+      }
     ]
   },
   {
-    "id": "druhy-projekt",
-    "title": "Druhý projekt",
-    "date": "04.11.2025",
-    "text": "Ukázka druhé práce, aby bylo vidět přepnutí mezi projekty. Texty i obrázky nahraď vlastními — stačí upravit tento soubor a nahrát fotky do složky assets/projects/.",
+    "id": "mysak",
+    "title": "Myšák",
+    "date": "2025",
+    "text": "Robotický dávkovač na bonbonky.",
     "tags": [
+      "Design",
+      "Print",
       "3D",
-      "Vizualizace"
+      "Hardware",
+      "Software"
     ],
     "images": [
-      "assets/projects/druhy-projekt/01.jpg",
-      "assets/projects/druhy-projekt/02.jpg"
+      {
+        "src": "assets/projects/mysak/MYSAK_01.png",
+        "caption": "Myšák je malý robot, který dávkuje bonbóny a funguje jako osobní zvířátko na zlepšení nálady."
+      },
+      {
+        "src": "assets/projects/mysak/MYSAK_02.mp4",
+        "caption": "Vznikl ve chvíli, kdy jsem chtěla něco hravého a trochu absurdního – objekt, který existuje jen proto, aby potěšil. Od začátku jsem mířila k podobě drobné, nenápadné myšičky, která se tiše objeví na stole, udělá svou práci a nijak nenarušuje okolí. Takové „cibetkové bonbóny“ převedené do robotické podoby."
+      },
+      {
+        "src": "assets/projects/mysak/MYSAK_03.png",
+        "caption": "Technicky je Myšák velmi jednoduchý: jedno servo, ESP32 naprogramované v C++ a bezdotykové tlačítko, které dává impuls k otevření mechanismu. O to víc práce ale zabral hardware. Mechanika byla největší překážkou – celé dávkování potřebovalo přesný pohyb i spolehlivou konstrukci. Nakonec z toho vyšla vrstvená 3D tištěná schránka, která drží tvar a umožňuje stabilní chod."
+      },
+      {
+        "src": "assets/projects/mysak/MYSAK_04.mp4",
+        "caption": "První verze ukazuje základní design a prototyp mechaniky – ještě bez detailů, spíš hledání tvaru a pohybu."
+      },
+      {
+        "src": "assets/projects/mysak/MYSAK_04.png",
+        "caption": "Druhá verze je už výrazně dál a v paralelním provozu slouží jako zkušební model."
+      },
+      {
+        "src": "assets/projects/mysak/MYSAK_05.glb",
+        "caption": "Prohlédněte si také 3D model. Brzy bude ke stažení a připravený k dalším experimentům."
+      }
+    ]
+  },
+  {
+    "id": "zdena",
+    "title": "Zdena",
+    "date": "2025",
+    "text": "",
+    "tags": [
+      "UI & UX"
+    ],
+    "images": [
+      {
+        "src": "assets/projects/zdena/ZDENA_01.png",
+        "caption": ""
+      },
+      {
+        "src": "assets/projects/zdena/ZDENA_02.mp4",
+        "caption": ""
+      },
+      {
+        "src": "assets/projects/zdena/ZDENA_03.png",
+        "caption": ""
+      },
+      {
+        "src": "assets/projects/zdena/ZDENA_04.png",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "nos",
+    "title": "NoS",
+    "date": "2024 – současnost",
+    "text": "",
+    "tags": [
+      "UI & UX",
+      "Code"
+    ],
+    "images": [
+      {
+        "src": "assets/projects/nos/NOS_01.png",
+        "caption": "Nová Spěška je interní software pro ČEPS určený pro vizualizaci dat. Aplikace musí zobrazovat data efektivně a přehledně, a to jak na velkých obrazovkách, tak na monitorech, tabletech a mobilních zařízeních."
+      },
+      {
+        "src": "assets/projects/nos/NOS_02.png",
+        "caption": "Moje role je grafický design (UI & UX) a kódování některých vizualizací pomocí Deneb/Vega JSON. Momentálně prezentuji ukázku bez reálných dat."
+      },
+      {
+        "src": "assets/projects/nos/NOS_03.png",
+        "caption": "Projekt zajišťuje přehlednou a funkční vizualizaci dat pro interní potřeby ČEPS, podporuje rychlé rozhodování a efektivní monitoring."
+      }
+    ]
+  },
+  {
+    "id": "strela",
+    "title": "Střela",
+    "date": "2025",
+    "text": "",
+    "tags": [
+      "Design",
+      "Print",
+      "3D",
+      "Hardware",
+      "Software"
+    ],
+    "images": [
+      {
+        "src": "assets/projects/strela/STRELA_01.png",
+        "caption": ""
+      },
+      {
+        "src": "assets/projects/strela/STRELA_02.png",
+        "caption": ""
+      },
+      {
+        "src": "assets/projects/strela/STRELA_03.png",
+        "caption": ""
+      },
+      {
+        "src": "assets/projects/strela/STRELA_05.glb",
+        "caption": "Brzy appka s AR!!!"
+      }
+    ]
+  },
+  {
+    "id": "konev",
+    "title": "Konev",
+    "date": "2025",
+    "text": "",
+    "tags": [
+      "Design",
+      "Print",
+      "3D"
+    ],
+    "images": [
+      {
+        "src": "assets/projects/konev/KONEV_01.mp4",
+        "caption": "Vstup a výstup je stejný, je to konev, ale musí být konstrukce stejná?"
+      },
+      {
+        "src": "assets/projects/konev/KONEV_02.png",
+        "caption": ""
+      },
+      {
+        "src": "assets/projects/konev/KONEV_03.png",
+        "caption": "Inspirovali mě zamotané špagety je to vlastně výchozí tvar celé konve."
+      },
+      {
+        "src": "assets/projects/konev/KONEV_04.glb",
+        "caption": "Prohlédněte si 3D model. Brzy ke stažení!"
+      }
+    ]
+  },
+  {
+    "id": "maddona",
+    "title": "Maddona",
+    "date": "2025",
+    "text": "",
+    "tags": [
+      "UI & UX",
+      "Code"
+    ],
+    "images": [
+      {
+        "src": "assets/projects/maddona/MADDONA_01.mp4",
+        "caption": "Madona je webová aplikace vytvořená pro kavárnu Černá Madona."
+      },
+      {
+        "src": "assets/projects/maddona/MADDONA_02.mp4",
+        "caption": "Programovala jsem ji v JavaScriptu jako doprovod k 3D objektu navrženému pro prostor kavárny. Jednoduchá geometrie se tu mění v živý ornament a ukazuje, jak může digitální generativní forma rozšiřovat atmosféru místa a jeho vizuální identitu."
+      },
+      {
+        "src": "assets/projects/maddona/MADDONA_03.png",
+        "caption": "Pokračování se nabízí v podobě interaktivních projekcí nebo propojení přímo s objektem v prostoru."
+      },
+      {
+        "src": "assets/projects/maddona/MADDONA_01.png",
+        "caption": "",
+        "link": "https://johanahlavacova3-hue.github.io/Maddonna_DEV/",
+        "linkText": "Spustit aplikaci Madona"
+      }
+    ]
+  },
+  {
+    "id": "gps",
+    "title": "GPS",
+    "date": "2025",
+    "text": "",
+    "tags": [
+      "Design",
+      "UI & UX",
+      "Code"
+    ],
+    "images": [
+      {
+        "src": "assets/projects/gps/GPS_01.mp4",
+        "caption": ""
+      },
+      {
+        "src": "assets/projects/gps/GPS_02.mp4",
+        "caption": ""
+      },
+      {
+        "src": "assets/projects/gps/GPS_03.png",
+        "caption": ""
+      },
+      {
+        "src": "assets/projects/gps/GPS_04.mp4",
+        "caption": "",
+        "link": "https://johanahlavacova3-hue.github.io/GPS-dev/",
+        "linkText": "Začít objevovat"
+      }
     ]
   }
 ]

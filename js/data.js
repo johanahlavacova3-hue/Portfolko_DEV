@@ -66,7 +66,18 @@ function fmtDate(v) {
   return String(v ?? '').trim();
 }
 
-/** Načte první list (nebo list „Práce“) z .xlsx přes SheetJS. */
+/** Nadpisy listu „Média“ → interní klíče. */
+const MEDIA_HEADERS = {
+  'projekt (id)': 'project', projekt: 'project', id: 'project', project: 'project',
+  soubor: 'src', src: 'src', file: 'src',
+  popisek: 'caption', caption: 'caption',
+  odkaz: 'link', link: 'link',
+  'text odkazu': 'linkText', linktext: 'linkText',
+};
+const remapMedia = (row) => Object.fromEntries(Object.entries(row).map(([k, v]) =>
+  [MEDIA_HEADERS[String(k).trim().toLowerCase()] || String(k).trim().toLowerCase(), String(v ?? '').trim()]));
+
+/** Načte list „Práce“ a k němu list „Média“ (jeden řádek = jeden obrázek / video / 3D). */
 async function loadXLSX(url) {
   const [XLSX, res] = await Promise.all([
     import('https://cdn.jsdelivr.net/npm/xlsx@0.18.5/xlsx.mjs'),
@@ -75,8 +86,26 @@ async function loadXLSX(url) {
   if (!res.ok) throw new Error(`${url}: ${res.status}`);
   const wb = XLSX.read(await res.arrayBuffer(), { type: 'array', cellDates: true });
   const sheet = wb.Sheets['Práce'] || wb.Sheets[wb.SheetNames[0]];
-  return XLSX.utils.sheet_to_json(sheet, { defval: '', raw: true }).map(remap);
+  const rows = XLSX.utils.sheet_to_json(sheet, { defval: '', raw: true }).map(remap);
+  const mediaSheet = wb.Sheets['Média'] || wb.Sheets['Media'];
+  if (mediaSheet) {
+    const media = XLSX.utils.sheet_to_json(mediaSheet, { defval: '', raw: false }).map(remapMedia)
+      .filter((m) => m.project && m.src);
+    for (const r of rows) {
+      const id = String(r.id || slugify(r.title || '')).trim();
+      const own = media.filter((m) => m.project === id);
+      if (own.length) r.images = own;
+    }
+  }
+  return rows;
 }
+
+/** Položka média: „cesta“ nebo { src, caption, link, linkText } */
+const mediaItem = (m) => (typeof m === 'string'
+  ? { src: m.trim(), caption: '', link: '', linkText: '' }
+  : { src: String(m.src || '').trim(), caption: String(m.caption || '').trim(),
+      link: String(m.link || '').trim(), linkText: String(m.linkText || '').trim() });
+const mediaList = (v) => (Array.isArray(v) ? v : list(v)).map(mediaItem).filter((m) => m.src);
 
 /** Sjednotí projekt z JSON / CSV / Excelu do jednoho tvaru. */
 function normalizeProject(p) {
@@ -84,11 +113,11 @@ function normalizeProject(p) {
     id: p.id || slugify(p.title || ''),
     title: p.title || '',
     date: fmtDate(p.date),
-    // rok: sloupec „year“, jinak poslední čtyřčíslí z data (12.05.2026 → 2026)
-    year: String(p.year || (String(p.date || '').match(/(\d{4})\s*$/) || [])[1] || ''),
+    // rok: sloupec „Rok“, jinak první čtyřčíslí z data (12.05.2026 → 2026, „2024 – současnost“ → 2024)
+    year: String(p.year || (String(fmtDate(p.date)).match(/(\d{4})/) || [])[1] || ''),
     text: p.text || '',
     tags: list(p.tags),
-    images: list(p.images),
+    images: mediaList(p.images),
     hidden: ['1', 'true', 'ano', 'x', 'yes'].includes(String(p.hidden ?? '').toLowerCase()),
   };
 }
