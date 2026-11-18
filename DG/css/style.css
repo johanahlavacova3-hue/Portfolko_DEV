@@ -53,7 +53,17 @@ input.fld:focus{box-shadow:0 0 0 1px var(--blue)}
 .types button[aria-pressed="true"]{background:var(--blue)}
 .types button[aria-pressed="true"] .ic{stroke:var(--on-blue);stroke-width:7.6725}
 .types button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
-.typname{position:absolute;left:8px;bottom:8px;font-size:11px;opacity:.75}
+.floorrow{position:absolute;left:8px;right:8px;top:113px;display:flex;align-items:center;gap:7.67px;height:23px}
+.floorrow .lbl{width:62px}
+.sw{width:23px;height:23px;padding:0;border:0;background:var(--box);cursor:pointer;display:block;position:relative}
+.sw svg{display:block;width:23px;height:23px}
+.sw:hover{outline:2px solid var(--hover);outline-offset:0}
+.sw[aria-pressed="true"]{outline:2px solid var(--blue);outline-offset:0}
+.sw.none{color:var(--ink)}
+.sw.none[aria-pressed="true"]{background:var(--blue);color:var(--on-blue)}
+.sw:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.floorrow .dval{display:flex;gap:5px;align-items:center;margin-left:auto}
+.floorrow .fld{width:38px}
 
 .rows{position:absolute;left:8px;right:8px;display:grid;grid-template-columns:114px 1fr;row-gap:2.5px;font-variant-numeric:tabular-nums}
 .s-var .rows{top:38px}

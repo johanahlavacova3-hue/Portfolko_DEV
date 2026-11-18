@@ -49,12 +49,12 @@ const TYPES = {
 };
 
 const BASE = { type:'stool', N:10, W:400, H:450, D:400, X:2200, Y:0, Z:0, alpha:30, Hx:20, Hy:18, vh:11, d:32 };
-const S = { ...BASE, type:'chair', ...TYPES.chair.def };   // ukázka po otevření: židle z výkresu
+const S = { ...BASE, type:'chair', ...TYPES.chair.def, floor:0, tile:200 };   // ukázka po otevření: židle z výkresu; podlaha vypnutá, segment dlaždice 200 mm
 const show = { constr:true, vlines:true, plan:true, hidden:true, pins:true, situ:false };
 let pins = [];
 
 const LIM = { W:[50,5000], H:[50,5000], D:[50,5000], X:[-20000,40000], Y:[0,60000], Z:[-2000,5000], alpha:[0,90],
-              Hx:[-10,40], Hy:[1,21], vh:[-10,30], d:[1,200], N:[1,100] };
+              Hx:[-10,40], Hy:[1,21], vh:[-10,30], d:[1,200], N:[1,100], tile:[50,2000] };
 const clampK = (k,v) => Math.min(LIM[k][1], Math.max(LIM[k][0], v));
 
 const fmt = (n, dp=2) => {
@@ -137,7 +137,7 @@ function hits(E,Q,sd){
 }
 function computeObject(p){
   const fr = frame(p), sol = p.solids, E = toLocal(p,fr,[p.Hx,-p.d,p.vh]);
-  const vis = [], hid = [], pts = [];
+  const vis = [], hid = [], pts = [], hulls = [];
   const visible = Q => { for (const sd of sol) if (hits(E,Q,sd)) return false; return true; };
   for (const sd of sol){
     for (const e of sd.edges){
@@ -169,11 +169,13 @@ function computeObject(p){
       }
       push(start, 1, prevV);
     }
-    for (const q of sd.verts) pts.push(project(p,toWorld(p,fr,q)));
+    const vp2 = sd.verts.map(q => project(p,toWorld(p,fr,q)));
+    for (const q of vp2) pts.push(q);
+    hulls.push(convexHull(vp2));
   }
   const A3 = toWorld(p,fr,[0,0,p.z0]);
   const top = Math.max(...sol.map(sd=>sd.bb.x[2]));
-  return { vis, hid, pts, fr, A3, A2:project(p,A3), At:project(p,toWorld(p,fr,[0,0,top])) };
+  return { vis, hid, pts, hulls, fr, A3, A2:project(p,A3), At:project(p,toWorld(p,fr,[0,0,top])) };
 }
 function vanish(p){
   const t = p.alpha*Math.PI/180;
@@ -193,22 +195,86 @@ function convexHull(P){
   return lo.slice(0,-1).concat(up.slice(0,-1));
 }
 
+/* ---------- ornamenty na podlahu ----------
+   Segment dlaždice v jednotkovém čtverci (u doprava, v dolů), změřený z předlohy „01 Ornament“.
+   Skladba p4m: segment v buňce (i, j) se zrcadlí podle svislé osy, když je i liché, a podle vodorovné, když je j liché. */
+const ORN_BLUE = '#009adc';
+const ORN = (() => {
+  const c = 0.35, t = 0.12;                           // šikmá čára v rohu u+v = 0,35; malý čtvereček 0,12
+  const dia = (cx,cy,r) => [[cx,cy-r],[cx+r,cy],[cx,cy+r],[cx-r,cy]];
+  const ring = P => P.map((q,i) => [q, P[(i+1)%P.length]]);
+  const base = [[[c,0],[0,c]], [[1,0],[0,1]], [[.5,.5],[.5,1]], [[.5,.5],[1,.5]]];
+  const d1 = dia(.33,.33,.17), d2 = dia(.727,.727,.168);
+  return {
+    1: { blue:[ [[0,0],[c,0],[0,c]], [[.5,.5],[1,0],[1,.5]], [[0,1],[.5,.5],[.5,1]] ],
+         white:[], lines: base },
+    2: { blue:[ [[0,0],[t,0],[t,t],[0,t]], [[c,0],[1,0],[0,1],[0,c]], [[.5,.5],[1,.5],[1,1],[.5,1]] ],
+         white:[ d1, d2 ],
+         lines: base.concat([[[t,0],[t,t]], [[t,t],[0,t]]], ring(d1), ring(d2)) }
+  };
+})();
+// bod segmentu (u, v) v buňce (i, j) → souřadnice na podlaze v jednotkách buňky
+const ornCell = (i,j,u,v) => [i + ((i & 1) ? 1-u : u), j + ((j & 1) ? v : 1-v)];
+
+// podlaha v rovině z = 0 za průmětnou: dlaždice od základnice do hloubky d (zadní hrana v polovině mezi z a h), jen kolik je potřeba pro rám
+function floorBuild(p){
+  const pat = ORN[S.floor];
+  const s = S.tile * p.f;                            // velikost segmentu na listu v cm (podle měřítka)
+  const rows = Math.max(1, Math.min(160, Math.round(p.d / s)));
+  const Ymax = rows * s;
+  const P = (X,Y) => { const q = project(p,[X,Y,0]); return [mx(q[0]), my(q[1])]; };
+  const xr = Y => { const k = p.d/(p.d+Y); return [p.Hx + (FX0/10 - 1 - p.Hx)/k, p.Hx + (FX1/10 + 1 - p.Hx)/k]; };
+  const [XaF, XbF] = xr(Ymax);
+  const i0 = Math.floor(XaF/s), i1 = Math.ceil(XbF/s);
+  const quad = [P(i0*s,0), P(i1*s,0), P(i1*s,Ymax), P(i0*s,Ymax)];
+  const F = [{ t:'polyf', pts:quad, fill:'#fbfbfb' }];
+  const segs = [];
+  let cells = 0;
+  for (let j=0;j<rows;j++){
+    const [xa, xb] = xr((j+1)*s);
+    const ia = Math.max(i0, Math.floor(xa/s)), ib = Math.min(i1, Math.ceil(xb/s));
+    for (let i=ia;i<ib;i++){
+      if (++cells > 8000) break;
+      const W = (u,v) => { const q = ornCell(i,j,u,v); return P(q[0]*s, q[1]*s); };
+      for (const poly of pat.blue)  F.push({ t:'polyf', pts:poly.map(q=>W(q[0],q[1])), fill:ORN_BLUE });
+      for (const poly of pat.white) F.push({ t:'polyf', pts:poly.map(q=>W(q[0],q[1])), fill:'#fbfbfb' });
+      for (const [a,b] of pat.lines){ const A=W(a[0],a[1]), B=W(b[0],b[1]); segs.push([A[0],A[1],B[0],B[1]]); }
+    }
+  }
+  // spáry mezi segmenty: přímky celé podlahy
+  for (let i=i0;i<=i1;i++){ const A=P(i*s,0), B=P(i*s,Ymax); segs.push([A[0],A[1],B[0],B[1]]); }
+  for (let j=0;j<=rows;j++){ const A=P(i0*s,j*s), B=P(i1*s,j*s); segs.push([A[0],A[1],B[0],B[1]]); }
+  F.push({ t:'segs', segs, w:0.1, c:BLACK });
+  return { F, quad };
+}
+let floorCache = { key:null };
+function floorData(p){
+  if (!S.floor) return null;
+  const key = [S.floor, S.tile, S.N, p.Hx, p.Hy, p.vh, p.d].join('|');
+  if (floorCache.key !== key) floorCache = { key, ...floorBuild(p) };
+  return floorCache;
+}
+
 /* ---------- výkres jako seznam prvků (mm, osa y dolů, A4 na šířku) ---------- */
 const mx = x => x*10, my = y => (SH - y)*10;
 const W_VIS = 0.35, W_HID = 0.18, W_THIN = 0.13, W_MED = 0.25;
 function buildSheet(){
+  const G = [];      // mřížka (statická)
   const L = [];      // obsah výkresu (ořezaný na plochu nad razítkem)
   const O = [];      // rám, razítko, texty mimo ořez
+  const M = [];      // masky: obrys každého dílu zakryje podlahu za ním
   const line = (x1,y1,x2,y2,w,c,dash) => L.push({ t:'line', x1:mx(x1), y1:my(y1), x2:mx(x2), y2:my(y2), w, c, dash });
   const p = paper(S);
   const st = computeObject(p);
   const vp = vanish(p);
   const zY = p.Hy - p.vh;
 
-  // mřížka po 1 cm
   // mřížka 2 mm, každá pátá čára (1 cm) o tón tmavší; čáry leží na celých mm od rohu listu
-  for (let x=GRID*Math.ceil(FX0/GRID); x<=FX1; x+=GRID) L.push({ t:'line', x1:x, y1:FY0, x2:x, y2:BY, w:0.08, c: x%10===0 ? '#d6d6d6' : '#e6e6e6', grid:true });
-  for (let y=GRID*Math.ceil(FY0/GRID); y<=BY; y+=GRID) L.push({ t:'line', x1:FX0, y1:y, x2:FX1, y2:y, w:0.08, c: y%10===0 ? '#d6d6d6' : '#e6e6e6', grid:true });
+  for (let x=GRID*Math.ceil(FX0/GRID); x<=FX1; x+=GRID) G.push({ t:'line', x1:x, y1:FY0, x2:x, y2:BY, w:0.08, c: x%10===0 ? '#d6d6d6' : '#e6e6e6', grid:true });
+  for (let y=GRID*Math.ceil(FY0/GRID); y<=BY; y+=GRID) G.push({ t:'line', x1:FX0, y1:y, x2:FX1, y2:y, w:0.08, c: y%10===0 ? '#d6d6d6' : '#e6e6e6', grid:true });
+  // podlaha: díl stojí nad podlahou, takže zakrývá právě tu část podlahy, která leží v jeho průmětu (konvexní obal každého dílu)
+  const floor = floorData(p);
+  if (floor) for (const hp of st.hulls) M.push({ t:'polyf', pts:hp.map(q=>[mx(q[0]),my(q[1])]), fill:'#fbfbfb' });
   if (hoverObj){
     const hull = convexHull(st.pts.map(q=>[mx(q[0]),my(q[1])]));
     L.push({ t:'polyf', pts:hull, fill:'#e6e6e6', screen:true });
@@ -291,7 +357,7 @@ function buildSheet(){
   O.push({ t:'text', x:206, y:ty, s:'DESKRIPTIVNÍ GEOMETRIE', size:3.2, c:BLACK });
   O.push({ t:'text', x:FX1-4.5, y:ty, s:String(new Date().getFullYear()), size:3.2, c:BLACK, anchor:'end' });
 
-  return { L, O, p, st, vp };
+  return { G, L, O, M, floor, p, st, vp };
 }
 
 // půdorys situace: malý pohled shora vlevo dole
@@ -335,14 +401,32 @@ function svgItem(it){
     case 'rect': return `<rect x="${it.x}" y="${it.y}" width="${it.w}" height="${it.h}" fill="none" stroke="${it.c}" stroke-width="${it.lw}"/>`;
     case 'rectf': return `<rect x="${it.x}" y="${it.y}" width="${it.w}" height="${it.h}" fill="${it.fill}" stroke="${it.c}" stroke-width="${it.lw}"/>`;
     case 'polyf': return `<polygon points="${it.pts.map(q=>n4(q[0])+','+n4(q[1])).join(' ')}" fill="${it.fill}" stroke="none"/>`;
+    case 'segs': return `<path d="${it.segs.map(q=>`M${n4(q[0])} ${n4(q[1])}L${n4(q[2])} ${n4(q[3])}`).join('')}" fill="none" stroke="${it.c}" stroke-width="${it.w}" stroke-linecap="round"/>`;
     case 'text': return `<text x="${n4(it.x)}" y="${n4(it.y)}" font-family="${FONT}" font-size="${it.size}" fill="${it.c}" text-anchor="${it.anchor||'start'}">${esc(it.s)}</text>`;
   }
   return '';
 }
-function sheetSVG(d){
-  return `<rect x="0" y="0" width="297" height="210" fill="#fbfbfb"/>`+
-    `<defs><clipPath id="cp"><rect x="${FX0}" y="${FY0}" width="${FX1-FX0}" height="${BY-FY0}"/></clipPath></defs>`+
-    `<g clip-path="url(#cp)">${d.L.map(svgItem).join('')}</g>${d.O.map(svgItem).join('')}`;
+// list se skládá z vrstev; mřížka a podlaha se přestaví jen při změně, zbytek při každém pohybu
+let layersReady = false, gridDone = false, floorKeyShown = null;
+function sheetLayers(){
+  sheet.innerHTML = `<rect x="0" y="0" width="297" height="210" fill="#fbfbfb"/>`+
+    `<defs><clipPath id="cp"><rect x="${FX0}" y="${FY0}" width="${FX1-FX0}" height="${BY-FY0}"/></clipPath>`+
+    `<clipPath id="cpf"><polygon id="fq" points="0,0"/></clipPath></defs>`+
+    `<g clip-path="url(#cp)"><g id="gG"></g><g clip-path="url(#cpf)"><g id="gF"></g><g id="gM"></g></g><g id="gL"></g></g><g id="gO"></g>`;
+  layersReady = true;
+}
+function drawSheet(d){
+  if (!layersReady) sheetLayers();
+  if (!gridDone){ $('gG').innerHTML = d.G.map(svgItem).join(''); gridDone = true; }
+  const fk = d.floor ? d.floor.key : '';
+  if (fk !== floorKeyShown){
+    $('gF').innerHTML = d.floor ? d.floor.F.map(svgItem).join('') : '';
+    $('fq').setAttribute('points', d.floor ? d.floor.quad.map(q=>n4(q[0])+','+n4(q[1])).join(' ') : '0,0');
+    floorKeyShown = fk;
+  }
+  $('gM').innerHTML = d.M.map(svgItem).join('');
+  $('gL').innerHTML = d.L.map(svgItem).join('');
+  $('gO').innerHTML = d.O.map(svgItem).join('');
 }
 
 /* ---------- PDF (A4 na šířku, 1:1 v mm) ---------- */
@@ -361,8 +445,9 @@ function pdfText(doc, it){
 }
 function pdfItem(doc, it){
   if (it.t === 'text') return pdfText(doc, it);
-  doc.setDrawColor(it.c);
-  doc.setLineWidth(it.t === 'rect' || it.t === 'rectf' ? it.lw : it.w);
+  if (it.c) doc.setDrawColor(it.c);
+  const lw = it.t === 'rect' || it.t === 'rectf' ? it.lw : it.w;
+  if (lw != null) doc.setLineWidth(lw);
   doc.setLineDashPattern(it.dash || [], 0);
   switch (it.t){
     case 'line': doc.line(it.x1, it.y1, it.x2, it.y2); break;
@@ -374,6 +459,12 @@ function pdfItem(doc, it){
     }
     case 'rect': doc.rect(it.x, it.y, it.w, it.h, 'S'); break;
     case 'rectf': doc.setFillColor('#ffffff'); doc.rect(it.x, it.y, it.w, it.h, 'FD'); break;
+    case 'polyf': {
+      const pts = it.pts; const segs = []; for (let i=1;i<pts.length;i++) segs.push([pts[i][0]-pts[i-1][0], pts[i][1]-pts[i-1][1]]);
+      doc.setFillColor(it.fill === '#fbfbfb' ? '#ffffff' : it.fill);
+      doc.lines(segs, pts[0][0], pts[0][1], [1,1], 'F', true); break;
+    }
+    case 'segs': for (const q of it.segs) doc.line(q[0], q[1], q[2], q[3]); break;
   }
 }
 function buildPDF(){
@@ -386,6 +477,15 @@ function buildPDF(){
   const d = buildSheet();
   doc.saveGraphicsState();
   doc.moveTo(FX0,FY0); doc.lineTo(FX1,FY0); doc.lineTo(FX1,BY); doc.lineTo(FX0,BY); doc.close(); doc.clip(); doc.discardPath();
+  for (const it of d.G) pdfItem(doc, it);
+  if (d.floor){
+    // podlaha a masky jen uvnitř obrysu podlahy
+    doc.saveGraphicsState();
+    const q = d.floor.quad; doc.moveTo(q[0][0],q[0][1]); for (let i=1;i<q.length;i++) doc.lineTo(q[i][0],q[i][1]); doc.close(); doc.clip(); doc.discardPath();
+    for (const it of d.floor.F) pdfItem(doc, it);
+    for (const it of d.M) pdfItem(doc, it);
+    doc.restoreGraphicsState();
+  }
   for (const it of d.L) if (!it.screen) pdfItem(doc, it);
   doc.restoreGraphicsState();
   doc.setLineDashPattern([], 0);
@@ -400,7 +500,7 @@ let last = null;
 function render(){
   const d = buildSheet();
   last = d;
-  sheet.innerHTML = sheetSVG(d);
+  drawSheet(d);
   renderSlider(d.p);
   renderVars(d);
   syncFields();
@@ -439,7 +539,7 @@ function syncFields(){
   for (const el of fields){
     if (document.activeElement === el) continue;
     const k = el.dataset.key;
-    const dp = ['W','H','D','X','Y','Z','alpha','N'].includes(k) ? 0 : 2;
+    const dp = ['W','H','D','X','Y','Z','alpha','N','tile'].includes(k) ? 0 : 2;
     el.value = fmt(S[k], dp);
   }
 }
@@ -449,7 +549,7 @@ const cmStep = () => 10*S.N;                       // mm skutečnosti na 1 cm li
 const snapPos = v => Math.round(v / cmStep()) * cmStep();
 function setKey(k, v){
   if (!isFinite(v)) return;
-  if (k === 'N' || k === 'alpha' || k === 'W' || k === 'H' || k === 'D') v = Math.round(v);
+  if (k === 'N' || k === 'alpha' || k === 'W' || k === 'H' || k === 'D' || k === 'tile') v = Math.round(v);
   if (k === 'X' || k === 'Y' || k === 'Z') v = snapPos(v);
   if (k === 'W' || k === 'H' || k === 'D') v = Math.max(TYPES[S.type].min[k], v);
   S[k] = clampK(k, v);
@@ -493,6 +593,26 @@ $('f_no').addEventListener('input', e => {
 });
 $('f_no').addEventListener('blur', e => { const n = parseInt(e.target.value,10); if (isFinite(n)) e.target.value = String(n).padStart(2,'0'); render(); });
 
+// náhledy ornamentů v přepínači podlahy (2 × 2 segmenty = jedna perioda skladby)
+document.querySelectorAll('.sw[data-floor]').forEach(b => {
+  const n = +b.dataset.floor;
+  if (n){
+    const pat = ORN[n]; let g = `<rect width="2" height="2" fill="#fbfbfb"/>`;
+    for (let j=0;j<2;j++) for (let i=0;i<2;i++){
+      const W = (u,v) => { const q = ornCell(i,j,u,v); return [q[0], 2-q[1]]; };
+      for (const poly of pat.blue)  g += `<polygon points="${poly.map(q=>W(q[0],q[1]).join(',')).join(' ')}" fill="${ORN_BLUE}"/>`;
+      for (const poly of pat.white) g += `<polygon points="${poly.map(q=>W(q[0],q[1]).join(',')).join(' ')}" fill="#fbfbfb"/>`;
+    }
+    b.innerHTML = `<svg viewBox="0 0 2 2" aria-hidden="true">${g}</svg>`;
+  } else {
+    b.innerHTML = `<svg viewBox="0 0 23 23" aria-hidden="true"><path d="M3 20L20 3" stroke="currentColor" stroke-width="1"/></svg>`;
+  }
+  b.addEventListener('click', () => {
+    S.floor = n;
+    document.querySelectorAll('.sw[data-floor]').forEach(x => x.setAttribute('aria-pressed', String(+x.dataset.floor === n)));
+    render();
+  });
+});
 $('pin').addEventListener('click', () => { pins.push({ X:S.X, Y:S.Y, Z:S.Z, alpha:S.alpha }); if (pins.length > 12) pins.shift(); show.pins = true; $('s_pins').checked = true; render(); });
 $('unpin').addEventListener('click', () => { pins = []; render(); });
 
