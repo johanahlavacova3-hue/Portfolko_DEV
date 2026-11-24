@@ -1,5 +1,5 @@
 :root{
-  /* Jeden pevný list 1470 × 850 na mřížce 2 mm (= tlustý tah ikony), škálovaný do okna bez rolování */
+  /* Jeden pevný list 1470 × 854 na mřížce 2,5 mm listu A3 (= tlustý tah ikony), škálovaný do okna bez rolování */
   --paper:#fbfbfb;
   --blue:#1c47f5;
   --ink:#303030;
@@ -13,20 +13,20 @@
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;overflow:hidden;background:var(--paper)}
 body{font-family:var(--font);color:var(--blue)}
-.stage{position:absolute;left:0;top:0;width:1470px;height:850px;transform-origin:0 0;font-size:12px;line-height:1.2}
+.stage{position:absolute;left:0;top:0;width:1470px;height:854px;transform-origin:0 0;font-size:12px;line-height:1.2}
 
-#bggrid{position:absolute;left:0;top:0;width:1470px;height:850px;display:block;pointer-events:none}
-#sheet{position:absolute;left:15px;top:8px;width:1101px;height:767.25px;display:block;touch-action:none;user-select:none;-webkit-user-select:none}
-#slider{position:absolute;left:15px;top:806.75px;width:1101px;height:46.04px;display:block;touch-action:none;cursor:ew-resize;overflow:visible}
+#bggrid{position:absolute;left:0;top:0;width:1470px;height:854px;display:block;pointer-events:none}
+#sheet{position:absolute;left:15px;top:8px;width:1101px;height:770.7px;display:block;touch-action:none;user-select:none;-webkit-user-select:none}
+#slider{position:absolute;left:15px;top:817.1px;width:1101px;height:32.22px;display:block;touch-action:none;cursor:ew-resize;overflow:visible}
 #slider:focus-visible{outline:none}
-#slider:focus-visible .thumb{stroke-width:1.1}
+#slider:focus-visible .thumb{stroke-width:1.55}
 #slider:hover .thumb{fill:var(--box)}
-#play{position:absolute;left:550.5px;top:781.5px;width:30px;height:26px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
+#play{position:absolute;left:550.5px;top:784.95px;width:30px;height:26px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
 #play:hover{background:var(--box)}
 #play:focus-visible{outline:1px solid var(--blue)}
 #play svg{width:14px;height:16px;display:block}
 
-.panel{position:absolute;left:1155px;top:8px;width:299px;height:767.25px;border:2px solid var(--blue);display:flex;flex-direction:column}
+.panel{position:absolute;left:1155px;top:8px;width:299px;height:770.7px;border:2px solid var(--blue);display:flex;flex-direction:column}
 .sec{border-top:2px solid var(--blue);padding:7px 8px 0;position:relative;flex:none}
 .sec:first-child{border-top:0}
 .sec h2{font:inherit;margin:0;font-weight:400;letter-spacing:.02em}
@@ -51,7 +51,7 @@ input.fld:focus{box-shadow:0 0 0 1px var(--blue)}
 .types button .ic{stroke:var(--ink);fill:none;stroke-width:2.6;stroke-linecap:butt;stroke-linejoin:miter}
 .types button:not([aria-pressed="true"]):hover{background:var(--box)}
 .types button[aria-pressed="true"]{background:var(--blue)}
-.types button[aria-pressed="true"] .ic{stroke:var(--on-blue);stroke-width:7.6725}
+.types button[aria-pressed="true"] .ic{stroke:var(--on-blue);stroke-width:6.7134}
 .types button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .floorrow{position:absolute;left:8px;right:8px;top:113px;display:flex;align-items:center;gap:7.67px;height:23px}
 .floorrow .lbl{width:62px}
@@ -96,9 +96,9 @@ input.fld:focus{box-shadow:0 0 0 1px var(--blue)}
 .cgrid .pair{display:flex;gap:3px;align-items:center}
 .chead{display:flex;justify-content:space-between}
 
-#export{position:absolute;left:1346px;top:783.75px;width:108px;height:55px;background:var(--blue);color:var(--on-blue);border:0;font:inherit;font-size:13px;text-transform:uppercase;text-align:left;padding:6px 8px;cursor:pointer;display:block}
+#export{position:absolute;left:1346px;top:787.2px;width:108px;height:55px;background:var(--blue);color:var(--on-blue);border:0;font:inherit;font-size:13px;text-transform:uppercase;text-align:left;padding:6px 8px;cursor:pointer;display:block}
 #export svg{position:absolute;right:8px;top:9px;width:26px;height:10px}
 #export:hover:not([disabled]){background:var(--box);color:var(--blue)}
 #export:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 #export[disabled]{opacity:.55;cursor:default}
-#exportMsg{position:absolute;left:1155px;top:786.75px;width:184px;font-size:10.5px;line-height:1.3;text-transform:none;color:var(--ink)}
+#exportMsg{position:absolute;left:1155px;top:790.2px;width:184px;font-size:10.5px;line-height:1.3;text-transform:none;color:var(--ink)}

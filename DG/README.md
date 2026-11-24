@@ -2,7 +2,7 @@
 
 Interaktivní výkres pro deskriptivní geometrii: židle, stolička nebo stůl v lineární perspektivě.
 Objekt se posouvá po základnici z a jeho obraz se počítá přesnou středovou projekcí.
-Výsledek se exportuje do PDF (A4 na šířku, okraje 5 mm, měřítko 1:1).
+Výsledek se exportuje do PDF (A3 na šířku, okraje 5 mm, tisk 1:1). Objekt je v měřítku 1:7.
 
 Autorka: Johana Hlaváčová
 
@@ -44,8 +44,13 @@ tools/build_fonts.py  přegeneruje js/fonts.js z fonts/*.ttf
 - **Posuvník pod výkresem** nebo **tažení objektu na výkresu** posouvá roh A po základnici, vždy po celých centimetrech listu.
 - **Šipky** na posuvníku posouvají o 1 cm, se Shiftem o 5 cm. Šipky nahoru a dolů v polích mění hodnotu.
 - **Podlaha** (v sekci TYP): bez podlahy, ornament 1, nebo ornament 2. Číslo vedle je velikost jednoho segmentu dlaždice ve skutečnosti v mm.
-- **Číslo listu 01–04** načte zadání z podkladu (stolička: H[20;18], vh = 11, d = 32, α = 30°; list 04 H[23;18], α = 35°).
-- **Dimenze** jsou skutečné rozměry v mm a **konstanty** jsou parametry zadání v cm na listu. Výchozí měřítko je 1:10.
+- **Číslo listu 01–04** načte zadání z podkladu převedené z A4 (1:10) na A3 (1:7): H[28,5;25,5], vh = 15,5, d = 45, α = 30°; list 04 H[32,5;25,5], α = 35°.
+- **Dimenze** jsou skutečné rozměry v mm a **konstanty** jsou parametry zadání v cm na listu. Výchozí měřítko je 1:7.
+
+## List
+
+A3 na šířku (420 × 297 mm), rám 5 mm od okraje, razítko 13 mm. Mřížka má dílek 2,5 mm a každá čtvrtá čára (1 cm) je tmavší.
+Tloušťky čar jsou o krok řady √2 silnější než pro A4: viditelné hrany 0,5 mm, neviditelné 0,25 mm, pomocné 0,18 mm.
 
 ## Licence fontů
 

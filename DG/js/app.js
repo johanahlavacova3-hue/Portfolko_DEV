@@ -1,12 +1,14 @@
 (() => {
 const $ = id => document.getElementById(id);
 const BLUE = '#1c47f5', INK = '#303030', BLACK = '#111111';
-const SW = 29.7, SH = 21;          // list v cm
+const PW = 420, PH = 297;           // list A3 na šířku v mm
+const SW = PW/10, SH = PH/10;      // list v cm
+const K = Math.SQRT2;              // A3 / A4: tloušťky čar a písmo jdou o krok řady √2 výš (0,35 → 0,5 mm atd.)
 const MG = 5;                      // okraj listu pro tisk, mm
-const FX0 = MG, FY0 = MG, FX1 = 297-MG, FY1 = 210-MG;   // rám výkresu (mm, osa y dolů)
-const BY = FY1 - 9;                // horní hrana razítka (výška 9 mm)
-const GRID = 2;                    // mřížka 2 mm = tlustý tah ikony
-const PXMM = 1101/287;             // px na mm na obrazovce
+const FX0 = MG, FY0 = MG, FX1 = PW-MG, FY1 = PH-MG;   // rám výkresu (mm, osa y dolů)
+const BY = FY1 - 13;               // horní hrana razítka (výška 13 mm)
+const GRID = 2.5;                  // mřížka 2,5 mm (4 dílky na 1 cm) = tlustý tah ikony
+const PXMM = 1101/410;             // px na mm na obrazovce
 const FONT = 'SM, monospace';
 
 /* ---------- typy objektů (rozměry ve skutečnosti, mm) ---------- */
@@ -48,13 +50,14 @@ const TYPES = {
       [o,o+l,hl-ah,o+at,D-o-l,hl],[W-o-at,o+l,hl-ah,W-o,D-o-l,hl] ]; } }
 };
 
-const BASE = { type:'stool', N:10, W:400, H:450, D:400, X:2200, Y:0, Z:0, alpha:30, Hx:20, Hy:18, vh:11, d:32 };
+// zadání z podkladu převedené z A4 (1:10) na A3 (1:7): H[20;18] → [28,5;25,5], vh 11 → 15,5, d 32 → 45
+const BASE = { type:'stool', N:7, W:400, H:450, D:400, X:2170, Y:0, Z:0, alpha:30, Hx:28.5, Hy:25.5, vh:15.5, d:45 };
 const S = { ...BASE, type:'chair', ...TYPES.chair.def, floor:0, tile:200 };   // ukázka po otevření: židle z výkresu; podlaha vypnutá, segment dlaždice 200 mm
 const show = { constr:true, vlines:true, plan:true, hidden:true, pins:true, situ:false };
 let pins = [];
 
 const LIM = { W:[50,5000], H:[50,5000], D:[50,5000], X:[-20000,40000], Y:[0,60000], Z:[-2000,5000], alpha:[0,90],
-              Hx:[-10,40], Hy:[1,21], vh:[-10,30], d:[1,200], N:[1,100], tile:[50,2000] };
+              Hx:[-10,55], Hy:[1,29.7], vh:[-10,40], d:[1,250], N:[1,100], tile:[50,2000] };
 const clampK = (k,v) => Math.min(LIM[k][1], Math.max(LIM[k][0], v));
 
 const fmt = (n, dp=2) => {
@@ -244,7 +247,7 @@ function floorBuild(p){
   // spáry mezi segmenty: přímky celé podlahy
   for (let i=i0;i<=i1;i++){ const A=P(i*s,0), B=P(i*s,Ymax); segs.push([A[0],A[1],B[0],B[1]]); }
   for (let j=0;j<=rows;j++){ const A=P(i0*s,j*s), B=P(i1*s,j*s); segs.push([A[0],A[1],B[0],B[1]]); }
-  F.push({ t:'segs', segs, w:0.1, c:BLACK });
+  F.push({ t:'segs', segs, w:0.14, c:BLACK });
   return { F, quad };
 }
 let floorCache = { key:null };
@@ -255,9 +258,9 @@ function floorData(p){
   return floorCache;
 }
 
-/* ---------- výkres jako seznam prvků (mm, osa y dolů, A4 na šířku) ---------- */
+/* ---------- výkres jako seznam prvků (mm, osa y dolů, A3 na šířku) ---------- */
 const mx = x => x*10, my = y => (SH - y)*10;
-const W_VIS = 0.35, W_HID = 0.18, W_THIN = 0.13, W_MED = 0.25;
+const W_VIS = 0.5, W_HID = 0.25, W_THIN = 0.18, W_MED = 0.35;   // řada tlouštěk pro A3
 function buildSheet(){
   const G = [];      // mřížka (statická)
   const L = [];      // obsah výkresu (ořezaný na plochu nad razítkem)
@@ -270,8 +273,8 @@ function buildSheet(){
   const zY = p.Hy - p.vh;
 
   // mřížka 2 mm, každá pátá čára (1 cm) o tón tmavší; čáry leží na celých mm od rohu listu
-  for (let x=GRID*Math.ceil(FX0/GRID); x<=FX1; x+=GRID) G.push({ t:'line', x1:x, y1:FY0, x2:x, y2:BY, w:0.08, c: x%10===0 ? '#d6d6d6' : '#e6e6e6', grid:true });
-  for (let y=GRID*Math.ceil(FY0/GRID); y<=BY; y+=GRID) G.push({ t:'line', x1:FX0, y1:y, x2:FX1, y2:y, w:0.08, c: y%10===0 ? '#d6d6d6' : '#e6e6e6', grid:true });
+  for (let x=GRID*Math.ceil(FX0/GRID); x<=FX1; x+=GRID) G.push({ t:'line', x1:x, y1:FY0, x2:x, y2:BY, w:0.11, c: x%10===0 ? '#d6d6d6' : '#e6e6e6', grid:true });
+  for (let y=GRID*Math.ceil(FY0/GRID); y<=BY; y+=GRID) G.push({ t:'line', x1:FX0, y1:y, x2:FX1, y2:y, w:0.11, c: y%10===0 ? '#d6d6d6' : '#e6e6e6', grid:true });
   // podlaha: díl stojí nad podlahou, takže zakrývá právě tu část podlahy, která leží v jeho průmětu (konvexní obal každého dílu)
   const floor = floorData(p);
   if (floor) for (const hp of st.hulls) M.push({ t:'polyf', pts:hp.map(q=>[mx(q[0]),my(q[1])]), fill:'#fbfbfb' });
@@ -285,30 +288,30 @@ function buildSheet(){
     line(-1, p.Hy, SW+1, p.Hy, W_MED, BLACK);
     line(-1, zY, SW+1, zY, W_MED, BLACK);
     line(p.Hx, p.Hy, p.Hx, p.Hy - p.d/2, W_THIN, BLACK);
-    line(p.Hx-0.2, p.Hy-p.d/2, p.Hx+0.2, p.Hy-p.d/2, W_MED, BLACK);
-    line(p.Hx-0.2, p.Hy, p.Hx+0.2, p.Hy, W_MED, BLACK);
-    L.push({ t:'text', x:mx(p.Hx+0.3), y:my(p.Hy+0.3), s:'H', size:3.5, c:BLACK });
-    L.push({ t:'text', x:FX1-4.5, y:my(p.Hy+0.3), s:'h', size:3.5, c:BLACK, anchor:'end' });
-    L.push({ t:'text', x:FX1-4.5, y:my(zY+0.3), s:'z', size:3.5, c:BLACK, anchor:'end' });
-    L.push({ t:'text', x:mx(p.Hx+0.3), y:my(p.Hy-p.d/2-0.13), s:'D/2', size:3.5, c:BLACK });
+    line(p.Hx-0.28, p.Hy-p.d/2, p.Hx+0.28, p.Hy-p.d/2, W_MED, BLACK);
+    line(p.Hx-0.28, p.Hy, p.Hx+0.28, p.Hy, W_MED, BLACK);
+    L.push({ t:'text', x:mx(p.Hx+0.42), y:my(p.Hy+0.42), s:'H', size:5, c:BLACK });
+    L.push({ t:'text', x:FX1-6.4, y:my(p.Hy+0.42), s:'h', size:5, c:BLACK, anchor:'end' });
+    L.push({ t:'text', x:FX1-6.4, y:my(zY+0.42), s:'z', size:5, c:BLACK, anchor:'end' });
+    L.push({ t:'text', x:mx(p.Hx+0.42), y:my(p.Hy-p.d/2-0.18), s:'D/2', size:5, c:BLACK });
   }
 
   if (show.vlines){
     const D2 = [p.Hx, p.Hy - p.d/2];
     if (isFinite(vp.U)){
       line(D2[0], D2[1], p.Hx + (vp.U-p.Hx)/2, p.Hy, W_THIN, BLACK);
-      L.push({ t:'circle', cx:mx(vp.U), cy:my(p.Hy), r:0.6, w:W_THIN, c:BLACK });
-      L.push({ t:'text', x:mx(vp.U), y:my(p.Hy-0.65), s:'U', size:3.5, c:BLACK, anchor:'middle' });
+      L.push({ t:'circle', cx:mx(vp.U), cy:my(p.Hy), r:0.85, w:W_THIN, c:BLACK });
+      L.push({ t:'text', x:mx(vp.U), y:my(p.Hy-0.92), s:'U', size:5, c:BLACK, anchor:'middle' });
     }
     if (isFinite(vp.U2)){
-      line(D2[0], D2[1], p.Hx + (vp.U2-p.Hx)/2, p.Hy, W_THIN, BLACK, [1.6,0.9]);
-      L.push({ t:'circle', cx:mx(vp.U2), cy:my(p.Hy), r:0.6, w:W_THIN, c:BLACK });
-      L.push({ t:'text', x:mx(vp.U2), y:my(p.Hy-0.65), s:'U′', size:3.5, c:BLACK, anchor:'middle' });
+      line(D2[0], D2[1], p.Hx + (vp.U2-p.Hx)/2, p.Hy, W_THIN, BLACK, [2.3,1.3]);
+      L.push({ t:'circle', cx:mx(vp.U2), cy:my(p.Hy), r:0.85, w:W_THIN, c:BLACK });
+      L.push({ t:'text', x:mx(vp.U2), y:my(p.Hy-0.92), s:'U′', size:5, c:BLACK, anchor:'middle' });
     }
     for (const Q of [st.A2, st.At]){
       for (const ux of [vp.U, vp.U2]){
-        if (isFinite(ux)) line(Q[0], Q[1], ux, p.Hy, W_THIN, BLACK, [0.4,0.9]);
-        else line(Q[0]-60, Q[1], Q[0]+60, Q[1], W_THIN, BLACK, [0.4,0.9]);
+        if (isFinite(ux)) line(Q[0], Q[1], ux, p.Hy, W_THIN, BLACK, [0.6,1.3]);
+        else line(Q[0]-60, Q[1], Q[0]+60, Q[1], W_THIN, BLACK, [0.6,1.3]);
       }
     }
   }
@@ -317,75 +320,75 @@ function buildSheet(){
     const fr = st.fr;
     const fp = (u,v) => [p.X0 + u*fr.c - v*fr.s, zY + p.Y0 + u*fr.s + v*fr.c];
     const poly = (pts,w,dash) => L.push({ t:'poly', pts:pts.map(q=>[mx(q[0]),my(q[1])]), w, c:BLACK, dash });
-    poly([fp(0,0),fp(p.w,0),fp(p.w,p.dp),fp(0,p.dp)], 0.18, [3,0.8,0.4,0.8]);
-    for (const sd of p.solids) if (sd.ground){ const b = sd.bb; poly([fp(b.n[0],b.n[1]),fp(b.x[0],b.n[1]),fp(b.x[0],b.x[1]),fp(b.n[0],b.x[1])], 0.18); }
-    const F = fp(0,0), R = Math.min(2.9, Math.max(p.w,p.dp)*0.7), al = p.alpha*Math.PI/180;
-    line(F[0], F[1], F[0]+R+1.2, F[1], W_THIN, BLACK);
+    poly([fp(0,0),fp(p.w,0),fp(p.w,p.dp),fp(0,p.dp)], 0.25, [4.2,1.1,0.6,1.1]);
+    for (const sd of p.solids) if (sd.ground){ const b = sd.bb; poly([fp(b.n[0],b.n[1]),fp(b.x[0],b.n[1]),fp(b.x[0],b.x[1]),fp(b.n[0],b.x[1])], 0.25); }
+    const F = fp(0,0), R = Math.min(4.1, Math.max(p.w,p.dp)*0.7), al = p.alpha*Math.PI/180;
+    line(F[0], F[1], F[0]+R+1.7, F[1], W_THIN, BLACK);
     if (p.alpha > 0.2){
       const arc = []; const n = 40;
       for (let i=0;i<=n;i++){ const a = al*i/n; arc.push([mx(F[0]+R*Math.cos(a)), my(F[1]+R*Math.sin(a))]); }
       L.push({ t:'pline', pts:arc, w:W_THIN, c:BLACK });
       const lr = R*0.7, la = al/2;
-      L.push({ t:'text', x:mx(F[0]+lr*Math.cos(la)+0.15), y:my(F[1]+lr*Math.sin(la)-0.12), s:fmt(S.alpha,1)+'°', size:3.2, c:BLACK, anchor:'middle' });
+      L.push({ t:'text', x:mx(F[0]+lr*Math.cos(la)+0.21), y:my(F[1]+lr*Math.sin(la)-0.17), s:fmt(S.alpha,1)+'°', size:4.5, c:BLACK, anchor:'middle' });
     }
   }
 
   if (show.pins){
     for (const pin of pins){
       const ps = computeObject(paper({ ...S, ...pin }));
-      for (const s of ps.vis) line(s[0],s[1],s[2],s[3], 0.25, '#9a9a9a');
+      for (const s of ps.vis) line(s[0],s[1],s[2],s[3], 0.35, '#9a9a9a');
     }
   }
 
   if (show.situ) situation(L, p, st);
 
-  if (show.hidden) for (const s of st.hid) line(s[0],s[1],s[2],s[3], W_HID, BLACK, [1.2,0.8]);
+  if (show.hidden) for (const s of st.hid) line(s[0],s[1],s[2],s[3], W_HID, BLACK, [1.7,1.1]);
   for (const s of st.vis) line(s[0],s[1],s[2],s[3], W_VIS, BLACK);
 
   // záhlaví jako v zadání
-  O.push({ t:'text', x:18.5, y:my(19.35), s:`H[${fmt(p.Hx)};${fmt(p.Hy)}], vh=${fmt(p.vh)}, d=${fmt(p.d)}`, size:4.4, c:BLACK });
-  O.push({ t:'text', x:18.5, y:my(18.75), s:`α=${fmt(S.alpha,1)}°`, size:3, c:'#555555' });
+  O.push({ t:'text', x:26.2, y:23.3, s:`H[${fmt(p.Hx)};${fmt(p.Hy)}], vh=${fmt(p.vh)}, d=${fmt(p.d)}`, size:6.2, c:BLACK });
+  O.push({ t:'text', x:26.2, y:31.8, s:`α=${fmt(S.alpha,1)}°`, size:4.2, c:'#555555' });
   // měřítko a razítko
-  O.push({ t:'text', x:FX1-4.5, y:BY-3.6, s:`1:${fmt(S.N,0)}`, size:3.2, c:BLACK, anchor:'end' });
-  O.push({ t:'line', x1:FX0, y1:BY, x2:FX1, y2:BY, w:0.45, c:INK });
-  O.push({ t:'rect', x:FX0+0.225, y:FY0+0.225, w:FX1-FX0-0.45, h:FY1-FY0-0.45, lw:0.45, c:INK });
-  const ty = BY + 6.0;
+  O.push({ t:'text', x:FX1-6.4, y:BY-5, s:`1:${fmt(S.N,0)}`, size:4.5, c:BLACK, anchor:'end' });
+  O.push({ t:'line', x1:FX0, y1:BY, x2:FX1, y2:BY, w:0.63, c:INK });
+  O.push({ t:'rect', x:FX0+0.315, y:FY0+0.315, w:FX1-FX0-0.63, h:FY1-FY0-0.63, lw:0.63, c:INK });
+  const ty = BY + 8.5;
   const no = String($('f_no').value || '').toUpperCase();
-  O.push({ t:'text', x:FX0+4.5, y:ty, s:no, size:3.2, c:BLACK });
-  O.push({ t:'text', x:FX0+22, y:ty, s:'LP – ' + TYPES[S.type].name, size:3.2, c:BLACK });
-  O.push({ t:'text', x:100, y:ty, s:String($('f_name').value || '').toUpperCase(), size:3.2, c:BLACK });
-  O.push({ t:'text', x:206, y:ty, s:'DESKRIPTIVNÍ GEOMETRIE', size:3.2, c:BLACK });
-  O.push({ t:'text', x:FX1-4.5, y:ty, s:String(new Date().getFullYear()), size:3.2, c:BLACK, anchor:'end' });
+  O.push({ t:'text', x:FX0+6.4, y:ty, s:no, size:4.5, c:BLACK });
+  O.push({ t:'text', x:FX0+31, y:ty, s:'LP – ' + TYPES[S.type].name, size:4.5, c:BLACK });
+  O.push({ t:'text', x:141, y:ty, s:String($('f_name').value || '').toUpperCase(), size:4.5, c:BLACK });
+  O.push({ t:'text', x:291, y:ty, s:'DESKRIPTIVNÍ GEOMETRIE', size:4.5, c:BLACK });
+  O.push({ t:'text', x:FX1-6.4, y:ty, s:String(new Date().getFullYear()), size:4.5, c:BLACK, anchor:'end' });
 
   return { G, L, O, M, floor, p, st, vp };
 }
 
 // půdorys situace: malý pohled shora vlevo dole
 function situation(L, p, st){
-  const bx = { x:10, y:144, w:90, h:48 };   // mm na listu
+  const bx = { x:14, y:204, w:127, h:68 };   // mm na listu
   const foot = [[0,0],[p.w,0],[p.w,p.dp],[0,p.dp]].map(([u,v]) => toWorld(p, st.fr, [u,v,0]));
   const xs = [0, SW, p.Hx, ...foot.map(q=>q[0])], ys = [-p.d, 0, ...foot.map(q=>q[1])];
   const x0 = Math.min(...xs)-1, x1 = Math.max(...xs)+1, y0 = Math.min(...ys)-1, y1 = Math.max(...ys, 3)+1;
-  const sc = Math.min((bx.w-4)/(x1-x0), (bx.h-8)/(y1-y0));
-  const ox = bx.x + 2 + ((bx.w-4) - (x1-x0)*sc)/2, oy = bx.y + 6;
+  const sc = Math.min((bx.w-6)/(x1-x0), (bx.h-11)/(y1-y0));
+  const ox = bx.x + 3 + ((bx.w-6) - (x1-x0)*sc)/2, oy = bx.y + 8.5;
   const P = q => [ox + (q[0]-x0)*sc, oy + (y1-q[1])*sc];
   const seg = (a,b,w,dash,c=BLACK) => { const A=P(a), B=P(b); L.push({ t:'line', x1:A[0], y1:A[1], x2:B[0], y2:B[1], w, c, dash }); };
-  L.push({ t:'rectf', x:bx.x, y:bx.y, w:bx.w, h:bx.h, fill:'#fbfbfb', lw:0.18, c:BLACK });
-  L.push({ t:'text', x:bx.x+2, y:bx.y+4.2, s:'PŮDORYS SITUACE', size:2.6, c:BLACK });
+  L.push({ t:'rectf', x:bx.x, y:bx.y, w:bx.w, h:bx.h, fill:'#fbfbfb', lw:0.25, c:BLACK });
+  L.push({ t:'text', x:bx.x+3, y:bx.y+6, s:'PŮDORYS SITUACE', size:3.7, c:BLACK });
   const Sp = [p.Hx, -p.d];
   const k = (y1 - Sp[1]) / p.d;
-  seg(Sp, [p.Hx - p.d/2*k, y1], W_THIN, [0.6,0.6]);
-  seg(Sp, [p.Hx + p.d/2*k, y1], W_THIN, [0.6,0.6]);
+  seg(Sp, [p.Hx - p.d/2*k, y1], W_THIN, [0.85,0.85]);
+  seg(Sp, [p.Hx + p.d/2*k, y1], W_THIN, [0.85,0.85]);
   seg([x0,0],[x1,0], W_THIN);
-  seg([0,0],[SW,0], 0.35);
-  seg(Sp,[p.Hx,0], W_THIN, [1,0.6]);
-  for (const q of foot) seg(Sp, q, 0.1);
-  L.push({ t:'poly', pts:foot.map(P), w:0.3, c:BLACK });
+  seg([0,0],[SW,0], 0.5);
+  seg(Sp,[p.Hx,0], W_THIN, [1.4,0.85]);
+  for (const q of foot) seg(Sp, q, 0.14);
+  L.push({ t:'poly', pts:foot.map(P), w:0.42, c:BLACK });
   const sP = P(Sp), hP = P([p.Hx,0]);
-  L.push({ t:'circle', cx:sP[0], cy:sP[1], r:0.5, w:0.3, c:BLACK });
-  L.push({ t:'text', x:sP[0]+1.2, y:sP[1]+0.6, s:'S', size:2.6, c:BLACK });
-  L.push({ t:'text', x:hP[0]+0.8, y:hP[1]-0.8, s:'H', size:2.6, c:BLACK });
-  L.push({ t:'text', x:P([0,0])[0], y:P([0,0])[1]-0.8, s:'π', size:2.6, c:BLACK });
+  L.push({ t:'circle', cx:sP[0], cy:sP[1], r:0.7, w:0.42, c:BLACK });
+  L.push({ t:'text', x:sP[0]+1.7, y:sP[1]+0.85, s:'S', size:3.7, c:BLACK });
+  L.push({ t:'text', x:hP[0]+1.1, y:hP[1]-1.1, s:'H', size:3.7, c:BLACK });
+  L.push({ t:'text', x:P([0,0])[0], y:P([0,0])[1]-1.1, s:'π', size:3.7, c:BLACK });
 }
 
 /* ---------- SVG ---------- */
@@ -409,7 +412,7 @@ function svgItem(it){
 // list se skládá z vrstev; mřížka a podlaha se přestaví jen při změně, zbytek při každém pohybu
 let layersReady = false, gridDone = false, floorKeyShown = null;
 function sheetLayers(){
-  sheet.innerHTML = `<rect x="0" y="0" width="297" height="210" fill="#fbfbfb"/>`+
+  sheet.innerHTML = `<rect x="0" y="0" width="${PW}" height="${PH}" fill="#fbfbfb"/>`+
     `<defs><clipPath id="cp"><rect x="${FX0}" y="${FY0}" width="${FX1-FX0}" height="${BY-FY0}"/></clipPath>`+
     `<clipPath id="cpf"><polygon id="fq" points="0,0"/></clipPath></defs>`+
     `<g clip-path="url(#cp)"><g id="gG"></g><g clip-path="url(#cpf)"><g id="gF"></g><g id="gM"></g></g><g id="gL"></g></g><g id="gO"></g>`;
@@ -429,7 +432,7 @@ function drawSheet(d){
   $('gO').innerHTML = d.O.map(svgItem).join('');
 }
 
-/* ---------- PDF (A4 na šířku, 1:1 v mm) ---------- */
+/* ---------- PDF (A3 na šířku, 1:1 v mm) ---------- */
 const SM_B64 = window.LP_FONTS.spaceMono;   // Space Mono (výřez latinka + čeština), pro vložení do PDF
 const AL_B64 = window.LP_FONTS.alpha;       // znak α z DejaVu Sans Mono (Space Mono ho nemá)
 const PT = 72/25.4;
@@ -469,11 +472,11 @@ function pdfItem(doc, it){
 }
 function buildPDF(){
   const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({ orientation:'landscape', unit:'mm', format:'a4', compress:true });
+  const doc = new jsPDF({ orientation:'landscape', unit:'mm', format:'a3', compress:true });
   doc.addFileToVFS('SM.ttf', SM_B64); doc.addFont('SM.ttf', 'SM', 'normal');
   doc.addFileToVFS('ALPHA.ttf', AL_B64); doc.addFont('ALPHA.ttf', 'ALPHA', 'normal');
   doc.setLineCap('round'); doc.setLineJoin('round');
-  doc.setFillColor('#ffffff'); doc.rect(0,0,297,210,'F');
+  doc.setFillColor('#ffffff'); doc.rect(0,0,PW,PH,'F');
   const d = buildSheet();
   doc.saveGraphicsState();
   doc.moveTo(FX0,FY0); doc.lineTo(FX1,FY0); doc.lineTo(FX1,BY); doc.lineTo(FX0,BY); doc.close(); doc.clip(); doc.discardPath();
@@ -508,8 +511,8 @@ function render(){
 function renderSlider(p){
   const x = Math.min(FX1, Math.max(FX0, p.X0*10));
   let g = `<rect x="${FX0-2}" y="-2" width="${FX1-FX0+4}" height="12" fill="transparent"/>`;
-  g += `<line x1="${FX0}" y1="4" x2="${FX1}" y2="4" stroke="${BLUE}" stroke-width="0.7"/>`;
-  g += `<circle class="thumb" cx="${n4(x)}" cy="4" r="1.85" fill="#fbfbfb" stroke="${BLUE}" stroke-width="0.6"/>`;
+  g += `<line x1="${FX0}" y1="4" x2="${FX1}" y2="4" stroke="${BLUE}" stroke-width="0.99"/>`;
+  g += `<circle class="thumb" cx="${n4(x)}" cy="4" r="2.62" fill="#fbfbfb" stroke="${BLUE}" stroke-width="0.85"/>`;
   slider.innerHTML = g;
   slider.setAttribute('aria-valuemin', '0');
   slider.setAttribute('aria-valuemax', String(Math.round(SW*10*10*S.N)));
@@ -581,10 +584,10 @@ document.querySelectorAll('.types button').forEach(b => b.addEventListener('clic
 
 /* ---------- zadání z podkladu podle čísla listu ---------- */
 const PRESETS = {
-  1: { s:{ ...BASE, X:2200 }, pins:[] },
-  2: { s:{ ...BASE, X:1500 }, pins:[] },
-  3: { s:{ ...BASE, X:900 },  pins:[{X:2200,Y:0,Z:0,alpha:30},{X:1500,Y:0,Z:0,alpha:30}] },
-  4: { s:{ ...BASE, Hx:23, alpha:35, X:1800 }, pins:[] }
+  1: { s:{ ...BASE, X:2170 }, pins:[] },
+  2: { s:{ ...BASE, X:1470 }, pins:[] },
+  3: { s:{ ...BASE, X:910 },  pins:[{X:2170,Y:0,Z:0,alpha:30},{X:1470,Y:0,Z:0,alpha:30}] },
+  4: { s:{ ...BASE, Hx:32.5, alpha:35, X:1750 }, pins:[] }
 };
 $('f_no').addEventListener('input', e => {
   const n = parseInt(e.target.value, 10);
@@ -639,7 +642,7 @@ let drag = null;
 function inObj(pt){
   if (!last) return false;
   const xs = last.st.pts.map(q=>q[0]*10), ys = last.st.pts.map(q=>(SH-q[1])*10);
-  return pt.x > Math.min(...xs)-6 && pt.x < Math.max(...xs)+6 && pt.y > Math.min(...ys)-6 && pt.y < Math.max(...ys)+6;
+  return pt.x > Math.min(...xs)-8 && pt.x < Math.max(...xs)+8 && pt.y > Math.min(...ys)-8 && pt.y < Math.max(...ys)+8;
 }
 sheet.addEventListener('pointerdown', e => {
   const pt = svgPt(sheet, e);
@@ -670,7 +673,7 @@ function stopPlay(){ if (!playing) return; playing = false; clearInterval(timer)
 // skok po 1 cm listu
 function tick(){
   if (!playing) return;
-  const k = mmPerSheetCm(), lo = 1*k, hi = 28*k;
+  const k = mmPerSheetCm(), lo = 1*k, hi = (Math.floor(FX1/10)-1)*k;
   let nx = snapPos(S.X) + dir*k;
   if (nx < lo){ nx = lo; dir = 1; }
   if (nx > hi){ nx = hi; dir = -1; }
@@ -689,7 +692,7 @@ const msg = t => { $('exportMsg').textContent = t; };
 $('export').addEventListener('click', async () => {
   stopPlay();
   if (!window.jspdf){ msg('Knihovna pro PDF se nenačetla. Obnov stránku a zkus to znovu.'); return; }
-  const btn = $('export'); btn.disabled = true; msg('Připravuji PDF A4…');
+  const btn = $('export'); btn.disabled = true; msg('Připravuji PDF A3…');
   try {
     const doc = buildPDF();
     const no = String($('f_no').value||'01').padStart(2,'0');
@@ -698,11 +701,11 @@ $('export').addEventListener('click', async () => {
       // uvnitř Claude: stažení přes schválenou schopnost „downloads“
       const buf = doc.output('arraybuffer');
       await DL.save({ filename, data: buf });
-      msg('PDF uloženo: A4 na šířku, měřítko 1:1.');
+      msg('PDF uloženo: A3 na šířku, měřítko 1:1.');
     } else if (!window.claude){
       // samostatná stránka (git, GitHub Pages, lokálně): běžné stažení
       doc.save(filename);
-      msg('PDF uloženo: A4 na šířku, měřítko 1:1.');
+      msg('PDF uloženo: A3 na šířku, měřítko 1:1.');
     } else {
       msg('Stahování v tomto zobrazení není dostupné. Otevři stránku na claude.ai a zkus export znovu.');
     }
@@ -715,16 +718,16 @@ $('export').addEventListener('click', async () => {
 /* ---------- škálování celé plochy do okna bez rolování ---------- */
 const stage = $('stage');
 function fit(){
-  const s = Math.min(window.innerWidth/1470, window.innerHeight/850);
-  stage.style.transform = `translate(${(window.innerWidth-1470*s)/2}px, ${(window.innerHeight-850*s)/2}px) scale(${s})`;
+  const s = Math.min(window.innerWidth/1470, window.innerHeight/854);
+  stage.style.transform = `translate(${(window.innerWidth-1470*s)/2}px, ${(window.innerHeight-854*s)/2}px) scale(${s})`;
 }
 function bgGrid(){
-  // počátek = roh listu A4 (rám je 5 mm uvnitř), takže čáry plynule navazují na mřížku výkresu
-  const ox = 15 - FX0*PXMM, oy = 8 - FY0*PXMM, g = GRID*PXMM, G = 10*PXMM, w = 0.08*PXMM;
+  // počátek = roh listu A3 (rám je 5 mm uvnitř), takže čáry plynule navazují na mřížku výkresu
+  const ox = 15 - FX0*PXMM, oy = 8 - FY0*PXMM, g = GRID*PXMM, G = 10*PXMM, w = 0.11*PXMM;
   $('bggrid').innerHTML =
     `<defs><pattern id="gmin" patternUnits="userSpaceOnUse" x="${ox}" y="${oy}" width="${g}" height="${g}"><path d="M0 0H${g}M0 0V${g}" stroke="#e6e6e6" stroke-width="${w*2}" fill="none"/></pattern>`+
     `<pattern id="gmaj" patternUnits="userSpaceOnUse" x="${ox}" y="${oy}" width="${G}" height="${G}"><path d="M0 0H${G}M0 0V${G}" stroke="#d6d6d6" stroke-width="${w*2}" fill="none"/></pattern></defs>`+
-    `<rect width="1470" height="850" fill="url(#gmin)"/><rect width="1470" height="850" fill="url(#gmaj)"/>`;
+    `<rect width="1470" height="854" fill="url(#gmin)"/><rect width="1470" height="854" fill="url(#gmaj)"/>`;
 }
 bgGrid();
 window.addEventListener('resize', fit);
